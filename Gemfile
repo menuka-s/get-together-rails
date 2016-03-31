@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 ruby '2.0.0'
 
-gem 'rails_12factor'
+# gem 'rails_12factor'
 gem 'puma'
 
 
@@ -30,6 +30,10 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
+# USE PAPERCLIP TO PERSIST IMAGES
+# gem 'paperclip', '~> 4.2'
+# gem 'mini_magick'
+# gem 'faker'
 # Use Unicorn as the app server
 # gem 'unicorn'
 
@@ -39,6 +43,7 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
+  gem 'capybara'
   gem 'rspec-rails'
 end
 
