@@ -1,8 +1,8 @@
 language: ruby
-sudo: required
+
 rvm:
 - 2.0.0
-- rbx
+
 env:
 - DB=postgresql
 
