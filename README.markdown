@@ -1,5 +1,7 @@
 == README
 
+[![Build Status](https://travis-ci.org/menuka-s/get-together-rails.svg?branch=master)](https://travis-ci.org/menuka-s/get-together-rails)
+
 This README would normally document whatever steps are necessary to get the
 application up and running.
 
