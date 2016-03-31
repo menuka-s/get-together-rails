@@ -1,5 +1,5 @@
 <script>
-// This is called with the results from from FB.getLoginStatus().
+  // This is called with the results from from FB.getLoginStatus().
   function statusChangeCallback(response) {
     console.log('statusChangeCallback');
     console.log(response);
@@ -32,14 +32,15 @@
   }
 
   window.fbAsyncInit = function() {
-    FB.init({
-      appId      : '109878109412996',
-      xfbml      : true,
-      version    : 'v2.5'
-    });
-  };
+  FB.init({
+    appId      : '109878109412996',
+    cookie     : true,  // enable cookies to allow the server to access
+                        // the session
+    xfbml      : true,  // parse social plugins on this page
+    version    : 'v2.5' // use graph api version 2.5
+  });
 
-// Now that we've initialized the JavaScript SDK, we call
+  // Now that we've initialized the JavaScript SDK, we call
   // FB.getLoginStatus().  This function gets the state of the
   // person visiting this page and can return one of three states to
   // the callback you provide.  They can be:
@@ -55,7 +56,7 @@
     statusChangeCallback(response);
   });
 
-
+  };
 
   // Load the SDK asynchronously
   (function(d, s, id) {
@@ -75,7 +76,7 @@
       document.getElementById('status').innerHTML =
         'Thanks for logging in, ' + response.name + '!';
     });
-  };
+  }
 </script>
 
 <!--
@@ -84,7 +85,7 @@
   the FB.login() function when clicked.
 -->
 
-<fb:login-button scope="public_profile,email" onlogin="login();">
+<fb:login-button scope="public_profile,email" onlogin="checkLoginState();">
 </fb:login-button>
 
 <div id="status">
