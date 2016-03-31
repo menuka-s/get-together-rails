@@ -1,0 +1,12 @@
+.welcome-header{
+  height: 5em;
+  width: 100%;
+  color: white;
+  background-color: black;
+  text-align: center;
+}
+
+.welcome-header h1{
+  font-size: 45px;
+  font-family: Courier;
+}
