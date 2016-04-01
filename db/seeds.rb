@@ -12,7 +12,7 @@ require 'date'
 end
 
 20.times do
-  Event.create(description: Faker::Lorem.paragraph(4), creator_id: rand(1..20), date: DateTime.now, location_name: Faker::Book.title, location: "this is a location", activity_id: rand(1..10))
+  Event.create(name: Faker::Lorem.word, description: Faker::Lorem.paragraph(4), creator_id: rand(1..20), date: DateTime.now, address: Faker::Address.street_address, latitude: rand(1..100), longitude: rand(1..100), activity_id: rand(1..10))
 end
 
 10.times do

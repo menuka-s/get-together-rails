@@ -1,4 +1,5 @@
 class User < ActiveRecord::Base
+  require 'date'
 
   has_many :users_events
   has_many :joined_events, through: :users_events, source: :event
@@ -9,5 +10,14 @@ class User < ActiveRecord::Base
   has_many :disliked_activities, through: :users_activities, source: :activity
   has_many :users_categories
   has_many :liked_categories, through: :users_categories, source: :category
+
+  def past_events
+    @past_events = self.joined_events.where("date < ?", DateTime.now)
+  end
+
+  def upcoming_events
+    @user_events = self.joined_events.where("date > ?", DateTime.now)
+  end
+
 
 end
