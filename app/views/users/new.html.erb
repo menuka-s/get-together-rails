@@ -90,7 +90,12 @@ var userEmail, userPhoto, userId;
       method: "POST",
       data: { email: userEmail, facebook_id: userId, image_url: userPhoto },
       url: "/users"
-        });
+        })
+     .done(function(response){
+      console.log("Response:")
+      window.location = "/users/"+response
+
+     });
 
   }
 </script>
