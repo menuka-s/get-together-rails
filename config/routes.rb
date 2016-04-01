@@ -6,6 +6,8 @@ Rails.application.routes.draw do
   root 'users#new'
 
   resource :users, except: :show
+  get '/users/logout' => 'users#logout'
   get '/users/:id' => 'users#show'
+
 
 end

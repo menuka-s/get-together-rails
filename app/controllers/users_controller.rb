@@ -4,7 +4,15 @@ class UsersController < ApplicationController
 
   end
 
+  def logout
+    reset_session
+  end
+
   def create
+    puts "++++++++++++++++++"
+    puts "params:"
+    puts params
+    puts "++++++++++++++++++"
     @user = User.find_or_initialize_by(email: params["email"])
     if @user.image_url == nil
       @user.image_url = params["image_url"]

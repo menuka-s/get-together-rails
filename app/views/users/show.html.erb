@@ -1,5 +1,8 @@
+
+
 <div id = "login-confirm">
 <%if current_user%>
 <%=current_user.email %>
+<img src=<%=current_user.image_url%>>
 <%end%>
 </div>
