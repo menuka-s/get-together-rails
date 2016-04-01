@@ -11,18 +11,79 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160331203734) do
+ActiveRecord::Schema.define(version: 20160401152832) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "users", force: :cascade do |t|
-    t.string   "email",       null: false
-    t.text     "bio"
-    t.string   "image_url"
-    t.string   "facebook_id"
+  create_table "activities", force: :cascade do |t|
+    t.string   "name",       null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "activity_categories", force: :cascade do |t|
+    t.integer  "activity_id", null: false
+    t.integer  "category_id", null: false
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
+  end
+
+  create_table "categories", force: :cascade do |t|
+    t.string   "name",       null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "comments", force: :cascade do |t|
+    t.integer  "event_id",   null: false
+    t.integer  "user_id",    null: false
+    t.text     "content",    null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "events", force: :cascade do |t|
+    t.text     "description",   null: false
+    t.integer  "creator_id",    null: false
+    t.datetime "date",          null: false
+    t.string   "location_name", null: false
+    t.string   "location",      null: false
+    t.integer  "activity_id",   null: false
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+  end
+
+  create_table "users", force: :cascade do |t|
+    t.string   "email",         null: false
+    t.text     "bio"
+    t.string   "image_url",     null: false
+    t.string   "facebook_id",   null: false
+    t.integer  "points"
+    t.string   "last_location"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+  end
+
+  create_table "users_activities", force: :cascade do |t|
+    t.integer  "user_id",     null: false
+    t.integer  "activity_id", null: false
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  create_table "users_categories", force: :cascade do |t|
+    t.integer  "user_id",     null: false
+    t.integer  "category_id", null: false
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  create_table "users_events", force: :cascade do |t|
+    t.integer  "user_id",    null: false
+    t.integer  "event_id",   null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
 end
