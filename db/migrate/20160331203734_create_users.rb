@@ -4,6 +4,7 @@ class CreateUsers < ActiveRecord::Migration
       t.string :email, null: false
       t.text :bio
       t.string :image_url
+      t.string :facebook_id
 
       t.timestamps null: false
     end

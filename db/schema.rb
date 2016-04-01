@@ -17,11 +17,12 @@ ActiveRecord::Schema.define(version: 20160331203734) do
   enable_extension "plpgsql"
 
   create_table "users", force: :cascade do |t|
-    t.string   "email",      null: false
+    t.string   "email",       null: false
     t.text     "bio"
     t.string   "image_url"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.string   "facebook_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
   end
 
 end
