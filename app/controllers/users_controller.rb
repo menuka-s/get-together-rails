@@ -17,7 +17,7 @@ class UsersController < ApplicationController
     else
       session[:user_id] = @user.id
     end
-    redirect_to "/users/#{@user.id}"
+    redirect_to @user
   end
 
   def show
