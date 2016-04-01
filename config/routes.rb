@@ -3,7 +3,9 @@ Rails.application.routes.draw do
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-  root 'sessions#new'
-  resource :users
-  resource :sessions
+  root 'users#new'
+
+  resource :users, except: :show
+  get '/users/:id' => 'users#show'
+
 end
