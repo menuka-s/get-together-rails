@@ -6,4 +6,7 @@ class Event < ActiveRecord::Base
   has_many :comments
   has_many :commenting_users, through: :comments, source: :user
 
+# Add validation that requires event date must be in the future?
+
+
 end

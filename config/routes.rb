@@ -5,11 +5,10 @@ Rails.application.routes.draw do
   # You can have the root of your site routed with "root"
 
 
-  resource :events
-
   root 'users#new'
 
-  resource :users, except: :show
-  get '/users/:id' => 'users#show'
+  resources :users
+  resources :events
+
 
 end

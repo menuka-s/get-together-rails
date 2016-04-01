@@ -7,8 +7,8 @@
 
   <div class="my-ucoming-events">
     <% @user_events.each do |event| %>
-      event.
-
+      <%= event.name %>
+    <% end %>
   </div>
 
 
@@ -27,10 +27,8 @@
 
 
 
-
-
   <div class="new-event-form">
-  <%= link_to "Create a New Event", new_events_path %>
+  <%= link_to "Create a New Event", new_event_path %>
   </div>
 </div>
 
