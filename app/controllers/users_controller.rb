@@ -1,9 +1,10 @@
 class UsersController < ApplicationController
 
-
-
   def index
+  end
 
+  def show
+    @user = User.find(params[:id])
   end
 
   def create
@@ -22,9 +23,21 @@ class UsersController < ApplicationController
     render json: @user.id
   end
 
-  def show
-    @user = User.find(params[:id])
+  def ajax_join_event
+    if session[:user_id] == nil
+      render json: {"status"=>"poop"}
+    else
+      event = Event.find(params[:id])
+      user = User.find(session[:user_id])
+      if !user.joined_events.include?(event)
+        user.joined_events << event
+        render json: {"status"=>"ok"}
+      else
+        render json: {"status"=>"poop"}
+      end
+    end
   end
+
 
 
 end
