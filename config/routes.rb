@@ -4,6 +4,9 @@ Rails.application.routes.draw do
 
   # You can have the root of your site routed with "root"
   root 'sessions#new'
+  get '/users/:id' => 'users#show'
+
   resource :users
   resource :sessions
+  resource :events
 end

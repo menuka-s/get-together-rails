@@ -22,6 +22,9 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+    @events = Event.all
+    @user_events = Event.find_by(creator_id: @user.id)
+
   end
 
 

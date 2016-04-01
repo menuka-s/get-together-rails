@@ -1,5 +1,36 @@
-<div id = "login-confirm">
-<%if current_user%>
-<%=current_user.email %>
-<%end%>
+<div class="user-profile">
+  <div id = "login-confirm">
+  <%if current_user%>
+    <%=current_user.email %>
+  <%end%>
+  </div>
+
+  <div class="my-ucoming-events">
+    <% @user_events.each do |event| %>
+      event.
+
+  </div>
+
+
+  <div class="my-created-events">
+
+  </div>
+
+  <div class="my-past-events">
+
+  </div>
+
+
+
+
+
+
+
+
+
+
+  <div class="new-event-form">
+  <%= link_to "Create a New Event", new_events_path %>
+  </div>
 </div>
+
