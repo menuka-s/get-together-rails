@@ -4,6 +4,8 @@ ruby '2.0.0'
 # gem 'rails_12factor'
 gem 'puma'
 
+# Add geocoding functionality
+gem 'geocoder'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.6'

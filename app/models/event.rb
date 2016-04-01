@@ -6,6 +6,9 @@ class Event < ActiveRecord::Base
   has_many :comments
   has_many :commenting_users, through: :comments, source: :user
 
+  geocoded_by :address
+  after_validation :geocode
+
 # Add validation that requires event date must be in the future?
 
 
