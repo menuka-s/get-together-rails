@@ -5,3 +5,28 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+require 'date'
+
+20.times do
+  User.create(email: Faker::Internet.email, bio: Faker::Lorem.paragraph(8), image_url: Faker::Avatar.image, facebook_id: "123456789", points: rand(0..90), last_location: "this is a location")
+end
+
+20.times do
+  Event.create(description: Faker::Lorem.paragraph(4), creator_id: rand(1..20), date: DateTime.now, location_name: Faker::Book.title, location: "this is a location", activity_id: rand(1..10))
+end
+
+10.times do
+  Category.create(name: Faker::Hacker.noun)
+end
+
+40.times do
+  Activity.create(name: Faker::Hipster.word)
+  ActivityCategory.create(activity_id: rand(1..40), category_id: rand(1..10))
+end
+
+20.times do
+  UsersEvent.create(user_id: rand(1..20), event_id: rand(1..20))
+  Comment.create(user_id: rand(1..20), event_id: rand(1..20), content: Faker::Lorem.paragraph(2))
+  UsersActivity.create(user_id: rand(1..20), activity_id: rand(1..40))
+  UsersCategory.create(user_id: rand(1..20), category_id: rand(1..10))
+end

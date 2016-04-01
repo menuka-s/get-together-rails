@@ -3,8 +3,10 @@ class CreateUsers < ActiveRecord::Migration
     create_table :users do |t|
       t.string :email, null: false
       t.text :bio
-      t.string :image_url
-      t.string :facebook_id
+      t.string :image_url, null: false
+      t.string :facebook_id, null: false
+      t.integer :points
+      t.string :last_location
 
       t.timestamps null: false
     end
