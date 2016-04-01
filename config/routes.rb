@@ -7,6 +7,8 @@ Rails.application.routes.draw do
 
   root 'users#new'
 
+  get '/users/logout' => 'users#logout'
+  get '/users/:id' => 'users#show'
   resources :users
   resources :events
 
