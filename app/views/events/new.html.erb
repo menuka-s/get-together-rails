@@ -1,7 +1,7 @@
 <div class="new-event-header">Create a New Event</div>
 
 <%= form_for @event do |f| %>
-  <ul>
+  <ul class="error-messages">
     <% @event.errors.full_messages.each do |error| %>
     <li><%= error %></li>
     <% end %>

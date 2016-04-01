@@ -8,12 +8,16 @@ class EventsController < ApplicationController
   end
 
   def create
-    @event = Event.new(event_parms)
+    @event = Event.new(event_params)
     # @event.creator_id = current_user.id
     @event.creator_id = 1
-    @event.save
-    flash[:notice] = "Your event was successfully created"
-    redirect_to @event
+    if @event.save
+      flash[:notice] = "Your event was successfully created"
+      redirect_to @event
+    else
+      @activities = Activity.all
+      render new_event_path(@event)
+    end
   end
 
   def show
@@ -21,7 +25,7 @@ class EventsController < ApplicationController
   end
 
   private
-  def event_parms
+  def event_params
     params.require(:event).permit(:name, :description, :date, :location_name, :address, :activity_id)
   end
 
