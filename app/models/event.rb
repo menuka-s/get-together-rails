@@ -12,4 +12,6 @@ class Event < ActiveRecord::Base
 # Add validation that requires event date must be in the future?
 
 
+
+
 end
