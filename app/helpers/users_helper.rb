@@ -6,4 +6,8 @@ module UsersHelper
     end
   end
 
+  def is_interested?(category, user)
+    user.liked_categories.include?(category)
+  end
+
 end

@@ -27,10 +27,6 @@ class UsersController < ApplicationController
   end
 
   def create
-    puts "++++++++++++++++++"
-    puts "params:"
-    puts params
-      puts "++++++++++++++++++"
     @user = User.find_or_initialize_by(email: params["email"])
     if @user.image_url == nil
       @user.image_url = params["image_url"]
@@ -67,6 +63,25 @@ class UsersController < ApplicationController
     end
   end
 
+
+  def interests_handler #not restful, not pretty. but works splendidly.
+    (action,user_id,category_id) = params[:data].split(',')
+    if (action == "a")
+      userLike = UsersCategory.new({user_id: user_id, category_id: category_id})
+      if userLike.save
+        render json: {action:"a", user_id: user_id, category_id: category_id}
+      else
+        render json: "error"
+      end
+    elsif (action == "r")
+      userLike = UsersCategory.find_by(user_id: user_id, category_id: category_id)
+      if userLike.destroy
+        render json: {action:"r", user_id: user_id, category_id: category_id}
+      else
+        render json: "error"
+      end
+    end
+  end
 
 
 end
