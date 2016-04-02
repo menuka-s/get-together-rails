@@ -35,7 +35,9 @@ class UsersController < ApplicationController
       @user.image_url = params["image_url"]
       @user.bio = ""
       @user.points = 0
-      @user.last_location = ""
+      @user.name = params["name"]
+      @user.longitude = params["longitude"]
+      @user.latitude = params["latitude"]
       @user.facebook_id = params["facebook_id"]
       @user.save
       session[:user_id] = @user.id
