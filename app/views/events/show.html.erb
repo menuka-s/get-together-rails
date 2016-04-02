@@ -1,3 +1,22 @@
+<script>
+$(document).ready(function(){
+  $('body').on('click','#join-event', function(e) {
+    var eventID = $(this).attr("event");
+    var button = $(this);
+    $.ajax({
+      url: "/users/ajax_join_event/" + eventID,
+      method: "post",
+      data: {}
+    }).done(function (response) {
+      $(button).val("Event Joined");
+    }).fail(function() {
+      console.log("Error joining event!");
+    });
+  })
+});
+</script>
+
+
 <h2><%= @event.name %></h2>
 <p>Created by: <%= @event.creator.email %> </p>
 
@@ -10,7 +29,12 @@
 <h4>Location:</h4>
 <p><%= @event.address %></p>
 
+<h4>Join this Event:</h4>
+<button id="join-event" event="<%= @event.id %>">Join this event!</button>
+
+
 <!-- GIMME SOME MAP SHIT HERE -->
+
 
 
 

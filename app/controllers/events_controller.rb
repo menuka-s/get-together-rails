@@ -2,6 +2,11 @@ class EventsController < ApplicationController
   include UsersHelper
   include EventsHelper
 
+
+  def show
+    @event = Event.find(params[:id])
+  end
+
   def new
     @event = Event.new
     @activities = Activity.all
@@ -20,9 +25,7 @@ class EventsController < ApplicationController
     end
   end
 
-  def show
-    @event = Event.find(params[:id])
-  end
+
 
   private
   def event_params

@@ -4,6 +4,9 @@ Rails.application.routes.draw do
 
   # You can have the root of your site routed with "root"
 
+#Begin Ian's broken restfulness:
+post '/users/ajax_join_event/:id' => 'users#ajax_join_event'
+#End of the atrocity
 
   root 'users#new'
 
