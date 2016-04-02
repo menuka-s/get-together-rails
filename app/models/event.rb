@@ -1,4 +1,5 @@
 class Event < ActiveRecord::Base
+  require 'date'
 
   has_many :users_events
   has_many :joined_users, through: :users_events, source: :user
@@ -19,8 +20,8 @@ class Event < ActiveRecord::Base
 
   private
   def event_cannot_be_in_past
-    errors.add(:date, "must occur in the future") if
-      !date.blank? && date < DateTime.now
+    errors.add(:date, "of event must occur in the future") if
+      !date.blank? && date < Time.now
   end
 
 end
