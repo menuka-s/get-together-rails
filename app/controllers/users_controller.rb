@@ -13,6 +13,7 @@ class UsersController < ApplicationController
 
   def interests
     @user = User.find(params[:id])
+    @categories = Category.all
   end
 
   def allinterests

@@ -1,0 +1,25 @@
+<div class="category-interest-buttons">
+    <div style="width: 200px; display:block; margin: auto;" id="invite_buttons">
+    <% @categories.each do |category| %>
+      <% if is_interested?(category,@user) %>
+
+
+        <button style="background-color: #000; color: #fff"
+            id = "category<%= category.id %>"
+            class = "invite_button"
+            value = "u,<%=@event.id%>,<%=category.id %>" >
+          <%=category.username %>
+        </button>
+      <% else %>
+        <button style="background-color: #f6f6f6; color: #000"
+            id = "critic<%= critic.id %>"
+            class = "invite_button"
+            value = "i,<%=@event.id%>,<%=critic.id %>" >
+          <%=critic.username %>
+        </button>
+      <% end %>
+      <br>
+    <% end %>
+    <a class="aButton" style="margin-left: -3.1em; height: 20px; width: 300px;" href="/events/<%= @event.id %>">BACK TO EVENT</a>
+    </div>
+  </div>
