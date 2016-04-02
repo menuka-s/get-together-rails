@@ -5,11 +5,15 @@ class Event < ActiveRecord::Base
   belongs_to :creator, class_name: "User"
   has_many :comments
   has_many :commenting_users, through: :comments, source: :user
+  belongs_to :activity
 
-  geocoded_by :address
-  after_validation :geocode
+  #/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/
+  #comment this back in after seed, for user functionality
+  # geocoded_by :address
+  # after_validation :geocode
+  #/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/
 
-  validates_presence_of :name, :description, :date, :address, :activity_id
+  validates_presence_of :name, :description, :date, :activity_id, :address
 
   # validates
 
