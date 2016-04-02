@@ -5,12 +5,17 @@
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
+
+
 </head>
 <body>
 <script>
+
     var userEmail;
     var userCode;
+    var userName;
     var userPic;
+
   // This is called with the results from from FB.getLoginStatus().
   function statusChangeCallback(response) {
     console.log('statusChangeCallback');
@@ -93,35 +98,67 @@
       console.log(response)
       userCode = response.id
       userEmail = response.email
+      userName = response.name
+      debugger
       console.log('Successful login for: ' + response.name);
       document.getElementById('status').innerHTML =
         'Thanks for logging in, ' + response.name + '!';
-      getUserPhoto(userCode, userEmail);
+      getUserPhoto(userCode, userEmail, userName);
     });
 
   }
 
-  function getUserPhoto(userCode, userEmail){
+  function getUserPhoto(userCode, userEmail, userName){
     FB.api('/me/picture?redirect=0&height=300&width=300&type=normal', function(response) {
       userPic = response.data.url
-      makeAjaxCall(userCode, userEmail, userPic);
+      makeAjaxCall(userCode, userEmail, userName, userPic);
     })
   }
-  function makeAjaxCall(userCode, userEmail, userPic){
-    console.log(userEmail)
-    console.log(userCode)
-    console.log(userPic)
-    $.ajax({
-        url: "/users",
-        type: "POST",
-        data: { email: userEmail, facebook_id: userCode, image_url: userPic }
-      }).done(function(response){
-        console.log("Response:" + response)
-        window.location = "/users/"+response
+
+  // function getLocation() {
+  //   console.log("Here");
+  //   if (navigator.geolocation) {
+  //     console.log("if navigator.geolocation");
+  //       navigator.geolocation.getCurrentPosition(showPosition);
+  //       console.log(x)
+  //   }
+    //else {
+    //     x.innerHTML = "Geolocation is not supported by this browser.";
+    // }
+  // }
+
+  // function showPosition(position) {
+    //userLat = position.coords.latitude;
+    //userLong = position.coords.longitude;
+  //   coords.lat = position.coords.latitude;
+  //   coords.lng = position.coords.longitude;
+  // }
 
 
-    });
+  function makeAjaxCall(userCode, userEmail, userName, userPic){
+
+
+    if (navigator.geolocation){
+      navigator.geolocation.getCurrentPosition(function(position){
+        var lat = position.coords.latitude;
+        var lon = position.coords.longitude;
+
+        console.log(lat)
+
+        $.ajax({
+          url: "/users",
+          type: "POST",
+          data: { email: userEmail, facebook_id: userCode, image_url: userPic, name: userName, latitude: lat, longitude: lon }
+        }).done(function(response){
+          console.log("Response:" + response)
+          window.location = "/users/"+response
+        });
+
+      })
+    }
   }
+
+
 
 </script>
 
