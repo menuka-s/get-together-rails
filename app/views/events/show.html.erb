@@ -8,10 +8,15 @@ $(document).ready(function(){
       method: "post",
       data: {}
     }).done(function (response) {
-      console.log("event!");
-      $("#join-event").text("Event Joined");
+      if (response["status"] == 0) {
+        $("#join-event").text("Join this Event!");
+        $('#eventstatus').text("You have not joined this event");
+      } else {
+        $("#join-event").text("Un-Join this Event");
+        $('#eventstatus').text("You are attending this event");
+      };        
     }).fail(function() {
-      console.log("Error joining event!");
+      console.log("Error joining/unjoining event!");
     });
   })
 });
@@ -30,12 +35,27 @@ $(document).ready(function(){
 <h4>Location:</h4>
 <p><%= @event.address %></p>
 
-<h4>Join this Event:</h4>
-<button id="join-event" event="<%= @event.id %>">Join this event!</button>
+<% if current_user %>
+  <% if !current_user.joined_events.include?(@event) %>
+    <h4 id="eventstatus">Join this Event:</h4>
+    <button id="join-event" event="<%= @event.id %>">Join this Event!</button>
+  <% else %>
+    <h4 id="eventstatus">You are attending this event</h4>
+    <button id="join-event" event="<%= @event.id %>">UnJoin this Event</button>
+  <% end %>
+<% end %>
 
+<!-- GIMME SOME MAP SHIT HERE
 
-<!-- GIMME SOME MAP SHIT HERE -->
+Got your map right here:
 
+o#........
+.#####.##.
+.......##.
+######.#*.
+.......###
+
+-->
 
 
 
