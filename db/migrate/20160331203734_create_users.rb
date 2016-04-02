@@ -5,7 +5,6 @@ class CreateUsers < ActiveRecord::Migration
       t.text :bio
       t.string :image_url, null: false
 
-
       t.timestamps null: false
     end
   end

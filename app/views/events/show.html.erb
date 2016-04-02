@@ -8,7 +8,8 @@ $(document).ready(function(){
       method: "post",
       data: {}
     }).done(function (response) {
-      $(button).val("Event Joined");
+      console.log("event!");
+      $("#join-event").text("Event Joined");
     }).fail(function() {
       console.log("Error joining event!");
     });

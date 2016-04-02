@@ -33,7 +33,7 @@ class UsersController < ApplicationController
 
   def ajax_join_event
     if session[:user_id] == nil
-      render json: {"status"=>"poop"}
+      render json: {"status"=>"💩"}
     else
       event = Event.find(params[:id])
       user = User.find(session[:user_id])
