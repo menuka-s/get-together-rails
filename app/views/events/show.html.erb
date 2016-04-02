@@ -1,4 +1,6 @@
+
 <div class="event-details">
+
 
   <h2><%= @event.name %></h2>
   <p>Created by: <%= @event.creator.email %> </p>
@@ -11,31 +13,23 @@
 
   <h4>Location:</h4>
   <p><%= @event.address %></p>
-  <div id="event-details-map"></div>
 
-  <h4>Join this Event:</h4>
-  <button id="join-event" event="<%= @event.id %>">Join this event!</button>
+  <% if current_user %>
+    <% if !current_user.joined_events.include?(@event) %>
+      <h4 id="eventstatus">Join this Event:</h4>
+      <button id="join-event" event="<%= @event.id %>">Join this Event!</button>
+    <% else %>
+      <h4 id="eventstatus">You are attending this event</h4>
+      <button id="join-event" event="<%= @event.id %>">UnJoin this Event</button>
+    <% end %>
+  <% end %>
+  <br><br>
+  
+  <div id="event-details-map"></div>
 
 </div>
 
 <script>
-  $(document).ready(function(){
-    $('body').on('click','#join-event', function(e) {
-      var eventID = $(this).attr("event");
-      var button = $(this);
-      $.ajax({
-        url: "/users/ajax_join_event/" + eventID,
-        method: "post",
-        data: {}
-      }).done(function (response) {
-        console.log("event!");
-        $("#join-event").text("Event Joined");
-      }).fail(function() {
-        console.log("Error joining event!");
-      });
-    })
-  });
-
   // JS for producing google map with marker
   function initMap() {
     var myLatLng = {lat: <%= @event.latitude %>, lng: <%= @event.longitude %>};
@@ -51,12 +45,35 @@
       title: 'Playa playa'
     });
 
-  }
+  };
+
+  $(document).ready(function(){
+  $('body').on('click','#join-event', function(e) {
+    var eventID = $(this).attr("event");
+    var button = $(this);
+    $.ajax({
+      url: "/users/ajax_join_event/" + eventID,
+      method: "post",
+      data: {}
+    }).done(function (response) {
+      if (response["status"] == 0) {
+        $("#join-event").text("Join this Event!");
+        $('#eventstatus').text("You have not joined this event");
+      } else {
+        $("#join-event").text("Un-Join this Event");
+        $('#eventstatus').text("You are attending this event");
+      };        
+    }).fail(function() {
+      console.log("Error joining/unjoining event!");
+    });
+  })
+});
 </script>
 
 <script async defer
-src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDAvBDiolWNKT2Nn0wteaKxxKPQbk8ocjI&callback=initMap">
+  src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDAvBDiolWNKT2Nn0wteaKxxKPQbk8ocjI&callback=initMap">
 </script>
+
 
 
 
