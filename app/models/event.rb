@@ -24,4 +24,7 @@ class Event < ActiveRecord::Base
       !date.blank? && date < Time.now
   end
 
+
+
+
 end

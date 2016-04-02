@@ -16,7 +16,9 @@
   <p><%= @event.address %></p>
 
   <% if current_user %>
-    <% if !current_user.joined_events.include?(@event) %>
+    <% if @event.creator.id == current_user.id %>
+      <h4 id="eventstatus">You created this event!</h4>
+    <% elsif !current_user.joined_events.include?(@event) %>
       <h4 id="eventstatus">Join this Event:</h4>
       <button id="join-event" event="<%= @event.id %>">Join this Event!</button>
     <% else %>
@@ -25,7 +27,7 @@
     <% end %>
   <% end %>
   <br><br>
-  
+
   <div id="event-details-map"></div>
 
 </div>
@@ -63,7 +65,7 @@
       } else {
         $("#join-event").text("Un-Join this Event");
         $('#eventstatus').text("You are attending this event");
-      };        
+      };
     }).fail(function() {
       console.log("Error joining/unjoining event!");
     });
