@@ -13,22 +13,19 @@
 
   <h4>Location:</h4>
   <p><%= @event.address %></p>
-  <div id="event-details-map"></div>
 
-  <h4>Join this Event:</h4>
-  <button id="join-event" event="<%= @event.id %>">Join this event!</button>
-
-
-<% if current_user %>
-  <% if !current_user.joined_events.include?(@event) %>
-    <h4 id="eventstatus">Join this Event:</h4>
-    <button id="join-event" event="<%= @event.id %>">Join this Event!</button>
-  <% else %>
-    <h4 id="eventstatus">You are attending this event</h4>
-    <button id="join-event" event="<%= @event.id %>">UnJoin this Event</button>
+  <% if current_user %>
+    <% if !current_user.joined_events.include?(@event) %>
+      <h4 id="eventstatus">Join this Event:</h4>
+      <button id="join-event" event="<%= @event.id %>">Join this Event!</button>
+    <% else %>
+      <h4 id="eventstatus">You are attending this event</h4>
+      <button id="join-event" event="<%= @event.id %>">UnJoin this Event</button>
+    <% end %>
   <% end %>
-<% end %>
-
+  <br><br>
+  
+  <div id="event-details-map"></div>
 
 </div>
 
@@ -49,7 +46,7 @@
     });
 
   };
-  
+
   $(document).ready(function(){
   $('body').on('click','#join-event', function(e) {
     var eventID = $(this).attr("event");
