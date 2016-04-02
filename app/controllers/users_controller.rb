@@ -29,7 +29,7 @@ class UsersController < ApplicationController
     puts "++++++++++++++++++"
     puts "params:"
     puts params
-    puts "++++++++++++++++++"
+      puts "++++++++++++++++++"
     @user = User.find_or_initialize_by(email: params["email"])
     if @user.image_url == nil
       @user.image_url = params["image_url"]
@@ -43,6 +43,9 @@ class UsersController < ApplicationController
       session[:user_id] = @user.id
     else
       session[:user_id] = @user.id
+      @user.longitude = params["longitude"]
+      @user.latitude = params["latitude"]
+      @user.save
     end
     render json: {user_id: @user.id, like_count: @user.liked_categories.length}
   end
