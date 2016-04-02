@@ -116,8 +116,13 @@
         type: "POST",
         data: { email: userEmail, facebook_id: userCode, image_url: userPic }
       }).done(function(response){
-        console.log("Response:" + response)
-        window.location = "/users/"+response
+        console.log(response)
+        if (response.like_count == 0){
+          window.location = "/users/"+ response.user_id + "/interests"
+        }else{
+          window.location = "/users/"+ response.user_id
+        }
+
 
 
     });
