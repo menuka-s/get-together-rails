@@ -2,6 +2,10 @@ class EventsController < ApplicationController
   include UsersHelper
   include EventsHelper
 
+  def index
+    @events = Event.event_locations
+    @current_location = [41.8896945, -87.6396812]
+  end
 
   def show
     @event = Event.find(params[:id])

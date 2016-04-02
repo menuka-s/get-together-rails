@@ -1,4 +1,5 @@
 class Event < ActiveRecord::Base
+  require 'date'
 
   has_many :users_events
   has_many :joined_users, through: :users_events, source: :user
@@ -14,11 +15,24 @@ class Event < ActiveRecord::Base
   #/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/
 
   #/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/* UNCOMMENT address TOO
-  validates_presence_of :name, :description, :date, :activity_id #, :address
+  validates_presence_of :name, :description, :date, :activity_id#, :address
+  validate :event_cannot_be_in_past
 
-  # validates
+  def self.event_locations
+    all_event_location_data = []
+    Event.all.each do |event|
+      all_event_location_data << [event.name, event.latitude, event.longitude, event.id, event.address]
+    end
+    all_event_location_data
+  end
 
-# Add validation that requires event date must be in the future?
+  private
+  def event_cannot_be_in_past
+    errors.add(:date, "of event must occur in the future") if
+      !date.blank? && date < Time.now
+  end
+
+
 
 
 end
