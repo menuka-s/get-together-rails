@@ -9,16 +9,18 @@ class Event < ActiveRecord::Base
 
   #/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/
   #comment this back in after seed, for user functionality
-  # geocoded_by :address
-  # after_validation :geocode
+  geocoded_by :address
+  after_validation :geocode
   #/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/
 
   #/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/* UNCOMMENT address TOO
-  validates_presence_of :name, :description, :date, :activity_id #, :address
+  validates_presence_of :name, :description, :date, :activity_id, :address
+  validate :event_cannot_be_in_past
 
-  # validates
-
-# Add validation that requires event date must be in the future?
-
+  private
+  def event_cannot_be_in_past
+    errors.add(:date, "must occur in the future") if
+      !date.blank? && date < DateTime.now
+  end
 
 end
