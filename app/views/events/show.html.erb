@@ -1,5 +1,56 @@
+
+<div class="event-details">
+
+
+  <h2><%= @event.name %></h2>
+  <p>Created by: <%= @event.creator.email %> </p>
+
+  <h4>When:</h4>
+  <p><%= @event.date %></p>
+
+  <h4>Description:</h4>
+  <p><%= @event.description %></p>
+
+  <h4>Location:</h4>
+  <p><%= @event.address %></p>
+  <div id="event-details-map"></div>
+
+  <h4>Join this Event:</h4>
+  <button id="join-event" event="<%= @event.id %>">Join this event!</button>
+
+
+<% if current_user %>
+  <% if !current_user.joined_events.include?(@event) %>
+    <h4 id="eventstatus">Join this Event:</h4>
+    <button id="join-event" event="<%= @event.id %>">Join this Event!</button>
+  <% else %>
+    <h4 id="eventstatus">You are attending this event</h4>
+    <button id="join-event" event="<%= @event.id %>">UnJoin this Event</button>
+  <% end %>
+<% end %>
+
+
+</div>
+
 <script>
-$(document).ready(function(){
+  // JS for producing google map with marker
+  function initMap() {
+    var myLatLng = {lat: <%= @event.latitude %>, lng: <%= @event.longitude %>};
+
+    var map = new google.maps.Map(document.getElementById('event-details-map'), {
+      zoom: 13,
+      center: myLatLng
+    });
+
+    var marker = new google.maps.Marker({
+      position: myLatLng,
+      map: map,
+      title: 'Playa playa'
+    });
+
+  };
+  
+  $(document).ready(function(){
   $('body').on('click','#join-event', function(e) {
     var eventID = $(this).attr("event");
     var button = $(this);
@@ -22,40 +73,10 @@ $(document).ready(function(){
 });
 </script>
 
+<script async defer
+  src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDAvBDiolWNKT2Nn0wteaKxxKPQbk8ocjI&callback=initMap">
+</script>
 
-<h2><%= @event.name %></h2>
-<p>Created by: <%= @event.creator.email %> </p>
-
-<h4>When:</h4>
-<p><%= @event.date %></p>
-
-<h4>Description:</h4>
-<p><%= @event.description %></p>
-
-<h4>Location:</h4>
-<p><%= @event.address %></p>
-
-<% if current_user %>
-  <% if !current_user.joined_events.include?(@event) %>
-    <h4 id="eventstatus">Join this Event:</h4>
-    <button id="join-event" event="<%= @event.id %>">Join this Event!</button>
-  <% else %>
-    <h4 id="eventstatus">You are attending this event</h4>
-    <button id="join-event" event="<%= @event.id %>">UnJoin this Event</button>
-  <% end %>
-<% end %>
-
-<!-- GIMME SOME MAP SHIT HERE
-
-Got your map right here:
-
-o#........
-.#####.##.
-.......##.
-######.#*.
-.......###
-
--->
 
 
 
