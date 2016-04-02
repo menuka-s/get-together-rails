@@ -34,21 +34,49 @@
 
 <script>
   // JS for producing google map with marker
+  var myLatLng = {lat: <%= @event.latitude %>, lng: <%= @event.longitude %>};
   function initMap() {
-    var myLatLng = {lat: <%= @event.latitude %>, lng: <%= @event.longitude %>};
 
     var map = new google.maps.Map(document.getElementById('event-details-map'), {
       zoom: 13,
       center: myLatLng
     });
 
+    setMarkers(map);
+  };
+
+  function setMarkers(map) {
+    var image = {
+      url: 'http://b.fastcompany.net/asset_files/-/2014/11/13/poop.png',
+      size: new google.maps.Size(26, 26),
+      origin: new google.maps.Point(0, 0),
+      anchor: new google.maps.Point(0, 26)
+    };
+
+    var shape = {
+      coords: [1, 1, 1, 20, 18, 20, 18, 1],
+      type: 'poly'
+    };
+
     var marker = new google.maps.Marker({
       position: myLatLng,
       map: map,
-      title: 'Playa playa'
+      icon: image,
+      shape: shape,
+      title: 'Playa playa',
+      zIndex: 2
+    });
+    marker.addListener('click', function() {
+      infowindow.open(map, marker);
     });
 
-  };
+    var contentString = "<%= @event.address %>"
+
+    var infowindow = new google.maps.InfoWindow({
+      content: contentString,
+      maxWidth: 200
+    });
+  }
 
   $(document).ready(function(){
   $('body').on('click','#join-event', function(e) {
