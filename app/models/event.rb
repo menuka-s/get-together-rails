@@ -13,7 +13,8 @@ class Event < ActiveRecord::Base
   # after_validation :geocode
   #/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/
 
-  validates_presence_of :name, :description, :date, :activity_id, :address
+  #/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/* UNCOMMENT address TOO
+  validates_presence_of :name, :description, :date, :activity_id #, :address
 
   # validates
 
