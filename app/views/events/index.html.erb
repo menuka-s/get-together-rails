@@ -30,32 +30,35 @@
       type: 'poly'
     };
 
+    var infoWindow = new google.maps.InfoWindow({
+      content: contentString,
+      maxWidth: 200
+    });
+
     for (var i = 0; i < events.length; i++) {
       var event = events[i]
+      var contentString = event[0];
+
       var marker = new google.maps.Marker({
         position: {lat: event[1], lng: event[2]},
         map: map,
         icon: image,
         shape: shape,
         title: event[0],
-        zIndex: event[3]
-      });
-      marker.addListener('click', function() {
-        infowindow.open(map, marker);
+        zIndex: event[3],
+        info: contentString
       });
 
-      var contentString = "dog!"
-
-      var infowindow = new google.maps.InfoWindow({
-        content: contentString,
-        maxWidth: 200
+      google.maps.event.addListener(marker, 'click', function() {
+        infoWindow.setContent(this.info);
+        infoWindow.open(map, this);
       });
     };
   }
 
 </script>
 
- <script async defer
+<script async defer
   src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDAvBDiolWNKT2Nn0wteaKxxKPQbk8ocjI&callback=initMap">
 </script>
 
