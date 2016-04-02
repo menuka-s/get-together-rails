@@ -115,25 +115,6 @@
     })
   }
 
-  // function getLocation() {
-  //   console.log("Here");
-  //   if (navigator.geolocation) {
-  //     console.log("if navigator.geolocation");
-  //       navigator.geolocation.getCurrentPosition(showPosition);
-  //       console.log(x)
-  //   }
-    //else {
-    //     x.innerHTML = "Geolocation is not supported by this browser.";
-    // }
-  // }
-
-  // function showPosition(position) {
-    //userLat = position.coords.latitude;
-    //userLong = position.coords.longitude;
-  //   coords.lat = position.coords.latitude;
-  //   coords.lng = position.coords.longitude;
-  // }
-
 
   function makeAjaxCall(userCode, userEmail, userName, userPic){
 
@@ -150,8 +131,11 @@
           type: "POST",
           data: { email: userEmail, facebook_id: userCode, image_url: userPic, name: userName, latitude: lat, longitude: lon }
         }).done(function(response){
-          console.log("Response:" + response)
-          window.location = "/users/"+response
+          if (response.like_count == 0){
+            window.location = "/users/"+ response.user_id + "/interests"
+          }else{
+            window.location = "/users/"+ response.user_id
+          }
         });
 
       })

@@ -9,7 +9,8 @@ post '/users/ajax_join_event/:id' => 'users#ajax_join_event'
 #End of the atrocity
 
   root 'users#new'
-
+  get '/users/:id/interests' => 'users#interests'
+  get '/users/:id/allinterests' => 'users#allinterests'
   get '/users/logout' => 'users#logout'
   get '/users/:id' => 'users#show'
   resources :users

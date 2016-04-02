@@ -8,7 +8,21 @@ class UsersController < ApplicationController
   end
 
   def logout
-    reset_session
+    session[:user_id]=nil
+  end
+
+  def interests
+    @user = User.find(params[:id])
+  end
+
+  def allinterests
+    @user = User.find(params[:id])
+    @categories = Category.all
+    puts "adding categories"
+    @categories.each do |category|
+      UsersCategory.create(user_id: @user.id, category_id: category.id)
+    end
+    redirect_to @user
   end
 
   def create
@@ -30,7 +44,7 @@ class UsersController < ApplicationController
     else
       session[:user_id] = @user.id
     end
-    render json: @user.id
+    render json: {user_id: @user.id, like_count: @user.liked_categories.length}
   end
 
   def ajax_join_event
