@@ -1,6 +1,10 @@
   <script>
   $(document).ready(function() {
+    // $(".acdivity").toggle();
+    // var categoryButtons = $(".category_interest_button")
+    // categoryButtons.forEach(function(){
 
+    // })
     $('#category-interest-buttons').on("click",".category_interest_button",function(e) {
       console.log("Button: " + $(this).val());
       ajaxReq = $.ajax({
@@ -29,25 +33,42 @@
         // }, 500)
       })
     })
-  })
+  });
+
+  function toggleActivity(x) {
+    $('.activity' + x).toggle();
+    console.log(x);
+  };
+
   </script>
+
+
 <div class="category-interest-buttons">
-    <div style="width: 200px; display:block; margin: auto;" id="category-interest-buttons">
+    <div id="category-interest-buttons">
     <% @categories.each do |category| %>
       <% if is_interested?(category,@user) %>
         <button style="background-color: #000; color: #fff"
             id = "category<%= category.id %>"
             class = "category_interest_button"
-            value = "r,<%=@user.id%>,<%=category.id %>" >
+            value = "r,<%=@user.id%>,<%=category.id %>"
+            onClick="toggleActivity(<%=category.id %>)" >
           <%=category.name %>
         </button>
+         <%=render partial: 'interests/activity', locals: {activities: category.associated_activities, category: category} %>
+
+        <!--<script>$(".activity" + <%=category.id %>).show();</script> -->
+
       <% else %>
         <button style="background-color: #f6f6f6; color: #000"
             id = "category<%= category.id %>"
             class = "category_interest_button"
-            value = "a,<%=@user.id%>,<%=category.id %>" >
+            value = "a,<%=@user.id%>,<%=category.id %>"
+            onClick="toggleActivity(<%=category.id %>)" >
           <%=category.name %>
         </button>
+        <%=render partial: 'interests/activity', locals: {activities: category.associated_activities, category: category} %>
+        <script>$(".activity<%=category.id %>").hide();</script>
+
       <% end %>
       <br>
     <% end %>
