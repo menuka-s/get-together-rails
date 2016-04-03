@@ -36,4 +36,16 @@ margin: auto;
 
 }
 
+.activity-interest-box{
+  border: 1px solid black;
+}
+
+.activity-interest-button{
+  border: 1px solid gray;
+  display: inline-block;
+  margin: 5px;
+}
+
+
+
 

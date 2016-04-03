@@ -10,4 +10,8 @@ module UsersHelper
     user.liked_categories.include?(category)
   end
 
+  def dislikes_this?(activity, user)
+    user.disliked_activities.include?(activity)
+  end
+
 end

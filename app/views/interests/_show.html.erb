@@ -1,10 +1,6 @@
   <script>
   $(document).ready(function() {
-    // $(".acdivity").toggle();
-    // var categoryButtons = $(".category_interest_button")
-    // categoryButtons.forEach(function(){
 
-    // })
     $('#category-interest-buttons').on("click",".category_interest_button",function(e) {
       console.log("Button: " + $(this).val());
       ajaxReq = $.ajax({
@@ -27,17 +23,39 @@
         console.log("bgc is " + bgc);
         $("#category" + category).css("background-color",bgc);
         $("#category" + category).css("color",bgco);
-        // $("#category" + category).animate({
-        //   backgroundColor: bgc ,
-        //   color: bgco
-        // }, 500)
+
       })
     })
+
+    $('.activity-interest-box').on("click", ".activity-interest-button", function(e) {
+      console.log("aButton: " + $(this).val());
+      ajaxReq = $.ajax({
+        url: '/users/activity_dislikes_handler',
+        method: 'post',
+        data: {"data":$(this).val()},
+        dataType: 'json',
+      })
+      ajaxReq.done(function(response){
+        var activityId = response["activity_id"];
+        if (response["action"] == 'r') {
+          $(".activity" + activityId).val("a," + response["user_id"] + "," + activityId);
+          bgcolor = "#000";
+          txtcolor = "#f6f6f6";
+        } else {
+          $(".activity" + activityId).val("r," + response["user_id"] + "," + activityId);
+          bgcolor = "#f6f6f6";
+          txtcolor = "#000";
+        }
+        $(".activity" + activityId).css("background-color",bgcolor);
+        $(".activity" + activityId).css("color",txtcolor);
+      });
+    });
+
   });
 
-  function toggleActivity(x) {
-    $('.activity' + x).toggle();
-    console.log(x);
+  function toggleActivity(id) {
+    $('.activity-box-for-cat' + id).toggle();
+    // console.log(x);
   };
 
   </script>
@@ -47,6 +65,7 @@
     <div id="category-interest-buttons">
     <% @categories.each do |category| %>
       <% if is_interested?(category,@user) %>
+      <div
         <button style="background-color: #000; color: #fff"
             id = "category<%= category.id %>"
             class = "category_interest_button"
@@ -55,8 +74,6 @@
           <%=category.name %>
         </button>
          <%=render partial: 'interests/activity', locals: {activities: category.associated_activities, category: category} %>
-
-        <!--<script>$(".activity" + <%=category.id %>).show();</script> -->
 
       <% else %>
         <button style="background-color: #f6f6f6; color: #000"
@@ -67,7 +84,7 @@
           <%=category.name %>
         </button>
         <%=render partial: 'interests/activity', locals: {activities: category.associated_activities, category: category} %>
-        <script>$(".activity<%=category.id %>").hide();</script>
+        <script>$(".activity-box-for-cat<%=category.id%>").hide();</script>
 
       <% end %>
       <br>
