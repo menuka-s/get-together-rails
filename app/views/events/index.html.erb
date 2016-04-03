@@ -1,16 +1,18 @@
-<h1>All Events</h1>
-
-
-<div id="event-details-map"></div>
-
-
 <div class="news-feed-container">
+
+  <h1>All Events</h1>
+
+  <div class="new-event">
+    <%= link_to "Create a New Event", new_event_path %>
+  </div>
+
+  <div id="all-events-map"></div>
+
   <div class="news-feed-sorting">
     <button class="news-feed-sorting-button">Soonest</button>
   </div>
   <div class="news-feed flip">
     <% if @user_appealing_events %>
-
       <div class="card">
 
         <div class="news-feed-proximity face front">
@@ -56,7 +58,6 @@
         </div>
 
       </div>
-
     <% end %>
   </div>
 </div>
@@ -68,8 +69,8 @@
   // JS for producing google map with marker
   function initMap() {
 
-    var map = new google.maps.Map(document.getElementById('event-details-map'), {
-      zoom: 11,
+    var map = new google.maps.Map(document.getElementById('all-events-map'), {
+      zoom: 12,
       center: {lat: currentLocation[0], lng: currentLocation[1]}
     });
 
@@ -116,20 +117,11 @@
   }
 
   $(document).ready(function(){
-
     // Probably should update to do an ajax request but hey it's functional!
     $('.news-feed-sorting-button').on('click', function(event){
-      // $('.news-feed-proximity').toggle('slow');
-      // $('.news-feed-soonest').toggle('slow');
-      // $('.news-feed-soonest').removeClass('hidden');
-      // $('.news-feed-proximity').addClass('flipping-mechanism');
-      // $('.news-feed-soonest').removeClass('hidden');
-      // $('.news-feed-soonest').addClass('flipping-mechanism');
-
       $('.card').toggleClass('flipped');
 
-
-      if($(this).text() === "Soonest") {
+      if($(this).text() === 'Soonest') {
         $(this).text('Proximity');
       } else {
         $(this).text('Soonest');
@@ -142,4 +134,3 @@
 <script async defer
   src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDAvBDiolWNKT2Nn0wteaKxxKPQbk8ocjI&callback=initMap">
 </script>
-
