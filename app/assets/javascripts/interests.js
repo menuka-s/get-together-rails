@@ -1,6 +1,5 @@
-  // $(document).ready(){
-  // $("#defer-interests").on("click", function(){
-
-
-  // });
-  // }
+  $(document).ready(function(){
+    $("#activity").keyup(function(){
+      console.log($("#activity").val())
+    });
+  });
