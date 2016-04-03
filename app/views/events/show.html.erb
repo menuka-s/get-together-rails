@@ -15,6 +15,17 @@
   <h4>Location:</h4>
   <p><%= @event.address %></p>
 
+  <h4>Comments:</h4>
+  <% @event.comments.each do |comment| %>
+    <div class="comment-item"><%= comment.content %>
+      <div class="comment-user-info">
+        <%= comment.user.email %>
+        <%= distance_of_time_in_words(comment.created_at, Time.now) %> ago
+      </div>
+    </div>
+  <% end %>
+
+
   <% if current_user %>
     <% if @event.creator.id == current_user.id %>
       <h4 id="eventstatus">You created this event!</h4>
