@@ -18,5 +18,6 @@ post '/users/ajax_join_event/:id' => 'users#ajax_join_event'
   resources :users
   resources :events
 
+  get '/activities' => 'users#allactivities'
 
 end

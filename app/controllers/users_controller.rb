@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+  include UsersHelper
 
   def index
   end
@@ -15,6 +16,14 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     @categories = Category.all
   end
+
+  def allactivities
+    all_activities = Activity.all
+    user_activities = Activity.all - current_user.disliked_activities
+    user_act_array = user_activities.map { |activity| activity.name }
+    render json: { activities: user_act_array}
+  end
+
 
   def allinterests
     @user = User.find(params[:id])

@@ -1,3 +1,5 @@
+
+<div id="user-activities" style="display:none;"><%=current_user_activities%></div>
 <div class="new-event-header">Create a New Event</div>
 
 <%= form_for @event do |f| %>
@@ -10,8 +12,15 @@
     <p>
       <%= f.label :name %>
       <%= f.text_field :name %>
-    </p>
+    </p>  `
     <p>
+    <div class="form-group move-down">
+        <label for="Autocomplete">Address:</label>
+        <input type="text" id="Autocomplete" class="form-control" ng-autocomplete="result2" details="details2" options="options2"/>
+    </div>
+</p>
+
+<p>
       <%= f.label :activity_id  %>
       <%= f.collection_select :activity_id, @activities, :id, :name, include_blank: true %>
     </p>
