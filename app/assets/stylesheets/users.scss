@@ -1,3 +1,113 @@
 // Place all the styles related to the users controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+* {
+  box-sizing: border-box;
+  font-family:Arial, sans-serif;
+}
+
+
+
+.my_dashboard {
+  width: 70%;
+  margin: auto;
+
+}
+
+.my_pic {
+  height: 70px;
+  width: 70px;
+}
+
+
+.dashboard-box {
+  border:1px black solid;
+  margin: 5px;
+  height: 150px;
+  width: 48.5%;
+  overflow: scroll;
+  display: inline-block;
+  border-radius: 20px;
+  padding: 5px;
+
+}
+
+.my_info {
+  background-color: #B4BAC0;
+  height: 80px;
+}
+
+.user-email {
+  display: inline-block;
+  width: 85%;
+}
+
+.user-image {
+  display: inline-block;
+}
+
+.my-upcoming-events {
+  background-color: #7FBF3F;
+  opacity: .5;
+}
+
+.my-upcoming-events:hover {
+  background-color: #7FBF3F;
+  opacity: 1;
+  position: relative;
+  top: -5px;
+}
+
+.my-created-events {
+  background-color:  #7FBF3F;
+  opacity: .5;
+}
+
+.my-created-events:hover {
+  background-color:  #7FBF3F;
+  opacity: 1;
+  position: relative;
+  top: -5px;
+}
+
+
+.my-past-events {
+  background-color:  #7FBF3F;
+  opacity: .5;
+}
+
+.my-past-events:hover {
+  background-color:  #7FBF3F;
+  opacity: 1;
+  position: relative;
+  top: -5px;
+}
+
+.recent-comments {
+  background-color: #7FBF3F;
+  opacity: .5;
+}
+
+.recent-comments:hover {
+  position: relative;
+  top: -5px;
+  background-color: #7FBF3F;
+  opacity: 1;
+}
+
+.new-event-form {
+  border:1px black solid;
+  border-radius: 4px;
+  background-color: #B4BAC0;
+  padding:5px;
+  font-size:12px;
+
+  display: inline-block;
+}
+
+
+a {
+  color: white;
+  text-decoration: none;
+}

@@ -1,59 +1,66 @@
 
 <div class="user-profile">
-User Id: <%=session[:user_id]%>
-<div class = "user-email">Your Email:<%=@user.email%></div>
-<div class = "user-image"><img src=<%=@user.image_url%>></div>
 
-  <div class="my-upcoming-events">
-    <h4>Upcoming Events</h4>
-    <% if @user.upcoming_events.length == 0 %>
-      <p>You have no upcoming events.</p>
-    <% else %>
-      <% @user.upcoming_events.each do |event| %>
-        <%= link_to event.name, event_path(event) %>
-      <% end %>
-    <% end %>
+  <div class="my_info">
+    <!-- User Id: <%=session[:user_id]%> -->
+    <div class= "user-email">Your Email:<%=@user.email%></div>
+    <div class= "user-image"><img class="my_pic" src=<%=@user.image_url%>></div>
   </div>
 
-  <div class="my-created-events">
-    <h4>Created Events</h4>
-    <% if @user.created_events.length == 0 %>
-      <p>You have no upcoming events.</p>
-    <% else %>
-      <% @user.created_events.each do |event| %>
-        <div class="created-event-item"><%= link_to event.name, event_path(event) %>
-        </div>
-      <% end %>
-    <% end %>
-  </div>
-
-  <div class="my-past-events">
-    <h4>Past Events</h4>
-    <% if @user.past_events.length == 0 %>
-      <p>You have no upcoming events.</p>
-    <% else %>
-      <% @user.past_events.each do |event| %>
-        <%= link_to event.name, event_path(event) %>
-      <% end %>
-    <% end %>
-  </div>
-
-  <div class="recent-comments">
-    <h4>Recent Comments</h4>
-      <% @user.upcoming_events.each do |event| %>
-        <div class="event-comment"><%= event.name %>
-        <% event.comments.each do |comment| %>
-          <div class="comment"><%= link_to comment.content.truncate_words(5), event_path(event) %></div>
-        </div>
+  <div class="my_dashboard">
+    <div class="dashboard-box my-upcoming-events">
+      <h4>Upcoming Events</h4>
+      <% if @user.upcoming_events.length == 0 %>
+        <p>You have no upcoming events.</p>
+      <% else %>
+        <% @user.upcoming_events.each do |event| %>
+          <%= link_to event.name, event_path(event) %>
         <% end %>
       <% end %>
-      <% @user.created_events.each do |event| %>
-        <div class="event-comment"><%= event.name %>
-        <% event.comments.each do |comment| %>
-          <div class="comment"><%= link_to comment.content.truncate_words(5), event_path(event) %></div>
-        </div>
+    </div>
+
+    <div class="dashboard-box my-created-events">
+      <h4>Created Events</h4>
+      <% if @user.created_events.length == 0 %>
+        <p>You have no upcoming events.</p>
+      <% else %>
+        <% @user.created_events.each do |event| %>
+          <div class="created-event-item"><%= link_to event.name, event_path(event) %>
+          </div>
         <% end %>
       <% end %>
+    </div>
+
+    <div class="dashboard-box my-past-events">
+      <h4>Past Events</h4>
+      <% if @user.past_events.length == 0 %>
+        <p>You have no upcoming events.</p>
+      <% else %>
+        <% @user.past_events.each do |event| %>
+          <%= link_to event.name, event_path(event) %>
+        <% end %>
+      <% end %>
+    </div>
+
+    <!-- Edit profile button -->
+
+    <div class="dashboard-box recent-comments">
+      <h4>Recent Comments</h4>
+        <% @user.upcoming_events.each do |event| %>
+          <div class="event-comment"><%= event.name %>
+          <% event.comments.each do |comment| %>
+            <div class="comment"><%= link_to comment.content.truncate_words(5), event_path(event) %></div>
+          </div>
+          <% end %>
+        <% end %>
+        <% @user.created_events.each do |event| %>
+          <div class="event-comment"><%= event.name %>
+          <% event.comments.each do |comment| %>
+            <div class="comment"><%= link_to comment.content.truncate_words(5), event_path(event) %></div>
+          </div>
+          <% end %>
+        <% end %>
+    </div>
   </div>
 
   <div class="new-event-form">
