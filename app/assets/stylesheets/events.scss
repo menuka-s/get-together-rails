@@ -37,8 +37,6 @@
 }
 
 .news-feed {
-  width:100%;
-  border: 1px #8aacb8 solid;
   clear:both;
 }
 
@@ -93,6 +91,46 @@
   display:inline-block;
 }
 
-.hidden {
-  display:none;
+/* FLIPPING START *********************/
+
+.flip {
+  -webkit-perspective: 800;
+  width: 400px;
+  height:auto;
+  position: relative;
 }
+
+.flip .card.flipped {
+  -webkit-transform: rotatey(-180deg);
+}
+
+.flip .card {
+  width: 100%;
+  height: 100%;
+  -webkit-transform-style: preserve-3d;
+  -webkit-transition: 0.5s;
+}
+
+.flip .card .face {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  -webkit-backface-visibility: hidden;
+  z-index: 2;
+}
+
+.flip .card .front {
+  position: absolute;
+  z-index: 1;
+  border: 1px #8aacb8 solid;
+  height:initial;
+}
+
+.flip .card .back {
+  -webkit-transform: rotatey(-180deg);
+  border: 1px red solid;
+  height:initial;
+  /*note: this height:initial is needed to make the border the appropriate height */
+}
+
+/* FLIPPING END *********************/

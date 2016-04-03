@@ -8,49 +8,53 @@
   <div class="news-feed-sorting">
     <button class="news-feed-sorting-button">Soonest</button>
   </div>
-  <div class="news-feed">
+  <div class="news-feed flip">
     <% if @user_appealing_events %>
 
-      <div class="news-feed-proximity">
-        <% @user_appealing_events_by_proximity.each do |event| %>
-          <a href="/events/<%= event[3] %>">
-            <div class="appealing-event">
-              <div class="appealing-event-left">
-                <p class="appealing-event-name"><strong><%= event[0].capitalize %></strong>
-                  <% if event[5].today? %>
-                    <span class="happening-today">Happening today!</span>
-                  <% end %>
-                </p>
-                <p class="appealing-event-time"><%= event[5].strftime("%l:%M%p, %A, %b., %d") %></p>
-                <p class="appealing-event-address"><%= event[4] %></p>
-              </div>
-              <div class="appealing-event-right">
-                <p class="appealing-event-distance"><%= '%.2f' % event[6] %> mi</p>
-              </div>
-            </div>
-          </a>
-        <% end %>
-      </div>
+      <div class="card">
 
-      <div class="news-feed-soonest hidden">
-        <% @user_appealing_events_by_date.each do |event| %>
-          <a href="/events/<%= event[3] %>">
-            <div class="appealing-event">
-              <div class="appealing-event-left">
-                <p class="appealing-event-name"><strong><%= event[0].capitalize %></strong>
-                  <% if event[5].today? %>
-                    <span class="happening-today">Happening today!</span>
-                  <% end %>
-                </p>
-                <p class="appealing-event-time"><%= event[5].strftime("%l:%M%p, %A, %b., %d") %></p>
-                <p class="appealing-event-address"><%= event[4] %></p>
+        <div class="news-feed-proximity face front">
+          <% @user_appealing_events_by_proximity.each do |event| %>
+            <a href="/events/<%= event[3] %>">
+              <div class="appealing-event">
+                <div class="appealing-event-left">
+                  <p class="appealing-event-name"><strong><%= event[0].capitalize %></strong>
+                    <% if event[5].today? %>
+                      <span class="happening-today">Happening today!</span>
+                    <% end %>
+                  </p>
+                  <p class="appealing-event-time"><%= event[5].strftime("%l:%M%p, %A, %b., %d") %></p>
+                  <p class="appealing-event-address"><%= event[4] %></p>
+                </div>
+                <div class="appealing-event-right">
+                  <p class="appealing-event-distance"><%= '%.2f' % event[6] %> mi</p>
+                </div>
               </div>
-              <div class="appealing-event-right">
-                <p class="appealing-event-distance"><%= '%.2f' % event[6] %> mi</p>
+            </a>
+          <% end %>
+        </div>
+
+        <div class="news-feed-soonest face back">
+          <% @user_appealing_events_by_date.each do |event| %>
+            <a href="/events/<%= event[3] %>">
+              <div class="appealing-event">
+                <div class="appealing-event-left">
+                  <p class="appealing-event-name"><strong><%= event[0].capitalize %></strong>
+                    <% if event[5].today? %>
+                      <span class="happening-today">Happening today!</span>
+                    <% end %>
+                  </p>
+                  <p class="appealing-event-time"><%= event[5].strftime("%l:%M%p, %A, %b., %d") %></p>
+                  <p class="appealing-event-address"><%= event[4] %></p>
+                </div>
+                <div class="appealing-event-right">
+                  <p class="appealing-event-distance"><%= '%.2f' % event[6] %> mi</p>
+                </div>
               </div>
-            </div>
-          </a>
-        <% end %>
+            </a>
+          <% end %>
+        </div>
+
       </div>
 
     <% end %>
@@ -115,8 +119,15 @@
 
     // Probably should update to do an ajax request but hey it's functional!
     $('.news-feed-sorting-button').on('click', function(event){
-      $('.news-feed-proximity').toggle('slow');
-      $('.news-feed-soonest').toggle('slow');
+      // $('.news-feed-proximity').toggle('slow');
+      // $('.news-feed-soonest').toggle('slow');
+      // $('.news-feed-soonest').removeClass('hidden');
+      // $('.news-feed-proximity').addClass('flipping-mechanism');
+      // $('.news-feed-soonest').removeClass('hidden');
+      // $('.news-feed-soonest').addClass('flipping-mechanism');
+
+      $('.card').toggleClass('flipped');
+
 
       if($(this).text() === "Soonest") {
         $(this).text('Proximity');
