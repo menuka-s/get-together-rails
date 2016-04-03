@@ -12,12 +12,39 @@ class User < ActiveRecord::Base
   has_many :liked_categories, through: :users_categories, source: :category
 
   def past_events
-    @past_events = self.joined_events.where("date < ?", DateTime.now)
+    @past_events = self.joined_events.where("date < ?", Time.now)
   end
 
   def upcoming_events
-    @user_events = self.joined_events.where("date > ?", DateTime.now)
+    @user_events = self.joined_events.where("date > ?", Time.now)
   end
 
+  # So, we should probably test all this stuff, but it seems to be working
+
+  def appealing_events
+    activities = self.appealing_activities
+    all_event_data = []
+
+    activities.each do |activity|
+      activity.events.each do |event|
+        if event.date > Time.now
+          all_event_data << [event.name, event.latitude, event.longitude, event.id, event.address, event.date]
+        end
+      end
+    end
+
+    all_event_data
+  end
+
+  # private
+  def appealing_activities
+    events = []
+    self.liked_categories.each do |category|
+      category.associated_activities.each do |activity|
+        events << activity
+      end
+    end
+    events.uniq - self.disliked_activities.to_a
+  end
 
 end
