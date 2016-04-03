@@ -1,10 +1,6 @@
   <script>
   $(document).ready(function() {
-    // $(".acdivity").toggle();
-    // var categoryButtons = $(".category_interest_button")
-    // categoryButtons.forEach(function(){
-
-    // })
+    $(".activity-interest-box").hide();
     $('#category-interest-buttons').on("click",".category_interest_button",function(e) {
       console.log("Button: " + $(this).val());
       ajaxReq = $.ajax({
@@ -25,19 +21,49 @@
           bgco = "#000"
         }
         console.log("bgc is " + bgc);
-        $("#category" + category).css("background-color",bgc);
-        $("#category" + category).css("color",bgco);
-        // $("#category" + category).animate({
-        //   backgroundColor: bgc ,
-        //   color: bgco
-        // }, 500)
+        $("#category-box" + category).css("background-color",bgc);
+        $("#category-box" + category + " .activity-toggle").toggle();
+        $("#category-box" + category + " .category_interest_button").css("color",bgco);
+        $(".activity-box-for-cat" + category).hide();
+
       })
     })
+
+    $('.activity-interest-box').on("click", ".activity-interest-button", function(e) {
+      console.log("aButton: " + $(this).val());
+      ajaxReq = $.ajax({
+        url: '/users/activity_dislikes_handler',
+        method: 'post',
+        data: {"data":$(this).val()},
+        dataType: 'json',
+      })
+      ajaxReq.done(function(response){
+        var activityId = response["activity_id"];
+        if (response["action"] == 'r') {
+          $(".activity" + activityId).val("a," + response["user_id"] + "," + activityId);
+          bgcolor = "#000";
+          txtcolor = "#f6f6f6";
+        } else {
+          $(".activity" + activityId).val("r," + response["user_id"] + "," + activityId);
+          bgcolor = "#f6f6f6";
+          txtcolor = "#000";
+        }
+        $(".activity" + activityId).css("background-color",bgcolor);
+        $(".activity" + activityId).css("color",txtcolor);
+      });
+    });
+
   });
 
-  function toggleActivity(x) {
-    $('.activity' + x).toggle();
-    console.log(x);
+  function toggleActivity(id) {
+
+    $('.activity-box-for-cat' + id).toggle();
+    if ($('#toggle'+id).text() == "⬇") {
+      $('#toggle'+id).text("⬆")
+    } else {
+      $('#toggle'+id).text("⬇")
+    };
+    // console.log(x);
   };
 
   </script>
@@ -47,27 +73,31 @@
     <div id="category-interest-buttons">
     <% @categories.each do |category| %>
       <% if is_interested?(category,@user) %>
-        <button style="background-color: #000; color: #fff"
+      <div class = "category-box" id = "category-box<%=category.id%>">
+        <button
             id = "category<%= category.id %>"
             class = "category_interest_button"
             value = "r,<%=@user.id%>,<%=category.id %>"
-            onClick="toggleActivity(<%=category.id %>)" >
+             >
           <%=category.name %>
         </button>
+        <button class = "activity-toggle" id = "toggle<%=category.id%>"onClick="toggleActivity(<%=category.id %>)">⬇</button>
+      </div>
          <%=render partial: 'interests/activity', locals: {activities: category.associated_activities, category: category} %>
-
-        <!--<script>$(".activity" + <%=category.id %>).show();</script> -->
-
       <% else %>
-        <button style="background-color: #f6f6f6; color: #000"
+      <div style="background-color: white;" class = "category-box" id = "category-box<%=category.id%>">
+        <button
+          style="color: black;"
             id = "category<%= category.id %>"
             class = "category_interest_button"
             value = "a,<%=@user.id%>,<%=category.id %>"
-            onClick="toggleActivity(<%=category.id %>)" >
+            >
           <%=category.name %>
         </button>
+         <button class = "activity-toggle" id = "toggle<%=category.id%>"onClick="toggleActivity(<%=category.id %>)" >⬇</button>
+      </div>
         <%=render partial: 'interests/activity', locals: {activities: category.associated_activities, category: category} %>
-        <script>$(".activity<%=category.id %>").hide();</script>
+        <script>$("#toggle<%=category.id%>").toggle();$(".activity-box-for-cat<%=category.id%>").hide();</script>
 
       <% end %>
       <br>
