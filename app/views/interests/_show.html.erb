@@ -65,6 +65,7 @@
     <div id="category-interest-buttons">
     <% @categories.each do |category| %>
       <% if is_interested?(category,@user) %>
+      <div
         <button style="background-color: #000; color: #fff"
             id = "category<%= category.id %>"
             class = "category_interest_button"
