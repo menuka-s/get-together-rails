@@ -13,9 +13,13 @@ post '/users/ajax_join_event/:id' => 'users#ajax_join_event'
   get '/users/:id/allinterests' => 'users#allinterests'
   get '/users/logout' => 'users#logout'
   post '/users/interests_handler' => 'users#interests_handler'
+  post '/users/activity_dislikes_handler' => 'users#activity_dislikes_handler'
   get '/users/:id' => 'users#show'
   resources :users
-  resources :events
+  resources :events do
+    resources :comments
+  end
+
 
 
 end

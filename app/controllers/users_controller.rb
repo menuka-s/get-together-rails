@@ -23,6 +23,7 @@ class UsersController < ApplicationController
     @categories.each do |category|
       UsersCategory.create(user_id: @user.id, category_id: category.id)
     end
+    @user.disliked_activities.delete_all
     redirect_to @user
   end
 
@@ -77,6 +78,26 @@ class UsersController < ApplicationController
       userLike = UsersCategory.find_by(user_id: user_id, category_id: category_id)
       if userLike.destroy
         render json: {action:"r", user_id: user_id, category_id: category_id}
+      else
+        render json: "error"
+      end
+    end
+  end
+
+  def activity_dislikes_handler
+    (action,user_id,activity_id) = params[:data].split(',')
+
+    if (action == "a")
+      userLike = UsersActivity.new({user_id: user_id, activity_id: activity_id})
+      if userLike.save
+        render json: {action:"a", user_id: user_id, activity_id: activity_id}
+      else
+        render json: "error"
+      end
+    elsif (action == "r")
+      userLike = UsersActivity.find_by(user_id: user_id, activity_id: activity_id)
+      if userLike.destroy
+        render json: {action:"r", user_id: user_id, activity_id: activity_id}
       else
         render json: "error"
       end
