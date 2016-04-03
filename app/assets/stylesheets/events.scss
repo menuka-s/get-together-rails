@@ -2,6 +2,10 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+* {
+  box-sizing: border-box;
+  font-family:Arial, sans-serif;
+}
 
 .form-instructions {
   font-size: 11px;
@@ -11,4 +15,45 @@
 #event-details-map {
   height:300px;
   width:500px;
+}
+
+.news-feed {
+  max-width:600px;
+  margin: 0 auto;
+  border: 1px black solid;
+}
+
+.appealing-event {
+  width:100%;
+  padding:10px;
+  border-bottom: 1px gray solid;
+}
+
+.appealing-event-name {
+  font-size:14px;
+  margin-bottom:5px;
+  margin-top:5px;
+  display:inline-block;
+}
+
+.appealing-event-address {
+  font-size:12px;
+  color:gray;
+  margin-top:0px;
+}
+
+.appealing-event-time {
+  font-size:12px;
+  color:gray;
+  margin-top:0px;
+  display:inline-block;
+}
+
+.appealing-event-join {
+  border:1px black solid;
+  border-radius: 4px;
+  background-color:gray;
+  padding:5px;
+  font-size:12px;
+  float:right;
 }

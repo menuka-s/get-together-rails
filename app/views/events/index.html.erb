@@ -1,9 +1,28 @@
 <h1>All Events</h1>
 
-  <div id="event-details-map"></div>
+
+<div id="event-details-map"></div>
+
+<div class="news-feed">
+  <% if @user_appealing_events %>
+    <% @user_appealing_events.each do |event| %>
+
+      <div class="appealing-event">
+        <p class="appealing-event-name"><strong><%= event[0].capitalize %></strong></p>
+        <p class="appealing-event-join">Join button</p>
+        <p class="appealing-event-address"><%= event[4] %></p>
+        <!-- Format date time before printing -->
+        <p class="appealing-event-time"><%= event[5] %></p>
+      </div>
+    <% end %>
+  <% end %>
+</div>
+
+
+
 
 <script>
-  var events = <%= raw @events.as_json %>
+  var events = <%= raw @user_appealing_events.as_json %>
   var currentLocation = <%= raw @current_location.as_json %>
 
   // JS for producing google map with marker

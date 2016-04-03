@@ -3,8 +3,8 @@ class EventsController < ApplicationController
   include EventsHelper
 
   def index
-    @events = Event.event_locations
     @current_location = [ current_user.latitude, current_user.longitude ]
+    @user_appealing_events = current_user.appealing_events
   end
 
   def show
@@ -19,7 +19,6 @@ class EventsController < ApplicationController
   def create
     @event = Event.new(event_params)
     @event.creator_id = current_user.id
-    # @event.creator_id = 1
     if @event.save
       flash[:notice] = "Your event was successfully created"
       redirect_to @event
@@ -29,13 +28,9 @@ class EventsController < ApplicationController
     end
   end
 
-
-
   private
   def event_params
     params.require(:event).permit(:name, :description, :date, :location_name, :address, :activity_id)
   end
-
-
 
 end
