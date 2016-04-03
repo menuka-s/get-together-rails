@@ -83,5 +83,25 @@ class UsersController < ApplicationController
     end
   end
 
+  def activity_dislikes_handler
+    (action,user_id,activity_id) = params[:data].split(',')
+
+    if (action == "a")
+      userLike = UsersActivity.new({user_id: user_id, activity_id: activity_id})
+      if userLike.save
+        render json: {action:"a", user_id: user_id, activity_id: activity_id}
+      else
+        render json: "error"
+      end
+    elsif (action == "r")
+      userLike = UsersActivity.find_by(user_id: user_id, activity_id: activity_id)
+      if userLike.destroy
+        render json: {action:"r", user_id: user_id, activity_id: activity_id}
+      else
+        render json: "error"
+      end
+    end
+  end
+
 
 end
