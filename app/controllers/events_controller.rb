@@ -28,9 +28,7 @@ class EventsController < ApplicationController
   end
 
   def create
-    @event = Event.new(event_params)
-    @event.creator_id = current_user.id
-    @event.activity_id = Activity.find_by(name: params[:activity_name]).id
+    @event = current_user.created_events.new(event_params)
     if @event.save
       @event.push_notification
       flash[:notice] = "Your event was successfully created"
@@ -43,7 +41,7 @@ class EventsController < ApplicationController
 
   private
   def event_params
-    params.require(:event).permit(:name, :description, :date, :location_name, :address, :activity_id, :max_participants)
+    params.require(:event).permit(:name, :description, :date, :location_name, :address, :activity_name, :max_participants)
   end
 
   def index_locals
@@ -51,7 +49,7 @@ class EventsController < ApplicationController
         current_user.appealing_events,
         current_user.appealing_events_by_date,
         current_user.appealing_events_by_proximity
-    ] 
+    ]
   end
 
 end
