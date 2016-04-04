@@ -15,6 +15,7 @@ class Event < ActiveRecord::Base
   validates_presence_of :name, :description, :date, :activity_id, :address
   validate :event_cannot_be_in_past
   validate :event_must_be_within_seven_days
+  validate :activity_exists
 
   def self.event_locations
     all_event_location_data = []
@@ -22,6 +23,15 @@ class Event < ActiveRecord::Base
       all_event_location_data << [event.name, event.latitude, event.longitude, event.id, event.address]
     end
     all_event_location_data
+  end
+
+  def activity_name=(new_activity)
+    self.activity = Activity.find_by(name: new_activity)
+    self.activity_name
+  end
+
+  def activity_name
+    self.activity ? self.activity.name : nil
   end
 
   def open?
@@ -50,6 +60,10 @@ class Event < ActiveRecord::Base
 
   def event_must_be_within_seven_days
     errors.add(:date, "of event must occur within 7 days") if !date.blank? && date > Time.now + ((60*60*24*7) + 1)
+  end
+
+  def activity_exists
+    errors.add(:activity, "must exist") if self.activity_name == ""
   end
 
 end

@@ -1,4 +1,5 @@
 <div class="event-container">
+  <div id = "event-id" style = "display:none;"><%=@event.id%></div>
   <div class = "event-name">
   <h2><%= @event.name %></h2>
   <h4><%= @event.activity.name %></h4>
@@ -25,13 +26,19 @@
 
   <div class="event-comments">
   <h4>Comments:</h4>
-  <% @event.comments.each do |comment| %>
-    <div class="comment-item"><%= comment.content %>
+  <div id = "comment-container">
+    <% @event.comments.each do |comment| %>
+    <div class="comment-item">
       <div class="comment-user-info">
-        <%= comment.user.email %>
-        <%= distance_of_time_in_words(comment.created_at, Time.now) %> ago
+        <a href="http://www.facebook.com/app_scoped_user_id/<%= comment.user.facebook_id %>"><div class = "comment-user-image"><img src = <%=comment.user.image_url%>></div>
+        <div class = "comment-name"><%= comment.user.name %></div></a>
       </div>
+      <div class="comment-content"><%= comment.content %></div>
+      <div class = "comment-time"><%= distance_of_time_in_words(comment.created_at, Time.now) %> ago</div>
+    </div>
+
   <% end %>
+</div>
 
     <div class="new-comment">
       <%= form_for [ @event, @comment ] do |f| %>
@@ -40,10 +47,9 @@
             <li><%= error %></li>
           <% end %>
         </ul>
-      <p>
-        <label>Add your comment here:</label>
-        <%= f.text_area :content %>
-      </p>
+
+        <%= f.text_area :content, :placeholder =>"comment here..." %>
+
       <div class = "button" id = "comment-button">Leave Comment</div>
     </div>
       <% end %>
@@ -53,8 +59,6 @@
     <% if @event.creator.id == current_user.id %>
      <button id="edit-button"><%= link_to "Edit this event", edit_event_path(@event) %></button>
      <button id="delete-button"><%= link_to "Delete this event", event_path(@event), method: :delete %></button>
-
-
     <% elsif @event.open? == false %>
       <h4 id="eventstatus">This Event is Full.</h4>
     <% elsif !current_user.joined_events.include?(@event) %>
@@ -66,12 +70,7 @@
     <% end %>
   <% end %>
   <br><br>
-
-
-
 </div>
-
-
 
 <script>
   // JS for producing google map with marker

@@ -102,14 +102,70 @@ vertical-align: middle;
   font-size: 30px;
 }
 
+.event-comments{
+  font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+  font-weight: 200;
+  margin-left: 5%;
+}
+.comment-item{
+  padding-top: 20px;
+  margin-bottom: 20px;
+}
+.comment-user-info a{
+  text-decoration: none;
+}
+.comment-content{
+  margin: 15px;
+  margin-left: 40px;
+}
+.comment-user-image{
+display: inline-block;
+vertical-align: middle;
+
+}
+.comment-name{
+  display: inline-block;
+  vertical-align: middle;
+  color: #00695C;
+
+}
+.comment-user-image img{
+  height: 30px;
+  width: 30px;
+  border-radius: 40px;
+}
+.new-comment{
+  margin-left: 5%;
+  text-align: left;
+}
+#comment_content{
+  display: inline-block;
+  vertical-align: middle;
+  margin-right: 5px;
+}
+
+.comment-time{
+  font-size: 15px;
+  font-style: italic;
+  color: gray;
+  text-align: right;
+}
 .button{
+  vertical-align: middle;
   display: inline-block;
   text-align: center;
   padding-top: 10px;
   height: 30px;
   width: 120px;
-  border-top: 1px solid black;
-  border-bottom: 1px solid black;
+  background-color: #00695C;
+  border-radius: 5px;
+  font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+  font-weight: 200;
+  padding-left: 5px;
+  padding-right: 5px;
+  color: white;
+  vertical-align: center;
+  cursor: pointer;
 }
  .new-body {
   position: absolute;
