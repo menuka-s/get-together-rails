@@ -98,11 +98,22 @@
   };
 
   function setMarkers(map) {
+    var pinColor;
+
+    var eventDate = new Date("<%= @event.date %>");
+    var todaysDate = new Date();
+
+    if(eventDate.setHours(0,0,0,0) == todaysDate.setHours(0,0,0,0)) {
+      pinColor = "FF0000";
+    } else {
+      pinColor = "73B5AC";
+    };
+
     var image = {
-      url: 'http://b.fastcompany.net/asset_files/-/2014/11/13/poop.png',
-      size: new google.maps.Size(26, 26),
+      url: 'http://chart.apis.google.com/chart?chst=d_map_pin_letter&chld=%E2%80%A2|' + pinColor,
+      size: new google.maps.Size(21, 34),
       origin: new google.maps.Point(0, 0),
-      anchor: new google.maps.Point(0, 26)
+      anchor: new google.maps.Point(10, 34)
     };
 
     var shape = {
