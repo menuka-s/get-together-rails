@@ -196,7 +196,7 @@ vertical-align: middle;
   opacity: 0.5;
 }
 
-footer{
+#footer{
   padding: 20px;
 
 }
@@ -232,6 +232,12 @@ footer{
   padding: 10px;
 }
 
+.logo-header a{
+  text-decoration: none;
+  color: white;
+  cursor: pointer;
+}
+
 #header {
   width: 100%;
   position: relative;
@@ -239,6 +245,7 @@ footer{
   text-align: center;
   background-color: #00695C;
   color: white;
+  height: 100px;
 }
 
 
@@ -265,6 +272,7 @@ margin: auto;
   border: 2px solid gray;
   overflow: hidden;
 }
+
 .category_interest_button{
   padding: 0px;
   color:white;
