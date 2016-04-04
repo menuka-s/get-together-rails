@@ -25,10 +25,9 @@ class Event < ActiveRecord::Base
   end
 
   def open?
-    if self.joined_users <= self.max_participants
-      true
-    end
+    self.joined_users.to_a.length < self.max_participants ? true : false
   end
+
 
   def push_notification
     pusher_client = Pusher::Client.new(
