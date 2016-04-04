@@ -1,0 +1,55 @@
+<script> 
+</script>
+
+<style>
+#tile-container {
+	width: 90%;
+	margin: auto;
+	background-color: #EEC;
+}
+
+.bigtile {
+	display: inline-block;
+	border: 1px solid black;
+	width: 30%;
+	height: 30vh;
+}
+
+.smalltile {
+	display: inline-block;
+	width: 46%;
+	height: 46%;
+	border: 1px solid gray;
+}
+
+.category1 { background-color: #DDF; }
+.category2 { background-color: #DFD; }
+.category3 { background-color: #DFF; }
+.category4 { background-color: #FDD; }
+.category5 { background-color: #FDF; }
+.category6 { background-color: #FFD; }
+.category7 { background-color: #CCE; }
+.category8 { background-color: #CEC; }
+.category9 { background-color: #CEE; }
+.category10 { background-color: #ECC; }
+.category11 { background-color: #ECE; }
+
+</style>
+
+<div id="tile-container">
+
+
+
+<% @user_appealing_events_by_groups do |group| %>
+	<div class="bigtile <%= "category"+group[0].activity.categories.first.id %>" >
+		<% if group.count == 1 %>
+			<%= group[0].name %>
+		<% else %>
+			<% group.each do |activity| %>
+				<div class="smalltile <%= "category"+group[0].activity.categories.first.id %>" >
+					<%= activity.name %>
+				</div>
+			<% end %>
+		<% end %>
+	</div>
+<% end %>

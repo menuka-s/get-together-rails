@@ -11,12 +11,12 @@ class Event < ActiveRecord::Base
 
   #/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/
   #comment this back in after seed, for user functionality
-  geocoded_by :address
-  after_validation :geocode
+  #geocoded_by :address
+  #after_validation :geocode
   #/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/
 
   #/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/* UNCOMMENT address TOO
-  validates_presence_of :name, :description, :date, :activity_id, :address
+  validates_presence_of :name, :description, :date, :activity_id#, :address
   validate :event_cannot_be_in_past
 
   def self.event_locations
