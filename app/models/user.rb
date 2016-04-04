@@ -37,34 +37,42 @@ class User < ActiveRecord::Base
   end
 
   def appealing_events_by_groups
-    puts "\n\n\n\n\n\n\n\n\n\n\n"
     groups = []
-    small_events = {}
+    small_events = []
+    small_group = []
     @all_event_data = self.appealing_events if @all_event_data.nil?
     @all_event_data.each do |event|
-        puts "\n\n\n\n\n #{event.activity} \n\n\n\n\n\n"
       if event.max_participants > 19 
         groups << [ event ]
       else 
-        puts "\n\n\n\n\n #{event.activity} \n\n\n\n\n\n"
-        small_events[event.activity] ||= []
-        small_events[event.activity] << event if event
+        small_events << event if event
       end
     end
 
-    small_events.each do |activity,events|
-      small_group = []
-      events.each do |event|
-        if small_group.count > 3 
-          groups << small_group[0..3]
-          small_group = [] 
-        end 
-        small_group << event
-      end
-      groups << small_group if small_group.count > 0
-      small_group = []
+    small_events.each do |event|
+      if small_group.count > 3 
+        groups << small_group[0..3]
+        small_group = [] 
+      end 
+      small_group << event
     end
-    groups
+ 
+    groups 
+
+
+    # small_events.each do |activity,events|
+    #   small_group = []
+    #   events.each do |event|
+    #     if small_group.count > 3 
+    #       groups << small_group[0..3]
+    #       small_group = [] 
+    #     end 
+    #     small_group << event
+    #   end
+    #   groups << small_group if small_group.count > 0
+    #   small_group = []
+    # end
+    # groups
   end
 
   def appealing_events_by_date
