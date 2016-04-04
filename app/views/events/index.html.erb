@@ -50,6 +50,7 @@
                   <p class="appealing-event-name"><strong><%= event[0].capitalize %></strong>
                     <% if event[5].today? %>
                       <span class="happening-today">Happening today!</span>
+                    <% elsif  %>
                     <% end %>
                   </p>
                   <p class="appealing-event-time"><%= event[5].strftime("%l:%M%p, %A, %b., %d") %></p>

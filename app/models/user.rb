@@ -54,12 +54,12 @@ class User < ActiveRecord::Base
 
   # private
   def appealing_activities
-    events = []
+    activities = []
     self.liked_categories.each do |category|
       category.associated_activities.each do |activity|
-        events << activity
+        activities << activity
       end
     end
-    events.uniq - self.disliked_activities.to_a
+    activities.uniq - self.disliked_activities.to_a
   end
 end
