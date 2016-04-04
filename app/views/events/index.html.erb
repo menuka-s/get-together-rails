@@ -1,14 +1,6 @@
   <script src="https://js.pusher.com/3.0/pusher.min.js"></script>
 
   <script>
-
-//Uncomment for console debug output
-    // Pusher.log = function(message) {
-    //   if (window.console && window.console.log) {
-    //     window.console.log(message);
-    //   }
-    // };
-
     var pusher = new Pusher('c7a6150d22d40eea7bca', {
       encrypted: true
     });
@@ -21,6 +13,17 @@
         }).done(function(newList) {
           $('.news-feed').empty().append(newList);
           $('.news-feed-sorting-button').text('Soonest');
+          $.ajax({url: '/events/newest_event',
+              method: 'get',
+              data: {}
+          }).done(function(response) {
+
+            if (response["status"] == 1) {
+              events = [ response["event"] ];
+              console.log(events);
+              setMarkers(pmap);
+            }
+          });
           // alert(data.message);
         });
     });
@@ -53,6 +56,8 @@
     return this.charAt(0).toUpperCase() + this.slice(1);
   }
 
+var pmap;
+
   // JS for producing google map with marker
   function initMap() {
 
@@ -60,17 +65,16 @@
       zoom: 12,
       center: {lat: currentLocation[0], lng: currentLocation[1]}
     });
-
+    pmap = map;
     setMarkers(map);
+
+    // Recenter the map on window resize
+    google.maps.event.addDomListener(window, 'resize', function() {
+      map.setCenter(myLatLng);
+    });
   };
 
   function setMarkers(map) {
-    var image = {
-      url: 'http://b.fastcompany.net/asset_files/-/2014/11/13/poop.png',
-      size: new google.maps.Size(26, 26),
-      origin: new google.maps.Point(0, 0),
-      anchor: new google.maps.Point(0, 26)
-    };
 
     var shape = {
       coords: [1, 1, 1, 20, 18, 20, 18, 1],
@@ -85,11 +89,30 @@
     for (var i = 0; i < events.length; i++) {
       var event = events[i]
       var contentString = "<a class=google-map-link href=/events/" + event.id + ">" + event.name.capitalizeFirstLetter() + "</a>";
-      // debugger
+
+      var pinColor;
+
+      var eventDate = new Date(event.date);
+      var todaysDate = new Date();
+
+      if(eventDate.setHours(0,0,0,0) == todaysDate.setHours(0,0,0,0)) {
+        pinColor = "FF0000";
+      } else {
+        pinColor = "73B5AC";
+      };
+
+      var image = {
+        url: 'http://chart.apis.google.com/chart?chst=d_map_pin_letter&chld=%E2%80%A2|' + pinColor,
+        size: new google.maps.Size(21, 34),
+        origin: new google.maps.Point(0, 0),
+        anchor: new google.maps.Point(10, 34)
+      };
+
       var marker = new google.maps.Marker({
         position: { lat: event.latitude, lng: event.longitude },
         map: map,
         icon: image,
+        animation: google.maps.Animation.DROP,
         shape: shape,
         title: event.name,
         zIndex: event.id,
@@ -103,8 +126,13 @@
     };
   }
 
+  // When the ajax request is done, call a function that places 1 pin on the map
+
+
+
+
+  // Probably should update to do an ajax request but hey it's functional!
   $(document).ready(function(){
-    // Probably should update to do an ajax request but hey it's functional!
     $('.news-feed-sorting-button').on('click', function(event){
       $('.card').toggleClass('flipped');
 

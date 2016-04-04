@@ -17,6 +17,19 @@ class EventsController < ApplicationController
     render :'events/tiles'
   end
 
+  def newest_event
+    ajax_return = {}
+    ajax_return["status"] = 0
+    newest_event = Event.last
+
+    if current_user.appealing_events.include?(newest_event)
+
+      ajax_return["status"] = 1
+      ajax_return["event"] = newest_event
+    end
+    render json: ajax_return.to_json
+  end
+
   def show
     @event = Event.find(params[:id])
     @comment = Comment.new
@@ -37,6 +50,24 @@ class EventsController < ApplicationController
       @activities = Activity.all
       render new_event_path(@event)
     end
+  end
+
+  def edit
+    @event = Event.find(params[:id])
+
+  end
+
+  def update
+    @event = Event.find(params[:id])
+    @event.update(event_params)
+    redirect_to event_path(@event)
+  end
+
+  def destroy
+    @user = current_user
+    @event = Event.find(params[:id])
+    @event.destroy
+    redirect_to @user
   end
 
   private

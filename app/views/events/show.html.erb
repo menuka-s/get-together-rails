@@ -55,11 +55,10 @@
       <% end %>
   </div>
 
-
-
   <% if current_user %>
     <% if @event.creator.id == current_user.id %>
-      <h4 id="eventstatus">Delete Event Edit Event</h4>
+     <button id="edit-button"><%= link_to "Edit this event", edit_event_path(@event) %></button>
+     <button id="delete-button"><%= link_to "Delete this event", event_path(@event), method: :delete %></button>
     <% elsif @event.open? == false %>
       <h4 id="eventstatus">This Event is Full.</h4>
     <% elsif !current_user.joined_events.include?(@event) %>
@@ -84,14 +83,30 @@
     });
 
     setMarkers(map);
+
+    // Recenter the map on window resize
+    google.maps.event.addDomListener(window, 'resize', function() {
+      map.setCenter(myLatLng);
+    });
   };
 
   function setMarkers(map) {
+    var pinColor;
+
+    var eventDate = new Date("<%= @event.date %>");
+    var todaysDate = new Date();
+
+    if(eventDate.setHours(0,0,0,0) == todaysDate.setHours(0,0,0,0)) {
+      pinColor = "FF0000";
+    } else {
+      pinColor = "73B5AC";
+    };
+
     var image = {
-      url: 'http://b.fastcompany.net/asset_files/-/2014/11/13/poop.png',
-      size: new google.maps.Size(26, 26),
+      url: 'http://chart.apis.google.com/chart?chst=d_map_pin_letter&chld=%E2%80%A2|' + pinColor,
+      size: new google.maps.Size(21, 34),
       origin: new google.maps.Point(0, 0),
-      anchor: new google.maps.Point(0, 26)
+      anchor: new google.maps.Point(10, 34)
     };
 
     var shape = {
@@ -120,32 +135,29 @@
   }
 
   $(document).ready(function(){
-  $('body').on('click','#join-event', function(e) {
-    var eventID = $(this).attr("event");
-    var button = $(this);
-    $.ajax({
-      url: "/users/ajax_join_event/" + eventID,
-      method: "post",
-      data: {}
-    }).done(function (response) {
-      if (response["status"] == 0) {
-        $("#join-event").text("Join this Event!");
-        $('#eventstatus').text("You have not joined this event");
-      } else {
-        $("#join-event").text("Un-Join this Event");
-        $('#eventstatus').text("You are attending this event");
-      };
-    }).fail(function() {
-      console.log("Error joining/unjoining event!");
-    });
-  })
-});
+    $('body').on('click','#join-event', function(e) {
+      var eventID = $(this).attr("event");
+      var button = $(this);
+      $.ajax({
+        url: "/users/ajax_join_event/" + eventID,
+        method: "post",
+        data: {}
+      }).done(function (response) {
+        if (response["status"] == 0) {
+          $("#join-event").text("Join this Event!");
+          $('#eventstatus').text("You have not joined this event");
+        } else {
+          $("#join-event").text("Un-Join this Event");
+          $('#eventstatus').text("You are attending this event");
+        };
+      }).fail(function() {
+        console.log("Error joining/unjoining event!");
+      });
+    })
+  });
+
 </script>
 
 <script async defer
   src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDAvBDiolWNKT2Nn0wteaKxxKPQbk8ocjI&callback=initMap">
 </script>
-
-
-
-
