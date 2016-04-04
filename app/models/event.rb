@@ -1,5 +1,6 @@
 class Event < ActiveRecord::Base
   require 'date'
+  require 'pusher'
 
   has_many :users_events
   has_many :joined_users, through: :users_events, source: :user
@@ -10,12 +11,12 @@ class Event < ActiveRecord::Base
 
   #/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/
   #comment this back in after seed, for user functionality
-  # geocoded_by :address
-  # after_validation :geocode
+  geocoded_by :address
+  after_validation :geocode
   #/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/
 
   #/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/* UNCOMMENT address TOO
-  validates_presence_of :name, :description, :date, :activity_id#, :address
+  validates_presence_of :name, :description, :date, :activity_id, :address
   validate :event_cannot_be_in_past
 
   def self.event_locations
@@ -24,6 +25,21 @@ class Event < ActiveRecord::Base
       all_event_location_data << [event.name, event.latitude, event.longitude, event.id, event.address]
     end
     all_event_location_data
+  end
+
+
+
+  def push_notification
+    pusher_client = Pusher::Client.new(
+      app_id: '194717',
+      key: 'c7a6150d22d40eea7bca',
+      secret: '76c36e83b489767cef0a',
+      encrypted: true
+    )
+
+    pusher_client.trigger('test_channel', 'my_event', {
+      message: 'New Event Added!'
+    })
   end
 
   private

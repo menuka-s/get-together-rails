@@ -9,6 +9,14 @@ class EventsController < ApplicationController
     @user_appealing_events_by_proximity = current_user.appealing_events_by_proximity
   end
 
+  def index_ajax
+    @current_location = [ current_user.latitude, current_user.longitude ]
+    @user_appealing_events = current_user.appealing_events
+    @user_appealing_events_by_date = current_user.appealing_events_by_date
+    @user_appealing_events_by_proximity = current_user.appealing_events_by_proximity
+    render :'events/_events', :layout => false
+  end
+
   def show
     @event = Event.find(params[:id])
     @comment = Comment.new
@@ -22,7 +30,9 @@ class EventsController < ApplicationController
   def create
     @event = Event.new(event_params)
     @event.creator_id = current_user.id
+    @event.activity_id = Activity.find_by(name: params[:activity_name]).id
     if @event.save
+      @event.push_notification
       flash[:notice] = "Your event was successfully created"
       redirect_to @event
     else

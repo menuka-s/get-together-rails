@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+  include UsersHelper
 
   def index
   end

@@ -1,9 +1,7 @@
 module UsersHelper
 
   def current_user
-    if session[:user_id]
-      User.find(session[:user_id])
-    end
+    @current_user ||= session[:user_id] && User.find_by_id(session[:user_id])
   end
 
   def is_interested?(category, user)
@@ -12,6 +10,12 @@ module UsersHelper
 
   def dislikes_this?(activity, user)
     user.disliked_activities.include?(activity)
+  end
+
+  def current_user_activities
+    user_activities = Activity.all - current_user.disliked_activities
+    user_arr =  user_activities.map { |activity| activity.name }
+    return user_arr.join(",")
   end
 
 end

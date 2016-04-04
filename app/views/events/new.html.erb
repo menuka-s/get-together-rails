@@ -1,3 +1,7 @@
+<script>
+
+</script>
+<div id="user-activities" style="display:none;"><%=current_user_activities%></div>
 <div class="new-event-header">Create a New Event</div>
 
 <%= form_for @event do |f| %>
@@ -12,8 +16,13 @@
       <%= f.text_field :name %>
     </p>
     <p>
-      <%= f.label :activity_id  %>
-      <%= f.collection_select :activity_id, @activities, :id, :name, include_blank: true %>
+<div id = "activity-container">
+Activity: <input type = "text" id = "activity" value="">
+<div id= "suggestions-container">
+</div>
+<input id = "activity-input" type = "hidden" name = "activity_name" value="">
+</div>
+<div id = "activity-display">Selected: <span id = "selected-activity"></span></div>
     </p>
     <p>
       <%= f.label :description %>
@@ -24,11 +33,55 @@
       <%= f.datetime_select :date %>
     </p>
     <p>
-      <%= f.label :address %> <span class="form-instructions">(i.e., "351 W Hubbard St., Chicago, IL" or "Millenium Park, Chicago, IL")</span>
-      <%= f.text_field :address %>
+      <%= f.label :address %>
+      <%= f.text_field :address, :placeholder =>"(i.e., '351 W Hubbard St., Chicago, IL' or 'Millenium Park, Chicago, IL)'", :onFocus => "geolocate()" %>
     </p>
     <p>
       <%= f.submit %>
     </p>
   </div>
 <% end %>
+
+<script>
+
+  // Prevents form from submitting when pressing enter
+  $('.new-event-form').on('keyup keypress', function(e) {
+    var keyCode = e.keyCode || e.which;
+    if (keyCode === 13) {
+      e.preventDefault();
+      return false;
+    }
+  });
+
+  var placeSearch, autocomplete;
+
+  function initAutocomplete() {
+    // Create the autocomplete object, restricting the search to geographical
+    // location types.
+    autocomplete = new google.maps.places.Autocomplete(
+        /** @type {!HTMLInputElement} */(document.getElementById('event_address')),
+        {types: ['geocode']});
+
+  }
+
+  // Bias the autocomplete object to the user's geographical location,
+  // as supplied by the browser's 'navigator.geolocation' object.
+  function geolocate() {
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(function(position) {
+        var geolocation = {
+          lat: position.coords.latitude,
+          lng: position.coords.longitude
+        };
+        var circle = new google.maps.Circle({
+          center: geolocation,
+          radius: position.coords.accuracy
+        });
+        autocomplete.setBounds(circle.getBounds());
+      });
+    }
+  }
+
+</script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDAvBDiolWNKT2Nn0wteaKxxKPQbk8ocjI&libraries=places&callback=initAutocomplete" async defer>
+</script>
