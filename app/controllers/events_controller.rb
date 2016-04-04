@@ -41,6 +41,24 @@ class EventsController < ApplicationController
     end
   end
 
+  def edit
+    @event = Event.find(params[:id])
+
+  end
+
+  def update
+    @event = Event.find(params[:id])
+    @event.update(event_params)
+    redirect_to event_path(@event)
+  end
+
+  def destroy
+    @user = current_user
+    @event = Event.find(params[:id])
+    @event.destroy
+    redirect_to @user
+  end
+
   private
   def event_params
     params.require(:event).permit(:name, :description, :date, :location_name, :address, :activity_id, :max_participants)
@@ -51,7 +69,7 @@ class EventsController < ApplicationController
         current_user.appealing_events,
         current_user.appealing_events_by_date,
         current_user.appealing_events_by_proximity
-    ] 
+    ]
   end
 
 end

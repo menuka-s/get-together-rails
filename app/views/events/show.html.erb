@@ -49,11 +49,12 @@
       <% end %>
   </div>
 
-
-
   <% if current_user %>
     <% if @event.creator.id == current_user.id %>
-      <h4 id="eventstatus">You created this event!</h4>
+     <button id="edit-button"><%= link_to "Edit this event", edit_event_path(@event) %></button>
+     <button id="delete-button"><%= link_to "Delete this event", event_path(@event), method: :delete %></button>
+
+
     <% elsif @event.open? == false %>
       <h4 id="eventstatus">This Event is Full.</h4>
     <% elsif !current_user.joined_events.include?(@event) %>
@@ -70,14 +71,7 @@
 
 </div>
 
-<script>
-// $(document).ready(function(){
-//   $("").on("submit", function() {
-//
-//   });
-// };
 
-</script>
 
 <script>
   // JS for producing google map with marker
