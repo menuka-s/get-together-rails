@@ -2,23 +2,16 @@
 <html>
 <head>
   <title>GetTogether</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+  <link href='https://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 
 
 </head>
-<header>
 
-<div class= "welcome-header"><h1>Welcome to Get Together!</h1></div>
-</header>
 <body>
-
-
-
-
-
-
 
 
 
@@ -93,7 +86,6 @@
     // });
 
   };
-
   // Load the SDK asynchronously
   (function(d, s, id) {
     var js, fjs = d.getElementsByTagName(s)[0];
@@ -127,10 +119,7 @@
     })
   }
 
-
   function makeAjaxCall(userCode, userEmail, userName, userPic){
-
-
     if (navigator.geolocation){
       navigator.geolocation.getCurrentPosition(function(position){
         var lat = position.coords.latitude;
@@ -153,19 +142,29 @@
       })
     }
   }
-
-
-
 </script>
 
+  <% if session[:user_id] != nil %>
+    <div class = "header">
+      GET TOGETHER
+      <div class="fb-logout">
+        <fb:login-button autologoutlink="true" scope="public_profile,email" onlogin="checkLoginState();">
+        </fb:login-button>
+      </div>
+    </div>
 
-<fb:login-button autologoutlink="true" scope="public_profile,email" onlogin="checkLoginState();">
-</fb:login-button>
+  <%= yield %>
 
-<div id="status">
-</div>
+  <% else %>
+    <div class = "login-container">
 
-<%= yield %>
+      <fb:login-button autologoutlink="true" data-size="xlarge" scope="public_profile,email" onlogin="checkLoginState();">
+      </fb:login-button>
+    </div>
+  <% end %>
+
+
+
 
 </body>
 </html>

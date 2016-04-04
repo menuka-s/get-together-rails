@@ -13,6 +13,29 @@
  *= require_tree .
  *= require_self
  */
+
+ body {
+  font-family: 'Montserrat';
+  margin: 0;
+  padding: 0;
+ }
+
+.login-container {
+  margin: 20px auto;
+  width: 800px;
+  padding: 0px 20px 20px 20px;
+  border: 1px dotted black;
+}
+
+.header {
+  width: 100%;
+  position: top;
+  font-size: 40px;
+  text-align: center;
+  background-color: #00695C;
+  color: white;
+}
+
 .error-messages {
   color: red;
   list-style-type: none;
