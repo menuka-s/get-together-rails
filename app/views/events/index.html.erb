@@ -38,60 +38,14 @@
   <div class="news-feed-sorting">
     <button class="news-feed-sorting-button">Soonest</button>
   </div>
-  <div class="news-feed flip">
-    <% if @user_appealing_events %>
-      <div class="card">
 
-        <div class="news-feed-proximity face front">
-          <% @user_appealing_events_by_proximity.each do |event| %>
-            <a href="/events/<%= event[3] %>">
-              <div class="appealing-event">
-                <div class="appealing-event-left">
-                  <p class="appealing-event-name"><strong><%= event[0].capitalize %></strong>
-                    <% if event[5].today? %>
-                      <span class="happening-today">Happening today!</span>
-                    <% end %>
-                  </p>
-                  <p class="appealing-event-time"><%= event[5].strftime("%l:%M%p, %A, %b., %d") %></p>
-                  <p class="appealing-event-address"><%= event[4] %></p>
-                </div>
-                <div class="appealing-event-right">
-                  <p class="appealing-event-distance"><%= '%.2f' % event[6] %> mi</p>
-                </div>
-              </div>
-            </a>
-          <% end %>
-        </div>
+  <%= render partial: 'events/events', :layout => false %>
 
-        <div class="news-feed-soonest face back">
-          <% @user_appealing_events_by_date.each do |event| %>
-            <a href="/events/<%= event[3] %>">
-              <div class="appealing-event">
-                <div class="appealing-event-left">
-                  <p class="appealing-event-name"><strong><%= event[0].capitalize %></strong>
-                    <% if event[5].today? %>
-                      <span class="happening-today">Happening today!</span>
-                    <% end %>
-                  </p>
-                  <p class="appealing-event-time"><%= event[5].strftime("%l:%M%p, %A, %b., %d") %></p>
-                  <p class="appealing-event-address"><%= event[4] %></p>
-                </div>
-                <div class="appealing-event-right">
-                  <p class="appealing-event-distance"><%= '%.2f' % event[6] %> mi</p>
-                </div>
-              </div>
-            </a>
-          <% end %>
-        </div>
-
-      </div>
-    <% end %>
-  </div>
 </div>
 
 <script>
-  var events = <%= raw @user_appealing_events_by_proximity.as_json %>
-  var currentLocation = <%= raw @current_location.as_json %>
+  events = <%= raw @user_appealing_events_by_proximity.to_json.as_json %>
+  currentLocation = <%= raw @current_location.as_json %>;
 
   // JS for producing google map with marker
   function initMap() {
@@ -127,7 +81,7 @@
       var contentString = event[0];
 
       var marker = new google.maps.Marker({
-        position: {lat: event[1], lng: event[2]},
+        position: { lat: event.latitude, lng: event.longitude },
         map: map,
         icon: image,
         shape: shape,
