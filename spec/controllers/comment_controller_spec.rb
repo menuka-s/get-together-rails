@@ -1,5 +1,5 @@
 require 'rails_helper'
 
-RSpec.describe CommentController, type: :controller do
+RSpec.describe CommentsController, type: :controller do
 
 end

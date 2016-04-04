@@ -10,7 +10,9 @@ class Event < ActiveRecord::Base
   belongs_to :activity
 
   #/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/
+
   #comment this back in after seed, for user functionality
+
   geocoded_by :address
   after_validation :geocode
   #/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/
@@ -27,7 +29,11 @@ class Event < ActiveRecord::Base
     all_event_location_data
   end
 
-
+  def open?
+    if self.joined_users <= self.max_participants
+      true
+    end
+  end
 
   def push_notification
     pusher_client = Pusher::Client.new(
@@ -40,15 +46,12 @@ class Event < ActiveRecord::Base
     pusher_client.trigger('test_channel', 'my_event', {
       message: 'New Event Added!'
     })
+
   end
 
   private
   def event_cannot_be_in_past
-    errors.add(:date, "of event must occur in the future") if
-      !date.blank? && date < Time.now
+    errors.add(:date, "of event must occur in the future") if !date.blank? && date < Time.now
   end
-
-
-
 
 end
