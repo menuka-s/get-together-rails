@@ -19,6 +19,98 @@
   padding: 0;
  }
 
+#event-details-map{
+  margin: 0 auto;
+  width: 90%;
+}
+
+.event-container{
+  margin: 0 auto;
+  width: 90%;
+  border-radius: 20px;
+  padding: 15px;
+  /*background-color: #B8CFCE;*/
+}
+.border-line{
+  margin: 0 auto;
+  margin-top: 30px;
+  margin-bottom: 30px;
+  border-bottom: 1px solid #273835;
+  width: 75%;
+}
+
+.event-name{
+  margin-left: 5%;
+  text-align: left;
+}
+
+.event-creator{
+  text-align: center;
+  font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+  font-weight: 200;
+
+}
+
+.event-creator a{
+  padding: 5px;
+  display:inline-block;
+  text-decoration: none;
+  color: #00695c;
+}
+.event-creator img{
+  vertical-align: middle;
+  border-radius: 100px;
+  max-height: 40px;
+  max-width: 40px;;
+}
+
+.event-details{
+  font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+  font-weight: 200;
+  margin-left: 5%;
+  text-align: left;
+}
+
+.created-by{
+  text-align: center;
+  font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+  font-weight: 200;
+}
+#tiny-image{
+  height: 100%;
+display: inline-block;
+
+vertical-align: middle;
+}
+.creator-name{
+  height: 100%;
+  display: inline-block;
+  margin: 0 auto;
+  vertical-align: middle;
+}
+
+.event-name h4{
+  font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+  font-weight: 200;
+}
+
+.event-name h2{
+  margin: 0;
+  text-align: left;
+  font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+  font-weight: 200;
+  font-size: 30px;
+}
+
+.button{
+  display: inline-block;
+  text-align: center;
+  padding-top: 10px;
+  height: 30px;
+  width: 120px;
+  border-top: 1px solid black;
+  border-bottom: 1px solid black;
+}
  .new-body {
   position: absolute;
   top: 0px;
@@ -28,11 +120,13 @@
   margin: 0 auto;
   padding: 0;
 }
+
 #profile-circle{
   position: absolute;
   right: 10px;
   top: 0px;
 }
+
 #profile-circle img{
   padding: 10px;
   border-radius: 200px;
@@ -52,7 +146,6 @@ footer{
 }
 
 .login-container {
-  font-family: 'Montserrat';
   color: white;
   text-align: center;
   font-size: 20px;
