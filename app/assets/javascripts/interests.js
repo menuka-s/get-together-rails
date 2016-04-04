@@ -23,6 +23,8 @@
     });
     $("#suggestions-container").on("click", ".activity-suggestion", function(){
       $("#activity").val("");
+      $("#activity").toggle();
+      $("#activity-cancel").toggle();
       var selectedActivity = $(this).text();
       $("#selected-activity").text(selectedActivity);
       $("#activity-input").val(selectedActivity);
@@ -30,6 +32,15 @@
     });
     $("#suggestions-container").on("click", "#new-activity", function(){
       window.location.assign("/activities/new")
-    })
-
+    });
+    $("#activity-container").on("click", "#activity-cancel", function(){
+      $("#activity-cancel").toggle();
+      $("#selected-activity").text("");
+       $("#activity").toggle();
+      });
+    $(document).on("click", function(){
+      if($("#suggestions-container").css("display")=="block"){
+        $("#suggestions-container").slideToggle("slow");
+      }
+    });
   });
