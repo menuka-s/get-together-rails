@@ -29,6 +29,7 @@
       $("#selected-activity").text(selectedActivity);
       $("#activity-input").val(selectedActivity);
       $("#suggestions-container").slideToggle("slow");
+      $("#suggestions-container").hide();
     });
     $("#suggestions-container").on("click", "#new-activity", function(){
       window.location.assign("/activities/new")
