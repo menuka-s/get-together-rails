@@ -42,7 +42,6 @@
       <% end %>
     </div>
 
-    <!-- Edit profile button -->
 
     <div class="dashboard-box recent-comments">
       <h4>Recent Comments</h4>
@@ -67,6 +66,13 @@
   <div class="new-event-form">
     <%= link_to "Create a New Event", new_event_path %>
   </div>
+
+  <div class="update-profile">
+    <a href="/users/<%= current_user.id %>/interests">Update Profile</a>
+  </div>
+
+
+
 
 </div>
 
