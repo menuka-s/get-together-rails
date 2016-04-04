@@ -13,7 +13,7 @@ class EventsController < ApplicationController
 
   def index_tiles
     @current_location,@user_appealing_events,@user_appealing_events_by_date,@user_appealing_events_by_proximity = index_locals
-    @user_appealing_events_by_groups = appealing_events_by_groups
+    @user_appealing_events_by_groups = current_user.appealing_events_by_groups
     render :'events/tiles'
   end
 

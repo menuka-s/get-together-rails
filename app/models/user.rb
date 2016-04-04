@@ -37,14 +37,18 @@ class User < ActiveRecord::Base
   end
 
   def appealing_events_by_groups
+    puts "\n\n\n\n\n\n\n\n\n\n\n"
     groups = []
     small_events = {}
     @all_event_data = self.appealing_events if @all_event_data.nil?
     @all_event_data.each do |event|
+        puts "\n\n\n\n\n #{event.activity} \n\n\n\n\n\n"
       if event.max_participants > 19 
         groups << [ event ]
       else 
-        small_events[event.activity] << event
+        puts "\n\n\n\n\n #{event.activity} \n\n\n\n\n\n"
+        small_events[event.activity] ||= []
+        small_events[event.activity] << event if event
       end
     end
 
@@ -57,7 +61,7 @@ class User < ActiveRecord::Base
         end 
         small_group << event
       end
-      groups << small_group
+      groups << small_group if small_group.count > 0
       small_group = []
     end
     groups

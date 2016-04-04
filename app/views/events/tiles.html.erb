@@ -2,23 +2,36 @@
 </script>
 
 <style>
+a {color: #000;}
 #tile-container {
+	vertical-align: top;
+	color: #000;
 	width: 90%;
 	margin: auto;
-	background-color: #EEC;
+	background-color: #EEA;
 }
 
 .bigtile {
+	position: relative;
+	text-align: center;
+	vertical-align: top;
 	display: inline-block;
-	border: 1px solid black;
-	width: 30%;
+/*	border: 1px solid black;
+*/	width: 33%;
 	height: 30vh;
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 1px;
+	margin-bottom: 1px;
 }
 
 .smalltile {
+	position: relative;
+	vertical-align: top;
 	display: inline-block;
-	width: 46%;
+	width: 49%;
 	height: 46%;
+	margin: auto;
 	border: 1px solid gray;
 }
 
@@ -40,16 +53,22 @@
 
 
 
-<% @user_appealing_events_by_groups do |group| %>
-	<div class="bigtile <%= "category"+group[0].activity.categories.first.id %>" >
+<% @user_appealing_events_by_groups.shuffle.each do |group| %>
 		<% if group.count == 1 %>
-			<%= group[0].name %>
+			<div class="bigtile <%= "category"+group[0].activity.activity_categories.last.category_id.to_s %>" >
+
+			<%= link_to group[0].name, group[0] %>
+			<%= group[0].description %>
 		<% else %>
+			<div class="bigtile" >
+
 			<% group.each do |activity| %>
-				<div class="smalltile <%= "category"+group[0].activity.categories.first.id %>" >
-					<%= activity.name %>
+				<div class="smalltile  <%= "category"+group[0].activity.activity_categories.last.category_id.to_s %>">
+					<%= link_to activity.name, activity %>
 				</div>
 			<% end %>
 		<% end %>
 	</div>
 <% end %>
+
+</div>
