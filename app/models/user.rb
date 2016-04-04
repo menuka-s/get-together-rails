@@ -77,28 +77,28 @@ class User < ActiveRecord::Base
 
   def appealing_events_by_date
     if @all_event_data.nil?
-      self.appealing_events.sort_by { |event| event[5] }
+      self.appealing_events.sort_by { |event| event.date }
     else
-      @all_event_data.sort_by { |event| event[5] }
+      @all_event_data.sort_by { |event| event.date }
     end
   end
 
   def appealing_events_by_proximity
     if @all_event_data.nil?
-      self.appealing_events.sort_by { |event| event[6] }
+      self.appealing_events.sort_by { |event| event.distance_to([self.latitude, self.longitude]) }
     else
-      @all_event_data.sort_by { |event| event[6] }
+      @all_event_data.sort_by { |event| event.distance_to([self.latitude, self.longitude]) }
     end
   end
 
   # private
   def appealing_activities
-    events = []
+    activities = []
     self.liked_categories.each do |category|
       category.associated_activities.each do |activity|
-        events << activity
+        activities << activity
       end
     end
-    events.uniq - self.disliked_activities.to_a
+    activities.uniq - self.disliked_activities.to_a
   end
 end
