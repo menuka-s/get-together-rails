@@ -28,12 +28,39 @@ class User < ActiveRecord::Base
     activities.each do |activity|
       activity.events.each do |event|
         if event.date > Time.now
-          @all_event_data << [event.name, event.latitude, event.longitude, event.id, event.address, event.date, event.distance_to([self.latitude, self.longitude])]
+          @all_event_data << event
         end
       end
     end
 
     @all_event_data
+  end
+
+  def appealing_events_by_groups
+    groups = []
+    small_events = {}
+    @all_event_data = self.appealing_events if @all_event_data.nil?
+    @all_event_data.each do |event|
+      if event.max_participants > 19 
+        groups << [ event ]
+      else 
+        small_events[event.activity] << event
+      end
+    end
+
+    small_events.each do |activity,events|
+      small_group = []
+      events.each do |event|
+        if small_group.count > 3 
+          groups << small_group[0..3]
+          small_group = [] 
+        end 
+        small_group << event
+      end
+      groups << small_group
+      small_group = []
+    end
+    groups
   end
 
   def appealing_events_by_date
