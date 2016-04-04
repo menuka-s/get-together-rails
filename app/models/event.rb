@@ -33,7 +33,7 @@ class Event < ActiveRecord::Base
     if self.joined_users <= self.max_participants
       true
     end
-
+  end
 
   def push_notification
     pusher_client = Pusher::Client.new(
