@@ -43,4 +43,18 @@
     //     $("#suggestions-container").slideToggle("slow");
     //   }
     // });
+    $("#comment-button").on("click", function(){
+      var commentText = $("#comment_content").val();
+      var eventId = $("#event-id").text();
+      $.ajax({
+        method: "POST",
+        url: "/events/"+ eventId + "/comments",
+        data: {content: commentText}
+      })
+      .done(function(comment){
+        $("#comment-container").append(comment);
+        $("#comment_content").val("");
+        // console.log(comment);
+      })
+    });
   });
