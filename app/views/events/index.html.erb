@@ -70,12 +70,6 @@
   };
 
   function setMarkers(map) {
-    var image = {
-      url: 'http://b.fastcompany.net/asset_files/-/2014/11/13/poop.png',
-      size: new google.maps.Size(26, 26),
-      origin: new google.maps.Point(0, 0),
-      anchor: new google.maps.Point(0, 26)
-    };
 
     var shape = {
       coords: [1, 1, 1, 20, 18, 20, 18, 1],
@@ -90,11 +84,30 @@
     for (var i = 0; i < events.length; i++) {
       var event = events[i]
       var contentString = "<a class=google-map-link href=/events/" + event.id + ">" + event.name.capitalizeFirstLetter() + "</a>";
-      // debugger
+
+      var pinColor;
+
+      var eventDate = new Date(event.date);
+      var todaysDate = new Date();
+
+      if(eventDate.setHours(0,0,0,0) == todaysDate.setHours(0,0,0,0)) {
+        pinColor = "00695C";
+      } else {
+        pinColor = "FE7569";
+      };
+
+      var image = {
+        url: 'http://chart.apis.google.com/chart?chst=d_map_pin_letter&chld=%E2%80%A2|' + pinColor,
+        size: new google.maps.Size(21, 34),
+        origin: new google.maps.Point(0, 0),
+        anchor: new google.maps.Point(10, 34)
+      };
+
       var marker = new google.maps.Marker({
         position: { lat: event.latitude, lng: event.longitude },
         map: map,
         icon: image,
+        animation: google.maps.Animation.DROP,
         shape: shape,
         title: event.name,
         zIndex: event.id,
