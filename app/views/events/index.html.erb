@@ -17,6 +17,7 @@
               method: 'get',
               data: {}
           }).done(function(response) {
+
             if (response["status"] == 1) {
               events = [ response["event"] ];
               console.log(events);
