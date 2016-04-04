@@ -38,4 +38,9 @@
       $("#selected-activity").text("");
        $("#activity").toggle();
       });
+    $(document).on("click", function(){
+      if($("#suggestions-container").css("display")=="block"){
+        $("#suggestions-container").slideToggle("slow");
+      }
+    });
   });
