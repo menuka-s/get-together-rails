@@ -45,6 +45,7 @@
     //   }
     // });
     $("#comment-button").on("click", function(){
+      if ($("#comment_content").val()!=""){
       var commentText = $("#comment_content").val();
       var eventId = $("#event-id").text();
       $.ajax({
@@ -56,6 +57,6 @@
         $("#comment-container").append(comment);
         $("#comment_content").val("");
         // console.log(comment);
-      })
+      })}
     });
   });
