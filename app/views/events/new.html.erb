@@ -13,12 +13,14 @@
       <%= f.text_field :name %>
     </p>
     <p>
-<div id = "activity-container">
-Activity: <span id = "selected-activity"></span><span id="activity-cancel"> 💩</span><input type = "text" id = "activity" value="">
-<div id= "suggestions-container">
-</div>
-<input id = "activity-input" type = "hidden" name = "activity_name" value="">
-</div>
+  <div id = "activity-container">
+    Activity: <span id = "selected-activity"></span>
+    <span id="activity-cancel"> 💩</span>
+    <input type = "text" id = "activity" value="">
+    <div id= "suggestions-container"></div>
+
+    <input id = "activity-input" type = "hidden" name = "activity_name" value="">
+  </div>
     </p>
     <p>
       <%= f.label :description %>
