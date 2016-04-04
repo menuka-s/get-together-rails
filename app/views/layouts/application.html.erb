@@ -145,19 +145,23 @@
 
   <% if session[:user_id] != nil %>
 
-    <div class = "header">
-      GET TOGETHER
-      <div class="fb-logout">
-        <fb:login-button autologoutlink="true" scope="public_profile,email" onlogin="checkLoginState();">
-        </fb:login-button>
-      </div>
+    <div id = "header">
+      <div class = "logo-header" style = "font-size: 75px;">Get Together</div>
+      <div id = "profile-circle"><a href="/users/<%=current_user.id%>"><img src = <%=current_user.image_url%>></a></div>
     </div>
 
   <% end %>
 
   <%= yield %>
 
-
+<footer>
+  <% if session[:user_id] != nil %>
+    <center><div class="fb-logout">
+      <fb:login-button autologoutlink="true" scope="public_profile,email" onlogin="checkLoginState();">
+      </fb:login-button>
+    </div></center>
+  <% end %>
+</footer>
 
 
 
