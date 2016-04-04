@@ -1,3 +1,33 @@
+  <script src="https://js.pusher.com/3.0/pusher.min.js"></script>
+
+  <script>
+    var pusher = new Pusher('c7a6150d22d40eea7bca', {
+      encrypted: true
+    });
+
+    var channel = pusher.subscribe('test_channel');
+    channel.bind('my_event', function(data) {
+      $.ajax({url: '/events/index_ajax',
+              method: 'get',
+              data: {}
+        }).done(function(newList) {
+          $('.news-feed').empty().append(newList);
+          $('.news-feed-sorting-button').text('Soonest');
+          $.ajax({url: '/events/newest_event',
+              method: 'get',
+              data: {}
+          }).done(function(response) {
+            if (response["status"] == 1) {
+              events = [ response["event"] ];
+              console.log(events);
+              setMarkers(pmap);
+            }
+          });
+          // alert(data.message);
+        });
+    });
+  </script>
+
 <div class="news-feed-container">
 
   <h1>All Events</h1>
@@ -16,34 +46,6 @@
 
 </div>
 
-<script src="https://js.pusher.com/3.0/pusher.min.js"></script>
-
-<script>
-
-//Uncomment for console debug output
-  // Pusher.log = function(message) {
-  //   if (window.console && window.console.log) {
-  //     window.console.log(message);
-  //   }
-  // };
-
-  var pusher = new Pusher('c7a6150d22d40eea7bca', {
-    encrypted: true
-  });
-
-  var channel = pusher.subscribe('test_channel');
-  channel.bind('my_event', function(data) {
-    $.ajax({url: '/events/index_ajax',
-            method: 'get',
-            data: {}
-      }).done(function(newList) {
-        $('.news-feed').empty().append(newList);
-        $('.news-feed-sorting-button').text('Soonest');
-        // alert(data.message);
-      });
-  });
-</script>
-
 <script>
   events = <%= raw @user_appealing_events_by_proximity.to_json.as_json %>
   currentLocation = <%= raw @current_location.as_json %>;
@@ -53,6 +55,8 @@
     return this.charAt(0).toUpperCase() + this.slice(1);
   }
 
+var pmap;
+
   // JS for producing google map with marker
   function initMap() {
 
@@ -60,7 +64,7 @@
       zoom: 12,
       center: {lat: currentLocation[0], lng: currentLocation[1]}
     });
-
+    pmap = map;
     setMarkers(map);
 
     // Recenter the map on window resize

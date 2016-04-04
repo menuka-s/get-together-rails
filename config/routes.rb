@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   # You can have the root of your site routed with "root"
 
 #Begin Ian's broken restfulness:
+get '/events/newest_event' => 'events#newest_event'
 get '/events/index_ajax' => 'events#index_ajax'
 get '/events/tiles' => 'events#index_tiles'
 post '/users/ajax_join_event/:id' => 'users#ajax_join_event'
