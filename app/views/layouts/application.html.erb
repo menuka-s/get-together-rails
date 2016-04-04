@@ -38,13 +38,11 @@
     } else if (response.status === 'not_authorized') {
       // The person is logged into Facebook, but not your app.
 
-      document.getElementById('status').innerHTML = 'Please log ' +
-        'into this app.';
+
     } else {
       // The person is not logged into Facebook, so we're not sure if
       // they are logged into this app or not.
-      document.getElementById('status').innerHTML = 'Please log ' +
-        'into Facebook.';
+
       $.ajax({
         method:"GET",
         url:"/users/logout"
@@ -107,8 +105,7 @@
       userEmail = response.email
       userName = response.name
       console.log('Successful login for: ' + response.name);
-      document.getElementById('status').innerHTML =
-        'Thanks for logging in, ' + response.name + '!';
+
       getUserPhoto(userCode, userEmail, userName);
     });
 
@@ -127,7 +124,7 @@
         var lat = position.coords.latitude;
         var lon = position.coords.longitude;
 
-        console.log(lat)
+        console.log(lat);
 
         $.ajax({
           url: "/users",
@@ -147,6 +144,7 @@
 </script>
 
   <% if session[:user_id] != nil %>
+
     <div class = "header">
       GET TOGETHER
       <div class="fb-logout">
@@ -155,15 +153,12 @@
       </div>
     </div>
 
+  <% end %>
+
   <%= yield %>
 
-  <% else %>
-    <div class = "login-container">
 
-      <fb:login-button autologoutlink="true" data-size="xlarge" scope="public_profile,email" onlogin="checkLoginState();">
-      </fb:login-button>
-    </div>
-  <% end %>
+
 
 
 

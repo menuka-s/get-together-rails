@@ -4,8 +4,19 @@ class UsersController < ApplicationController
   def index
   end
 
+
+
   def show
     @user = User.find(params[:id])
+  end
+
+  def new
+    if session[:user_id]
+      @user = User.find(session[:user_id])
+      render :template => "users/show"
+    else
+      render "users/new"
+    end
   end
 
   def logout
