@@ -1,6 +1,21 @@
 
-<div class = "logo-text">Get Together</div>
-<p>create a new activity!</p>
-<p>to your heart's content!</p>
-<p>seriously.</p>
-<p>Just not here, though.</p>
+<h1>Create a new activity!</h1>
+
+<%= form_for @activity do |f| %>
+  <div class="new-activity-form">
+    <ul class="error-messages">
+      <% @activity.errors.full_messages.each do |error| %>
+      <li><%= error %></li>
+      <% end %>
+    </ul>
+
+    <p>
+      <%= f.label :name %>
+      <%= f.text_field :name %>
+    </p>
+    <p>
+      <%= f.submit %>
+    </p>
+
+  </div>
+<% end %>

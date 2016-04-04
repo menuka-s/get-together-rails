@@ -21,7 +21,7 @@ class EventsController < ApplicationController
     ajax_return = {}
     ajax_return["status"] = 0
     newest_event = Event.last
-    if current_user.appealing_events.include?(newest_event) 
+    if current_user.appealing_events.include?(newest_event)
       ajax_return["status"] = 1
       ajax_return["event"] = newest_event
     end
@@ -62,7 +62,7 @@ class EventsController < ApplicationController
         current_user.appealing_events,
         current_user.appealing_events_by_date,
         current_user.appealing_events_by_proximity
-    ] 
+    ]
   end
 
 end
