@@ -34,8 +34,6 @@ class Event < ActiveRecord::Base
   end
 
 
-
-
   def push_notification
     pusher_client = Pusher::Client.new(
       app_id: '194717',

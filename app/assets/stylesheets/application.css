@@ -13,6 +13,87 @@
  *= require_tree .
  *= require_self
  */
+
+ body {
+  margin: 0;
+  padding: 0;
+ }
+
+ .new-body {
+  position: absolute;
+  top: 0px;
+  background: url("http://chicagopolicyreview.org/wp-content/uploads/2015/09/Chicago-Architecture.jpg");
+  width: 100%;
+  height: 72em;
+  margin: 0 auto;
+  padding: 0;
+}
+#profile-circle{
+  position: absolute;
+  right: 10px;
+  top: 0px;
+}
+#profile-circle img{
+  padding: 10px;
+  border-radius: 200px;
+  max-height: 75px;
+  max-width: 75px;
+}
+.opacity {
+  width: 100%;
+  height: 72em;
+  background-color: black;
+  opacity: 0.5;
+}
+
+footer{
+  padding: 20px;
+
+}
+
+.login-container {
+  font-family: 'Montserrat';
+  color: white;
+  text-align: center;
+  font-size: 20px;
+  margin: 20px auto;
+  position: absolute;
+  top: 25%;
+  left: 25%;
+  width: 50%;
+  padding: 0px 20px 20px 20px;
+}
+
+@font-face {
+  font-family: 'Variane Script';
+  src:url('Variane Script.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+ .logo-text{
+  font-family: "Variane Script";
+  font-size: 75px;
+ }
+
+.logo-header {
+
+  display: inline-block;
+  font-family: "Variane Script";
+  font-size: 150px;
+  padding: 10px;
+}
+
+#header {
+  width: 100%;
+  position: relative;
+  font-size: 40px;
+  text-align: center;
+  background-color: #00695C;
+  color: white;
+}
+
+
+
 .error-messages {
   color: red;
   list-style-type: none;
@@ -89,11 +170,13 @@ margin: auto;
 }
 #suggestions-container{
   cursor: pointer;
+  max-height: 100px;
+  margin-left: 45px;
   position:absolute;
   display: none;
   background-color: white;
   /*bottom: 0;*/
-  overflow: visible;
+  overflow-y: scroll;
   width: 15em;
   border: 1px black solid;
 }
