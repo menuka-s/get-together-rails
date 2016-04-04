@@ -90,6 +90,11 @@
     });
 
     setMarkers(map);
+
+    // Recenter the map on window resize
+    google.maps.event.addDomListener(window, 'resize', function() {
+      map.setCenter(myLatLng);
+    });
   };
 
   function setMarkers(map) {
@@ -126,32 +131,29 @@
   }
 
   $(document).ready(function(){
-  $('body').on('click','#join-event', function(e) {
-    var eventID = $(this).attr("event");
-    var button = $(this);
-    $.ajax({
-      url: "/users/ajax_join_event/" + eventID,
-      method: "post",
-      data: {}
-    }).done(function (response) {
-      if (response["status"] == 0) {
-        $("#join-event").text("Join this Event!");
-        $('#eventstatus').text("You have not joined this event");
-      } else {
-        $("#join-event").text("Un-Join this Event");
-        $('#eventstatus').text("You are attending this event");
-      };
-    }).fail(function() {
-      console.log("Error joining/unjoining event!");
-    });
-  })
-});
+    $('body').on('click','#join-event', function(e) {
+      var eventID = $(this).attr("event");
+      var button = $(this);
+      $.ajax({
+        url: "/users/ajax_join_event/" + eventID,
+        method: "post",
+        data: {}
+      }).done(function (response) {
+        if (response["status"] == 0) {
+          $("#join-event").text("Join this Event!");
+          $('#eventstatus').text("You have not joined this event");
+        } else {
+          $("#join-event").text("Un-Join this Event");
+          $('#eventstatus').text("You are attending this event");
+        };
+      }).fail(function() {
+        console.log("Error joining/unjoining event!");
+      });
+    })
+  });
+
 </script>
 
 <script async defer
   src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDAvBDiolWNKT2Nn0wteaKxxKPQbk8ocjI&callback=initMap">
 </script>
-
-
-
-
