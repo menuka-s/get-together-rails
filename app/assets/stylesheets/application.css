@@ -89,11 +89,13 @@ margin: auto;
 }
 #suggestions-container{
   cursor: pointer;
+  max-height: 100px;
+  margin-left: 45px;
   position:absolute;
   display: none;
   background-color: white;
   /*bottom: 0;*/
-  overflow: visible;
+  overflow-y: scroll;
   width: 15em;
   border: 1px black solid;
 }
