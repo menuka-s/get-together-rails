@@ -51,7 +51,7 @@ class EventsController < ApplicationController
         current_user.appealing_events,
         current_user.appealing_events_by_date,
         current_user.appealing_events_by_proximity
-    ] 
+    ]
   end
 
 end
