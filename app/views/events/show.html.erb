@@ -22,6 +22,21 @@
   <p><%= @event.address %></p>
 </div>
 
+  <div class="event-buttons">
+    <% if current_user %>
+      <% if @event.creator.id == current_user.id %>
+       <button class="real-button " id="edit-button"><%= link_to "Edit this event", edit_event_path(@event) %></button>
+       <button class="real-button " id="delete-button"><%= link_to "Delete this event", event_path(@event), method: :delete %></button>
+      <% elsif @event.open? == false %>
+        <h4 id="eventstatus">This Event is Full.</h4>
+      <% elsif !current_user.joined_events.include?(@event) %>
+        <button class="real-button" id="join-event" event="<%= @event.id %>">Join this Event!</button>
+      <% else %>
+        <button class="real-button" id="join-event" event="<%= @event.id %>">Un-Join this Event</button>
+      <% end %>
+    <% end %>
+  </div>
+
   <div class = "border-line"></div>
 
   <div class="event-comments">
@@ -55,20 +70,8 @@
       <% end %>
   </div>
 
-  <% if current_user %>
-    <% if @event.creator.id == current_user.id %>
-     <button id="edit-button"><%= link_to "Edit this event", edit_event_path(@event) %></button>
-     <button id="delete-button"><%= link_to "Delete this event", event_path(@event), method: :delete %></button>
-    <% elsif @event.open? == false %>
-      <h4 id="eventstatus">This Event is Full.</h4>
-    <% elsif !current_user.joined_events.include?(@event) %>
-      <h4 id="eventstatus">Join this Event:</h4>
-      <button id="join-event" event="<%= @event.id %>">Join this Event!</button>
-    <% else %>
-      <h4 id="eventstatus">You are attending this event</h4>
-      <button id="join-event" event="<%= @event.id %>">UnJoin this Event</button>
-    <% end %>
-  <% end %>
+
+
   <br><br>
 </div>
 
