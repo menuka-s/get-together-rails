@@ -21,6 +21,17 @@
         }).done(function(newList) {
           $('.news-feed').empty().append(newList);
           $('.news-feed-sorting-button').text('Soonest');
+          $.ajax({url: '/events/newest_event',
+              method: 'get',
+              data: {}
+          }).done(function(response) {
+            debugger
+            if (response["status"] == 1) {
+              events = [ response["event"] ];
+              console.log(events);
+              setMarkers(pmap);
+            }
+          });
           // alert(data.message);
         });
     });
@@ -53,6 +64,8 @@
     return this.charAt(0).toUpperCase() + this.slice(1);
   }
 
+var pmap;
+
   // JS for producing google map with marker
   function initMap() {
 
@@ -60,7 +73,7 @@
       zoom: 12,
       center: {lat: currentLocation[0], lng: currentLocation[1]}
     });
-
+    pmap = map;
     setMarkers(map);
   };
 
