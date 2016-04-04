@@ -1,6 +1,4 @@
-
 <div class="event-details">
-
 
   <h2><%= @event.name %></h2>
   <h4><%= @event.activity.name %></h4>
@@ -14,6 +12,32 @@
 
   <h4>Location:</h4>
   <p><%= @event.address %></p>
+
+  <h4>Comments:</h4>
+  <div class="event-comments">
+  <% @event.comments.each do |comment| %>
+    <div class="comment-item"><%= comment.content %>
+      <div class="comment-user-info">
+        <%= comment.user.email %>
+        <%= distance_of_time_in_words(comment.created_at, Time.now) %> ago
+      </div>
+  <% end %>
+
+    <div class="new-comment">
+      <%= form_for [ @event, @comment ] do |f| %>
+        <ul class="error-messages">
+          <% @event.errors.full_messages.each do |error| %>
+            <li><%= error %></li>
+          <% end %>
+        </ul>
+      <p>
+        <label>Add your comment here:</label>
+        <%= f.text_area :content %>
+      </p>
+      <p><%= f.submit %></p>
+    </div>
+      <% end %>
+  </div>
 
   <% if current_user %>
     <% if @event.creator.id == current_user.id %>
@@ -31,6 +55,15 @@
   <div id="event-details-map"></div>
 
 </div>
+
+<script>
+// $(document).ready(function(){
+//   $("").on("submit", function() {
+//
+//   });
+// };
+
+</script>
 
 <script>
   // JS for producing google map with marker

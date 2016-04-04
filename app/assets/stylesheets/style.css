@@ -1,12 +1,17 @@
 .welcome-header{
-  height: 5em;
+  height: 4em;
   width: 100%;
   color: white;
   background-color: black;
   text-align: center;
 }
 
+.welcome-pre-header {
+  font-size: 35px;
+  font-family: Arial;
+}
+
 .welcome-header h1{
   font-size: 45px;
-  font-family: Courier;
+  font-family: Arial;
 }
