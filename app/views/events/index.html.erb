@@ -101,6 +101,11 @@
         pinColor = "73B5AC";
       };
 
+      // Pushed new pins are yellow...
+      if (events.length == 1) {
+        pinColor = "FFFF00";
+      }
+
       var image = {
         url: 'http://chart.apis.google.com/chart?chst=d_map_pin_letter&chld=%E2%80%A2|' + pinColor,
         size: new google.maps.Size(21, 34),
