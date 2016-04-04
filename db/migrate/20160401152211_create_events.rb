@@ -10,6 +10,8 @@ class CreateEvents < ActiveRecord::Migration
       t.float :latitude
       t.float  :longitude
       t.integer :activity_id, null: false
+      t.integer :max_participants
+
 
       t.timestamps null: false
     end
