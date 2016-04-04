@@ -16,8 +16,8 @@ post '/users/ajax_join_event/:id' => 'users#ajax_join_event'
   post '/users/activity_dislikes_handler' => 'users#activity_dislikes_handler'
   get '/users/:id' => 'users#show'
   resources :users
-  resources :events
   resources :activities, :only => [:new, :create]
-
-
+  resources :events do
+    resources :comments
+  end
 end

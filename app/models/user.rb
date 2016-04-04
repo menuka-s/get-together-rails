@@ -23,17 +23,33 @@ class User < ActiveRecord::Base
 
   def appealing_events
     activities = self.appealing_activities
-    all_event_data = []
+    @all_event_data = []
 
     activities.each do |activity|
       activity.events.each do |event|
         if event.date > Time.now
-          all_event_data << [event.name, event.latitude, event.longitude, event.id, event.address, event.date]
+          @all_event_data << [event.name, event.latitude, event.longitude, event.id, event.address, event.date, event.distance_to([self.latitude, self.longitude])]
         end
       end
     end
 
-    all_event_data
+    @all_event_data
+  end
+
+  def appealing_events_by_date
+    if @all_event_data.nil?
+      self.appealing_events.sort_by { |event| event[5] }
+    else
+      @all_event_data.sort_by { |event| event[5] }
+    end
+  end
+
+  def appealing_events_by_proximity
+    if @all_event_data.nil?
+      self.appealing_events.sort_by { |event| event[6] }
+    else
+      @all_event_data.sort_by { |event| event[6] }
+    end
   end
 
   # private
@@ -46,5 +62,4 @@ class User < ActiveRecord::Base
     end
     events.uniq - self.disliked_activities.to_a
   end
-
 end
