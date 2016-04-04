@@ -1,3 +1,7 @@
+<script>
+
+</script>
+<div id="user-activities" style="display:none;"><%=current_user_activities%></div>
 <div class="new-event-header">Create a New Event</div>
 
 <%= form_for @event do |f| %>
@@ -12,8 +16,13 @@
       <%= f.text_field :name %>
     </p>
     <p>
-      <%= f.label :activity_id  %>
-      <%= f.collection_select :activity_id, @activities, :id, :name, include_blank: true %>
+<div id = "activity-container">
+Activity: <input type = "text" id = "activity" value="">
+<div id= "suggestions-container">
+</div>
+<input id = "activity-input" type = "hidden" name = "activity_name" value="">
+</div>
+<div id = "activity-display">Selected: <span id = "selected-activity"></span></div>
     </p>
     <p>
       <%= f.label :description %>
