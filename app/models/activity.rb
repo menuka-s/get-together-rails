@@ -6,4 +6,6 @@ class Activity < ActiveRecord::Base
   has_many :unattached_users, through: :users_activities, source: :user
   has_many :events
 
+  validates_presence_of :name
+
 end
