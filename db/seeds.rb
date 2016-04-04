@@ -42,7 +42,7 @@ end
 
 counter = 0
 20.times do
-  Event.create(name: Faker::Lorem.word, description: Faker::Lorem.paragraph(4), creator_id: rand(1..20), date: Time.now + (60*60*24*7), address: addresses[counter], activity_id: rand(1..12))
+  Event.create(name: Faker::Lorem.word, description: Faker::Lorem.paragraph(4), creator_id: rand(1..20), date: Time.now + (60*60*24*7), address: addresses[counter], activity_id: rand(1..12), max_participants: rand(1..50))
   counter += 1
 end
 

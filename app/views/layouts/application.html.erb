@@ -3,23 +3,17 @@
 <head>
   <title>GetTogether</title>
 
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+  <link href='https://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
+
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 
 
 </head>
-<header>
 
-<div class= "welcome-header"><h1>Welcome to Get Together!</h1></div>
-</header>
 <body>
-
-
-
-
-
-
 
 
 
@@ -44,18 +38,16 @@
     } else if (response.status === 'not_authorized') {
       // The person is logged into Facebook, but not your app.
 
-      document.getElementById('status').innerHTML = 'Please log ' +
-        'into this app.';
+
     } else {
       // The person is not logged into Facebook, so we're not sure if
       // they are logged into this app or not.
-      document.getElementById('status').innerHTML = 'Please log ' +
-        'into Facebook.';
+
       $.ajax({
         method:"GET",
         url:"/users/logout"
       })
-      .done(function(response){ window.location = "/users/logout"});
+      .done(function(response){ window.location = "/"});
     }
   }
 
@@ -94,7 +86,6 @@
     // });
 
   };
-
   // Load the SDK asynchronously
   (function(d, s, id) {
     var js, fjs = d.getElementsByTagName(s)[0];
@@ -114,8 +105,7 @@
       userEmail = response.email
       userName = response.name
       console.log('Successful login for: ' + response.name);
-      document.getElementById('status').innerHTML =
-        'Thanks for logging in, ' + response.name + '!';
+
       getUserPhoto(userCode, userEmail, userName);
     });
 
@@ -128,16 +118,13 @@
     })
   }
 
-
   function makeAjaxCall(userCode, userEmail, userName, userPic){
-
-
     if (navigator.geolocation){
       navigator.geolocation.getCurrentPosition(function(position){
         var lat = position.coords.latitude;
         var lon = position.coords.longitude;
 
-        console.log(lat)
+        console.log(lat);
 
         $.ajax({
           url: "/users",
@@ -147,27 +134,33 @@
           if (response.like_count == 0){
             window.location = "/users/"+ response.user_id + "/interests"
           }else{
-            window.location = "/users/"+ response.user_id
+            window.location = "/events"
           }
         });
 
       })
     }
   }
-
-
-
 </script>
 
+  <% if session[:user_id] != nil %>
 
-<fb:login-button autologoutlink="true" scope="public_profile,email" onlogin="checkLoginState();">
-</fb:login-button>
+    <div class = "header">
+      GET TOGETHER
+      <div class="fb-logout">
+        <fb:login-button autologoutlink="true" scope="public_profile,email" onlogin="checkLoginState();">
+        </fb:login-button>
+      </div>
+    </div>
 
-<div id="status">
-</div>
+  <% end %>
+
+  <%= yield %>
 
 
-<%= yield %>
+
+
+
 
 
 </body>
