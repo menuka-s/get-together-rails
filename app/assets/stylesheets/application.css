@@ -70,6 +70,32 @@ margin: auto;
   margin: 5px;
 }
 
-
+#activity-container{
+  position:relative;
+}
+#activity-cancel{
+  cursor: pointer;
+  display: none;
+}
+.activity-suggestion{
+  width: 100%;
+  height: 20px;
+  border: 1px solid gray;
+  margin: 0 auto;
+}
+#activity-display{
+  margin-top: 15px;
+  margin-bottom: 15px;
+}
+#suggestions-container{
+  cursor: pointer;
+  position:absolute;
+  display: none;
+  background-color: white;
+  /*bottom: 0;*/
+  overflow: visible;
+  width: 15em;
+  border: 1px black solid;
+}
 
 
