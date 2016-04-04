@@ -21,13 +21,16 @@
         <input type="text" id="Autocomplete" class="form-control" ng-autocomplete="result2" details="details2" options="options2"/>
     </div>
 </p>
+<div id = "activity-container">
 <input type = "text" id = "activity" value="">
+<div id= "suggestions-container">
+  <div class = "activity-suggestion">This is an activity name</div>
+  <div class = "activity-suggestion">This is an activity name</div>
+  <div class = "activity-suggestion">This is an activity name</div>
+</div>
 <input type = "hidden" name = "event[activity]" value="">
-
-
-<p>
-      <%= f.label :activity_id  %>
-      <%= f.collection_select :activity_id, @activities, :id, :name, include_blank: true %>
+</div>
+<div
     </p>
     <p>
       <%= f.label :description %>
