@@ -26,7 +26,10 @@
   display: inline-block;
   border-radius: 20px;
   padding: 5px;
+}
 
+.dashboard-box recent-comments {
+  overflow: scroll;
 }
 
 .my_info {
