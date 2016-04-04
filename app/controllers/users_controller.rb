@@ -13,7 +13,7 @@ class UsersController < ApplicationController
   def new
     if session[:user_id]
       @user = User.find(session[:user_id])
-      @current_location = [ current_user.latitude, current_user.longitude ]
+       @current_location = [ current_user.latitude, current_user.longitude ]
       @user_appealing_events = current_user.appealing_events
       @user_appealing_events_by_date = current_user.appealing_events_by_date
       @user_appealing_events_by_proximity = current_user.appealing_events_by_proximity
