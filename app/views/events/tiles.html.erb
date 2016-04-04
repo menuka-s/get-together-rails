@@ -1,0 +1,93 @@
+<script> 
+</script>
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+
+<style>
+a {color: #000;}
+#tile-container {
+	margin-top: 30px;
+	vertical-align: top;
+	color: #000;
+	width: 90%;
+	margin: auto;
+	background-color: #FFF;
+}
+
+.bigtile {
+	position: relative;
+	text-align: left;
+	vertical-align: top;
+	display: inline-block;
+/*	border: 1px solid black;
+*/	width: 33%;
+	height: 30vh;
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 1px;
+	margin-bottom: 1px;
+	overflow: hidden;
+	overflow-y: scroll;
+	padding: 3px;
+	border-radius: 5px;
+}
+
+.smalltile {
+	position: relative;
+	vertical-align: top;
+	display: inline-block;
+	width: 49%;
+	height: 48%;
+	margin: auto;
+	margin-bottom: 2px;
+	margin-top: 2px;
+	padding: 3px;
+	border-radius: 5px;
+}
+
+.category1 { background-color: #DDF; }
+.category2 { background-color: #DFD; }
+.category3 { background-color: #DFF; }
+.category4 { background-color: #FDD; }
+.category5 { background-color: #FDF; }
+.category6 { background-color: #FFD; }
+.category7 { background-color: #CCE; }
+.category8 { background-color: #CEC; }
+.category9 { background-color: #CEE; }
+.category10 { background-color: #ECC; }
+.category11 { background-color: #ECE; }
+.tilelink {font-size: 2em;}
+
+</style>
+<br><br><br>
+<div id="tile-container">
+
+
+
+<% @user_appealing_events_by_groups.shuffle.each do |group| %>
+	<% if group.count == 1 %>
+		<div class="bigtile <%= "category"+group[0].activity.activity_categories.last.category_id.to_s %>" >
+
+		<span class="tilelink"><%= link_to group[0].name, group[0] %></span><br>
+		<%= group[0].date.localtime.to_s.gsub(' -0500','') %> <%= group[0].date.localtime.to_s.gsub(' -0500','').split(' ')[1].split(':')[0].to_i > 11 ? "pm" : "am" %>
+		<br>
+		<%= group[0].joined_users.count %> out of <%= group[0].max_participants %> joined
+		<br><br>
+		<%= group[0].description %>
+	<% else %>
+		<div class="bigtile" >
+
+		<% group.each do |activity| %>
+			<div class="smalltile  <%= "category"+group[0].activity.activity_categories.last.category_id.to_s %>">
+				<span class="tilelink"><%= link_to activity.name, activity %></span><br>
+				<%= group[0].date.localtime.to_s.gsub(' -0500','') %><%= group[0].date.localtime.to_s.gsub(' -0500','').split(' ')[1].split(':')[0].to_i > 11 ? "pm" : "am" %>
+				<br>
+				<%= group[0].joined_users.count %> out of <%= group[0].max_participants %> joined
+				<br><br>
+			</div>
+		<% end %>
+	<% end %>
+	</div>
+<% end %>
+
+</div>

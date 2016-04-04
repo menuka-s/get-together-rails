@@ -6,6 +6,7 @@ Rails.application.routes.draw do
 
 #Begin Ian's broken restfulness:
 get '/events/index_ajax' => 'events#index_ajax'
+get '/events/tiles' => 'events#index_tiles'
 post '/users/ajax_join_event/:id' => 'users#ajax_join_event'
 #End of the atrocity
 
