@@ -22,15 +22,12 @@
     </div>
 </p>
 <div id = "activity-container">
-<input type = "text" id = "activity" value="">
+Activity: <input type = "text" id = "activity" value="">
 <div id= "suggestions-container">
-  <div class = "activity-suggestion">This is an activity name</div>
-  <div class = "activity-suggestion">This is an activity name</div>
-  <div class = "activity-suggestion">This is an activity name</div>
 </div>
-<input type = "hidden" name = "event[activity]" value="">
+<input id = "activity-input" type = "hidden" name = "event[activity]" value="">
 </div>
-<div
+<div id = "activity-display">Selected: <span id = "selected-activity"></span></div>
     </p>
     <p>
       <%= f.label :description %>

@@ -9,15 +9,27 @@
         $("#suggestions-container").slideToggle("slow");
         console.log($("#activity").val())
       }
+      var activityMatches = 0;
       activitiesArray.forEach(function(activity){
 
         if (activity.match(searchString) != null){
+          activityMatches+=1
           $("#suggestions-container").append("<div class = 'activity-suggestion'>" + activity + "</div>")
         }
       })
+      if (activityMatches == 0) {
+        $("#suggestions-container").append("<div id = 'new-activity'>No matches...Create new?</div>")
+      }
     });
     $("#suggestions-container").on("click", ".activity-suggestion", function(){
+      $("#activity").val("");
+      var selectedActivity = $(this).text();
+      $("#selected-activity").text(selectedActivity);
+      $("#activity-input").val(selectedActivity);
       $("#suggestions-container").slideToggle("slow");
     });
+    $("#suggestions-container").on("click", "#new-activity", function(){
+      window.location.assign("/activities/new")
+    })
 
   });

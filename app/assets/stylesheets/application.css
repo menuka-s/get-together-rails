@@ -80,7 +80,10 @@ margin: auto;
   border: 1px solid gray;
   margin: 0 auto;
 }
-
+#activity-display{
+  margin-top: 15px;
+  margin-bottom: 15px;
+}
 #suggestions-container{
   cursor: pointer;
   position:absolute;

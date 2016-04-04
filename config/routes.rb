@@ -17,7 +17,7 @@ post '/users/ajax_join_event/:id' => 'users#ajax_join_event'
   get '/users/:id' => 'users#show'
   resources :users
   resources :events
+  resources :activities, :only => [:new, :create]
 
-  get '/activities' => 'users#allactivities'
 
 end
