@@ -132,7 +132,7 @@
           data: { email: userEmail, facebook_id: userCode, image_url: userPic, name: userName, latitude: lat, longitude: lon }
         }).done(function(response){
           if (response.like_count == 0){
-            window.location = "/users/"+ response.user_id + "/interests"
+            window.location = "/users/"+ response.user_id + "/interests?skip=true"
           }else{
             window.location = "/events"
           }
