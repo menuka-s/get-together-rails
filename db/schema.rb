@@ -44,17 +44,18 @@ ActiveRecord::Schema.define(version: 20160402185302) do
   end
 
   create_table "events", force: :cascade do |t|
-    t.text     "name",          null: false
-    t.text     "description",   null: false
-    t.integer  "creator_id",    null: false
-    t.datetime "date",          null: false
+    t.text     "name",             null: false
+    t.text     "description",      null: false
+    t.integer  "creator_id",       null: false
+    t.datetime "date",             null: false
     t.string   "location_name"
-    t.string   "address",       null: false
+    t.string   "address",          null: false
     t.float    "latitude"
     t.float    "longitude"
-    t.integer  "activity_id",   null: false
-    t.datetime "created_at",    null: false
-    t.datetime "updated_at",    null: false
+    t.integer  "activity_id",      null: false
+    t.integer  "max_participants"
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
   end
 
   create_table "users", force: :cascade do |t|

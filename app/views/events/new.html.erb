@@ -33,10 +33,15 @@ Activity: <span id = "selected-activity"></span><span id="activity-cancel"> 💩
       <%= f.text_field :address, :placeholder =>"(i.e., '351 W Hubbard St., Chicago, IL' or 'Millenium Park, Chicago, IL)'", :onFocus => "geolocate()" %>
     </p>
     <p>
+      <%= f.label :max_participants %>
+      <%= f.select :max_participants, options_for_select(max_number_o_participants, :max_participants) %>
+    </p>
+    <p>
       <%= f.submit %>
     </p>
   </div>
 <% end %>
+
 
 <script>
 
@@ -81,3 +86,4 @@ Activity: <span id = "selected-activity"></span><span id="activity-cancel"> 💩
 </script>
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDAvBDiolWNKT2Nn0wteaKxxKPQbk8ocjI&libraries=places&callback=initAutocomplete" async defer>
 </script>
+
