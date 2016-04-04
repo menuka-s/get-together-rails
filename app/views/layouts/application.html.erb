@@ -47,7 +47,7 @@
         method:"GET",
         url:"/users/logout"
       })
-      .done(function(response){ window.location = "/users/logout"});
+      .done(function(response){ window.location = "/"});
     }
   }
 
@@ -134,7 +134,7 @@
           if (response.like_count == 0){
             window.location = "/users/"+ response.user_id + "/interests"
           }else{
-            window.location = "/users/"+ response.user_id
+            window.location = "/events"
           }
         });
 

@@ -50,7 +50,19 @@
   padding: 0px 20px 20px 20px;
 }
 
+@font-face {
+  font-family: 'Variane Script';
+  src:url('Variane Script.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+ .logo-text{
+  font-family: "Variane Script";
+  font-size: 75px;
+ }
+
 .login-header {
+  font-family: "Variane Script";
   font-size: 50px;
 }
 
@@ -63,16 +75,7 @@
   color: white;
 }
 
-@font-face {
-  font-family: 'Variane Script';
-  src:url('Variane Script.ttf') format('truetype');
-  font-weight: normal;
-  font-style: normal;
-}
- .logo-text{
-  font-family: "Variane Script";
-  font-size: 75px;
- }
+
 
 .error-messages {
   color: red;

@@ -13,7 +13,7 @@ class UsersController < ApplicationController
   def new
     if session[:user_id]
       @user = User.find(session[:user_id])
-      render :template => "users/show"
+      render :template => "events/index"
     else
       render "users/new"
     end
