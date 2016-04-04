@@ -1,20 +1,30 @@
-<div class="event-details">
-
+<div class="event-container">
+  <div class = "event-name">
   <h2><%= @event.name %></h2>
   <h4><%= @event.activity.name %></h4>
-  <a href="http://www.facebook.com/app_scoped_user_id/<%= @event.creator.facebook_id %>"> Created by: <%= @event.creator.name %> </a>
-
+</div>
+<div class = "border-line"></div>
+<div id="event-details-map"></div>
+<div class = "border-line"></div>
+<div class = "created-by">Created by:</div>
+<div class = "event-creator">
+  <a href="http://www.facebook.com/app_scoped_user_id/<%= @event.creator.facebook_id %>"><div id = "tiny-image"><img src = <%=current_user.image_url%>></div> <div class = "creator-name"> <%= @event.creator.name %></div></a>
+</div>
+<div class="event-details">
   <h4>When:</h4>
-  <p><%= @event.date %></p>
+  <p><%= @event.date.localtime.strftime("%A, %b %d, %Y at %I:%M %p") %></p>
 
   <h4>Description:</h4>
   <p><%= @event.description %></p>
 
   <h4>Location:</h4>
   <p><%= @event.address %></p>
+</div>
 
-  <h4>Comments:</h4>
+  <div class = "border-line"></div>
+
   <div class="event-comments">
+  <h4>Comments:</h4>
   <% @event.comments.each do |comment| %>
     <div class="comment-item"><%= comment.content %>
       <div class="comment-user-info">
@@ -34,7 +44,7 @@
         <label>Add your comment here:</label>
         <%= f.text_area :content %>
       </p>
-      <p><%= f.submit %></p>
+      <div class = "button" id = "comment-button">Leave Comment</div>
     </div>
       <% end %>
   </div>
@@ -53,7 +63,7 @@
   <% end %>
   <br><br>
 
-  <div id="event-details-map"></div>
+
 
 </div>
 
