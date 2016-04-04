@@ -1,6 +1,3 @@
-<script>
-
-</script>
 <div id="user-activities" style="display:none;"><%=current_user_activities%></div>
 <div class="new-event-header">Create a New Event</div>
 
@@ -17,12 +14,11 @@
     </p>
     <p>
 <div id = "activity-container">
-Activity: <input type = "text" id = "activity" value="">
+Activity: <span id = "selected-activity"></span><span id="activity-cancel"> 💩</span><input type = "text" id = "activity" value="">
 <div id= "suggestions-container">
 </div>
 <input id = "activity-input" type = "hidden" name = "activity_name" value="">
 </div>
-<div id = "activity-display">Selected: <span id = "selected-activity"></span></div>
     </p>
     <p>
       <%= f.label :description %>
