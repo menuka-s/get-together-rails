@@ -29,16 +29,12 @@ class Event < ActiveRecord::Base
   def open?
     if self.joined_users <= self.max_participants
       true
+    end
   end
 
   private
   def event_cannot_be_in_past
-    errors.add(:date, "of event must occur in the future") if
-      !date.blank? && date < Time.now
-    end
+    errors.add(:date, "of event must occur in the future") if !date.blank? && date < Time.now
   end
-
-
-
 
 end

@@ -29,7 +29,7 @@
     </p>
     <p>
       <%= f.label :max_participants %>
-      <%= select_tag :max_participants, options_for_select(max_number_o_participants) %>
+      <%= f.select :max_participants, options_for_select(max_number_o_participants, :max_participants) %>
     </p>
     <p>
       <%= f.submit %>
