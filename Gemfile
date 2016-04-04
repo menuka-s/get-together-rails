@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 #ruby '2.0.0'
 
 
-gem 'puma'
+
 
 # Add geocoding functionality
 gem 'geocoder'
@@ -51,6 +51,7 @@ group :development, :test do
   gem 'rspec-rails'
 end
 group :production do
+  gem 'puma'
   gem 'rails_12factor'
 end
 group :development do
