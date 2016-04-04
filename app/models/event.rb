@@ -9,17 +9,12 @@ class Event < ActiveRecord::Base
   has_many :commenting_users, through: :comments, source: :user
   belongs_to :activity
 
-  #/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/
-
-  #comment this back in after seed, for user functionality
-
   geocoded_by :address
   after_validation :geocode
-  #/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/
 
-  #/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/* UNCOMMENT address TOO
   validates_presence_of :name, :description, :date, :activity_id, :address
   validate :event_cannot_be_in_past
+  validate :event_must_be_within_seven_days
 
   def self.event_locations
     all_event_location_data = []
@@ -30,10 +25,9 @@ class Event < ActiveRecord::Base
   end
 
   def open?
-    if self.joined_users <= self.max_participants
-      true
-    end
+    self.joined_users.to_a.length < self.max_participants ? true : false
   end
+
 
   def push_notification
     pusher_client = Pusher::Client.new(
@@ -52,6 +46,10 @@ class Event < ActiveRecord::Base
   private
   def event_cannot_be_in_past
     errors.add(:date, "of event must occur in the future") if !date.blank? && date < Time.now
+  end
+
+  def event_must_be_within_seven_days
+    errors.add(:date, "of event must occur within 7 days") if !date.blank? && date > Time.now + ((60*60*24*7) + 1)
   end
 
 end

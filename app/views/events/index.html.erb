@@ -20,6 +20,7 @@
               data: {}
         }).done(function(newList) {
           $('.news-feed').empty().append(newList);
+          $('.news-feed-sorting-button').text('Soonest');
           // alert(data.message);
         });
     });
@@ -46,6 +47,11 @@
 <script>
   events = <%= raw @user_appealing_events_by_proximity.to_json.as_json %>
   currentLocation = <%= raw @current_location.as_json %>;
+
+  // Add capitalization function for displaying event names in the map
+  String.prototype.capitalizeFirstLetter = function() {
+    return this.charAt(0).toUpperCase() + this.slice(1);
+  }
 
   // JS for producing google map with marker
   function initMap() {
@@ -78,15 +84,15 @@
 
     for (var i = 0; i < events.length; i++) {
       var event = events[i]
-      var contentString = event[0];
-
+      var contentString = "<a class=google-map-link href=/events/" + event.id + ">" + event.name.capitalizeFirstLetter() + "</a>";
+      // debugger
       var marker = new google.maps.Marker({
         position: { lat: event.latitude, lng: event.longitude },
         map: map,
         icon: image,
         shape: shape,
-        title: event[0],
-        zIndex: event[3],
+        title: event.name,
+        zIndex: event.id,
         info: contentString
       });
 

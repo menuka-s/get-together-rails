@@ -3,18 +3,18 @@ class EventsController < ApplicationController
   include EventsHelper
 
   def index
-    @current_location = [ current_user.latitude, current_user.longitude ]
-    @user_appealing_events = current_user.appealing_events
-    @user_appealing_events_by_date = current_user.appealing_events_by_date
-    @user_appealing_events_by_proximity = current_user.appealing_events_by_proximity
+    @current_location,@user_appealing_events,@user_appealing_events_by_date,@user_appealing_events_by_proximity = index_locals
   end
 
   def index_ajax
-    @current_location = [ current_user.latitude, current_user.longitude ]
-    @user_appealing_events = current_user.appealing_events
-    @user_appealing_events_by_date = current_user.appealing_events_by_date
-    @user_appealing_events_by_proximity = current_user.appealing_events_by_proximity
+    @current_location,@user_appealing_events,@user_appealing_events_by_date,@user_appealing_events_by_proximity = index_locals
     render :'events/_events', :layout => false
+  end
+
+  def index_tiles
+    @current_location,@user_appealing_events,@user_appealing_events_by_date,@user_appealing_events_by_proximity = index_locals
+    @user_appealing_events_by_groups = current_user.appealing_events_by_groups
+    render :'events/tiles'
   end
 
   def show
@@ -44,6 +44,14 @@ class EventsController < ApplicationController
   private
   def event_params
     params.require(:event).permit(:name, :description, :date, :location_name, :address, :activity_id, :max_participants)
+  end
+
+  def index_locals
+    [ [ current_user.latitude, current_user.longitude ],
+        current_user.appealing_events,
+        current_user.appealing_events_by_date,
+        current_user.appealing_events_by_proximity
+    ] 
   end
 
 end
