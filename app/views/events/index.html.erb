@@ -20,6 +20,7 @@
               data: {}
         }).done(function(newList) {
           $('.news-feed').empty().append(newList);
+          $('.news-feed-sorting-button').text('Soonest');
           // alert(data.message);
         });
     });
