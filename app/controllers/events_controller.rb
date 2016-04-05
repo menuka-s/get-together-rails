@@ -32,6 +32,7 @@ class EventsController < ApplicationController
 
   def show
     @event = Event.find(params[:id])
+    @current_location = index_locals[0]
     @comment = Comment.new
   end
 
