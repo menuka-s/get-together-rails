@@ -36,7 +36,7 @@
       </p>
       <p>
         <%= f.label :date %><br>
-        <%= f.datetime_select :date %>
+        <%= f.datetime_select :date, :ampm => true, :minute_step => 15 %>
       </p>
       <p>
         <%= f.label :address %><br>
