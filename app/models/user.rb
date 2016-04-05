@@ -14,7 +14,7 @@ class User < ActiveRecord::Base
   after_initialize :init
 
   def init
-    self.mile_preference ||= 0
+    self.mile_preference ||= 20
   end
 
   def past_events
