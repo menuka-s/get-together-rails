@@ -29,7 +29,7 @@
     });
   </script>
 <div id = "today-events-container" style = "display:none;">
-  <div class = "today-header"><center>Today's Events</center></h1></div>
+  <div class = "today-header"><center>Today's Events</center></div>
   <%current_user.upcoming_events.each do |event|  %>
     <% if event.date.today?%>
     <a href = "/events/<%=event.id%>">
@@ -42,18 +42,20 @@
     <% end %>
   <% end %>
 </div>
-<div class="news-feed-container">
 
+<div class="events-header-container">
   <div class="feed-header">Event Feed</div>
-
   <div class="new-event">
     <%= link_to "Create a New Event", new_event_path %>
   </div>
+</div>
 
+<div class="news-feed-container">
   <div id="all-events-map"></div>
 
   <div class="news-feed-sorting">
-    <span class="news-feed-sorting-switch-text">Sort by: </span><button class="news-feed-sorting-button">Soonest</button>
+    <div class="sort-by"><span class="news-feed-sorting-switch-text">Sorted by: </span><span class="current-sort">Closest</span></div>
+    <div class="sort-click"><span class="news-feed-sorting-switch-text">Click to sort by:  </span><button class="news-feed-sorting-button">Soonest</button></div>
   </div>
 
   <%= render partial: 'events/events', :layout => false %>
@@ -76,7 +78,7 @@
   function initMap() {
 
     var map = new google.maps.Map(document.getElementById('all-events-map'), {
-      zoom: 12,
+      zoom: 14,
       center: {lat: currentLocation[0], lng: currentLocation[1]}
     });
     pmap = map;
@@ -158,8 +160,10 @@
 
       if($(this).text() === 'Soonest') {
         $(this).text('Closest');
+        $('.current-sort').text('Soonest');
       } else {
         $(this).text('Soonest');
+        $('.current-sort').text('Closest');
       }
     });
   });
