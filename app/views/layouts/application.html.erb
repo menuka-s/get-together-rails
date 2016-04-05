@@ -143,13 +143,136 @@
   }
 </script>
 
+
+<style>
+html, body {
+   height: 100%;
+}
+
+#container {
+   display: flex;
+   min-height: 100%;
+}
+#containerx {
+   display: flex;
+   /*z-index: 3;*/
+
+}
+input[type=checkbox] {
+   position: absolute;
+   opacity: 0;
+}
+label {
+   position: absolute;
+   top: 10px;
+   left: 40px;
+   /*z-index: 3;*/
+   display: block;
+   font-size:3em;
+   color: #444;
+   cursor: pointer;
+   transform: translate3d(0, 0, 0);
+   transition: transform .4s;
+}
+input[type=checkbox]:checked ~ label {
+   transform: translate3d(250px, 0, 0) rotate(90deg);
+}
+.content {
+   width:100%;
+   padding: 40px;
+   background: #f2f2f2;
+   transform: translate3d(0, 0, 0);
+   transition: transform .4s;
+}
+input[type=checkbox]:checked ~ .content {
+   transform: translate3d(250px, 0, 0);
+}
+input[type=checkbox]:checked ~ .slide-menu {
+   transform: translate3d(0, 0, 0);
+}
+input[type=checkbox]:checked ~ .slide-menu .menu li {
+   width: 100%;
+}
+.slide-menu {
+   transform: translate3d(-250px, 0, 0);
+   position: absolute;
+   top: ;
+   width: 250px;
+   background: #00695C;
+   color: #ddd;
+   left: 0;
+   height: 100%;
+   transition: all .4s;
+}
+.slide-menu h1 {
+   margin: 10px;
+   text-shadow: 1px 1px 1px #000;
+}
+.menu {
+  position: relative;
+  /*top: 43px;*/
+   list-style: none;
+   padding: 0;
+   margin: 0;
+}
+.menu a {
+   display: block;
+   text-decoration: none;
+   color: #fff;
+   font-size: 1.1em;
+   padding: 15px;
+   background: linear-gradient(#037B6E, #00695C);
+   border-bottom: 1px solid #1e222b;
+   box-shadow: inset 0px 1px 1px #8b9db3;
+}
+
+.menu div {
+   display: block;
+   text-decoration: none;
+   color: #fff;
+   font-size: 1.1em;
+   padding: 15px;
+   background: #00695C;
+}
+
+.menu a:hover {
+   background: linear-gradient(#00695C, #00695C);
+   box-shadow: inset 0px 1px 1px #475059;
+}
+</style>
+
+
+
+
   <% if session[:user_id] != nil %>
 
-    <div id = "header">
+<div id="containerx"  style="z-index: -1;">
+  <input id="toggle" type="checkbox"><label for="toggle">&equiv;</label>
+
+  <div class="slide-menu" style="z-index: 4;">
+      
+    <nav class="menu" style="font-family:verdana;">
+      <li><div id = "profile-circle"><img  src = <%=current_user.image_url%>></div></li>
+      <li><a href="/">HOME</a></li>
+      <li><%= link_to 'PROFILE PAGE', current_user %></li>
+      <li><a href="/events">INTERESTING EVENTS</a></li>
+      <li><a href="/events/new">CREATE A NEW EVENT</a></li>
+      <li>
+        <div class="fb-logout">
+          <fb:login-button autologoutlink="true" scope="public_profile,email" onlogin="checkLoginState();">
+          </fb:login-button>
+       </div>
+      </li>
+    </nav>
+  </div>
+</div>
+
+
+    <div id = "header" style="z-index:-2;">
       <div class = "logo-header" style = "font-size: 75px;">
         <a href="/">Get Together</a>
       </div>
-      <div id = "profile-circle"><a href="/users/<%=current_user.id%>"><img src = <%=current_user.image_url%>></a></div>
+    
     </div>
 
   <% end %>

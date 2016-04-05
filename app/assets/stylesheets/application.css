@@ -216,11 +216,7 @@ vertical-align: middle;
   padding: 0;
 }
 
-#profile-circle{
-  position: absolute;
-  right: 10px;
-  top: 0px;
-}
+
 
 #profile-circle img{
   padding: 10px;
