@@ -327,6 +327,7 @@ vertical-align: middle;
 width: 80%;
 display:block;
 margin: auto;
+margin-top: 20px;
 }
 .category-interest-buttons{
   width: 100%;
@@ -343,6 +344,7 @@ margin: auto;
 }
 
 .category_interest_button{
+  font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
   padding: 0px;
   color:white;
   background-color: Transparent;
@@ -350,7 +352,7 @@ margin: auto;
   display:inline-block;
   width:100%;
   height: 50px;
-  font-size: 20px;
+  font-size: 30px;
   overflow: hidden;
 }
 .activity-toggle{
@@ -359,6 +361,8 @@ margin: auto;
   top: 0px;
   right: 0px;
   padding: 0px;
+  font-size: 30px;
+  font-weight: 200;
   color:white;
   background-color: Transparent;
   border: none;
@@ -367,9 +371,31 @@ margin: auto;
   text-align: center;
   overflow: hidden;
 }
-
+#defer-interests{
+  font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+  text-align: center;
+  font-style: italic;
+  font-size: 20px;
+}
+#interests-welcome{
+  margin-top: 15px;
+font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+font-style: italic;
+font-weight: 300;
+color: black;
+font-size: 50px;
+text-align: center;
+}
+#save-interests{
+  text-align: center;
+}
+#interests-header{
+  padding-top: 10px;
+  font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+  text-align: center;
+}
 .activity-interest-box{
-
+font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
 }
 
 .activity-interest-button{
