@@ -11,6 +11,12 @@ class User < ActiveRecord::Base
   has_many :users_categories
   has_many :liked_categories, through: :users_categories, source: :category
 
+  after_initialize :init
+
+  def init
+    self.mile_preference ||= 0
+  end
+
   def past_events
     @past_events = self.joined_events.where("date < ?", Time.now) + self.created_events.where("date < ?", Time.now)
     return @past_events.sort{|eventa, eventb| eventa.date <=> eventb.date}
@@ -29,8 +35,10 @@ class User < ActiveRecord::Base
 
     activities.each do |activity|
       activity.events.each do |event|
-        if event.date > Time.now
-          @all_event_data << event
+        if !event.longitude.nil?
+          if event.date > Time.now && event.distance_to_user([self.latitude, self.longitude]) <= self.mile_preference.to_f
+            @all_event_data << event
+          end
         end
       end
     end
