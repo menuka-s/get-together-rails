@@ -1,7 +1,9 @@
   $(document).ready(function(){
+    debugger;
     var userActivities = $("#user-activities").text();
     var activitiesArray = userActivities.split(',');
     $("#activity").keyup(function(){
+      debugger;
       $("#suggestions-container").empty();
       var userInput = $("#activity").val();
       var searchString = new RegExp(userInput, "gi");
@@ -22,6 +24,7 @@
       }
     });
     $("#suggestions-container").on("click", ".activity-suggestion", function(){
+      debugger;
       $("#activity").val("");
       $("#activity").toggle();
       $("#activity-cancel").toggle();
@@ -35,6 +38,7 @@
       window.location.assign("/activities/new")
     });
     $("#activity-container").on("click", "#activity-cancel", function(){
+      debugger;
       $("#activity-cancel").toggle();
       $("#selected-activity").text("");
        $("#activity").toggle();
@@ -45,6 +49,7 @@
     //   }
     // });
     $("#comment-button").on("click", function(){
+      debugger;
       if ($("#comment_content").val()!=""){
       var commentText = $("#comment_content").val();
       var eventId = $("#event-id").text();
@@ -59,4 +64,7 @@
         // console.log(comment);
       })}
     });
+
+
+
   });
