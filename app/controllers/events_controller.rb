@@ -38,6 +38,7 @@ class EventsController < ApplicationController
 
   def new
     @event = Event.new
+    @activity = Activity.new
     @activities = Activity.all
   end
 
