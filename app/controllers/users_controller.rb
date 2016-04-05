@@ -51,7 +51,7 @@ class UsersController < ApplicationController
       UsersCategory.create(user_id: @user.id, category_id: category.id)
     end
     @user.disliked_activities.delete_all
-    redirect_to @user
+    redirect_to "/"
   end
 
   def create
