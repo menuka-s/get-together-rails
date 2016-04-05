@@ -13,7 +13,10 @@
  *= require_tree .
  *= require_self
  */
+*{
 
+  font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+}
  body {
   margin: 0;
   padding: 0;
@@ -21,6 +24,7 @@
 
 .new-event-form{
   padding-left: 10px;
+
 }
 .new-event-container{
   margin: 0 auto;
@@ -65,7 +69,6 @@
 
 .event-creator{
   text-align: center;
-  font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
   font-weight: 200;
 
 }
@@ -84,13 +87,11 @@
 }
 
 .today-header{
-  font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
   font-weight: 200;
   font-size: 40px;
 }
 
 .event-details{
-  font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
   font-weight: 200;
   margin-left: 5%;
   text-align: left;
@@ -98,7 +99,6 @@
 
 .created-by{
   text-align: center;
-  font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
   font-weight: 200;
 }
 #tiny-image{
@@ -115,27 +115,23 @@ vertical-align: middle;
 }
 
 .feed-header{
-  font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
 
   font-size: 50px;
   margin-bottom: 10px;
 }
 
 .event-name h4{
-  font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
   font-weight: 200;
 }
 
 .event-name h2{
   margin: 0;
   text-align: left;
-  font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
   font-weight: 200;
   font-size: 30px;
 }
 
 .event-comments{
-  font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
   font-weight: 200;
   margin-left: 5%;
 }
@@ -197,7 +193,6 @@ vertical-align: middle;
   height: 30px;
   background-color: #00695C;
   border-radius: 5px;
-  font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
   font-weight: 200;
   padding-left: 10px;
   padding-right: 10px;
@@ -223,7 +218,6 @@ vertical-align: middle;
   height: 30px;
   background-color: #00695C;
   border-radius: 5px;
-  font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
   font-weight: 200;
   padding-left: 10px;
   padding-right: 10px;
@@ -237,7 +231,8 @@ vertical-align: middle;
   top: 0px;
   background: url("http://chicagopolicyreview.org/wp-content/uploads/2015/09/Chicago-Architecture.jpg");
   width: 100%;
-  height: 72em;
+  overflow: hidden;
+  height: 100%;
   margin: 0 auto;
   padding: 0;
 }
@@ -274,16 +269,6 @@ vertical-align: middle;
   padding: 0px 20px 20px 20px;
 }
 
-@font-face {
-  font-family: 'Variane Script';
-  src:url('Variane Script.ttf') format('truetype');
-  font-weight: normal;
-  font-style: normal;
-}
- .logo-text{
-  font-family: "Variane Script";
-  font-size: 75px;
- }
 .main-header img{
   margin: 0 auto;
   width: 600px;
@@ -316,7 +301,17 @@ vertical-align: middle;
   height: 150px;
 }
 
+#page-footer {
 
+  width: 100%;
+  position: relative;
+  font-size: 18px;
+  text-align: center;
+  background-color: #00695C;
+  color: white;
+  height: 150px;
+  margin-top: 20px;
+}
 
 .error-messages {
   color: red;
@@ -344,7 +339,6 @@ margin-top: 20px;
 }
 
 .category_interest_button{
-  font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
   padding: 0px;
   color:white;
   background-color: Transparent;
@@ -372,7 +366,6 @@ margin-top: 20px;
   overflow: hidden;
 }
 #defer-interests{
-  font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
   text-align: center;
   font-style: italic;
   font-size: 20px;
@@ -380,7 +373,6 @@ margin-top: 20px;
 #interests-welcome{
   color: #2b2b2b;
   margin-top: 15px;
-font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
 font-style: italic;
 font-weight: 300;
 color: black;
@@ -391,8 +383,8 @@ text-align: center;
   text-align: center;
 }
 #event-radius-preference-container{
+  display: inline-block;
   text-align: center;
-  font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
 }
 .edit_user{
   display: inline-block;
@@ -404,11 +396,9 @@ background: transparent;
 #interests-header{
   color: #424242;
   padding-top: 10px;
-  font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
   text-align: center;
 }
 .activity-interest-box{
-font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
 }
 
 .activity-interest-button{
@@ -450,7 +440,6 @@ font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", He
 
 #today-events-container{
   max-width: 575px;
-  font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
   margin: 0 auto;
   margin-top: 20px;
   padding: 10px;
@@ -505,8 +494,11 @@ font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", He
   text-align: right;
 }
 
+#user_settings {
+  border: 1px dotted gray;
+}
+
 .user-profile{
-  font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
 }
 .user-name{
   padding: 10px;

@@ -4,10 +4,20 @@ class UsersController < ApplicationController
   def index
   end
 
-
-
   def show
     @user = User.find(params[:id])
+  end
+
+  def public_show
+    if params[:id] == current_user.id
+      redirect_to "/users/" + current_user.id
+    end
+    @user = User.find(params[:id])
+    @users_activities = Activity.all - @user.disliked_activities
+    @user = User.find(21)
+    @users_activities = Activity.all - @user.disliked_activities
+
+    render :'/users/public'
   end
 
   def new
@@ -41,7 +51,7 @@ class UsersController < ApplicationController
       UsersCategory.create(user_id: @user.id, category_id: category.id)
     end
     @user.disliked_activities.delete_all
-    redirect_to @user
+    redirect_to "/"
   end
 
   def create
@@ -130,5 +140,28 @@ class UsersController < ApplicationController
       render json: "error"
     end
   end
+
+  def priv_f
+    user = User.find(current_user.id)
+    if user.show_future_events == true
+      user.show_future_events = false
+    else
+      user.show_future_events = true
+    end
+    user.save
+    render json: {"status" => user.show_future_events}
+  end
+
+  def priv_p
+    user = User.find(current_user.id)
+    if user.show_past_events == true
+      user.show_past_events = false
+    else
+      user.show_past_events = true
+    end
+    user.save
+    render json: {"status" => user.show_past_events}
+ end
+
 
 end

@@ -12,21 +12,55 @@
 
 <div class = "border-line"></div>
 
-<div id="event-radius-preference-container">
-  <span>See Events within</span>
-  <%= form_for @user do |f| %>
-    <%= f.collection_select :mile_preference, [1,2,5,10,15,20,50,100,200], :to_i, :to_i, include_blank: false %> miles
-  <% end %>
+<!--
+<script>
+$(document).ready(function(){
+  $('#priv_future').on('click',function(){
+    $.ajax({url: "/users/priv_f", method: "post"});
+  });
+    $('#priv_past').on('click',function(){
+    $.ajax({url: "/users/priv_f", method: "post"});
+  });
+});
+</script>
+--> 
+
+<div id="user_settings">
+  <center>
+    <div id="privacy_settings">
+      <% future_checked = "" %>
+      <% past_checked = "" %>
+      <% if @user.show_future_events == true %>
+        <% future_checked = "checked" %>
+      <% end %>
+
+      <% if @user.show_past_events == true %>
+        <% past_checked = "checked" %>
+      <% end %>
+      Publicly Display My Created Events: 
+
+      Future: <input style="position: relative; opacity: 1" id="priv_future" type="checkbox" <%= future_checked %> onClick='$.ajax({url: "/users/priv_f", method: "post"});'>&nbsp;&nbsp;
+      Past: <input style="position: relative; opacity: 1"  id="priv_past"  type="checkbox"  <%= past_checked %> onClick='$.ajax({url: "/users/priv_p", method: "post"});'>
+    </div>
+
+    <div id="event-radius-preference-container">
+      <span>See Events within</span>
+      <%= form_for @user do |f| %>
+        <%= f.collection_select :mile_preference, [1,2,5,10,15,20,50,100,200], :to_i, :to_i, include_blank: false %> miles
+      <% end %>
+    </div>
+    </center>
 
 </div>
+
 
 <div id = "categories-container">
   <%=render partial: 'interests/show'  %>
 </div>
 
-<div id = "save-interests"><a class="button" href="/users/<%= @user.id %>">Save Interests</a></div>
+<div id = "save-interests"><a class="button" href="/">Save Interests</a></div>
 
-
+<div id = "page-footer"></div>
 <script>
   $(document).ready(function() {
     $('#user_mile_preference').change(function() {
