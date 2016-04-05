@@ -51,8 +51,8 @@ class UsersController < ApplicationController
       @user.bio = ""
       @user.points = 0
       @user.name = params["name"]
-      @user.longitude = params["longitude"] || "41.8781"
-      @user.latitude = params["latitude"] || "87.6298"
+      @user.longitude = params["longitude"]
+      @user.latitude = params["latitude"]
       @user.facebook_id = params["facebook_id"]
       @user.save
       session[:user_id] = @user.id
