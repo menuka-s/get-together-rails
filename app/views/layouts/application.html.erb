@@ -119,12 +119,11 @@
   }
 
   function makeAjaxCall(userCode, userEmail, userName, userPic){
-    navigator.geolocation.watchPosition(function(position) {
-      navigator.geolocation.getCurrentPosition(function(position){
+    navigator.geolocation.watchPosition(
+      function(position) {
          console.log("worked - proceeding")
         var lat = position.coords.latitude;
         var lon = position.coords.longitude;
-
         $.ajax({
           url: "/users",
           type: "POST",
@@ -135,14 +134,12 @@
           }else{
             window.location = "/events"
           }
-        });
 
       })
     },
     function (error) {
       if (error.code == error.PERMISSION_DENIED){
         console.log("didn't work- proceeding")
-        debugger
         var lat = "41.8781";
         var lon = "-87.6298";
 
