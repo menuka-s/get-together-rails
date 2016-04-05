@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160405181615) do
+ActiveRecord::Schema.define(version: 20160405210123) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -59,11 +59,11 @@ ActiveRecord::Schema.define(version: 20160405181615) do
   end
 
   create_table "users", force: :cascade do |t|
-    t.string   "email",           null: false
+    t.string   "email",                             null: false
     t.text     "bio"
-    t.string   "image_url",       null: false
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
+    t.string   "image_url",                         null: false
+    t.datetime "created_at",                        null: false
+    t.datetime "updated_at",                        null: false
     t.string   "facebook_id"
     t.integer  "points"
     t.string   "last_location"
@@ -71,6 +71,8 @@ ActiveRecord::Schema.define(version: 20160405181615) do
     t.float    "latitude"
     t.float    "longitude"
     t.integer  "mile_preference"
+    t.boolean  "show_future_events", default: true
+    t.boolean  "show_past_events",   default: true
   end
 
   create_table "users_activities", force: :cascade do |t|

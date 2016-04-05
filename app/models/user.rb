@@ -69,6 +69,18 @@ class User < ActiveRecord::Base
     groups
   end
 
+  def created_events_by_date
+    self.created_events.sort_by { |event| event.date }
+  end
+
+  def created_events_by_date_future
+    self.created_events.where("date > ?", Time.now).sort_by { |event| event.date }
+  end
+
+  def created_events_by_date_past
+    self.created_events.where("date < ?", Time.now).sort_by { |event| event.date }
+  end
+
   def appealing_events_by_date
     @all_event_data = self.appealing_events if @all_event_data.nil?
     @all_event_data.sort_by { |event| event.date }
