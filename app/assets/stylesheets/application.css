@@ -302,10 +302,11 @@ margin: auto;
 .category-box{
   position: relative;
   padding: 0px;
-  color:white;
+  color: white;
   background-color: black;
   border: 2px solid gray;
   overflow: hidden;
+  border-radius: 15px;
 }
 
 .category_interest_button{
@@ -320,13 +321,14 @@ margin: auto;
   overflow: hidden;
 }
 .activity-toggle{
+  text-decoration: none;
   position: absolute;
   top: 0px;
   right: 0px;
   padding: 0px;
   color:white;
   background-color: Transparent;
-  border:none;
+  border: none;
   width:10%;
   height: 50px;
   text-align: center;
@@ -334,13 +336,14 @@ margin: auto;
 }
 
 .activity-interest-box{
-  border: 1px solid black;
+
 }
 
 .activity-interest-button{
   border: 1px solid gray;
   display: inline-block;
   margin: 5px;
+  border-radius: 10px;
 }
 
 #activity-container{
