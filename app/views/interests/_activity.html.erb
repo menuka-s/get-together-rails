@@ -1,7 +1,7 @@
 <div class = "activity-box-for-cat<%=category.id%> activity-interest-box" >
   <%activities.each do  |activity|%>
     <% if dislikes_this?(activity, @user) %>
-      <button style = "background-color: #f6f6f6; color: #00695C"
+      <button style = "background-color: #f6f6f6; color: #939393; font-style:italic;"
         class = "activity<%=activity.id%> activity-interest-button"
         value = "r,<%=@user.id%>,<%=activity.id%>">
         <%= activity.name %>

@@ -9,7 +9,7 @@ class UsersController < ApplicationController
   end
 
   def public_show
-    if params[:id] == current_user.id 
+    if params[:id] == current_user.id
       redirect_to "/users/" + current_user.id
     end
     @user = User.find(params[:id])
@@ -51,7 +51,7 @@ class UsersController < ApplicationController
       UsersCategory.create(user_id: @user.id, category_id: category.id)
     end
     @user.disliked_activities.delete_all
-    redirect_to @user
+    redirect_to "/"
   end
 
   def create
@@ -145,7 +145,7 @@ class UsersController < ApplicationController
     user = User.find(current_user.id)
     if user.show_future_events == true
       user.show_future_events = false
-    else 
+    else
       user.show_future_events = true
     end
     user.save
@@ -156,7 +156,7 @@ class UsersController < ApplicationController
     user = User.find(current_user.id)
     if user.show_past_events == true
       user.show_past_events = false
-    else 
+    else
       user.show_past_events = true
     end
     user.save
