@@ -2,51 +2,47 @@
   $(document).ready(function() {
     $(".activity-interest-box").hide();
     $('#category-interest-buttons').on("click",".category_interest_button",function(e) {
-      console.log("Button: " + $(this).val());
       ajaxReq = $.ajax({
                 url: '/users/interests_handler',
                 method: 'post',
                 data: {"data":$(this).val()},
                 dataType: 'json',
-              });
-      ajaxReq.done(function(response){
+              }).done(function(response){
         var category = response["category_id"];
         if (response["action"] == 'a') {
           $("#category" + category).val("r," + response["user_id"] + "," + category)
-          bgc = "#000";
+          bgc = "#00695C";
           bgco = "#f6f6f6";
+          $(".activity-box-for-cat" + category).show();
+          $('#toggle'+category).text("⬆")
         } else {
           $("#category" + category).val("a," + response["user_id"] + "," + category)
           bgc = "#f6f6f6";
-          bgco = "#000"
+          bgco = "#00695C"
+          $(".activity-box-for-cat" + category).hide();
         }
-        console.log("bgc is " + bgc);
         $("#category-box" + category).css("background-color",bgc);
         $("#category-box" + category + " .activity-toggle").toggle();
         $("#category-box" + category + " .category_interest_button").css("color",bgco);
-        $(".activity-box-for-cat" + category).hide();
-
-      })
-    })
+      });
+    });
 
     $('.activity-interest-box').on("click", ".activity-interest-button", function(e) {
-      console.log("aButton: " + $(this).val());
       ajaxReq = $.ajax({
         url: '/users/activity_dislikes_handler',
         method: 'post',
         data: {"data":$(this).val()},
         dataType: 'json',
-      })
-      ajaxReq.done(function(response){
+      }).done(function(response){
         var activityId = response["activity_id"];
         if (response["action"] == 'r') {
           $(".activity" + activityId).val("a," + response["user_id"] + "," + activityId);
-          bgcolor = "#000";
+          bgcolor = "#00695C";
           txtcolor = "#f6f6f6";
         } else {
           $(".activity" + activityId).val("r," + response["user_id"] + "," + activityId);
           bgcolor = "#f6f6f6";
-          txtcolor = "#000";
+          txtcolor = "#00695C";
         }
         $(".activity" + activityId).css("background-color",bgcolor);
         $(".activity" + activityId).css("color",txtcolor);
@@ -56,14 +52,12 @@
   });
 
   function toggleActivity(id) {
-
     $('.activity-box-for-cat' + id).toggle();
     if ($('#toggle'+id).text() == "⬇") {
       $('#toggle'+id).text("⬆")
     } else {
       $('#toggle'+id).text("⬇")
     };
-    // console.log(x);
   };
 
   </script>
@@ -72,34 +66,33 @@
 <div class="category-interest-buttons">
     <div id="category-interest-buttons">
     <% @categories.each do |category| %>
-      <% if is_interested?(category,@user) %>
-      <div class = "category-box" id = "category-box<%=category.id%>">
-        <button
-            id = "category<%= category.id %>"
-            class = "category_interest_button"
-            value = "r,<%=@user.id%>,<%=category.id %>"
-             >
-          <%=category.name %>
-        </button>
-        <button class = "activity-toggle" id = "toggle<%=category.id%>"onClick="toggleActivity(<%=category.id %>)">⬇</button>
-      </div>
-         <%=render partial: 'interests/activity', locals: {activities: category.associated_activities, category: category} %>
-      <% else %>
-      <div style="background-color: white;" class = "category-box" id = "category-box<%=category.id%>">
-        <button
-          style="color: black;"
-            id = "category<%= category.id %>"
-            class = "category_interest_button"
-            value = "a,<%=@user.id%>,<%=category.id %>"
-            >
-          <%=category.name %>
-        </button>
-         <button class = "activity-toggle" id = "toggle<%=category.id%>"onClick="toggleActivity(<%=category.id %>)" >⬇</button>
-      </div>
-        <%=render partial: 'interests/activity', locals: {activities: category.associated_activities, category: category} %>
-        <script>$("#toggle<%=category.id%>").toggle();$(".activity-box-for-cat<%=category.id%>").hide();</script>
-
-      <% end %>
+        <% if is_interested?(category,@user) %>
+            <div  style="background-color: #00695C;" class = "category-box" id = "category-box<%=category.id%>">
+              <button
+                id = "category<%= category.id %>"
+                class = "category_interest_button"
+                value = "r,<%=@user.id%>,<%=category.id %>"
+                 >
+                <%=category.name %>
+              </button>
+              <button class = "activity-toggle" id = "toggle<%=category.id%>"onClick="toggleActivity(<%=category.id %>)">⬇</button>
+            </div>
+            <%=render partial: 'interests/activity', locals: {activities: category.associated_activities, category: category} %>
+        <% else %>
+            <div style="background-color: white;" class = "category-box" id = "category-box<%=category.id%>">
+              <button
+                style="color: #00695C;"
+                  id = "category<%= category.id %>"
+                  class = "category_interest_button"
+                  value = "a,<%=@user.id%>,<%=category.id %>"
+                  >
+              <%=category.name %>
+              </button>
+              <button class = "activity-toggle" id = "toggle<%=category.id%>"onClick="toggleActivity(<%=category.id %>)" >⬇</button>
+            </div>
+            <%=render partial: 'interests/activity', locals: {activities: category.associated_activities, category: category} %>
+            <script>$("#toggle<%=category.id%>").toggle();$(".activity-box-for-cat<%=category.id%>").hide();</script>
+        <% end %>
       <br>
     <% end %>
     <a class="aButton" style="margin-left: -3.1em; height: 20px; width: 300px;" href="/users/<%= @user.id %>">SAVE INTERESTS</a>
