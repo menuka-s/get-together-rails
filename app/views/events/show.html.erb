@@ -27,7 +27,7 @@
     <% end %>
   </p>
   <% if @event.max_participants == 0 %>
-    <h4><span id="spots">Unlimited Spots</span></h4>
+    <h4><span id="spots">Unlimited Spots Available</span></h4>
   <% else %>
     <h4><span id="spots"><%=@event.max_participants - @event.joined_users.count %></span> Spot(s) Left</h4>
   <% end %>
@@ -57,10 +57,9 @@
     <div class="comment-item">
 
       <div class="comment-user-info">
-        <a href="link_to path"><div class = "comment-user-image"><img src = <%=comment.user.image_url%>></div>
 
+        <a href="/users/<%= comment.user.id %>"><div class = "comment-user-image"><img src = <%=comment.user.image_url%>></div>
         <div class = "comment-name"><%= comment.user.name %></div></a>
-
         <% if comment.user.id == current_user.id %>
           <div class= "delete-button">
             <%= link_to "x", event_comment_path( @event.id, comment.id  ), method: :delete, :class => "delete-link" %>
