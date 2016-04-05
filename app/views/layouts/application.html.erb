@@ -169,12 +169,12 @@ input[type=checkbox] {
    /*z-index: 3;*/
    display: block;
    font-size:3em;
-   color: #444;
+   color: #FFF;
    cursor: pointer;
    transform: translate3d(0, 0, 0);
    transition: transform .4s;
 }
-input[type=checkbox]:checked ~ label {
+input[type=checkbox]:checked ~ #hamburger{
    transform: translate3d(250px, 0, 0) rotate(90deg);
 }
 .content {
@@ -246,7 +246,7 @@ input[type=checkbox]:checked ~ .slide-menu .menu li {
 
   <% if session[:user_id] != nil %>
 
-<div id="containerx"  style="z-index: -1;">
+<div id="containerx"  style="z-index: 4;">
   <input id="toggle" type="checkbox"><label id="hamburger" for="toggle">&equiv;</label>
 
   <div class="slide-menu" style="z-index: 4;">
