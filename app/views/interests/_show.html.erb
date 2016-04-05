@@ -39,13 +39,16 @@
           $(".activity" + activityId).val("a," + response["user_id"] + "," + activityId);
           bgcolor = "#00695C";
           txtcolor = "#f6f6f6";
+          style = "";
         } else {
           $(".activity" + activityId).val("r," + response["user_id"] + "," + activityId);
           bgcolor = "#f6f6f6";
-          txtcolor = "#00695C";
+          txtcolor = "#939393";
+          style = "italic"
         }
         $(".activity" + activityId).css("background-color",bgcolor);
         $(".activity" + activityId).css("color",txtcolor);
+        $(".activity" + activityId).css("font-style",style);
       });
     });
 
