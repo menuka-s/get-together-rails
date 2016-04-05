@@ -1,30 +1,31 @@
 <script src="https://js.pusher.com/3.0/pusher.min.js"></script>
 
-<%= @user.email %>
+<% if params[:skip] %>
+  <div id = "interests-welcome">Welcome to Get Together!</div>
+<% end %>
+
+<div id="interests-header"><h3>SELECT YOUR EVENT CATEGORIES AND SUB-ACTIVITIES</h3></div>
+
+<% if params[:skip] %>
+  <div id = "defer-interests"><a href = "/users/<%=@user.id%>/allinterests">or skip for now...</a></div>
+<% end %>
+
+<div class = "border-line"></div>
 
 <div id="event-radius-preference-container">
-  <h3>Within How Many Miles You'd Like to See Events For</h3>
-
+  <span>See Events within</span>
   <%= form_for @user do |f| %>
-    <%= f.label :mile_preference %>
-    <%= f.collection_select :mile_preference, [1,2,5,10,15,20,50,100,200], :to_i, :to_i, include_blank: false %>
+    <%= f.collection_select :mile_preference, [1,2,5,10,15,20,50,100,200], :to_i, :to_i, include_blank: false %> miles
   <% end %>
 
 </div>
 
-<center>
-	<div style="font-family: verdana;" id="interests-header"><h3>SELECT YOUR EVENT CATEGORIES AND SUB-ACTIVITIES</h3></div>
-</center>
 <div id = "categories-container">
   <%=render partial: 'interests/show'  %>
-
 </div>
 
-<% if params[:skip] %>
-  <div id="defer-interests">
-    <a href="/users/<%=@user.id%>/allinterests">Skip for now</a>
-  </div>
-<% end %>
+<div id = "save-interests"><a class="button" href="/users/<%= @user.id %>">Save Interests</a></div>
+
 
 <script>
   $(document).ready(function() {

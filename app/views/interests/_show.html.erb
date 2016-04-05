@@ -14,7 +14,7 @@
           bgc = "#00695C";
           bgco = "#f6f6f6";
           $(".activity-box-for-cat" + category).show();
-          $('#toggle'+category).text("⬆")
+          $('#toggle'+category).text("-")
         } else {
           $("#category" + category).val("a," + response["user_id"] + "," + category)
           bgc = "#f6f6f6";
@@ -53,10 +53,10 @@
 
   function toggleActivity(id) {
     $('.activity-box-for-cat' + id).toggle();
-    if ($('#toggle'+id).text() == "⬇") {
-      $('#toggle'+id).text("⬆")
+    if ($('#toggle'+id).text() == "+") {
+      $('#toggle'+id).text("-")
     } else {
-      $('#toggle'+id).text("⬇")
+      $('#toggle'+id).text("+")
     };
   };
 
@@ -78,7 +78,7 @@ button:focus {outline:0;}
                  >
                 <%=category.name %>
               </button>
-              <button class = "activity-toggle" id = "toggle<%=category.id%>"onClick="toggleActivity(<%=category.id %>)">⬇</button>
+              <button class = "activity-toggle" id = "toggle<%=category.id%>"onClick="toggleActivity(<%=category.id %>)">+</button>
             </div>
             <%=render partial: 'interests/activity', locals: {activities: category.associated_activities, category: category} %>
         <% else %>
@@ -91,13 +91,14 @@ button:focus {outline:0;}
                   >
               <%=category.name %>
               </button>
-              <button class = "activity-toggle" id = "toggle<%=category.id%>" onClick="toggleActivity(<%=category.id %>);" >⬇</button>
+
+              <button class = "activity-toggle" id = "toggle<%=category.id%>"onClick="toggleActivity(<%=category.id %>)" >+</button>
             </div>
             <%=render partial: 'interests/activity', locals: {activities: category.associated_activities, category: category} %>
             <script>$("#toggle<%=category.id%>").toggle();$(".activity-box-for-cat<%=category.id%>").hide();</script>
         <% end %>
       <br>
     <% end %>
-    <a class="aButton" style="margin-left: -3.1em; height: 20px; width: 300px;" href="/users/<%= @user.id %>">SAVE INTERESTS</a>
+
     </div>
   </div>
