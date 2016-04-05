@@ -15,13 +15,17 @@
         <%= f.text_field :name %>
       </p>
       <p>
-      <div id = "activity-container">
-        Activity:<br>
-        <span id = "selected-activity"></span>
-        <span id="activity-cancel"> 💩</span>
-        <input type = "text" id = "activity" value="">
-        <div id= "suggestions-container"></div>
-          <input id = "activity-input" type = "hidden" name = "event[activity_name]" value = "<%=@event.activity.name unless @event.activity.nil? %>">
+        <div id = "activity-container">
+          Activity:<br>
+          <span id = "selected-activity"></span>
+          <span id="activity-cancel"> 💩</span>
+          <input type = "text" id = "activity" value="">
+          <div id= "suggestions-container"></div>
+            <input id = "activity-input" type = "hidden" name = "event[activity_name]" value = "<%=@event.activity.name unless @event.activity.nil? %>">
+        </div>
+
+        <div>
+
         </div>
       </p>
       <p>
@@ -36,7 +40,7 @@
       </p>
       <p>
         <%= f.label :date %><br>
-        <%= f.datetime_select :date %>
+        <%= f.datetime_select :date, :ampm => true, :minute_step => 15, :start_year => 2016, :end_year => 2016 %>
       </p>
       <p>
         <%= f.label :address %><br>
@@ -56,7 +60,7 @@
 <script>
 
   // Prevents form from submitting when pressing enter
-  $('.new-event-form').on('keyup keypress', function(e) {
+  $('#event_address').on('keyup keypress', function(e) {
     var keyCode = e.keyCode || e.which;
     if (keyCode === 13) {
       e.preventDefault();

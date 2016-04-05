@@ -8,12 +8,13 @@ class ActivitiesController < ApplicationController
     if @activity.save
       redirect_to new_event_path
     else
+      # repopulate with the categories when name is empty
       render new_activity_path(@activity)
     end
   end
 
   private
   def activity_params
-    params.require(:activity).permit(:name)
+    params.require(:activity).permit(:name, :all_categories)
   end
 end

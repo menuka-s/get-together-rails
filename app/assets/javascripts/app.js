@@ -40,6 +40,9 @@
       $("#suggestions-container").on("click", "#new-activity", function(){
         window.location.assign("/activities/new")
 
+        // reveals a div that contains all the categories
+        // sends an ajax request
+
       });
 
       // $(document).on("click", function(){
