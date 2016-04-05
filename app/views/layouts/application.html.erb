@@ -156,14 +156,7 @@
 
   <%= yield %>
 
-<div id = "footer">
-  <% if session[:user_id] != nil %>
-    <center><div class="fb-logout">
-      <fb:login-button autologoutlink="true" scope="public_profile,email" onlogin="checkLoginState();">
-      </fb:login-button>
-    </div></center>
-  <% end %>
-</div>
+
 
 
 
