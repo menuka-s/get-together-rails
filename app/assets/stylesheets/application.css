@@ -19,6 +19,25 @@
   padding: 0;
  }
 
+.new-event-form{
+  padding-left: 10px;
+}
+.new-event-container{
+  margin: 0 auto;
+}
+
+.new-event-header{
+  text-align: center;
+}
+
+#event-form{
+  padding: 10px;
+  border: 1px solid gray;
+  width: 40%;
+  min-width: 420px;
+  margin: 0 auto;
+}
+
 #event-details-map{
   margin: 0 auto;
   width: 90%;
@@ -93,6 +112,13 @@ vertical-align: middle;
   display: inline-block;
   margin: 0 auto;
   vertical-align: middle;
+}
+
+.feed-header{
+  font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+
+  font-size: 50px;
+  margin-bottom: 10px;
 }
 
 .event-name h4{
@@ -258,29 +284,36 @@ vertical-align: middle;
   font-family: "Variane Script";
   font-size: 75px;
  }
-
-.logo-header {
-
-  display: inline-block;
-  font-family: "Variane Script";
-  font-size: 150px;
-  padding: 10px;
+.main-header img{
+  margin: 0 auto;
+  width: 600px;
 }
+.logo-header {
+  width: 100%;
 
+  padding: 10px;
+  position: absolute;
+  top: 0;
+  z-index: 3;
+  text-align: center;
+}
+.logo-header img{
+  margin: 0 auto;
+  width: 300px;
+}
 .logo-header a{
-  text-decoration: none;
-  color: white;
   cursor: pointer;
 }
 
 #header {
+
   width: 100%;
   position: relative;
   font-size: 40px;
   text-align: center;
   background-color: #00695C;
   color: white;
-  height: 100px;
+  height: 150px;
 }
 
 
@@ -442,4 +475,3 @@ margin: auto;
 .user-event-item{
   padding: 5px;
 }
-
