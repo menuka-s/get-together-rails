@@ -57,7 +57,7 @@
         </div>
       <% end %>
       <br>
-      <% if @user.show_future_events && @user.show_future_events == true %>
+      <% if @user.show_past_events && @user.show_past_events == true %>
         <div class="dashboard-box my-upcoming-events">
           <h4>Past Events This User Created:</h4>
           <% if @user.created_events_by_date_past.length == 0 %>
@@ -77,7 +77,7 @@
         </div>
       <% end %>
     <% else %>
-      <h2>This user has enabled privacy settings.</h2>
+      <center><h2>This user has enabled privacy settings.</h2></center>
     <% end %>
 
 

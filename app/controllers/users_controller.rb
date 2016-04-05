@@ -4,8 +4,6 @@ class UsersController < ApplicationController
   def index
   end
 
-
-
   def show
     @user = User.find(params[:id])
   end
@@ -142,5 +140,28 @@ class UsersController < ApplicationController
       render json: "error"
     end
   end
+
+  def priv_f
+    user = User.find(current_user.id)
+    if user.show_future_events == true
+      user.show_future_events = false
+    else 
+      user.show_future_events = true
+    end
+    user.save
+    render json: {"status":user.show_future_events}
+  end
+
+  def priv_p
+    user = User.find(current_user.id)
+    if user.show_past_events == true
+      user.show_past_events = false
+    else 
+      user.show_past_events = true
+    end
+    user.save
+    render json: {"status":user.show_past_events}
+ end
+
 
 end
