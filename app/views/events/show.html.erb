@@ -51,11 +51,22 @@
   <div id = "comment-container">
     <% @event.comments.each do |comment| %>
     <div class="comment-item">
+
       <div class="comment-user-info">
         <a href="http://www.facebook.com/app_scoped_user_id/<%= comment.user.facebook_id %>"><div class = "comment-user-image"><img src = <%=comment.user.image_url%>></div>
+
         <div class = "comment-name"><%= comment.user.name %></div></a>
+
+        <% if comment.user.id == current_user.id %>
+          <div class= "delete-button">
+            <%= link_to "x", event_comment_path( @event.id, comment.id  ), method: :delete, :class => "delete-link" %>
+          </div>
+        <% end %>
+
       </div>
+
       <div class="comment-content"><%= comment.content %></div>
+
       <div class = "comment-time"><%= distance_of_time_in_words(comment.created_at, Time.now) %> ago</div>
     </div>
 
@@ -83,6 +94,18 @@
 </div>
 
 <script>
+$(document).ready(function(){
+$(document).on("click", ".delete-button a", function(event){
+      event.preventDefault();
+      debugger;
+      console.log("hi");
+
+      // $.ajax({
+      //   method:
+      //   url: "/events/"+ eventID + "/comments" + commentID
+      // })
+    });
+});
   // JS for producing google map with marker
   var myLatLng;
   <% if @event.longitude.nil? %>

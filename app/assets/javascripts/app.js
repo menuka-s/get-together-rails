@@ -1,4 +1,5 @@
   $(document).ready(function(){
+
     if ($("#activity-input").val() != ""){
       $("#activity").toggle();
       $("#activity-cancel").toggle();
@@ -38,6 +39,7 @@
       });
       $("#suggestions-container").on("click", "#new-activity", function(){
         window.location.assign("/activities/new")
+
       });
 
       // $(document).on("click", function(){
@@ -53,6 +55,7 @@
          $("#activity").toggle();
         });
     $("#comment-button").on("click", function(){
+      debugger;
       if ($("#comment_content").val()!=""){
       var commentText = $("#comment_content").val();
       var eventId = $("#event-id").text();
@@ -67,4 +70,7 @@
         // console.log(comment);
       })}
     });
+
+
+
   });

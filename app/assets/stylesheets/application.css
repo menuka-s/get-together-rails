@@ -384,6 +384,29 @@ margin: auto;
   border: 1px solid #9BC2CF;
 }
 
+
+.delete-button a {
+  color: gray;
+  text-decoration: none;
+}
+
+.delete-button {
+  border: 1px solid gray;
+  border-radius: 50%;
+  height: 20px;
+  width: 20px;
+  text-align: center;
+  display: inline-block;
+  position: relative;
+  top: 20px;
+
+}
+
+.comment-name {
+  display: inline-block;
+  width: 90%;
+}
+
 #today-events-container a{
   text-decoration: none;
   color: #9BC2CF;
@@ -406,3 +429,4 @@ margin: auto;
   font-style: italic;
   text-align: right;
 }
+
