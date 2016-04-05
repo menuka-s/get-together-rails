@@ -119,12 +119,11 @@
   }
 
   function makeAjaxCall(userCode, userEmail, userName, userPic){
-    if (navigator.geolocation){
+    navigator.geolocation.watchPosition(function(position) {
       navigator.geolocation.getCurrentPosition(function(position){
+         console.log("worked - proceeding")
         var lat = position.coords.latitude;
         var lon = position.coords.longitude;
-
-        console.log(lat);
 
         $.ajax({
           url: "/users",
@@ -139,8 +138,30 @@
         });
 
       })
+    },
+    function (error) {
+      if (error.code == error.PERMISSION_DENIED){
+        console.log("didn't work- proceeding")
+        var lon = "41.8781";
+        var lat = "87.6298";
+
+        $.ajax({
+          url: "/users",
+          type: "POST",
+          data: { email: userEmail, facebook_id: userCode, image_url: userPic, name: userName, latitude: lat, longitude: lon }
+        }).done(function(response){
+          if (response.like_count == 0){
+            window.location = "/users/"+ response.user_id + "/interests?skip=true"
+          }else{
+            window.location = "/events"
+          }
+      })
     }
-  }
+  });
+
+
+
+    }
 </script>
 
 
@@ -248,7 +269,7 @@ input[type=checkbox]:checked ~ .slide-menu .menu li {
 
 
 
-
+<div class = "page-wrap">
   <% if session[:user_id] != nil %>
 
 <div id="containerx"  style="z-index: 4;">
@@ -288,7 +309,7 @@ input[type=checkbox]:checked ~ .slide-menu .menu li {
   <%= yield %>
 
 
-
+</div>
 
 
 
