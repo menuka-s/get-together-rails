@@ -10,6 +10,18 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
   end
 
+  def public_show
+    if params[:id] == current_user.id 
+      redirect_to "/users/" + current_user.id
+    end
+    @user = User.find(params[:id])
+    @users_activities = Activity.all - @user.disliked_activities
+    @user = User.find(21)
+    @users_activities = Activity.all - @user.disliked_activities
+
+    render :'/users/public'
+  end
+
   def new
     if session[:user_id]
       @user = User.find(session[:user_id])
