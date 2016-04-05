@@ -13,13 +13,13 @@
   padding:5px 10px;
   border:none;
   border-radius:3px;
-  background-color:#9bc2cf;
+  background-color:#00695C;
   margin-bottom:10px;
   text-align: center;
 }
 
 .new-event:hover {
-  background-color:#334045;
+  background-color:#73B5AC;
 }
 
 .new-event a {
@@ -43,8 +43,14 @@
 }
 
 .news-feed-container {
-  max-width:400px;
+  max-width:600px;
+  width:95%;
   margin: 0 auto;
+  box-sizing: border-box;
+}
+
+.news-feed-container * {
+  box-sizing: border-box;
 }
 
 .news-feed-sorting {
@@ -52,17 +58,22 @@
   margin:5px 0px;
 }
 
+.news-feed-sorting-switch-text {
+  font-size:12px;
+  color:gray;
+}
+
 .news-feed-sorting-button {
   padding:5px 10px;
   border:none;
   border-radius:3px;
   color:white;
-  background-color:#9bc2cf;
+  background-color:#00695C;
   font-size:14px;
 }
 
 .news-feed-sorting-button:hover {
-  background-color:#334045;
+  background-color:#73B5AC;
   cursor:pointer;
 }
 
@@ -77,7 +88,7 @@
 }
 
 .appealing-event:hover {
-  background-color:#e6f3f7;
+  background-color:#B9E2DE;
 }
 
 .appealing-event-left {
@@ -130,7 +141,8 @@
 
 .flip {
   -webkit-perspective: 800;
-  width: 400px;
+  max-width: 600px;
+  width:100%;
   height:auto;
   position: relative;
 }
@@ -156,14 +168,14 @@
 
 .flip .card .front {
   position: absolute;
+  border: 1px #00695C solid;
   z-index: 4;
-  border: 1px #8aacb8 solid;
   height:initial;
 }
 
 .flip .card .back {
   -webkit-transform: rotatey(-180deg);
-  border: 1px red solid;
+  border: 1px #E0A02C solid;
   height:initial;
   /*note: this height:initial is needed to make the border the appropriate height */
 }
