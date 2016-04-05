@@ -64,6 +64,12 @@
   max-width: 40px;;
 }
 
+.today-header{
+  font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+  font-weight: 200;
+  font-size: 40px;
+}
+
 .event-details{
   font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
   font-weight: 200;
@@ -210,11 +216,7 @@ vertical-align: middle;
   padding: 0;
 }
 
-#profile-circle{
-  position: absolute;
-  right: 10px;
-  top: 0px;
-}
+
 
 #profile-circle img{
   padding: 10px;
@@ -361,7 +363,7 @@ margin: auto;
 #suggestions-container{
   cursor: pointer;
   max-height: 100px;
-  margin-left: 45px;
+  margin-left: 5%;
   position:absolute;
   display: none;
   background-color: white;
@@ -369,6 +371,17 @@ margin: auto;
   overflow-y: scroll;
   width: 15em;
   border: 1px black solid;
+}
+
+#today-events-container{
+  font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+  margin: 0 auto;
+  margin-top: 20px;
+  width: 45%;
+  padding: 10px;
+  max-height: 200px;
+  overflow-y: scroll;
+  border: 1px solid #9BC2CF;
 }
 
 
@@ -393,3 +406,27 @@ margin: auto;
   display: inline-block;
   width: 90%;
 }
+
+#today-events-container a{
+  text-decoration: none;
+  color: #9BC2CF;
+}
+
+.today-event-item{
+  border-bottom: 1px solid gray;
+  padding: 10px;
+}
+
+.today-event-address{
+  color: gray;
+  font-size: 12px;
+  padding-top: 10px;
+}
+
+.today-event-time{
+  color: gray;
+  font-size: 12px;
+  font-style: italic;
+  text-align: right;
+}
+

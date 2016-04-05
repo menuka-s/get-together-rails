@@ -19,7 +19,14 @@
   <p><%= @event.description %></p>
 
   <h4>Location:</h4>
-  <p><%= @event.address %></p>
+  <p>
+    <% if @event.longitude.nil? %>
+      Please contact the event organizer for more information
+    <% else %>
+      <%= @event.address %>
+    <% end %>
+  </p>
+  <h4><span id="spots"><%=@event.max_participants - @event.joined_users.count %></span> Spot(s) Left</h4>
 </div>
 
   <div class="event-buttons">
@@ -100,7 +107,13 @@ $(document).on("click", ".delete-button a", function(event){
     });
 });
   // JS for producing google map with marker
-  var myLatLng = {lat: <%= @event.latitude %>, lng: <%= @event.longitude %>};
+  var myLatLng;
+  <% if @event.longitude.nil? %>
+    myLatLng = {lat: <%= @current_location[0] %>, lng: <%=  @current_location[1] %> }
+  <% else %>
+    myLatLng = {lat: <%= @event.latitude %>, lng: <%= @event.longitude %>};
+  <% end %>
+
   function initMap() {
 
     var map = new google.maps.Map(document.getElementById('event-details-map'), {
@@ -108,7 +121,10 @@ $(document).on("click", ".delete-button a", function(event){
       center: myLatLng
     });
 
-    setMarkers(map);
+    // only set marker if the event has a longitude
+    <% if !@event.longitude.nil? %>
+      setMarkers(map);
+    <% end %>
 
     // Recenter the map on window resize
     google.maps.event.addDomListener(window, 'resize', function() {
@@ -164,6 +180,7 @@ $(document).on("click", ".delete-button a", function(event){
     $('body').on('click','#join-event', function(e) {
       var eventID = $(this).attr("event");
       var button = $(this);
+      var currentSpot = $("#spots").text()
       $.ajax({
         url: "/users/ajax_join_event/" + eventID,
         method: "post",
@@ -172,9 +189,11 @@ $(document).on("click", ".delete-button a", function(event){
         if (response["status"] == 0) {
           $("#join-event").text("Join this Event!");
           $('#eventstatus').text("You have not joined this event");
+          $("#spots").text(parseInt(currentSpot) + 1)
         } else {
           $("#join-event").text("Un-Join this Event");
           $('#eventstatus').text("You are attending this event");
+          $("#spots").text(parseInt(currentSpot) - 1)
         };
       }).fail(function() {
         console.log("Error joining/unjoining event!");

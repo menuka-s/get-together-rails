@@ -28,10 +28,33 @@
         });
     });
   </script>
-
+<div id = "today-events-container" style = "display:none;">
+  <div class = "today-header"><center>Today's Events</center></h1></div>
+  <%current_user.joined_events.each do |event|  %>
+    <% if event.date.today?%>
+    <a href = "/events/<%=event.id%>">
+      <div class = "today-event-item">
+        <div class = "today-event-name"><%=event.name%></div>
+        <div class = "today-event-address"><%=event.address%></div>
+      </div>
+    </a>
+    <% end %>
+  <% end %>
+  <%current_user.created_events.each do |event|  %>
+    <% if event.date.today?%>
+      <a href = "/events/<%=event.id%>">
+      <div class = "today-event-item">
+        <div class = "today-event-name"><%=event.name%></div>
+        <div class = "today-event-address"><%=event.address%></div>
+        <div class = "today-event-time">in <%=distance_of_time_in_words(Time.now, event.date) %></div>
+      </div>
+    </a>
+    <% end %>
+  <% end %>
+</div>
 <div class="news-feed-container">
 
-  <h1>All Events</h1>
+  <h1>Event Feed</h1>
 
   <div class="new-event">
     <%= link_to "Create a New Event", new_event_path %>
@@ -40,7 +63,7 @@
   <div id="all-events-map"></div>
 
   <div class="news-feed-sorting">
-    <button class="news-feed-sorting-button">Soonest</button>
+    <span class="news-feed-sorting-switch-text">Sort by: </span><button class="news-feed-sorting-button">Soonest</button>
   </div>
 
   <%= render partial: 'events/events', :layout => false %>
@@ -56,6 +79,7 @@
     return this.charAt(0).toUpperCase() + this.slice(1);
   }
 
+  // Create second map variable for ajaxing a pin
   var pmap;
 
   // JS for producing google map with marker
@@ -113,16 +137,19 @@
         anchor: new google.maps.Point(10, 34)
       };
 
-      var marker = new google.maps.Marker({
-        position: { lat: event.latitude, lng: event.longitude },
-        map: map,
-        icon: image,
-        animation: google.maps.Animation.DROP,
-        shape: shape,
-        title: event.name,
-        zIndex: event.id,
-        info: contentString
-      });
+      // only try to set marker if event has a longitude
+      if(event.longitude != null) {
+        var marker = new google.maps.Marker({
+          position: { lat: event.latitude, lng: event.longitude },
+          map: map,
+          icon: image,
+          animation: google.maps.Animation.DROP,
+          shape: shape,
+          title: event.name,
+          zIndex: event.id,
+          info: contentString
+        });
+      }
 
       google.maps.event.addListener(marker, 'click', function() {
         infoWindow.setContent(this.info);
@@ -131,13 +158,11 @@
     };
   }
 
-  // When the ajax request is done, call a function that places 1 pin on the map
-
-
-
-
   // Probably should update to do an ajax request but hey it's functional!
   $(document).ready(function(){
+    if ($(".today-event-item").length > 0){
+      $("#today-events-container").slideToggle("slow");
+    };
     $('.news-feed-sorting-button').on('click', function(event){
       $('.card').toggleClass('flipped');
 
