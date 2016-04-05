@@ -12,11 +12,13 @@ class User < ActiveRecord::Base
   has_many :liked_categories, through: :users_categories, source: :category
 
   def past_events
-    @past_events = self.joined_events.where("date < ?", Time.now)
+    @past_events = self.joined_events.where("date < ?", Time.now) + self.created_events.where("date < ?", Time.now)
+    return @past_events.sort{|eventa, eventb| eventa.date <=> eventb.date}
   end
 
   def upcoming_events
-    @user_events = self.joined_events.where("date > ?", Time.now)
+    @user_events = self.joined_events.where("date > ?", Time.now) + self.created_events.where("date > ?", Time.now)
+    return @user_events.sort{|eventa, eventb| eventa.date <=> eventb.date}
   end
 
   # So, we should probably test all this stuff, but it seems to be working
@@ -56,7 +58,6 @@ class User < ActiveRecord::Base
       end
       small_group << event
     end
-
     groups
   end
 

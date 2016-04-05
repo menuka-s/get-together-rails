@@ -18,14 +18,19 @@
 
 
 .dashboard-box {
+  display: block;
+  margin: 0 auto;
+  margin-top: 10px;
   border:1px black solid;
-  margin: 5px;
-  height: 150px;
-  width: 48.5%;
+  max-height: 300px;
+  width: 60%;
   overflow: scroll;
-  display: inline-block;
-  border-radius: 20px;
-  padding: 5px;
+  padding: 10px;
+}
+
+.dashboard-box h4{
+text-align: center;
+
 }
 
 .dashboard-box recent-comments {
@@ -33,80 +38,54 @@
 }
 
 .my_info {
-  background-color: #B4BAC0;
   height: 80px;
 }
 
-.user-email {
-  display: inline-block;
-  width: 85%;
-}
-
-.user-image {
-  display: inline-block;
-}
-
 .my-upcoming-events {
-  background-color: #7FBF3F;
-  opacity: .5;
+  background-color: white;
+  display: block;
+  transition: max-height 1s;
 }
 
-.my-upcoming-events:hover {
-  background-color: #7FBF3F;
-  opacity: 1;
-  position: relative;
-  top: -5px;
+.my-upcoming-events:hover{
+  max-height:600px;
+  transition: max-height 1s;
 }
 
 .my-created-events {
-  background-color:  #7FBF3F;
-  opacity: .5;
+  background-color:  white;
+  display: block;
+  max-height: 150px;
+  transition: max-height 1s;
 }
-
-.my-created-events:hover {
-  background-color:  #7FBF3F;
-  opacity: 1;
-  position: relative;
-  top: -5px;
+.my-created-events:hover{
+  max-height:400px;
+  transition: max-height 1s;
 }
-
 
 .my-past-events {
-  background-color:  #7FBF3F;
-  opacity: .5;
-}
+  background-color:  white;
+  display: block;
 
-.my-past-events:hover {
-  background-color:  #7FBF3F;
-  opacity: 1;
-  position: relative;
-  top: -5px;
 }
 
 .recent-comments {
-  background-color: #7FBF3F;
-  opacity: .5;
+  background-color: white;
+  display: block;
+
 }
 
-.recent-comments:hover {
-  position: relative;
-  top: -5px;
-  background-color: #7FBF3F;
-  opacity: 1;
+#user-buttons{
+margin-top: 20px;
+  text-align: center;
 }
 
-.new-event-form, .update-profile {
-  border:1px black solid;
-  border-radius: 4px;
-  background-color: #B4BAC0;
-  padding:5px;
-  font-size:12px;
-
-  display: inline-block;
-}
 
 a {
   text-decoration: none;
 }
 
-
+.new-event-form a, .update-profile a{
+  text-decoration: none;
+  color: white;
+}

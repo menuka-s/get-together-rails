@@ -377,7 +377,7 @@ margin: auto;
   font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
   margin: 0 auto;
   margin-top: 20px;
-  width: 45%;
+  width: 30%;
   padding: 10px;
   max-height: 200px;
   overflow-y: scroll;
@@ -413,7 +413,7 @@ margin: auto;
 }
 
 .today-event-item{
-  border-bottom: 1px solid gray;
+  border-top: 1px solid gray;
   padding: 10px;
 }
 
@@ -428,5 +428,18 @@ margin: auto;
   font-size: 12px;
   font-style: italic;
   text-align: right;
+}
+
+.user-profile{
+  font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+}
+.user-name{
+  padding: 10px;
+  text-align: center;
+  font-size: 40px;
+  font-weight: 400;
+}
+.user-event-item{
+  padding: 5px;
 }
 
