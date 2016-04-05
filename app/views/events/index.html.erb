@@ -28,7 +28,30 @@
         });
     });
   </script>
-
+<div id = "today-events-container" style = "display:none;">
+  <div class = "today-header"><center>Today's Events</center></h1></div>
+  <%current_user.joined_events.each do |event|  %>
+    <% if event.date.today?%>
+    <a href = "/events/<%=event.id%>">
+      <div class = "today-event-item">
+        <div class = "today-event-name"><%=event.name%></div>
+        <div class = "today-event-address"><%=event.address%></div>
+      </div>
+    </a>
+    <% end %>
+  <% end %>
+  <%current_user.created_events.each do |event|  %>
+    <% if event.date.today?%>
+      <a href = "/events/<%=event.id%>">
+      <div class = "today-event-item">
+        <div class = "today-event-name"><%=event.name%></div>
+        <div class = "today-event-address"><%=event.address%></div>
+        <div class = "today-event-time">in <%=distance_of_time_in_words(Time.now, event.date) %></div>
+      </div>
+    </a>
+    <% end %>
+  <% end %>
+</div>
 <div class="news-feed-container">
 
   <h1>All Events</h1>
@@ -138,6 +161,9 @@
 
   // Probably should update to do an ajax request but hey it's functional!
   $(document).ready(function(){
+    if ($(".today-event-item").length > 0){
+      $("#today-events-container").slideToggle("slow");
+    };
     $('.news-feed-sorting-button').on('click', function(event){
       $('.card').toggleClass('flipped');
 
