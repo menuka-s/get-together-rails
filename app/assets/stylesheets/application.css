@@ -383,6 +383,7 @@ text-align: center;
   text-align: center;
 }
 #event-radius-preference-container{
+  display: inline-block;
   text-align: center;
 }
 .edit_user{
@@ -491,6 +492,10 @@ background: transparent;
   font-size: 12px;
   font-style: italic;
   text-align: right;
+}
+
+#user_settings {
+  border: 1px dotted gray;
 }
 
 .user-profile{
