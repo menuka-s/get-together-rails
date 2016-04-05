@@ -35,6 +35,9 @@ class Event < ActiveRecord::Base
   end
 
   def open?
+    if self.max_participants == 0
+      self.max_participants = 9999999999
+    end
     self.joined_users.to_a.length < self.max_participants ? true : false
   end
 

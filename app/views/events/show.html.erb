@@ -26,7 +26,11 @@
       <%= @event.address %>
     <% end %>
   </p>
-  <h4><span id="spots"><%=@event.max_participants - @event.joined_users.count %></span> Spot(s) Left</h4>
+  <% if @event.max_participants == 0 %>
+    <h4><span id="spots">Unlimited Spots</span></h4>
+  <% else %>
+    <h4><span id="spots"><%=@event.max_participants - @event.joined_users.count %></span> Spot(s) Left</h4>
+  <% end %>
 </div>
 
   <div class="event-buttons">
@@ -53,7 +57,7 @@
     <div class="comment-item">
 
       <div class="comment-user-info">
-        <a href="http://www.facebook.com/app_scoped_user_id/<%= comment.user.facebook_id %>"><div class = "comment-user-image"><img src = <%=comment.user.image_url%>></div>
+        <a href="link_to path"><div class = "comment-user-image"><img src = <%=comment.user.image_url%>></div>
 
         <div class = "comment-name"><%= comment.user.name %></div></a>
 
