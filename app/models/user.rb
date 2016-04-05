@@ -12,11 +12,13 @@ class User < ActiveRecord::Base
   has_many :liked_categories, through: :users_categories, source: :category
 
   def past_events
-    @past_events = self.joined_events.where("date < ?", Time.now)
+    @past_events = self.joined_events.where("date < ?", Time.now) + self.created_events.where("date < ?", Time.now)
+    return @past_events.sort{|eventa, eventb| eventa.date <=> eventb.date}
   end
 
   def upcoming_events
-    @user_events = self.joined_events.where("date > ?", Time.now)
+    @user_events = self.joined_events.where("date > ?", Time.now) + self.created_events.where("date > ?", Time.now)
+    return @user_events.sort{|eventa, eventb| eventa.date <=> eventb.date}
   end
 
   # So, we should probably test all this stuff, but it seems to be working
@@ -42,31 +44,31 @@ class User < ActiveRecord::Base
     small_group = []
     @all_event_data = self.appealing_events if @all_event_data.nil?
     @all_event_data.each do |event|
-      if event.max_participants > 19 
+      if event.max_participants > 19
         groups << [ event ]
-      else 
+      else
         small_events << event if event
       end
     end
 
     small_events.each do |event|
-      if small_group.count > 3 
+      if small_group.count > 3
         groups << small_group[0..3]
-        small_group = [] 
-      end 
+        small_group = []
+      end
       small_group << event
     end
- 
-    groups 
+
+    groups
 
 
     # small_events.each do |activity,events|
     #   small_group = []
     #   events.each do |event|
-    #     if small_group.count > 3 
+    #     if small_group.count > 3
     #       groups << small_group[0..3]
-    #       small_group = [] 
-    #     end 
+    #       small_group = []
+    #     end
     #     small_group << event
     #   end
     #   groups << small_group if small_group.count > 0
