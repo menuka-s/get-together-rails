@@ -121,5 +121,14 @@ class UsersController < ApplicationController
     end
   end
 
+  def mile_preference_handler
+    user = User.find(current_user.id)
+    user.update_attributes(mile_preference: params[:data])
+    if user.save
+      render json: { action: "a", user_id: user.id, preference: user.mile_preference }
+    else
+      render json: "error"
+    end
+  end
 
 end

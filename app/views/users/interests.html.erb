@@ -1,15 +1,52 @@
 <script src="https://js.pusher.com/3.0/pusher.min.js"></script>
+
+<%= @user.email %>
+
+<div id="event-radius-preference-container">
+  <h3>Within How Many Miles You'd Like to See Events For</h3>
+
+  <%= form_for @user do |f| %>
+    <%= f.label :mile_preference %>
+    <%= f.collection_select :mile_preference, [1,2,5,10,15,20,50,100,200], :to_i, :to_i, include_blank: false %>
+  <% end %>
+
+</div>
+
 <center>
 	<div style="font-family: verdana;" id="interests-header"><h3>SELECT YOUR EVENT CATEGORIES AND SUB-ACTIVITIES</h3></div>
 </center>
 <div id = "categories-container">
   <%=render partial: 'interests/show'  %>
+
 </div>
 
-
 <% if params[:skip] %>
-<div id = "defer-interests"><a href = "/users/<%=@user.id%>/allinterests">Skip for now</a></div>
+  <div id="defer-interests">
+    <a href="/users/<%=@user.id%>/allinterests">Skip for now</a>
+  </div>
 <% end %>
 
+<script>
+  $(document).ready(function() {
+    $('#user_mile_preference').change(function() {
+      var data = $(this).val();
 
+      ajaxReq = $.ajax({
+        url: '/users/mile_preference_handler',
+        method: 'post',
+        data: {data: data},
+        dataType: 'json'
+      });
+      ajaxReq.done(function(response) {
+        $('.edit_user').append("<span id='flash-notice-updated' style='color:#2DB82D'> Updated!</span>")
+        $('#flash-notice-updated').delay(500).fadeOut(1000)
 
+        setTimeout(function(){
+            $('#flash-notice-updated').remove();
+        }, 1500);
+      });
+
+    });
+  });
+
+</script>
