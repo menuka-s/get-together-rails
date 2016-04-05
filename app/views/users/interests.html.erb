@@ -1,15 +1,24 @@
 <script src="https://js.pusher.com/3.0/pusher.min.js"></script>
 
-<%=@user.email %>
-<div id = "interests-header"><h3>Please Select Categories You'd Like to Recieve Invitations For</h3></div>
-<div id = "categories-container">
-  <%=render partial: 'interests/show'  %>
+<%= @user.email %>
+<div id="interests-header">
+  <h3>Please Select Categories You'd Like to Recieve Invitations For</h3>
+</div>
+<div id="categories-container">
+  <%= render partial: 'interests/show'  %>
+</div>
+
+<!-- Add a drop down to let the user specify within how many miles they want to see events -->
+
+<div id="event-radius-preference-container">
+  <h3>Within How Many Miles You'd Like to See Events For</h3>
+
+
 </div>
 
 
 <% if params[:skip] %>
-<div id = "defer-interests"><a href = "/users/<%=@user.id%>/allinterests">Skip for now</a></div>
+  <div id="defer-interests">
+    <a href="/users/<%=@user.id%>/allinterests">Skip for now</a>
+  </div>
 <% end %>
-
-
-
