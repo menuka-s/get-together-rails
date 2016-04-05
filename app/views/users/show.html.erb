@@ -8,6 +8,16 @@
   </div>
 
   <div class="my_dashboard">
+
+    <div id = "user-buttons">
+    <div class="button new-event-form">
+      <%= link_to "Create a New Event", new_event_path %>
+    </div>
+
+    <div class="button update-profile">
+      <a href="/users/<%= @user.id %>/interests">Update Profile</a>
+    </div>
+    
     <div class="dashboard-box my-upcoming-events">
       <h4>Upcoming Events</h4>
       <% if @user.upcoming_events.length == 0 %>
@@ -61,19 +71,6 @@
           <% end %>
       <% end %>
     </div>
-
-
-<div id = "user-buttons">
-  <div class="button new-event-form">
-    <%= link_to "Create a New Event", new_event_path %>
   </div>
-
-  <div class="button update-profile">
-    <a href="/users/<%= @user.id %>/interests">Update Profile</a>
-  </div>
-</div>
-
-
-
 </div>
 

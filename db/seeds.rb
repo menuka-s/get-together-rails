@@ -7,44 +7,44 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
 # create an array of 20 random street addresses in Chicago
-addresses = [
-"33 N LaSalle St, Chicago, IL 60602",
-"100 W Grand Ave, Chicago, IL 60654",
-"238 E Monroe St, Chicago, IL 60601",
-"70 E 18th St, Chicago, IL 60616",
-"5046 S Greenwood Avenue, Chicago, IL 60615",
-"1060 W Addison St, Chicago, IL 60613",
-"201 E Randolph St, Chicago, IL 60602",
-"800 S Halsted St, Chicago, IL 60607",
-"5801 S Ellis Ave, Chicago, IL 60637",
-"4822 N Broadway St, Chicago, IL 60640",
-"1616 N Wells St, Chicago, IL 60614",
-"3613 S Prairie Ave, Chicago, IL 60653",
-"2433 N Lincoln Ave, Chicago, IL 60614",
-"917 E 103rd St, Chicago, IL 60628",
-"50 W Washington St, Chicago, IL 60602",
-"300 N Central Park Ave, Chicago, IL 60624",
-"220 E Chicago Ave, Chicago, IL 60611",
-"5700 S Lake Shore Dr, Chicago, IL 60637",
-"6224 S Wabash Ave, Chicago, IL 60637",
-"157 W Grand Ave, Chicago, IL 60654",
-"3325 N Southport Ave, Chicago, IL 60657",
-"5211 N Damen Ave, Chicago, IL 60625",
-"100 Linden Ave, Wilmette, IL 60091"]
+# addresses = [
+# "33 N LaSalle St, Chicago, IL 60602",
+# "100 W Grand Ave, Chicago, IL 60654",
+# "238 E Monroe St, Chicago, IL 60601",
+# "70 E 18th St, Chicago, IL 60616",
+# "5046 S Greenwood Avenue, Chicago, IL 60615",
+# "1060 W Addison St, Chicago, IL 60613",
+# "201 E Randolph St, Chicago, IL 60602",
+# "800 S Halsted St, Chicago, IL 60607",
+# "5801 S Ellis Ave, Chicago, IL 60637",
+# "4822 N Broadway St, Chicago, IL 60640",
+# "1616 N Wells St, Chicago, IL 60614",
+# "3613 S Prairie Ave, Chicago, IL 60653",
+# "2433 N Lincoln Ave, Chicago, IL 60614",
+# "917 E 103rd St, Chicago, IL 60628",
+# "50 W Washington St, Chicago, IL 60602",
+# "300 N Central Park Ave, Chicago, IL 60624",
+# "220 E Chicago Ave, Chicago, IL 60611",
+# "5700 S Lake Shore Dr, Chicago, IL 60637",
+# "6224 S Wabash Ave, Chicago, IL 60637",
+# "157 W Grand Ave, Chicago, IL 60654",
+# "3325 N Southport Ave, Chicago, IL 60657",
+# "5211 N Damen Ave, Chicago, IL 60625",
+# "100 Linden Ave, Wilmette, IL 60091"]
 
-long_rand = Random.new(1234)
-lat_rand = Random.new(5678)
-require 'date'
+# long_rand = Random.new(1234)
+# lat_rand = Random.new(5678)
+# require 'date'
 
-20.times do
-  User.create(email: Faker::Internet.email, bio: Faker::Lorem.paragraph(8), image_url: Faker::Avatar.image, facebook_id: "123456789", points: rand(0..90), last_location: "this is a location")
-end
+# 20.times do
+#   User.create(email: Faker::Internet.email, bio: Faker::Lorem.paragraph(8), image_url: Faker::Avatar.image, facebook_id: "123456789", points: rand(0..90), last_location: "this is a location")
+# end
 
-counter = 0
-20.times do
-  Event.create(name: Faker::Lorem.word, description: Faker::Lorem.paragraph(4), creator_id: rand(1..20), date: Time.now + (60*60*24*7), address: addresses[counter], activity_id: rand(1..12), max_participants: rand(1..50))
-  counter += 1
-end
+# counter = 0
+# 20.times do
+#   Event.create(name: Faker::Lorem.word, description: Faker::Lorem.paragraph(4), creator_id: rand(1..20), date: Time.now + (60*60*24*7), address: addresses[counter], activity_id: rand(1..12), max_participants: rand(1..50))
+#   counter += 1
+# end
 
 Category.create(name: "Games")
 Category.create(name: "Sports")
@@ -182,9 +182,9 @@ ActivityCategory.create(activity_id: 41, category_id: 7)
 
 
 
-20.times do
-  UsersEvent.create(user_id: rand(1..20), event_id: rand(1..20))
-  Comment.create(user_id: rand(1..20), event_id: rand(1..20), content: Faker::Lorem.paragraph(2))
-  UsersActivity.create(user_id: rand(1..20), activity_id: rand(1..40))
-  UsersCategory.create(user_id: rand(1..20), category_id: rand(1..10))
-end
+# 20.times do
+#   UsersEvent.create(user_id: rand(1..20), event_id: rand(1..20))
+#   Comment.create(user_id: rand(1..20), event_id: rand(1..20), content: Faker::Lorem.paragraph(2))
+#   UsersActivity.create(user_id: rand(1..20), activity_id: rand(1..40))
+#   UsersCategory.create(user_id: rand(1..20), category_id: rand(1..10))
+# end

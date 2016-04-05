@@ -19,6 +19,25 @@
   padding: 0;
  }
 
+.new-event-form{
+  padding-left: 10px;
+}
+.new-event-container{
+  margin: 0 auto;
+}
+
+.new-event-header{
+  text-align: center;
+}
+
+#event-form{
+  padding: 10px;
+  border: 1px solid gray;
+  width: 40%;
+  min-width: 420px;
+  margin: 0 auto;
+}
+
 #event-details-map{
   margin: 0 auto;
   width: 90%;
@@ -93,6 +112,13 @@ vertical-align: middle;
   display: inline-block;
   margin: 0 auto;
   vertical-align: middle;
+}
+
+.feed-header{
+  font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+
+  font-size: 50px;
+  margin-bottom: 10px;
 }
 
 .event-name h4{
@@ -258,29 +284,36 @@ vertical-align: middle;
   font-family: "Variane Script";
   font-size: 75px;
  }
-
-.logo-header {
-
-  display: inline-block;
-  font-family: "Variane Script";
-  font-size: 150px;
-  padding: 10px;
+.main-header img{
+  margin: 0 auto;
+  width: 600px;
 }
+.logo-header {
+  width: 100%;
 
+  padding: 10px;
+  position: absolute;
+  top: 0;
+  z-index: 3;
+  text-align: center;
+}
+.logo-header img{
+  margin: 0 auto;
+  width: 300px;
+}
 .logo-header a{
-  text-decoration: none;
-  color: white;
   cursor: pointer;
 }
 
 #header {
+
   width: 100%;
   position: relative;
   font-size: 40px;
   text-align: center;
   background-color: #00695C;
   color: white;
-  height: 100px;
+  height: 150px;
 }
 
 
@@ -302,10 +335,11 @@ margin: auto;
 .category-box{
   position: relative;
   padding: 0px;
-  color:white;
+  color: white;
   background-color: black;
   border: 2px solid gray;
   overflow: hidden;
+  border-radius: 15px;
 }
 
 .category_interest_button{
@@ -320,13 +354,14 @@ margin: auto;
   overflow: hidden;
 }
 .activity-toggle{
+  text-decoration: none;
   position: absolute;
   top: 0px;
   right: 0px;
   padding: 0px;
   color:white;
   background-color: Transparent;
-  border:none;
+  border: none;
   width:10%;
   height: 50px;
   text-align: center;
@@ -334,13 +369,14 @@ margin: auto;
 }
 
 .activity-interest-box{
-  border: 1px solid black;
+
 }
 
 .activity-interest-button{
   border: 1px solid gray;
   display: inline-block;
   margin: 5px;
+  border-radius: 10px;
 }
 
 #activity-container{
@@ -442,4 +478,3 @@ margin: auto;
 .user-event-item{
   padding: 5px;
 }
-

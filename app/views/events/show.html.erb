@@ -32,8 +32,8 @@
   <div class="event-buttons">
     <% if current_user %>
       <% if @event.creator.id == current_user.id %>
-       <button class="real-button " id="edit-button"><%= link_to "Edit this event", edit_event_path(@event) %></button>
-       <button class="real-button " id="delete-button"><%= link_to "Delete this event", event_path(@event), method: :delete %></button>
+       <button style="font-family: verdana;" class="real-button " id="edit-button"><%= link_to "EDIT EVENT", edit_event_path(@event) %></button>
+       <button  style="font-family: verdana;" class="real-button " id="delete-button"><%= link_to "DELETE EVENT", event_path(@event), method: :delete %></button>
       <% elsif @event.open? == false %>
         <h4 id="eventstatus">This Event is Full.</h4>
       <% elsif !current_user.joined_events.include?(@event) %>
@@ -47,7 +47,7 @@
   <div class = "border-line"></div>
 
   <div class="event-comments">
-  <h4>Comments:</h4>
+  <h4 style="font-family: verdana;">EVENT COMMUNICATION </h4>
   <div id = "comment-container">
     <% @event.comments.each do |comment| %>
     <div class="comment-item">
@@ -81,8 +81,16 @@
           <% end %>
         </ul>
 
-        <%= f.text_area :content, :placeholder =>"comment here..." %>
-
+<style>
+textarea {
+  height: 100px;
+  width: 500px;
+  position: relative;
+  left: 0;
+}
+</style>
+        <%= f.text_area :content, :placeholder =>"Comment here..." %>
+        <br><br>
       <div class = "button" id = "comment-button">Leave Comment</div>
     </div>
       <% end %>

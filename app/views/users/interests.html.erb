@@ -9,13 +9,15 @@
     <%= f.label :mile_preference %>
     <%= f.collection_select :mile_preference, [1,2,5,10,15,20,50,100,200], :to_i, :to_i, include_blank: false %>
   <% end %>
+
 </div>
 
-<div id="interests-header">
-  <h3>Please Select Categories You'd Like to Recieve Invitations For</h3>
-</div>
-<div id="categories-container">
-  <%= render partial: 'interests/show'  %>
+<center>
+	<div style="font-family: verdana;" id="interests-header"><h3>SELECT YOUR EVENT CATEGORIES AND SUB-ACTIVITIES</h3></div>
+</center>
+<div id = "categories-container">
+  <%=render partial: 'interests/show'  %>
+
 </div>
 
 <% if params[:skip] %>

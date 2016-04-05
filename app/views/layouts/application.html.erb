@@ -155,9 +155,11 @@ html, body {
 }
 #containerx {
    display: flex;
+   position: absolute;
    /*z-index: 3;*/
 
 }
+
 input[type=checkbox] {
    position: absolute;
    opacity: 0;
@@ -166,23 +168,24 @@ input[type=checkbox] {
    position: absolute;
    top: 10px;
    left: 40px;
-   /*z-index: 3;*/
+   /*z-index: -8;*/
    display: block;
    font-size:3em;
    color: #FFF;
    cursor: pointer;
    transform: translate3d(0, 0, 0);
-   transition: transform .4s;
+   transition: transform 2s;
 }
 input[type=checkbox]:checked ~ #hamburger{
-   transform: translate3d(250px, 0, 0) rotate(90deg);
+   transform: translate3d(250px, 0, 0);
+   transition: transform .3s;
 }
 .content {
    width:100%;
    padding: 40px;
    background: #f2f2f2;
    transform: translate3d(0, 0, 0);
-   transition: transform .4s;
+   transition: transform .3s;
 }
 input[type=checkbox]:checked ~ .content {
    transform: translate3d(250px, 0, 0);
@@ -194,15 +197,15 @@ input[type=checkbox]:checked ~ .slide-menu .menu li {
    width: 100%;
 }
 .slide-menu {
-   transform: translate3d(-250px, 0, 0);
+   transform: translate3d(0, -500px, 0);
    position: absolute;
-   top: ;
+   top: 20px;
    width: 250px;
    background: #00695C;
    color: #ddd;
    left: 0;
    height: 100%;
-   transition: all .4s;
+   transition: all .8s;
 }
 .slide-menu h1 {
    margin: 10px;
@@ -221,9 +224,10 @@ input[type=checkbox]:checked ~ .slide-menu .menu li {
    color: #fff;
    font-size: 1.1em;
    padding: 15px;
-   background: linear-gradient(#037B6E, #00695C);
-   border-bottom: 1px solid #1e222b;
-   box-shadow: inset 0px 1px 1px #8b9db3;
+   background: #00695C;
+   /*background: linear-gradient(#037B6E, #00695C);*/
+   /*border-bottom: 1px solid #1e222b;*/
+   /*box-shadow: inset 0px 1px 1px #8b9db3;*/
 }
 
 .menu div {
@@ -236,8 +240,9 @@ input[type=checkbox]:checked ~ .slide-menu .menu li {
 }
 
 .menu a:hover {
-   background: linear-gradient(#00695C, #00695C);
-   box-shadow: inset 0px 1px 1px #475059;
+ /*  background: linear-gradient(#00695C, #00695C);
+   box-shadow: inset 0px 1px 1px #475059;*/
+   background: #0B7E6E;
 }
 </style>
 
@@ -258,22 +263,25 @@ input[type=checkbox]:checked ~ .slide-menu .menu li {
       <li><a href="/events">INTERESTING EVENTS</a></li>
       <li><a href="/events/new">CREATE A NEW EVENT</a></li>
       <li>
-        <div class="fb-logout">
-          <fb:login-button autologoutlink="true" scope="public_profile,email" onlogin="checkLoginState();">
+        <center><div class="fb-logout">
+          <fb:login-button autologoutlink="true"  scope="public_profile,email" onlogin="checkLoginState();">
           </fb:login-button>
-       </div>
+       </div></center>
       </li>
     </nav>
   </div>
 </div>
 
 
-    <div id = "header" style="z-index:-2;">
-      <div class = "logo-header" style = "font-size: 75px;">
-        <a href="/">Get Together</a>
+    <div id = "header" style="z-index:-2;"></div>
+
+    <div class = "logo-header" style = "font-size: 75px;">
+        <a href="/"><img src = "<%= asset_path( 'logo.png' ) %>"></a>
       </div>
 
+
     </div>
+
 
   <% end %>
 
