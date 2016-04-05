@@ -149,7 +149,7 @@ class UsersController < ApplicationController
       user.show_future_events = true
     end
     user.save
-    render json: {"status":user.show_future_events}
+    render json: {"status" => user.show_future_events}
   end
 
   def priv_p
@@ -160,7 +160,7 @@ class UsersController < ApplicationController
       user.show_past_events = true
     end
     user.save
-    render json: {"status":user.show_past_events}
+    render json: {"status" => user.show_past_events}
  end
 
 
