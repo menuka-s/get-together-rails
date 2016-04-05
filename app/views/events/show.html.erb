@@ -26,6 +26,7 @@
       <%= @event.address %>
     <% end %>
   </p>
+  <h4><span id="spots"><%=@event.max_participants - @event.joined_users.count %></span> Spot(s) Left</h4>
 </div>
 
   <div class="event-buttons">
@@ -156,6 +157,7 @@
     $('body').on('click','#join-event', function(e) {
       var eventID = $(this).attr("event");
       var button = $(this);
+      var currentSpot = $("#spots").text()
       $.ajax({
         url: "/users/ajax_join_event/" + eventID,
         method: "post",
@@ -164,9 +166,11 @@
         if (response["status"] == 0) {
           $("#join-event").text("Join this Event!");
           $('#eventstatus').text("You have not joined this event");
+          $("#spots").text(parseInt(currentSpot) + 1)
         } else {
           $("#join-event").text("Un-Join this Event");
           $('#eventstatus').text("You are attending this event");
+          $("#spots").text(parseInt(currentSpot) - 1)
         };
       }).fail(function() {
         console.log("Error joining/unjoining event!");

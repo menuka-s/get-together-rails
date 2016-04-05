@@ -163,13 +163,13 @@
   height: 100%;
   position: absolute;
   -webkit-backface-visibility: hidden;
-  z-index: 2;
+  z-index: 5;
 }
 
 .flip .card .front {
   position: absolute;
-  z-index: 1;
   border: 1px #00695C solid;
+  z-index: 4;
   height:initial;
 }
 
