@@ -31,7 +31,7 @@
 
 <div class="news-feed-container">
 
-  <h1>All Events</h1>
+  <h1>Event Feed</h1>
 
   <div class="new-event">
     <%= link_to "Create a New Event", new_event_path %>
@@ -40,7 +40,7 @@
   <div id="all-events-map"></div>
 
   <div class="news-feed-sorting">
-    <span class="news-feed-sorting-switch-text">Filter by: </span><button class="news-feed-sorting-button">Soonest</button>
+    <span class="news-feed-sorting-switch-text">Sort by: </span><button class="news-feed-sorting-button">Soonest</button>
   </div>
 
   <%= render partial: 'events/events', :layout => false %>
