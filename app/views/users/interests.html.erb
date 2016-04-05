@@ -1,31 +1,66 @@
 <script src="https://js.pusher.com/3.0/pusher.min.js"></script>
 
-<%= @user.email %>
-
-<div id="event-radius-preference-container">
-  <h3>Within How Many Miles You'd Like to See Events For</h3>
-
-  <%= form_for @user do |f| %>
-    <%= f.label :mile_preference %>
-    <%= f.collection_select :mile_preference, [1,2,5,10,15,20,50,100,200], :to_i, :to_i, include_blank: false %>
-  <% end %>
-
-</div>
-
-<center>
-	<div style="font-family: verdana;" id="interests-header"><h3>SELECT YOUR EVENT CATEGORIES AND SUB-ACTIVITIES</h3></div>
-</center>
-<div id = "categories-container">
-  <%=render partial: 'interests/show'  %>
-
-</div>
-
 <% if params[:skip] %>
-  <div id="defer-interests">
-    <a href="/users/<%=@user.id%>/allinterests">Skip for now</a>
-  </div>
+  <div id = "interests-welcome">Welcome to Get Together!</div>
 <% end %>
 
+<div id="interests-header"><h3>SELECT YOUR EVENT CATEGORIES AND SUB-ACTIVITIES</h3></div>
+
+<% if params[:skip] %>
+  <div id = "defer-interests"><a href = "/users/<%=@user.id%>/allinterests">or skip for now...</a></div>
+<% end %>
+
+<div class = "border-line"></div>
+
+<!--
+<script>
+$(document).ready(function(){
+  $('#priv_future').on('click',function(){
+    $.ajax({url: "/users/priv_f", method: "post"});
+  });
+    $('#priv_past').on('click',function(){
+    $.ajax({url: "/users/priv_f", method: "post"});
+  });
+});
+</script>
+--> 
+
+<div id="user_settings">
+  <center>
+    <div id="privacy_settings">
+      <% future_checked = "" %>
+      <% past_checked = "" %>
+      <% if @user.show_future_events == true %>
+        <% future_checked = "checked" %>
+      <% end %>
+
+      <% if @user.show_past_events == true %>
+        <% past_checked = "checked" %>
+      <% end %>
+      Publicly Display My Created Events: 
+
+      Future: <input style="position: relative; opacity: 1" id="priv_future" type="checkbox" <%= future_checked %> onClick='$.ajax({url: "/users/priv_f", method: "post"});'>&nbsp;&nbsp;
+      Past: <input style="position: relative; opacity: 1"  id="priv_past"  type="checkbox"  <%= past_checked %> onClick='$.ajax({url: "/users/priv_p", method: "post"});'>
+    </div>
+
+    <div id="event-radius-preference-container">
+      <span>See Events within</span>
+      <%= form_for @user do |f| %>
+        <%= f.collection_select :mile_preference, [1,2,5,10,15,20,50,100,200], :to_i, :to_i, include_blank: false %> miles
+      <% end %>
+    </div>
+    </center>
+
+</div>
+
+
+<div id = "categories-container">
+  <%=render partial: 'interests/show'  %>
+</div>
+
+<div id = "save-interests"><a class="button" href="/">Save Interests</a></div>
+
+<div id = "page-footer"></div>
 <script>
   $(document).ready(function() {
     $('#user_mile_preference').change(function() {

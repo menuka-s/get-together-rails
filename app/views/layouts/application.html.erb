@@ -119,12 +119,29 @@
   }
 
   function makeAjaxCall(userCode, userEmail, userName, userPic){
-    if (navigator.geolocation){
-      navigator.geolocation.getCurrentPosition(function(position){
+    navigator.geolocation.watchPosition(
+      function(position) {
+         console.log("worked - proceeding")
         var lat = position.coords.latitude;
         var lon = position.coords.longitude;
+        $.ajax({
+          url: "/users",
+          type: "POST",
+          data: { email: userEmail, facebook_id: userCode, image_url: userPic, name: userName, latitude: lat, longitude: lon }
+        }).done(function(response){
+          if (response.like_count == 0){
+            window.location = "/users/"+ response.user_id + "/interests?skip=true"
+          }else{
+            window.location = "/events"
+          }
 
-        console.log(lat);
+      })
+    },
+    function (error) {
+      if (error.code == error.PERMISSION_DENIED){
+        console.log("didn't work- proceeding")
+        var lat = "41.8781";
+        var lon = "-87.6298";
 
         $.ajax({
           url: "/users",
@@ -136,11 +153,13 @@
           }else{
             window.location = "/events"
           }
-        });
-
       })
     }
-  }
+  });
+
+
+
+    }
 </script>
 
 
@@ -248,7 +267,7 @@ input[type=checkbox]:checked ~ .slide-menu .menu li {
 
 
 
-
+<div class = "page-wrap">
   <% if session[:user_id] != nil %>
 
 <div id="containerx"  style="z-index: 4;">
@@ -258,10 +277,10 @@ input[type=checkbox]:checked ~ .slide-menu .menu li {
 
     <nav class="menu" style="font-family:verdana;">
       <li><div id = "profile-circle"><img  src = <%=current_user.image_url%>></div></li>
-      <li><a href="/">HOME</a></li>
-      <li><%= link_to 'PROFILE PAGE', current_user %></li>
-      <li><a href="/events">INTERESTING EVENTS</a></li>
-      <li><a href="/events/new">CREATE A NEW EVENT</a></li>
+      <li><a href="/">home</a></li>
+      <li><%= link_to 'profile page', current_user %></li>
+      <li><a href="/events/new">create a new event</a></li>
+      <li><a href="/users/<%=current_user.id%>/interests">my settings</a></li>
       <li>
         <center><div class="fb-logout">
           <fb:login-button autologoutlink="true"  scope="public_profile,email" onlogin="checkLoginState();">
@@ -288,7 +307,7 @@ input[type=checkbox]:checked ~ .slide-menu .menu li {
   <%= yield %>
 
 
-
+</div>
 
 
 

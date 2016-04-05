@@ -14,7 +14,7 @@
           bgc = "#00695C";
           bgco = "#f6f6f6";
           $(".activity-box-for-cat" + category).show();
-          $('#toggle'+category).text("⬆")
+          $('#toggle'+category).text("-")
         } else {
           $("#category" + category).val("a," + response["user_id"] + "," + category)
           bgc = "#f6f6f6";
@@ -39,13 +39,16 @@
           $(".activity" + activityId).val("a," + response["user_id"] + "," + activityId);
           bgcolor = "#00695C";
           txtcolor = "#f6f6f6";
+          style = "";
         } else {
           $(".activity" + activityId).val("r," + response["user_id"] + "," + activityId);
           bgcolor = "#f6f6f6";
-          txtcolor = "#00695C";
+          txtcolor = "#939393";
+          style = "italic"
         }
         $(".activity" + activityId).css("background-color",bgcolor);
         $(".activity" + activityId).css("color",txtcolor);
+        $(".activity" + activityId).css("font-style",style);
       });
     });
 
@@ -53,16 +56,19 @@
 
   function toggleActivity(id) {
     $('.activity-box-for-cat' + id).toggle();
-    if ($('#toggle'+id).text() == "⬇") {
-      $('#toggle'+id).text("⬆")
+    if ($('#toggle'+id).text() == "+") {
+      $('#toggle'+id).text("-")
     } else {
-      $('#toggle'+id).text("⬇")
+      $('#toggle'+id).text("+")
     };
   };
 
   </script>
 
 
+<style>
+button:focus {outline:0;}
+</style>
 <div class="category-interest-buttons">
     <div id="category-interest-buttons">
     <% @categories.each do |category| %>
@@ -75,7 +81,7 @@
                  >
                 <%=category.name %>
               </button>
-              <button class = "activity-toggle" id = "toggle<%=category.id%>"onClick="toggleActivity(<%=category.id %>)">⬇</button>
+              <button class = "activity-toggle" id = "toggle<%=category.id%>"onClick="toggleActivity(<%=category.id %>)">+</button>
             </div>
             <%=render partial: 'interests/activity', locals: {activities: category.associated_activities, category: category} %>
         <% else %>
@@ -88,13 +94,14 @@
                   >
               <%=category.name %>
               </button>
-              <button class = "activity-toggle" id = "toggle<%=category.id%>"onClick="toggleActivity(<%=category.id %>)" >⬇</button>
+
+              <button class = "activity-toggle" id = "toggle<%=category.id%>"onClick="toggleActivity(<%=category.id %>)" >+</button>
             </div>
             <%=render partial: 'interests/activity', locals: {activities: category.associated_activities, category: category} %>
             <script>$("#toggle<%=category.id%>").toggle();$(".activity-box-for-cat<%=category.id%>").hide();</script>
         <% end %>
       <br>
     <% end %>
-    <a class="aButton" style="margin-left: -3.1em; height: 20px; width: 300px;" href="/users/<%= @user.id %>">SAVE INTERESTS</a>
+
     </div>
   </div>

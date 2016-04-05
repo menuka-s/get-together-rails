@@ -15,9 +15,9 @@
     </div>
 
     <div class="button update-profile">
-      <a href="/users/<%= @user.id %>/interests">Update Profile</a>
+      <a href="/users/<%= @user.id %>/interests">Update Settings</a>
     </div>
-    
+
     <div class="dashboard-box my-upcoming-events">
       <h4>Upcoming Events</h4>
       <% if @user.upcoming_events.length == 0 %>
@@ -73,4 +73,4 @@
     </div>
   </div>
 </div>
-
+<div id = "page-footer"></div>
