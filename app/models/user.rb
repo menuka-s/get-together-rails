@@ -42,56 +42,36 @@ class User < ActiveRecord::Base
     small_group = []
     @all_event_data = self.appealing_events if @all_event_data.nil?
     @all_event_data.each do |event|
-      if event.max_participants > 19 
+      if event.max_participants > 19
         groups << [ event ]
-      else 
+      else
         small_events << event if event
       end
     end
 
     small_events.each do |event|
-      if small_group.count > 3 
+      if small_group.count > 3
         groups << small_group[0..3]
-        small_group = [] 
-      end 
+        small_group = []
+      end
       small_group << event
     end
- 
-    groups 
 
-
-    # small_events.each do |activity,events|
-    #   small_group = []
-    #   events.each do |event|
-    #     if small_group.count > 3 
-    #       groups << small_group[0..3]
-    #       small_group = [] 
-    #     end 
-    #     small_group << event
-    #   end
-    #   groups << small_group if small_group.count > 0
-    #   small_group = []
-    # end
-    # groups
+    groups
   end
 
   def appealing_events_by_date
-    if @all_event_data.nil?
-      self.appealing_events.sort_by { |event| event.date }
-    else
-      @all_event_data.sort_by { |event| event.date }
-    end
+    @all_event_data = self.appealing_events if @all_event_data.nil?
+    @all_event_data.sort_by { |event| event.date }
   end
 
   def appealing_events_by_proximity
-    if @all_event_data.nil?
-      self.appealing_events.sort_by { |event| event.distance_to([self.latitude, self.longitude]) }
-    else
-      @all_event_data.sort_by { |event| event.distance_to([self.latitude, self.longitude]) }
-    end
+    @all_event_data = self.appealing_events if @all_event_data.nil?
+
+    # if events have a longitude, sort normally; otherwise, move to end
+    @all_event_data.sort { |a,b| a.longitude && b.longitude ? a.distance_to_user([self.latitude, self.longitude]) <=> b.distance_to_user([self.latitude, self.longitude]) : a.longitude ? -1 : 1 }
   end
 
-  # private
   def appealing_activities
     activities = []
     self.liked_categories.each do |category|

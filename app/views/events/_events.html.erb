@@ -19,7 +19,13 @@
                   <p class="appealing-event-address"><%= event.address %></p>
                 </div>
                 <div class="appealing-event-right">
-                  <p class="appealing-event-distance"><%= '%.2f' % event.distance_to([@current_location[0], @current_location[1]]) %> mi</p>
+                  <p class="appealing-event-distance">
+                    <% if event.longitude.nil? %>
+                      ?
+                    <% else %>
+                      <%= '%.2f' % event.distance_to([@current_location[0], @current_location[1]]) %> mi
+                    <% end %>
+                  </p>
                 </div>
               </div>
             </a>
@@ -42,7 +48,13 @@
                   <p class="appealing-event-address"><%= event.address %></p>
                 </div>
                 <div class="appealing-event-right">
-                  <p class="appealing-event-distance"><%= '%.2f' % event.distance_to([@current_location[0], @current_location[1]]) %> mi</p>
+                  <p class="appealing-event-distance">
+                    <% if event.longitude.nil? %>
+                      ?
+                    <% else %>
+                      <%= '%.2f' % event.distance_to([@current_location[0], @current_location[1]]) %> mi
+                    <% end %>
+                  </p>
                 </div>
               </div>
             </a>
