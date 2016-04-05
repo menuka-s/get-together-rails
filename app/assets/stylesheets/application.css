@@ -407,10 +407,10 @@ margin: auto;
 }
 
 #today-events-container{
+  max-width: 575px;
   font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
   margin: 0 auto;
   margin-top: 20px;
-  width: 30%;
   padding: 10px;
   max-height: 200px;
   overflow-y: scroll;
