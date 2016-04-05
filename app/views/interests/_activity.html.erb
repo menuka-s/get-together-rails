@@ -1,13 +1,13 @@
 <div class = "activity-box-for-cat<%=category.id%> activity-interest-box" >
   <%activities.each do  |activity|%>
     <% if dislikes_this?(activity, @user) %>
-      <button style = "background-color: #f6f6f6; color: #000"
+      <button style = "background-color: #f6f6f6; color: #00695C"
         class = "activity<%=activity.id%> activity-interest-button"
         value = "r,<%=@user.id%>,<%=activity.id%>">
         <%= activity.name %>
       </button>
     <% else %>
-      <button style = "background-color: #000; color: #fff"
+      <button style = "background-color: #00695C; color: #fff"
         class = "activity<%=activity.id%> activity-interest-button"
         value = "a,<%=@user.id%>,<%=activity.id%>">
         <%= activity.name %>
