@@ -40,7 +40,7 @@
   <div id="all-events-map"></div>
 
   <div class="news-feed-sorting">
-    <button class="news-feed-sorting-button">Soonest</button>
+    <span class="news-feed-sorting-switch-text">Filter by: </span><button class="news-feed-sorting-button">Soonest</button>
   </div>
 
   <%= render partial: 'events/events', :layout => false %>
@@ -56,6 +56,7 @@
     return this.charAt(0).toUpperCase() + this.slice(1);
   }
 
+  // Create second map variable for ajaxing a pin
   var pmap;
 
   // JS for producing google map with marker
@@ -130,11 +131,6 @@
       });
     };
   }
-
-  // When the ajax request is done, call a function that places 1 pin on the map
-
-
-
 
   // Probably should update to do an ajax request but hey it's functional!
   $(document).ready(function(){

@@ -21,9 +21,9 @@
                 <div class="appealing-event-right">
                   <p class="appealing-event-distance">
                     <% if event.longitude.nil? %>
-                      ?
+
                     <% else %>
-                      <%= '%.2f' % event.distance_to([@current_location[0], @current_location[1]]) %> mi
+                      <%= '%.2f' % event.distance_to_user([@current_location[0], @current_location[1]]) %> mi
                     <% end %>
                   </p>
                 </div>
@@ -50,9 +50,9 @@
                 <div class="appealing-event-right">
                   <p class="appealing-event-distance">
                     <% if event.longitude.nil? %>
-                      ?
+
                     <% else %>
-                      <%= '%.2f' % event.distance_to([@current_location[0], @current_location[1]]) %> mi
+                      <%= '%.2f' % event.distance_to_user([@current_location[0], @current_location[1]]) %> mi
                     <% end %>
                   </p>
                 </div>

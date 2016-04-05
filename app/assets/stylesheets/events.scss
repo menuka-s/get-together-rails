@@ -43,13 +43,23 @@
 }
 
 .news-feed-container {
-  max-width:400px;
+  max-width:600px;
   margin: 0 auto;
+  box-sizing: border-box;
+}
+
+.news-feed-container * {
+  box-sizing: border-box;
 }
 
 .news-feed-sorting {
   float:right;
   margin:5px 0px;
+}
+
+.news-feed-sorting-switch-text {
+  font-size:12px;
+  color:gray;
 }
 
 .news-feed-sorting-button {
@@ -130,7 +140,7 @@
 
 .flip {
   -webkit-perspective: 800;
-  width: 400px;
+  width: 600px;
   height:auto;
   position: relative;
 }
