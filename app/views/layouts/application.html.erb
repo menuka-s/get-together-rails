@@ -162,7 +162,7 @@ input[type=checkbox] {
    position: absolute;
    opacity: 0;
 }
-label {
+#hamburger {
    position: absolute;
    top: 10px;
    left: 40px;
@@ -247,7 +247,7 @@ input[type=checkbox]:checked ~ .slide-menu .menu li {
   <% if session[:user_id] != nil %>
 
 <div id="containerx"  style="z-index: -1;">
-  <input id="toggle" type="checkbox"><label for="toggle">&equiv;</label>
+  <input id="toggle" type="checkbox"><label id="hamburger" for="toggle">&equiv;</label>
 
   <div class="slide-menu" style="z-index: 4;">
       
