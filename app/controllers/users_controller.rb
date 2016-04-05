@@ -9,7 +9,7 @@ class UsersController < ApplicationController
   end
 
   def public_show
-    if params[:id] == current_user.id 
+    if params[:id] == current_user.id
       redirect_to "/users/" + current_user.id
     end
     @user = User.find(params[:id])
@@ -145,22 +145,22 @@ class UsersController < ApplicationController
     user = User.find(current_user.id)
     if user.show_future_events == true
       user.show_future_events = false
-    else 
+    else
       user.show_future_events = true
     end
     user.save
-    render json: {"status":user.show_future_events}
+    render json: {"status" => user.show_future_events}
   end
 
   def priv_p
     user = User.find(current_user.id)
     if user.show_past_events == true
       user.show_past_events = false
-    else 
+    else
       user.show_past_events = true
     end
     user.save
-    render json: {"status":user.show_past_events}
+    render json: {"status" => user.show_past_events}
  end
 
 
