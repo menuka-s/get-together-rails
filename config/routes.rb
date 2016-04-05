@@ -17,6 +17,7 @@ post '/users/ajax_join_event/:id' => 'users#ajax_join_event'
   get '/users/logout' => 'users#logout'
   post '/users/interests_handler' => 'users#interests_handler'
   post '/users/activity_dislikes_handler' => 'users#activity_dislikes_handler'
+  post '/users/mile_preference_handler' => 'users#mile_preference_handler'
   get '/users/:id' => 'users#show'
   resources :users
   resources :activities, :only => [:new, :create]

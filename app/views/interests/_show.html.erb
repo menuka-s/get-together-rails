@@ -63,6 +63,9 @@
   </script>
 
 
+<style>
+button:focus {outline:0;}
+</style>
 <div class="category-interest-buttons">
     <div id="category-interest-buttons">
     <% @categories.each do |category| %>
@@ -88,6 +91,7 @@
                   >
               <%=category.name %>
               </button>
+
               <button class = "activity-toggle" id = "toggle<%=category.id%>"onClick="toggleActivity(<%=category.id %>)" >+</button>
             </div>
             <%=render partial: 'interests/activity', locals: {activities: category.associated_activities, category: category} %>
