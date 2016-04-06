@@ -1,4 +1,5 @@
 class Event < ActiveRecord::Base
+  include UsersHelper
   require 'date'
   require 'pusher'
 
@@ -40,6 +41,7 @@ class Event < ActiveRecord::Base
     end
     self.joined_users.to_a.length < self.max_participants ? true : false
   end
+
 
 
   def push_notification

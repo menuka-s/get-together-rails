@@ -1,3 +1,5 @@
+
+
 <div class="event-container">
   <div id = "event-id" style = "display:none;"><%=@event.id%></div>
   <div class = "event-name">
@@ -31,6 +33,10 @@
   <% else %>
     <h4><span id="spots"><%=@event.max_participants - @event.joined_users.count %></span> Spot(s) Left</h4>
   <% end %>
+    <h4 id="see-attendees">See Who is Attending</h4>
+    <% @attendees.each do |attendee| %>
+      <a href="/users/<%= attendee.id %>"><img src=<%= attendee.image_url %> alt="Attendee Pic" class="attendee-pic"></a>
+    <% end %>
 </div>
 
   <div class="event-buttons">
@@ -47,6 +53,8 @@
       <% end %>
     <% end %>
   </div>
+
+
 
   <div class = "border-line"></div>
 

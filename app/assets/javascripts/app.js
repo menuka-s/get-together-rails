@@ -58,7 +58,6 @@
          $("#activity").toggle();
         });
     $("#comment-button").on("click", function(){
-      debugger;
       if ($("#comment_content").val()!=""){
       var commentText = $("#comment_content").val();
       var eventId = $("#event-id").text();
