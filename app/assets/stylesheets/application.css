@@ -442,6 +442,8 @@ background: transparent;
   max-width: 575px;
   margin: 0 auto;
   margin-top: 20px;
+  max-width: 700px;
+  width:100%;
   padding: 10px;
   max-height: 200px;
   overflow-y: scroll;

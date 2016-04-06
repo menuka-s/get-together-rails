@@ -1,6 +1,8 @@
 
   <div class="news-feed flip">
-    <% if @user_appealing_events %>
+    <% if @user_appealing_events.length == 0 %>
+      <div class="no-events-message">There are no upcoming events that match your interests.</div>
+    <% else @user_appealing_events %>
       <div class="card">
 
         <div class="news-feed-proximity face front">
