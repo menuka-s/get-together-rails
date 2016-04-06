@@ -18,6 +18,10 @@ class Event < ActiveRecord::Base
   validate :event_must_be_within_seven_days
   validate :activity_exists
 
+  # New event form requires this method to assign
+  def all_category_ids
+  end
+
   def self.event_locations
     all_event_location_data = []
     Event.all.each do |event|
