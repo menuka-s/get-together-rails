@@ -2,7 +2,7 @@
   <% if comment.commenter == current_user %>
     <div class="comment-item">
       <div class="comment-user-info">
-        <a href="/users/public/<%= comment.commenter.id %>">
+        <a href="/users/<%= comment.commenter.id %>/public">
           <div class = "comment-user-image">
             <img src ="<%= comment.commenter.image_url %>">
           </div>
@@ -24,7 +24,7 @@
   <% else %>
     <div class="other-comment-item">
       <div class="comment-user-info">
-        <a href="/users/public/<%= comment.commenter.id %>">
+        <a href="/users/<%= comment.commenter.id %>/public">
           <div class = "comment-user-image">
             <img src ="<%= comment.commenter.image_url %>">
           </div>

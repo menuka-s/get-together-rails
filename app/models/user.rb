@@ -94,6 +94,13 @@ class User < ActiveRecord::Base
     @all_event_data.sort { |a,b| a.longitude && b.longitude ? a.distance_to_user([self.latitude, self.longitude]) <=> b.distance_to_user([self.latitude, self.longitude]) : a.longitude ? -1 : 1 }
   end
 
+  # def appealing_events_by_recommended
+  #   @all_event_data = self.appealing_events if @all_event_data.nil?
+
+  #   # if events have a longitude, sort normally; otherwise, move to end
+  #   @all_event_data.sort { |a,b| a.recommendations && b.recommendations }
+  # end
+
   def appealing_activities
     activities = []
     self.liked_categories.each do |category|
