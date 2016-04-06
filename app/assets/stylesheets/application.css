@@ -557,8 +557,7 @@ width: 100px;
   font-style: italic;
   color: gray;
 }
-#bio-update-field{
-  display: block;
+#bio-textarea{
   margin: auto 0;
 }
 #user-bio{
