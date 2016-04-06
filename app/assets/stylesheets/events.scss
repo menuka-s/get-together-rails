@@ -236,4 +236,25 @@
   /*note: this height:initial is needed to make the border the appropriate height */
 }
 
-/* FLIPPING END *********************/
+/* New Event Page *******************/
+
+#new-activity-category-container input[type=checkbox] {
+  opacity: 1;
+  margin-top:2px;
+}
+
+#new-activity-category-container .collection-check-box label {
+  padding-left:15px;
+}
+
+.hidden {
+  display:none;
+}
+
+
+
+
+
+
+
+
