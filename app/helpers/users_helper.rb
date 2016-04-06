@@ -18,4 +18,9 @@ module UsersHelper
     return user_arr.join(",")
   end
 
+  def mutual_interests(user)
+    user_interests = user.appealing_activities
+    mutual_interests = user_interests & current_user.appealing_activities
+  end
+
 end

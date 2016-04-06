@@ -14,8 +14,6 @@ class UsersController < ApplicationController
     end
     @user = User.find(params[:id])
     @users_activities = Activity.all - @user.disliked_activities
-    @user = User.find(21)
-    @users_activities = Activity.all - @user.disliked_activities
 
     render :'/users/public'
   end
@@ -75,6 +73,13 @@ class UsersController < ApplicationController
     render json: {user_id: @user.id, like_count: @user.liked_categories.length}
   end
 
+  def update
+    current_user.update_attributes(bio: params["bio"])
+    if current_user.save
+      render json: {bio: current_user.bio}
+    end
+  end
+
   def ajax_join_event
     if session[:user_id] == nil
       render json: {"status"=>"💩"}
@@ -92,7 +97,7 @@ class UsersController < ApplicationController
   end
 
 
-  def interests_handler #not restful, not pretty. but works splendidly.
+  def interests_handler
     (action,user_id,category_id) = params[:data].split(',')
     if (action == "a")
       userLike = UsersCategory.new({user_id: user_id, category_id: category_id})

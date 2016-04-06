@@ -23,7 +23,7 @@ $(document).ready(function(){
   });
 });
 </script>
---> 
+-->
 
 <div id="user_settings">
   <center>
@@ -37,7 +37,7 @@ $(document).ready(function(){
       <% if @user.show_past_events == true %>
         <% past_checked = "checked" %>
       <% end %>
-      Publicly Display My Created Events: 
+      Publicly Display My Created Events:
 
       Future: <input style="position: relative; opacity: 1" id="priv_future" type="checkbox" <%= future_checked %> onClick='$.ajax({url: "/users/priv_f", method: "post"});'>&nbsp;&nbsp;
       Past: <input style="position: relative; opacity: 1"  id="priv_past"  type="checkbox"  <%= past_checked %> onClick='$.ajax({url: "/users/priv_p", method: "post"});'>
@@ -58,7 +58,8 @@ $(document).ready(function(){
   <%=render partial: 'interests/show'  %>
 </div>
 
-<div id = "save-interests"><a class="button" href="/">Save Interests</a></div>
+
+<div id = "save-interests"><a class="button" href="/">Save Settings</a></div>
 
 <div id = "page-footer"></div>
 <script>
