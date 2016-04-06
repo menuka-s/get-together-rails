@@ -67,6 +67,7 @@
         $("#selected-activity").text("");
          $("#activity").toggle();
          $("#new-activity-category-container").addClass("hidden");
+         $("input:checkbox").removeAttr("checked");
         });
     $("#comment-button").on("click", function(){
       if ($("#comment_content").val()!=""){
