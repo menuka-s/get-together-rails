@@ -53,7 +53,7 @@ class Event < ActiveRecord::Base
     )
 
     pusher_client.trigger('test_channel', 'my_event', {
-      message: 'New Event Added!'
+      message: 'Event'
     })
 
   end

@@ -37,6 +37,11 @@ class EventsController < ApplicationController
     @attendees = @event.joined_users
   end
 
+  def comments_ajax
+    @event = Event.find(params[:id])
+    render partial: 'comment/showallevent'
+  end
+
   def new
     @event = Event.new
     @activity = Activity.new
