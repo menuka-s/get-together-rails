@@ -55,6 +55,7 @@ class EventsController < ApplicationController
         flash[:notice] = "Your event was successfully created"
         redirect_to @event
       else
+        # redirect user back to event page with event errors showing
         @activities = Activity.all
         render new_event_path(@event)
       end
@@ -73,11 +74,14 @@ class EventsController < ApplicationController
           flash[:notice] = "Your event was successfully created"
           redirect_to @event
         else # activity passes validation, but event does not
+          # redirect user back to new event page with event errors (the new activity has been saved to the db)
           @activities = Activity.all
           render new_event_path(@event)
         end
 
       else # the activity did not pass validation
+        # redirect user back to new event page with activity errors showing (the new activity has not been saved to the db, so the categories checkbox div will be shown)
+
         new_event_params.delete("all_category_ids")
         @event = current_user.created_events.new(new_event_params)
 
@@ -85,7 +89,9 @@ class EventsController < ApplicationController
           @event.errors.add(key,value.first)
         end
 
-        @new_activity_flag = "flag" # create a flag variable to determine whether the categories checkboxes will be shown upon page load
+        if !@activity.errors.messages.include?(:name)
+          @new_activity_flag = "flag" # create a flag variable to determine whether the categories checkboxes will be shown upon page load
+        end
         @activities = Activity.all
         render new_event_path(@event)
       end
@@ -98,7 +104,14 @@ class EventsController < ApplicationController
 
   def update
     @event = Event.find(params[:id])
-    @event.update(event_params)
+    new_event_params = event_params
+
+    @activity = Activity.find_or_initialize_by(name: new_event_params[:activity_name])
+    @activity.all_categories = new_event_params[:all_category_ids]
+    @activity.save
+
+    new_event_params.delete("all_category_ids")
+    @event.update(new_event_params)
     redirect_to event_path(@event)
   end
 

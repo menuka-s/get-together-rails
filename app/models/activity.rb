@@ -24,7 +24,9 @@ class Activity < ActiveRecord::Base
 
   private
   def activity_must_have_categories
-    errors.add("Activity", " must have categories") if @all_category_ids.length == 0
+    if @all_category_ids
+      errors.add("Activity", " must have categories") if @all_category_ids.length == 0
+    end
   end
 
 end

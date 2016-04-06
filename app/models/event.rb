@@ -17,7 +17,7 @@ class Event < ActiveRecord::Base
   validate :event_must_be_within_seven_days
   validate :activity_exists
 
-  # Need this for mass assigning??
+  # New event form requires this method to assign
   def all_category_ids
   end
 
