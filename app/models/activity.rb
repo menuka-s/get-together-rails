@@ -7,7 +7,7 @@ class Activity < ActiveRecord::Base
   has_many :events
 
   validates_presence_of :name
-  validate :activity_must_have_categories
+  # validate :activity_must_have_categories
 
   def all_categories=(new_categories)
     @new_categories = new_categories
