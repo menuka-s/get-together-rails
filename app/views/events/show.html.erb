@@ -11,7 +11,7 @@
 <div class = "border-line"></div>
 <div class = "created-by">Created by:</div>
 <div class = "event-creator">
-  <a href="/users/<%= @event.creator.id %>"><div id = "tiny-image"><img src = <%=@event.creator.image_url%>></div> <div class = "creator-name"> <%= @event.creator.name %></div></a>
+  <a href="/users/<%= @event.creator.id %>/public"><div id = "tiny-image"><img src = <%=@event.creator.image_url%>></div> <div class = "creator-name"> <%= @event.creator.name %></div></a>
 </div>
 <div class="event-details">
   <h4>When:</h4>
@@ -36,6 +36,7 @@
     <h4 id="see-attendees">See Who is Attending</h4>
     <% @attendees.each do |attendee| %>
       <a href="/users/<%= attendee.id %>"><img src=<%= attendee.image_url %> alt="Attendee Pic" class="attendee-pic"></a>
+      <%= mutual_interests(attendee).count %>
     <% end %>
 </div>
 
@@ -60,7 +61,7 @@
 
   <h4 style="font-family: verdana;">EVENT COMMUNICATION </h4>
   <div class="event-comments">
-    
+
 
       <%= render partial: 'comment/showallevent' %>
 
@@ -74,6 +75,23 @@ textarea {
   position: relative;
   left: 0;
 }
+
+.interest_1 {
+
+}
+
+.interest_2 {
+
+}
+
+.interest_3 {
+
+}
+
+.interest_4 {
+
+}
+
 </style>
 
     <div class="new-comment">
