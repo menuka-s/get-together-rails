@@ -9,7 +9,7 @@
 <div class = "border-line"></div>
 <div class = "created-by">Created by:</div>
 <div class = "event-creator">
-  <a href="http://www.facebook.com/app_scoped_user_id/<%= @event.creator.facebook_id %>"><div id = "tiny-image"><img src = <%=@event.creator.image_url%>></div> <div class = "creator-name"> <%= @event.creator.name %></div></a>
+  <a href="/users/<%= @event.creator.id %>"><div id = "tiny-image"><img src = <%=@event.creator.image_url%>></div> <div class = "creator-name"> <%= @event.creator.name %></div></a>
 </div>
 <div class="event-details">
   <h4>When:</h4>
