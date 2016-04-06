@@ -1,6 +1,6 @@
 class Comment < ActiveRecord::Base
   require 'pusher'
-  belongs_to :user
+  belongs_to :commenter, class_name: "User", foreign_key: :user_id
   belongs_to :event
 
   validates_presence_of :content

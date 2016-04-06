@@ -1,15 +1,15 @@
 <div class="comment-item">
 
   <div class="comment-user-info">
-    <a href="/users/public/<%= comment.user.id %>">
+    <a href="/users/public/<%= comment.commenter.id %>">
       <div class = "comment-user-image">
-        <img src ="<%= comment.user.image_url %>">
+        <img src ="<%= comment.commenter.image_url %>">
       </div>
       <div class = "comment-name">
         <%= username %>
       </div>
     </a>
-    <% if comment.user.id == current_user.id %>
+    <% if comment.commenter.id == current_user.id %>
       <div class= "delete-button">
         <%= link_to "x", event_comment_path( event.id, comment.id  ), method: :delete %>
       </div>
