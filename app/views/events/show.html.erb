@@ -51,38 +51,13 @@
   <div class = "border-line"></div>
 
   <div class="event-comments">
-  <h4 style="font-family: verdana;">EVENT COMMUNICATION </h4>
-  <div id = "comment-container">
-    <% @event.comments.each do |comment| %>
-    <div class="comment-item">
+    <h4 style="font-family: verdana;">EVENT COMMUNICATION </h4>
+    
 
-      <div class="comment-user-info">
+      <%= render partial: 'comment/showallevent' %>
 
-        <a href="/users/<%= comment.user.id %>"><div class = "comment-user-image"><img src = <%=comment.user.image_url%>></div>
-        <div class = "comment-name"><%= comment.user.name %></div></a>
-        <% if comment.user.id == current_user.id %>
-          <div class= "delete-button">
-            <%= link_to "x", event_comment_path( @event.id, comment.id  ), method: :delete, :class => "delete-link" %>
-          </div>
-        <% end %>
-
-      </div>
-
-      <div class="comment-content"><%= comment.content %></div>
-
-      <div class = "comment-time"><%= distance_of_time_in_words(comment.created_at, Time.now) %> ago</div>
     </div>
 
-  <% end %>
-</div>
-
-    <div class="new-comment">
-      <%= form_for [ @event, @comment ] do |f| %>
-        <ul class="error-messages">
-          <% @event.errors.full_messages.each do |error| %>
-            <li><%= error %></li>
-          <% end %>
-        </ul>
 
 <style>
 textarea {
@@ -92,31 +67,28 @@ textarea {
   left: 0;
 }
 </style>
+
+    <div class="new-comment">
+      <%= form_for [ @event, @comment ] do |f| %>
+        <ul class="error-messages">
+          <% @event.errors.full_messages.each do |error| %>
+            <li><%= error %></li>
+          <% end %>
+        </ul>
+
+
         <%= f.text_area :content, :placeholder =>"Comment here..." %>
         <br><br>
       <div class = "button" id = "comment-button">Leave Comment</div>
-    </div>
       <% end %>
+    </div>
   </div>
-
-
-
+</div></div>
   <br><br>
 </div>
 <div id = "page-footer"></div>
 <script>
-$(document).ready(function(){
-$(document).on("click", ".delete-button a", function(event){
-      event.preventDefault();
-      debugger;
-      console.log("hi");
 
-      // $.ajax({
-      //   method:
-      //   url: "/events/"+ eventID + "/comments" + commentID
-      // })
-    });
-});
   // JS for producing google map with marker
   var myLatLng;
   <% if @event.longitude.nil? %>
