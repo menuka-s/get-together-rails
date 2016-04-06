@@ -5,17 +5,19 @@ class UsersController < ApplicationController
   end
 
   def show
+    redirect_to "/" if current_user.id != params[:id].to_i
     @user = User.find(params[:id])
   end
 
   def public_show
-    if params[:id] == current_user.id
-      redirect_to "/users/" + current_user.id
-    end
+    if params[:id].to_i == current_user.id
+      redirect_to "/users/#{current_user.id}"
+    else
     @user = User.find(params[:id])
     @users_activities = Activity.all - @user.disliked_activities
 
     render :'/users/public'
+    end
   end
 
   def new
@@ -37,14 +39,15 @@ class UsersController < ApplicationController
   end
 
   def interests
+    redirect_to "/" if current_user.id != params[:id].to_i
     @user = User.find(params[:id])
     @categories = Category.all
   end
 
   def allinterests
+    redirect_to "/" if current_user.id != params[:id].to_i
     @user = User.find(params[:id])
     @categories = Category.all
-    puts "adding categories"
     @categories.each do |category|
       UsersCategory.create(user_id: @user.id, category_id: category.id)
     end
