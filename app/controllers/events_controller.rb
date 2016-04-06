@@ -34,6 +34,12 @@ class EventsController < ApplicationController
     @event = Event.find(params[:id])
     @current_location = index_locals[0]
     @comment = Comment.new
+    @attendees = @event.joined_users
+  end
+
+  def comments_ajax
+    @event = Event.find(params[:id])
+    render partial: 'comment/showallevent'
   end
 
   def new
@@ -106,6 +112,7 @@ class EventsController < ApplicationController
 
   def edit
     @event = Event.find(params[:id])
+    redirect_to "/" if @event.creator != current_user
   end
 
   def update

@@ -69,6 +69,7 @@
          $("#new-activity-category-container").addClass("hidden");
          $("input:checkbox").removeAttr("checked");
         });
+
     $("#comment-button").on("click", function(){
       if ($("#comment_content").val()!=""){
       var commentText = $("#comment_content").val();
@@ -79,11 +80,36 @@
         data: {content: commentText}
       })
       .done(function(comment){
-        $("#comment-container").append(comment);
+        $(".event-comments").append(comment);
         $("#comment_content").val("");
       })}
     });
 
+    $("#user-bio").on("click", function(){
+      if ($("#bio-textarea").css("display") == "none" ){
+        $("#user-bio-header").toggle();
+        $("#user-bio-content").toggle();
+        $("#bio-textarea").toggle();
+        $("#bio-button").toggle();
+      }
+    });
+    $("#bio-button").on("click", function(){
 
+      var textContent = $("#bio-update-field").val();
+      var patchUrl = $(".menu a:eq(1)").attr("href")
+      $.ajax({
+        method: "PATCH",
+        url: patchUrl,
+        data: {bio: textContent}
+      })
+      .done(function(response){
+        console.log(response)
+        $("#user-bio-header").toggle();
+        $("#user-bio-content").text(response.bio);
+        $("#user-bio-content").toggle();
+        $("#bio-textarea").toggle();
+        $("#bio-button").toggle();
+      });
+    });
 
   });

@@ -1,4 +1,5 @@
 class Event < ActiveRecord::Base
+  include UsersHelper
   require 'date'
   require 'pusher'
 
@@ -46,6 +47,7 @@ class Event < ActiveRecord::Base
   end
 
 
+
   def push_notification
     pusher_client = Pusher::Client.new(
       app_id: '194717',
@@ -55,7 +57,7 @@ class Event < ActiveRecord::Base
     )
 
     pusher_client.trigger('test_channel', 'my_event', {
-      message: 'New Event Added!'
+      message: 'Event'
     })
 
   end

@@ -2,11 +2,14 @@
 <div class="user-profile">
 
   <div class="my_info">
-    <!-- User Id: <%=session[:user_id]%> -->
     <div class= "user-name"><%=@user.name%></div>
 
   </div>
-
+  <div id = "user-bio"><div id = "user-bio-header">click to edit bio</div>
+  <div id = "user-bio-content"><%=current_user.bio %></div>
+  <div id = "bio-textarea" style = "display:none;"><textarea id = "bio-update-field"  cols = "50" rows = "10"> <%=current_user.bio%> </textarea></div>
+  <div id = "bio-button" class = "button" style = "display:none;">Save</div>
+  </div>
   <div class="my_dashboard">
 
     <div id = "user-buttons">

@@ -115,7 +115,7 @@ vertical-align: middle;
 }
 
 .feed-header{
-
+  color: #005348;
   font-size: 50px;
   margin-bottom: 10px;
 }
@@ -304,10 +304,9 @@ vertical-align: middle;
 #page-footer {
 
   width: 100%;
-  position: relative;
   font-size: 18px;
   text-align: center;
-  background-color: #00695C;
+  background-color: white;
   color: white;
   height: 150px;
   margin-top: 20px;
@@ -511,3 +510,72 @@ background: transparent;
 .user-event-item{
   padding: 5px;
 }
+
+.my_info{
+  text-align: center;
+  margin: 15px;
+}
+
+.public_info{
+  text-align: center;
+  margin: 30px;
+}
+
+#public_img{
+height: 100px;
+width: 100px;
+
+}
+
+#public_photo{
+
+}
+
+#public_username{
+  padding: 15px;
+}
+
+.my_dashboard{
+/*  border: 1px solid black;*/
+  margin: 0 auto;
+  padding: 10px;
+}
+#public_activities{
+/*  border: 1px solid black;*/
+  margin: 0 auto;
+  padding: 10px;
+}
+
+#public-bio{
+  margin: 0 auto;
+  padding-top: 10px;
+  text-align: center;
+  width: 70%;
+}
+
+#span-info{
+  font-style: italic;
+  color: gray;
+}
+#bio-textarea{
+  margin: auto 0;
+}
+#user-bio{
+  text-align: center;
+  width: 50%;
+  margin: 0 auto;
+  padding: 10px;
+  cursor: pointer;
+}
+#user-bio-content{
+  width: 90%;
+  margin: 0 auto;
+}
+
+#user-bio-header{
+  font-style: italic;
+  font-size: 10px;
+  color: gray;
+  padding-bottom: 10px;
+}
+

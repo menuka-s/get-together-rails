@@ -8,41 +8,64 @@
 .public_activities {background-color: #00695C; color: #fff; display: inline-block; padding: 4px; border-radius: 5px; margin: 4px;}
 </style>
 
-
-<br><br>
 <div class="user-profile">
-
-  <div class="my_info">
-    <center>
-      <img id="public_img" height=100 width=100 src="<%= @user.image_url %>">
+  <div class="public_info">
+      <div id = "public_photo">
+        <a href = "http://www.facebook.com/app_scoped_user_id/<%=@user.facebook_id %>"><img id="public_img" src="<%= @user.image_url %>">
+      </div>
       <div id="public_username">
         <%=@user.name%>
-      </div>
-    </center>
+      </div></a>
   </div>
-
+  <div id = "public-bio">
+    <% if @user.bio != "" %>
+      <%=@user.bio%>
+    <% else %>
+      <span id = "span-info">This user hasn't written their bio yet...</span>
+    <% end %>
+  </div>
   <div class="my_dashboard">
-<center>
-  <div id="public_activities">
-    <center>
-      <h2><%= @user.name.split[0] %>'s Interests:</h2>
-      <hr style="width: 60%;">
-      <% @users_activities.each do |act| %>
-        <div class="public_activities"><%= act.name %></div>
-      <% end %>
-      <hr style="width: 60%;">
-    </center>
-  </div>
-</center>
+    <div id="public_activities">
 
-    <% if @user.show_future_events || @user.show_future_events %>
-      <% if @user.show_future_events && @user.show_future_events == true %>
-        <div class="dashboard-box my-upcoming-events">
-          <h4>Created Events Coming Up:</h4>
-          <% if @user.created_events_by_date_future.length == 0 %>
-            <p>This user has created no upcoming events.</p>
-          <% else %>
-            <%@user.created_events_by_date_future.each do |event|  %>
+        <h2> Mutual Interests with <%= @user.name.split[0] %></h2>
+        <hr style="width: 60%;">
+        <%  mutual_interests(@user).each do |act| %>
+          <div class="public_activities"><%= act.name %></div>
+        <% end %>
+        <hr style="width: 60%;">
+
+    </div>
+
+
+      <% if @user.show_future_events || @user.show_future_events %>
+        <% if @user.show_future_events && @user.show_future_events == true %>
+          <div class="dashboard-box my-upcoming-events">
+            <h4>Created Events Coming Up:</h4>
+            <% if @user.created_events_by_date_future.length == 0 %>
+              <p>This user has created no upcoming events.</p>
+            <% else %>
+              <%@user.created_events_by_date_future.each do |event|  %>
+
+                  <a href = "/events/<%=event.id%>">
+                    <div class = "today-event-item">
+                      <div class = "today-event-name"><%=event.name%></div>
+                      <div class = "today-event-address"><%=event.address%></div>
+                      <div class = "today-event-time">in <%=distance_of_time_in_words(Time.now, event.date) %></div>
+                    </div>
+                  </a>
+
+                <% end %>
+            <% end %>
+          </div>
+        <% end %>
+        <br>
+        <% if @user.show_past_events && @user.show_past_events == true %>
+          <div class="dashboard-box my-upcoming-events">
+            <h4>Past Events This User Created:</h4>
+            <% if @user.created_events_by_date_past.length == 0 %>
+              <p>This user has created no past events.</p>
+            <% else %>
+              <%@user.created_events_by_date_past.each do |event|  %>
 
                 <a href = "/events/<%=event.id%>">
                   <div class = "today-event-item">
@@ -51,36 +74,13 @@
                     <div class = "today-event-time">in <%=distance_of_time_in_words(Time.now, event.date) %></div>
                   </div>
                 </a>
-
               <% end %>
-          <% end %>
-        </div>
-      <% end %>
-      <br>
-      <% if @user.show_past_events && @user.show_past_events == true %>
-        <div class="dashboard-box my-upcoming-events">
-          <h4>Past Events This User Created:</h4>
-          <% if @user.created_events_by_date_past.length == 0 %>
-            <p>This user has created no past events.</p>
-          <% else %>
-            <%@user.created_events_by_date_past.each do |event|  %>
-
-              <a href = "/events/<%=event.id%>">
-                <div class = "today-event-item">
-                  <div class = "today-event-name"><%=event.name%></div>
-                  <div class = "today-event-address"><%=event.address%></div>
-                  <div class = "today-event-time">in <%=distance_of_time_in_words(Time.now, event.date) %></div>
-                </div>
-              </a>
             <% end %>
-          <% end %>
-        </div>
+          </div>
+        <% end %>
+      <% else %>
+        <center><h2>This user has enabled privacy settings.</h2></center>
       <% end %>
-    <% else %>
-      <center><h2>This user has enabled privacy settings.</h2></center>
-    <% end %>
-
-
+    </div>
   </div>
-</div>
-
+<div id = "page-footer"></div>

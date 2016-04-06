@@ -1,4 +1,5 @@
 class User < ActiveRecord::Base
+  include UsersHelper
   require 'date'
 
   has_many :users_events
@@ -102,4 +103,12 @@ class User < ActiveRecord::Base
     end
     activities.uniq - self.disliked_activities.to_a
   end
+
+
+  # def interests_in_common
+  #   my_interests = Activity.all - self.disliked_activities
+  #   shared_interests = my_interests & current_user_activities
+  # end
 end
+
+

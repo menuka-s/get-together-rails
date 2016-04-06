@@ -5,19 +5,19 @@ class UsersController < ApplicationController
   end
 
   def show
+    redirect_to "/" if current_user.id != params[:id].to_i
     @user = User.find(params[:id])
   end
 
   def public_show
-    if params[:id] == current_user.id
-      redirect_to "/users/" + current_user.id
-    end
+    if params[:id].to_i == current_user.id
+      redirect_to "/users/#{current_user.id}"
+    else
     @user = User.find(params[:id])
-    @users_activities = Activity.all - @user.disliked_activities
-    @user = User.find(21)
     @users_activities = Activity.all - @user.disliked_activities
 
     render :'/users/public'
+    end
   end
 
   def new
@@ -39,14 +39,15 @@ class UsersController < ApplicationController
   end
 
   def interests
+    redirect_to "/" if current_user.id != params[:id].to_i
     @user = User.find(params[:id])
     @categories = Category.all
   end
 
   def allinterests
+    redirect_to "/" if current_user.id != params[:id].to_i
     @user = User.find(params[:id])
     @categories = Category.all
-    puts "adding categories"
     @categories.each do |category|
       UsersCategory.create(user_id: @user.id, category_id: category.id)
     end
@@ -75,6 +76,13 @@ class UsersController < ApplicationController
     render json: {user_id: @user.id, like_count: @user.liked_categories.length}
   end
 
+  def update
+    current_user.update_attributes(bio: params["bio"])
+    if current_user.save
+      render json: {bio: current_user.bio}
+    end
+  end
+
   def ajax_join_event
     if session[:user_id] == nil
       render json: {"status"=>"💩"}
@@ -92,7 +100,7 @@ class UsersController < ApplicationController
   end
 
 
-  def interests_handler #not restful, not pretty. but works splendidly.
+  def interests_handler
     (action,user_id,category_id) = params[:data].split(',')
     if (action == "a")
       userLike = UsersCategory.new({user_id: user_id, category_id: category_id})
