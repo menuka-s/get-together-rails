@@ -90,6 +90,7 @@ class EventsController < ApplicationController
 
         new_event_params.delete("all_category_ids")
         @event = current_user.created_events.new(new_event_params)
+        @event.save
 
         if !@activity.errors.messages.include?(:name)
           @new_activity_flag = "flag" # create a flag variable to determine whether the categories checkboxes will be shown upon page load

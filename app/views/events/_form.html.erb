@@ -4,22 +4,23 @@
 
   <%= form_for @event do |f| %>
     <div class="new-event-form">
-    <div class="new-event-header" style="font-size: 1.6em;font-family: verdana;">Create a New Event</div>
+    <h1 class="new-event-header">Create a New Event</h1>
       <ul class="error-messages">
         <% @event.errors.full_messages.each do |error| %>
         <li><%= error %></li>
         <% end %>
       </ul>
+      <div class="border-line"></div>
       <p>
         Event Name:<br>
-        <%= f.text_field :name %>
+        <%= f.text_field :name, :placeholder => "Game of Thrones Watch Party" %>
       </p>
       <p>
         <div id = "activity-container">
           Activity:<br>
           <span id = "selected-activity"></span>
           <span id="activity-cancel"> 💩</span>
-          <input type = "text" id = "activity" value="">
+          <input type = "text" id = "activity" value="" placeholder="TV">
           <div id= "suggestions-container"></div>
             <input id = "activity-input" type = "hidden" name = "event[activity_name]" value = "<%= (@event.activity.name unless @event.activity.nil?) || @activity.name %>">
         </div>
@@ -43,31 +44,26 @@
       </p>
       <p>
         <%= f.label :description %><br>
-  <style>
-  textarea {
-    height: 80px;
-    width: 360px;
-  }
-  </style>
-        <%= f.text_area :description %>
+        <%= f.text_area :description, :placeholder => "The new season of Game of Thrones starts this week. Let's meet up and watch it!" %>
       </p>
       <p>
-        <%= f.label :date %><br>
-        <%= f.datetime_select :date, :ampm => true, :minute_step => 15, :start_year => 2016, :end_year => 2016 %>
+        <%= f.label "Date:" %><br>
+        <%= f.datetime_select :date, :ampm => true, order: [:month, :day, :year], :minute_step => 15, :start_year => 2016, :end_year => 2016 %>
       </p>
       <p>
-        <%= f.label :address %><br>
-        <%= f.text_field :address, :placeholder =>"(i.e., '351 W Hubbard St., Chicago, IL' or 'Millenium Park, Chicago, IL)'", :onFocus => "geolocate()" %>
+        <%= f.label "Location:" %><br>
+        <%= f.text_field :address, :placeholder =>"(i.e. '351 W Hubbard St., Chicago, IL')", :onFocus => "geolocate()" %>
       </p>
       <p>
-        <%= f.label :max_participants %><br>
+        <%= f.label "Maximum Number of Participants:" %><br>
         <%= f.select :max_participants, options_for_select(max_number_o_participants, :max_participants) %>
       </p>
       <p>
-        <%= f.submit %>
+        <%= f.submit :class => "real-button" %>
       </p>
     </div>
   <% end %>
+  <div class="border-line"></div>
 </div>
 
 <script>
