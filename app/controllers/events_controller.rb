@@ -56,6 +56,7 @@ class EventsController < ApplicationController
 
   def edit
     @event = Event.find(params[:id])
+    redirect_to "/" if @event.creator != current_user
 
   end
 

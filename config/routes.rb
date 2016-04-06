@@ -6,7 +6,7 @@ Rails.application.routes.draw do
 
   post '/users/priv_f' => 'users#priv_f'
   post '/users/priv_p' => 'users#priv_p'
-  get '/users/public/:id' => 'users#public_show'
+  get '/users/:id/public' => 'users#public_show'
   get '/events/newest_event' => 'events#newest_event'
   get '/events/index_ajax' => 'events#index_ajax'
   get '/events/tiles' => 'events#index_tiles'
