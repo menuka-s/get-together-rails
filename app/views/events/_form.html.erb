@@ -21,12 +21,25 @@
           <span id="activity-cancel"> 💩</span>
           <input type = "text" id = "activity" value="">
           <div id= "suggestions-container"></div>
-            <input id = "activity-input" type = "hidden" name = "event[activity_name]" value = "<%=@event.activity.name unless @event.activity.nil? %>">
+            <input id = "activity-input" type = "hidden" name = "event[activity_name]" value = "<%= @activity.name || (@event.activity.name unless @event.activity.nil?) %>">
+        </div>
+      </p>
+
+      <p>
+        <% if @new_activity_flag %>
+          <div id="new-activity-category-container">
+        <% else %>
+          <div id="new-activity-category-container" class="hidden">
+        <% end %>
+          <%= f.label "Categories (check all that apply):" %><br>
+            <%= f.collection_check_boxes :all_category_ids, Category.all, :id, :name do |b| %>
+              <div class="collection-check-box">
+                <%= b.check_box %>
+                <%= b.label %>
+              </div>
+            <% end %>
         </div>
 
-        <div>
-
-        </div>
       </p>
       <p>
         <%= f.label :description %><br>

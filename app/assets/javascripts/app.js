@@ -38,12 +38,22 @@
         $("#suggestions-container").hide();
       });
       $("#suggestions-container").on("click", "#new-activity", function(){
-        window.location.assign("/activities/new")
 
-        // reveals a div that contains all the categories
-        // sends an ajax request
+        var selectedActivity = $("#activity").val();
+        $("#selected-activity").text(selectedActivity);
+        $("#activity-input").val(selectedActivity);
+        $("#activity").val("");
+        $("#activity").toggle();
+        $("#activity-cancel").toggle();
+
+        $("#new-activity-category-container").removeClass("hidden");
+        $("#suggestions-container").hide();
+
+        // What about when someone clicks away?? or wants to select something else? -- User question.
 
       });
+
+
 
       // $(document).on("click", function(){
       //   if($("#suggestions-container").css("display")!="none"){
@@ -56,9 +66,9 @@
         $("#activity-cancel").toggle();
         $("#selected-activity").text("");
          $("#activity").toggle();
+         $("#new-activity-category-container").addClass("hidden");
         });
     $("#comment-button").on("click", function(){
-      debugger;
       if ($("#comment_content").val()!=""){
       var commentText = $("#comment_content").val();
       var eventId = $("#event-id").text();
@@ -70,7 +80,6 @@
       .done(function(comment){
         $("#comment-container").append(comment);
         $("#comment_content").val("");
-        // console.log(comment);
       })}
     });
 
