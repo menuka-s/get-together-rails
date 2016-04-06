@@ -3,6 +3,7 @@ class EventsController < ApplicationController
   include EventsHelper
 
   def index
+    # @current_location,@user_appealing_events,@user_appealing_events_by_date,@user_appealing_events_by_proximity,@user_recommended_events_by_proximity = index_locals
     @current_location,@user_appealing_events,@user_appealing_events_by_date,@user_appealing_events_by_proximity = index_locals
   end
 
@@ -144,7 +145,8 @@ class EventsController < ApplicationController
     [ [ current_user.latitude, current_user.longitude ],
         current_user.appealing_events,
         current_user.appealing_events_by_date,
-        current_user.appealing_events_by_proximity
+        current_user.appealing_events_by_proximity,
+        # current_user.appealing_events_by_recommended
     ]
   end
 

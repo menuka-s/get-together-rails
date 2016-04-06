@@ -4,7 +4,6 @@
     var pusher = new Pusher('c7a6150d22d40eea7bca', {
       encrypted: true
     });
-
     var channel = pusher.subscribe('test_channel');
     channel.bind('my_event', function(data) {
       $.ajax({url: '/events/index_ajax',
@@ -17,7 +16,6 @@
               method: 'get',
               data: {}
           }).done(function(response) {
-
             if (response["status"] == 1) {
               events = [ response["event"] ];
               console.log(events);
@@ -65,70 +63,55 @@
 <script>
   events = <%= raw @user_appealing_events_by_proximity.to_json.as_json %>
   currentLocation = <%= raw @current_location.as_json %>;
-
   // Add capitalization function for displaying event names in the map
   String.prototype.capitalizeFirstLetter = function() {
     return this.charAt(0).toUpperCase() + this.slice(1);
   }
-
   // Create second map variable for ajaxing a pin
   var pmap;
-
   // JS for producing google map with marker
   function initMap() {
-
     var map = new google.maps.Map(document.getElementById('all-events-map'), {
       zoom: 14,
       center: {lat: currentLocation[0], lng: currentLocation[1]}
     });
     pmap = map;
     setMarkers(map);
-
     // Recenter the map on window resize
     google.maps.event.addDomListener(window, 'resize', function() {
       map.setCenter({lat: currentLocation[0], lng: currentLocation[1]});
     });
   };
-
   function setMarkers(map) {
-
     var shape = {
       coords: [1, 1, 1, 20, 18, 20, 18, 1],
       type: 'poly'
     };
-
     var infoWindow = new google.maps.InfoWindow({
       content: contentString,
       maxWidth: 200
     });
-
     for (var i = 0; i < events.length; i++) {
       var event = events[i]
       var contentString = "<a class=google-map-link href=/events/" + event.id + ">" + event.name.capitalizeFirstLetter() + "</a>";
-
       var pinColor;
-
       var eventDate = new Date(event.date);
       var todaysDate = new Date();
-
       if(eventDate.setHours(0,0,0,0) == todaysDate.setHours(0,0,0,0)) {
         pinColor = "FF0000";
       } else {
         pinColor = "73B5AC";
       };
-
       // Pushed new pins are yellow...
       if (events.length == 1) {
         pinColor = "FFFF00";
       }
-
       var image = {
         url: 'http://chart.apis.google.com/chart?chst=d_map_pin_letter&chld=%E2%80%A2|' + pinColor,
         size: new google.maps.Size(21, 34),
         origin: new google.maps.Point(0, 0),
         anchor: new google.maps.Point(10, 34)
       };
-
       // only try to set marker if event has a longitude
       if(event.longitude != null) {
         var marker = new google.maps.Marker({
@@ -142,14 +125,12 @@
           info: contentString
         });
       }
-
       google.maps.event.addListener(marker, 'click', function() {
         infoWindow.setContent(this.info);
         infoWindow.open(map, this);
       });
     };
   }
-
   // Probably should update to do an ajax request but hey it's functional!
   $(document).ready(function(){
     if ($(".today-event-item").length > 0){
@@ -157,7 +138,6 @@
     };
     $('.news-feed-sorting-button').on('click', function(event){
       $('.card').toggleClass('flipped');
-
       if($(this).text() === 'Soonest') {
         $(this).text('Closest');
         $('.current-sort').text('Soonest');
@@ -167,7 +147,6 @@
       }
     });
   });
-
 </script>
 
 <script async defer

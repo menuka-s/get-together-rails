@@ -2,11 +2,6 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-.attendee-pic {
-  height: 50px;
-  width: 50px;
-}
-
 
 #event_address {
   width:400px;
@@ -85,14 +80,15 @@
 }
 
 .sort-by {
-  width: 76%;
+  width: 75%;
   margin: 5px;
 }
 
 
 .current-sort {
   font-size:12px;
-  color:gray;
+  color:#00695C;
+  font-weight: 600;
 }
 
 .news-feed-sorting-button {

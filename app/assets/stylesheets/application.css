@@ -142,14 +142,22 @@ vertical-align: middle;
 }
 
 .comment-item{
-  padding-top: 20px;
-  margin-bottom: 20px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  padding: 10px;
+  background-color: #EDF9F7;
+  border-radius: 10px;
+}
+.other-comment-item{
+  margin-top: 10px;
+  margin-bottom: 10px;
+  padding: 10px;
 }
 .comment-user-info a{
   text-decoration: none;
 }
 .comment-content{
-  margin: 15px;
+  margin: 10px;
   margin-left: 40px;
 }
 .comment-user-image{
@@ -168,22 +176,28 @@ vertical-align: middle;
   width: 30px;
   border-radius: 40px;
 }
-.new-comment{
-  margin-left: 5%;
-  text-align: left;
-}
-#comment_content{
-  display: inline-block;
-  vertical-align: middle;
-  margin-right: 5px;
-}
-
 .comment-time{
+    margin: 0px;
+  padding: 0px;
   font-size: 15px;
   font-style: italic;
   color: gray;
   text-align: right;
 }
+
+
+.new-comment{
+  margin-left: 5%;
+  text-align: left;
+}
+#comment_content{
+  margin: 0px;
+  padding: 0px;
+  vertical-align: middle;
+  margin-right: 5px;
+}
+
+
 
 .real-button{
   border: none;

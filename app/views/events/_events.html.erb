@@ -1,5 +1,4 @@
-
-  <div class="news-feed flip">
+<div class="news-feed flip">
     <% if @user_appealing_events.length == 0 %>
       <div class="no-events-message">Add more interests or widen your range to see events!</div>
     <% else @user_appealing_events %>
@@ -15,6 +14,10 @@
                       <span class="happening-today">Happening today!</span>
                     <% elsif event.created_at.today? %>
                       <span class="created-today">New event!</span>
+                    <% end %>
+                    <% if top_activities.include?(event) %>
+                      <% puts "hello\n\n\n\n" %>
+                      <span class="recommended">🔥</span>
                     <% end %>
                   </p>
                   <p class="appealing-event-time"><%= event.date.strftime("%l:%M%p, %A, %b. %d") %></p>
@@ -45,6 +48,10 @@
                     <% elsif event.created_at.today? %>
                       <span class="created-today">New event!</span>
                     <% end %>
+                    <% if top_activities.include?(event) %>
+                      <% puts "hello\n\n\n\n" %>
+                      <span class="recommended">🔥</span>
+                    <% end %>
                   </p>
                   <p class="appealing-event-time"><%= event.date.strftime("%l:%M%p, %A, %b. %d") %></p>
                   <p class="appealing-event-address"><%= event.address %></p>
@@ -66,4 +73,3 @@
       </div>
     <% end %>
   </div>
-
