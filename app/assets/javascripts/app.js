@@ -74,6 +74,31 @@
       })}
     });
 
+    $("#user-bio").on("click", function(){
+      if ($("#bio-update-field").css("display") == "none" ){
+        $("#user-bio-header").toggle();
+        $("#user-bio-content").toggle();
+        $("#bio-update-field").toggle();
+        $("#bio-button").toggle();
+      }
+    });
+    $("#bio-button").on("click", function(){
 
+      var textContent = $("#bio-update-field").val();
+      var patchUrl = $(".menu a:eq(1)").attr("href")
+      $.ajax({
+        method: "PATCH",
+        url: patchUrl,
+        data: {bio: textContent}
+      })
+      .done(function(response){
+        console.log(response)
+        $("#user-bio-header").toggle();
+        $("#user-bio-content").text(response.bio);
+        $("#user-bio-content").toggle();
+        $("#bio-update-field").toggle();
+        $("#bio-button").toggle();
+      });
+    });
 
   });
