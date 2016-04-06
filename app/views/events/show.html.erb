@@ -50,13 +50,13 @@
 
   <div class = "border-line"></div>
 
+  <h4 style="font-family: verdana;">EVENT COMMUNICATION </h4>
   <div class="event-comments">
-    <h4 style="font-family: verdana;">EVENT COMMUNICATION </h4>
     
 
       <%= render partial: 'comment/showallevent' %>
 
-    </div>
+  </div>
 
 
 <style>
@@ -185,6 +185,26 @@ textarea {
   });
 
 </script>
+
+<script src="https://js.pusher.com/3.0/pusher.min.js"></script>
+
+<script>
+  var pusher = new Pusher('c7a6150d22d40eea7bca', {
+    encrypted: true
+  });
+
+  var channel = pusher.subscribe('test_channel');
+  channel.bind('new_comment', function(data) {
+    console.log("New comment notification");
+    $.ajax({url: "/events/" + <%= @event.id.to_s %> + "/comments_ajax",
+            method: 'get',
+            data: {}
+      }).done(function(newList) {
+        $('.event-comments').empty().append(newList);
+      });
+  });
+</script>
+
 
 <script async defer
   src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDAvBDiolWNKT2Nn0wteaKxxKPQbk8ocjI&callback=initMap">

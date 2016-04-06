@@ -21,7 +21,7 @@ class Comment < ActiveRecord::Base
       encrypted: true
     )
 
-    pusher_client.trigger('test_channel', 'my_event', {
+    pusher_client.trigger('test_channel', 'new_comment', {
       message: 'Comment'
     })
   end
