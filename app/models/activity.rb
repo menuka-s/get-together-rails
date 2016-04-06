@@ -7,7 +7,7 @@ class Activity < ActiveRecord::Base
   has_many :events
 
   validates_presence_of :name
-  validate :activity_must_have_categories
+  # validate :activity_must_have_categories
 
   def all_categories=(all_category_ids)
     # For some reason the array comes in with an empty string as the last index, which is why I pop it off

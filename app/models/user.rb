@@ -19,12 +19,12 @@ class User < ActiveRecord::Base
   end
 
   def past_events
-    @past_events = self.joined_events.where("date < ?", Time.now) + self.created_events.where("date < ?", Time.now)
+    @past_events = self.joined_events.where("date < ?", Time.now + 18000) + self.created_events.where("date < ?", Time.now + 18000)
     return @past_events.sort{|eventa, eventb| eventa.date <=> eventb.date}
   end
 
   def upcoming_events
-    @user_events = self.joined_events.where("date > ?", Time.now) + self.created_events.where("date > ?", Time.now)
+    @user_events = self.joined_events.where("date > ?", Time.now + 18000) + self.created_events.where("date > ?", Time.now + 18000)
     return @user_events.sort{|eventa, eventb| eventa.date <=> eventb.date}
   end
 
@@ -36,10 +36,10 @@ class User < ActiveRecord::Base
 
     activities.each do |activity|
       activity.events.each do |event|
-        if !event.longitude.nil?
-          if event.date > Time.now && event.distance_to_user([self.latitude, self.longitude]) <= self.mile_preference.to_f
-            @all_event_data << event
-          end
+         if !event.longitude.nil?
+           if event.date > Time.now && event.distance_to_user([self.latitude, self.longitude]) <= self.mile_preference.to_f
+             @all_event_data << event
+           end
         end
       end
     end
@@ -75,11 +75,11 @@ class User < ActiveRecord::Base
   end
 
   def created_events_by_date_future
-    self.created_events.where("date > ?", Time.now).sort_by { |event| event.date }
+    self.created_events.where("date > ?", (Time.now + 18000)).sort_by { |event| event.date }
   end
 
   def created_events_by_date_past
-    self.created_events.where("date < ?", Time.now).sort_by { |event| event.date }
+    self.created_events.where("date < ?", (Time.now + 18000)).sort_by { |event| event.date }
   end
 
   def appealing_events_by_date
