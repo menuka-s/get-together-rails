@@ -8,7 +8,6 @@ class Activity < ActiveRecord::Base
 
   validates_presence_of :name
   validate :activity_must_have_categories
-  # validate :activity_must_have_name
 
   def all_categories=(all_category_ids)
     # For some reason the array comes in with an empty string as the last index, which is why I pop it off
@@ -29,9 +28,4 @@ class Activity < ActiveRecord::Base
       errors.add("Activity", " must have categories") if @all_category_ids.length == 0
     end
   end
-
-  # Note: created custom validation to specify that an *activity* must have a name in the event creation form
-  # def activity_must_have_name
-  #   errors.add("Activity", " field cannot be blank") if name.blank?
-  # end
 end

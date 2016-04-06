@@ -89,6 +89,7 @@ class EventsController < ApplicationController
           @new_activity_flag = "flag" # create a flag variable to determine whether the categories checkboxes will be shown upon page load
         else
           # update the activity name error message so it specifies the activity must have a name
+          # BUGGGGGGING OUT
           @activity.errors.messages["Activity name"] = ["can't be blank"]
           @activity.errors.messages.delete(:name)
         end
