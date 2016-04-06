@@ -1,6 +1,8 @@
 class EventsController < ApplicationController
   include UsersHelper
   include EventsHelper
+  require 'csv'
+  require 'json'
 
   def index
     @current_location,@user_appealing_events,@user_appealing_events_by_date,@user_appealing_events_by_proximity = index_locals
@@ -76,6 +78,29 @@ class EventsController < ApplicationController
     @event.destroy
     redirect_to @user
   end
+
+  def graph_data
+    event = Event.find(params[:id])
+    uas = []
+    a = []
+    # data = []
+    event.joined_users.each {|user| uas << Activity.all - user.disliked_activities}
+    uas.flatten.each {|ua| a << ua.name}
+    act_freq = Hash.new(0);
+    a.each { |act| act_freq[act] += 1 }
+    i = 0
+    data = "name,id,foo,total_amount,group,color\n"
+    act_freq.each do |k,v| 
+      color = "#215852"
+      color = "#00695C" if v > 7
+      color = "#028E7F" if v > 8
+      group = "low"
+      group = "medium" if v > 7
+      group = "high" if v > 8
+      data << "#{k},#{Activity.find_by_name(k).id},0,#{v},#{group},#{color}\n"
+    end
+    render plain: data
+  end 
 
   private
   def event_params
