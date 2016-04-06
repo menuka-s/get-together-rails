@@ -34,6 +34,7 @@ class EventsController < ApplicationController
     @event = Event.find(params[:id])
     @current_location = index_locals[0]
     @comment = Comment.new
+    @attendees = @event.joined_users
   end
 
   def comments_ajax

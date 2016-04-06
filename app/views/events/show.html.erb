@@ -1,3 +1,5 @@
+
+
 <div class="event-container">
   <div id = "event-id" style = "display:none;"><%=@event.id%></div>
   <div class = "event-name">
@@ -9,7 +11,7 @@
 <div class = "border-line"></div>
 <div class = "created-by">Created by:</div>
 <div class = "event-creator">
-  <a href="http://www.facebook.com/app_scoped_user_id/<%= @event.creator.facebook_id %>"><div id = "tiny-image"><img src = <%=@event.creator.image_url%>></div> <div class = "creator-name"> <%= @event.creator.name %></div></a>
+  <a href="/users/<%= @event.creator.id %>/public"><div id = "tiny-image"><img src = <%=@event.creator.image_url%>></div> <div class = "creator-name"> <%= @event.creator.name %></div></a>
 </div>
 <div class="event-details">
   <h4>When:</h4>
@@ -31,6 +33,16 @@
   <% else %>
     <h4><span id="spots"><%=@event.max_participants - @event.joined_users.count %></span> Spot(s) Left</h4>
   <% end %>
+    <h4 id="see-attendees">See Who is Attending</h4>
+    <% @attendees.each do |attendee| %>
+    <% if mutual_interests(attendee).count < 5 %>
+      <div class="interest_1">
+    <% else %>
+      <div class="interest_2">
+    <% end %>
+      <a href="/users/<%= attendee.id %>"><img src=<%= attendee.image_url %> alt="Attendee Pic" ></a>
+      <div>
+    <% end %>
 </div>
 
   <div class="event-buttons">
@@ -52,7 +64,6 @@
 
   <h4 style="font-family: verdana;">EVENT COMMUNICATION </h4>
   <div class="event-comments">
-    
 
       <%= render partial: 'comment/showallevent' %>
 
@@ -66,6 +77,25 @@ textarea {
   position: relative;
   left: 0;
 }
+
+.interest_1 {
+  width: 10px;
+  height: 10px;
+}
+
+.interest_2 {
+  width: 100px;
+  height: 100px;
+}
+
+/*.interest_3 {
+
+}
+
+.interest_4 {
+
+}*/
+
 </style>
 
     <div class="new-comment">
