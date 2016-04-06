@@ -12,6 +12,7 @@
  *
  *= require_tree .
  *= require_self
+ *= require jquery-ui/datepicker
  */
 *{
 
@@ -408,7 +409,6 @@ background: transparent;
 #suggestions-container{
   cursor: pointer;
   max-height: 100px;
-  margin-left: 5%;
   position:absolute;
   display: none;
   background-color: white;

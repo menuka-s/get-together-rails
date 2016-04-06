@@ -138,7 +138,7 @@ class EventsController < ApplicationController
 
   private
   def event_params
-    params.require(:event).permit(:name, :description, :date, :location_name, :address, :activity_name, :max_participants, all_category_ids: [])
+    params.require(:event).permit(:name, :description, :date, :location_name, :address, :activity_name, :event_date, :event_time, :max_participants, all_category_ids: [])
   end
 
   def index_locals

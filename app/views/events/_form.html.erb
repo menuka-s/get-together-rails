@@ -3,7 +3,7 @@
 
 
   <%= form_for @event do |f| %>
-    <div class="new-event-form">
+    <div class="new-event-form form-group">
     <h1 class="new-event-header">Create a New Event</h1>
       <ul class="error-messages">
         <% @event.errors.full_messages.each do |error| %>
@@ -47,8 +47,13 @@
         <%= f.text_area :description, :placeholder => "The new season of Game of Thrones starts this week. Let's meet up and watch it!" %>
       </p>
       <p>
-        <%= f.label "Date:" %><br>
-        <%= f.datetime_select :date, :ampm => true, order: [:month, :day, :year], :minute_step => 15, :start_year => 2016, :end_year => 2016 %>
+        <div class="field">
+          <%= f.label "Date:" %><br>
+<!--           <%= f.datetime_select :date, :ampm => true, order: [:month, :day, :year], :minute_step => 15, :start_year => 2016, :end_year => 2016 %> -->
+          <%= f.text_field :event_date, :class => "datepicker" %>
+          <%= f.label "Time:" %>
+          <%= f.time_select :event_time, :ampm => true, :minute_step => 15 %>
+        </div>
       </p>
       <p>
         <%= f.label "Location:" %><br>
@@ -110,3 +115,8 @@
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDAvBDiolWNKT2Nn0wteaKxxKPQbk8ocjI&libraries=places&callback=initAutocomplete" async defer>
 </script>
 
+<script>
+  $(function() {
+    $('.datepicker').datepicker();
+  });
+</script>
