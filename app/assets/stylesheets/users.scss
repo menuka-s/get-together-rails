@@ -29,6 +29,21 @@
   padding: 10px;
 }
 
+.user-event-name, .today-event-name{
+  font-weight: 600;
+}
+
+.dashboard-box a{
+  text-decoration: none;
+  color: #00695C;
+}
+
+.my-created-events ul{
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
 .dashboard-box h4{
 text-align: center;
 

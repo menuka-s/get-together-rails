@@ -75,10 +75,10 @@
     });
 
     $("#user-bio").on("click", function(){
-      if ($("#bio-update-field").css("display") == "none" ){
+      if ($("#bio-textarea").css("display") == "none" ){
         $("#user-bio-header").toggle();
         $("#user-bio-content").toggle();
-        $("#bio-update-field").toggle();
+        $("#bio-textarea").toggle();
         $("#bio-button").toggle();
       }
     });
@@ -96,7 +96,7 @@
         $("#user-bio-header").toggle();
         $("#user-bio-content").text(response.bio);
         $("#user-bio-content").toggle();
-        $("#bio-update-field").toggle();
+        $("#bio-textarea").toggle();
         $("#bio-button").toggle();
       });
     });
