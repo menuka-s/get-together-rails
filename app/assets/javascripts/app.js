@@ -57,8 +57,8 @@
         $("#selected-activity").text("");
          $("#activity").toggle();
         });
+
     $("#comment-button").on("click", function(){
-      debugger;
       if ($("#comment_content").val()!=""){
       var commentText = $("#comment_content").val();
       var eventId = $("#event-id").text();
@@ -68,7 +68,7 @@
         data: {content: commentText}
       })
       .done(function(comment){
-        $("#comment-container").append(comment);
+        $(".event-comments").append(comment);
         $("#comment_content").val("");
         // console.log(comment);
       })}
