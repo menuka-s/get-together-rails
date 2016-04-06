@@ -18,12 +18,12 @@ class User < ActiveRecord::Base
   end
 
   def past_events
-    @past_events = self.joined_events.where("date < ?", Time.now) + self.created_events.where("date < ?", Time.now)
+    @past_events = self.joined_events.where("date < ?", Time.now + 18000) + self.created_events.where("date < ?", Time.now + 18000)
     return @past_events.sort{|eventa, eventb| eventa.date <=> eventb.date}
   end
 
   def upcoming_events
-    @user_events = self.joined_events.where("date > ?", Time.now) + self.created_events.where("date > ?", Time.now)
+    @user_events = self.joined_events.where("date > ?", Time.now + 18000) + self.created_events.where("date > ?", Time.now + 18000)
     return @user_events.sort{|eventa, eventb| eventa.date <=> eventb.date}
   end
 
