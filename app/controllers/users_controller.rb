@@ -5,7 +5,7 @@ class UsersController < ApplicationController
   end
 
   def show
-    redirect_to "/" if current_user.id != params[:id].to_i
+    redirect_to "/users/#{params[:id]}/public" if current_user.id != params[:id].to_i
     @user = User.find(params[:id])
   end
 
