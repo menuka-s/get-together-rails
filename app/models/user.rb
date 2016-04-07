@@ -20,7 +20,7 @@ class User < ActiveRecord::Base
 
   def past_events
     @past_events = self.joined_events.where("date < ?", Time.now + 18000) + self.created_events.where("date < ?", Time.now + 18000)
-    return @past_events.sort{|eventa, eventb| eventa.date <=> eventb.date}
+    return @past_events.sort{ |eventa, eventb| eventa.date <=> eventb.date}
   end
 
   def upcoming_events
