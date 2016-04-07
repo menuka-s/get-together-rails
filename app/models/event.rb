@@ -43,7 +43,12 @@ class Event < ActiveRecord::Base
     if self.max_participants == 0
       self.max_participants = 9999999999
     end
-    self.joined_users.to_a.length < self.max_participants ? true : false
+    self.joined_users.length < self.max_participants ? true : false
+  end
+
+  def open_spots
+    open = max_participants - joined_users.count
+    open = 0 if open < 0
   end
 
   # def recommendations
