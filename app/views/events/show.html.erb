@@ -17,16 +17,21 @@ float: right;*/
 #attendees_buttons {
   display: block;
   position: relative;
+
   margin-left: 100px;
 }
 
 #left {
+  padding-left: 5%;
   width: 49%;
   float: left;
+  box-sizing: border-box;
 }
 #right {
   width: 49%;
+  padding-right: 5%;
   float: right;
+  box-sizing: border-box;
 }
 textarea {
   height: 100px;
@@ -66,7 +71,7 @@ textarea {
 
     <div id="left">
 <br>
-
+    <div id = "event-container">
       <div class = "event-name">
         <h2><%= @event.name.upcase %></h2>
         <h4><%= @event.activity.name %></h4>
@@ -115,6 +120,7 @@ textarea {
         </a>
         <% end %>
       </div>
+    </div>
         <br><br>
       <div class = "border-line" style="clear: both;"></div>
       <h4 style="font-family: verdana; position:relative; left: 50px;">EVENT COMMUNICATION </h4>

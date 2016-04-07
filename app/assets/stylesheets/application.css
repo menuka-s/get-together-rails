@@ -32,11 +32,19 @@ body {
   height: 60vh;
 }
 
+#event-container{
+  text-align: left;
+
+  margin-top: 45px;
+  /*border: 1px solid black;*/
+}
+
 .event-container{
   margin: 0 auto;
   width: 90%;
   border-radius: 20px;
   padding: 15px;
+
   /*background-color: #B8CFCE;*/
 }
 .border-line{
@@ -48,13 +56,15 @@ body {
 }
 
 .event-name{
+  /*border: 1px solid black;*/
   margin-left: 5%;
-  text-align: left;
+  /*text-align: left;*/
   color: #00695c;
 }
 
 .event-creator{
-  text-align: left;
+  /*border: 1px solid black;*/
+  /*text-align: left;*/
   font-weight: 200;
 
 }
@@ -80,7 +90,7 @@ body {
 .event-details{
   font-weight: 200;
   margin-left: 5%;
-  text-align: left;
+  /*text-align: left;*/
 }
 
 #tiny-image{
