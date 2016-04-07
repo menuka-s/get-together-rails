@@ -200,20 +200,20 @@ class BubbleChart
 
     that = this
 
-
     @circles = @vis.selectAll("circle")
       .data(@nodes, (d) -> d.id)
 
     @circles.enter().append("circle")
       .attr("r", 0)
-#     .attr("fill", (d) => @fill_color(d.group))
-     .attr("fill", (d) -> d.color)
+      .attr("fill", (d) -> d.color)
       .attr("stroke-width", 2)
       .attr("stroke", (d) => d3.rgb(@fill_color(d.group)).darker())
       .attr("id", (d) -> "bubble_#{d.id}")
       .on("mouseover", (d,i) -> that.show_details(d,i,this))
       .on("mouseout", (d,i) -> that.hide_details(d,i,this))
 
+
+    console.log("XXYYZZ")
 
     @text = @vis.selectAll("text")
       .data(@nodes, (d) -> d.id)
