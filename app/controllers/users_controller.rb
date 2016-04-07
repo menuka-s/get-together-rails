@@ -92,10 +92,10 @@ class UsersController < ApplicationController
       user = User.find(session[:user_id])
       if !user.joined_events.include?(event)
         user.joined_events << event
-        render json: {"status"=>"1"}
+        render json: {"status"=>"1", "open"=>event.open_spots}
       else
         user.joined_events.delete(event)
-        render json: {"status"=>"0"}
+        render json: {"status"=>"0", "open"=>event.open_spots}
       end
     end
   end

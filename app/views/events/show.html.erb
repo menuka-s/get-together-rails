@@ -20,12 +20,12 @@ float: right;*/
   margin-left: 100px;
 }
 
-#left { 
-  width: 49%; 
+#left {
+  width: 49%;
   float: left;
 }
 #right {
-  width: 49%; 
+  width: 49%;
   float: right;
 }
 textarea {
@@ -103,7 +103,7 @@ textarea {
         <% if @event.max_participants == 0 %>
         <h4><span id="spots">Unlimited Spots Available</span></h4>
         <% else %>
-        <h4><%= pluralize @event.open_spots, 'Spot' %> Left</h4>
+        <h4><span id="spots"><%= pluralize @event.open_spots, 'Spot' %> Left</span></h4>
         <% end %>
 
         <h4 id="see-attendees">Attendees</h4>
@@ -265,11 +265,23 @@ textarea {
         if (response["status"] == 0) {
           $("#join-event").text("Join this Event!");
           $('#eventstatus').text("You have not joined this event");
-          $("#spots").text(parseInt(currentSpot) + 1)
+          if ($("#spots").text() != "Unlimited Spots Available"){
+            if (response["open"] == "1") {
+              $("#spots").text(response["open"] + " Spot Left")
+            } else {
+              $("#spots").text(response["open"] + " Spots Left")
+            }
+          }
         } else {
           $("#join-event").text("Un-Join this Event");
           $('#eventstatus').text("You are attending this event");
-          $("#spots").text(parseInt(currentSpot) - 1)
+          if ($("#spots").text() != "Unlimited Spots Available"){
+            if (response["open"] == "1") {
+              $("#spots").text(response["open"] + " Spot Left")
+            } else {
+              $("#spots").text(response["open"] + " Spots Left")
+            }
+          }
         };
       }).fail(function() {
         console.log("Error joining/unjoining event!");

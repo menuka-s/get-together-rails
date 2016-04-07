@@ -42,15 +42,13 @@ module UsersHelper
   def top_activities
     recommended_activities = []
     recommended_activities = Event.all.map{|event| event if event.creator != current_user}.compact
-    recommended_activities = recommended_activities.map{ |event| event if event.date > Time.now}
-    recommended_activities = recommended_activities.compact
+    recommended_activities = recommended_activities.map{ |event| event if event.date > Time.now}.compact
     recommended_activities.sort! { |a,b| recommendations(a) <=> recommendations(b) }
     if recommended_activities.length >= 3
       return recommended_activities[0..2]
     else
       return recommended_activities
     end
-
   end
 
   # def user_matcher

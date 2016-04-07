@@ -50,7 +50,7 @@ body {
 .event-name{
   margin-left: 5%;
   text-align: left;
-  text-shadow: 1px 1px #00695c;
+  color: #00695c;
 }
 
 .event-creator{
@@ -82,7 +82,7 @@ body {
   margin-left: 5%;
   text-align: left;
 }
-  
+
 #tiny-image{
   height: 100%;
 display: inline-block;
@@ -286,7 +286,7 @@ vertical-align: middle;
 .logo-header img{
   height: 90px;
   margin: 0 auto;
-  width: 270px;
+  width: auto;
   position: relative;
 }
 .logo-header a{
