@@ -1,52 +1,92 @@
+<style>
+#eventshowtop {}
+#topleft {
+/*  display: inline-block;
+  float: left;*/
+}
+
+#topright {
+/*  display: inline-block;
+  float: right;*/
+}
+
+#attendee_pics {
+  width: 100%;
+}
+
+#attendees_buttons {
+  display: block;
+  position: relative;
+  margin-left: 100px;
+}
+
+#left { 
+  width: 49%; 
+  float: left;
+  border: 1px solid blue;
+}
+#right {
+  width: 49%; 
+  float: right;
+  border: 1px solid red;
+
+}
 
 
-<div class="event-container">
-  <div id = "event-id" style = "display:none;"><%=@event.id%></div>
+</style>
+
+<div id = "event-id" style = "display:none;">
+  <%=@event.id%>
+</div>
+
+
+<div id="eventshowtop">
+  <div class="event-container">
+
+<div id="left">
   <div class = "event-name">
-  <h2><%= @event.name %></h2>
-  <h4><%= @event.activity.name %></h4>
-</div>
-<div class = "border-line"></div>
-<div id="event-details-map"></div>
-<div class = "border-line"></div>
-<div class = "created-by">Created by:</div>
-<div class = "event-creator">
-  <a href="/users/<%= @event.creator.id %>/public"><div id = "tiny-image"><img src = <%=@event.creator.image_url%>></div> <div class = "creator-name"> <%= @event.creator.name %></div></a>
-</div>
-<div class="event-details">
-  <h4>When:</h4>
-  <p><%= @event.date.localtime.strftime("%A, %b %d, %Y at %I:%M %p") %></p>
+    <h2><%= @event.name.upcase %></h2>
+    <h4><%= @event.activity.name %></h4>
+  </div>
 
-  <h4>Description:</h4>
-  <p><%= @event.description %></p>
+  <div class="event-details">
+    <div class = "event-creator">
+      <span style="font-weight: bold;">Created by:</span>
+      <br>
+      <a href="/users/<%= @event.creator.id %>/public">
+        <div id = "tiny-image">
+          <img src = <%=@event.creator.image_url%>>
+        </div>
+        <div class = "creator-name">
+          <%= @event.creator.name %>
+        </div>
+      </a>
+    </div>
 
-  <h4>Location:</h4>
-  <p>
+    <h4>When:</h4>
+    <p><%= @event.date.localtime.strftime("%A, %b %d, %Y at %I:%M %p") %></p>
+
+    <h4>Description:</h4>
+    <p><%= @event.description %></p>
+
+    <h4>Location:</h4>
+    <p>
     <% if @event.longitude.nil? %>
       Please contact the event organizer for more information
-    <% else %>
-      <%= @event.address %>
-    <% end %>
-  </p>
-  <% if @event.max_participants == 0 %>
-    <h4><span id="spots">Unlimited Spots Available</span></h4>
-  <% else %>
-    <h4><%= pluralize @event.open_spots, 'Spot' %> Left</h4>
-  <% end %>
-    <h4 id="see-attendees">See Who is Attending</h4>
-    <div id="attendee_pics">
-      <% @attendees.each do |attendee| %>
-        <% if mutual_interests(attendee).count < 5 %>
-          <% pic_class="interest_1" %>
-        <% else %>
-          <% pic_class="interest_2" %>
-        <% end %>
-            <a href="/users/<%= attendee.id %>">
-              <img class="<%= pic_class%>" src=<%= attendee.image_url %> alt="Attendee Pic" >
-            </a>
-          </div>
+      <% else %>
+        <%= @event.address %>
       <% end %>
-    </div>
+    </p>
+    <% if @event.max_participants == 0 %>
+      <h4><span id="spots">Unlimited Spots Available</span></h4>
+    <% else %>
+      <h4><%= pluralize @event.open_spots, 'Spot' %> Left</h4>
+    <% end %>
+  </div>
+</div>
+
+
+<div id="right">
 
   <div class="event-buttons">
     <% if current_user %>
@@ -63,7 +103,15 @@
     <% end %>
   </div>
 
-  <div class = "border-line"></div>
+
+    <div id="event-details-map"></div>
+
+</div>
+</div>
+</div>
+
+
+  <div class = "border-line" style="clear: both;"></div>
 
   <h4 style="font-family: verdana;">EVENT COMMUNICATION </h4>
   <div class="event-comments">
@@ -90,8 +138,9 @@ textarea {
 .interest_1 {
   display: inline-block;
   float: left;
-  width: 30px;
-  height: 30px;
+  width: 60px;
+  height: 60px;
+  border-radius: 200px;
 }
 
 .interest_2 {
@@ -99,6 +148,7 @@ textarea {
   float: left;
   width: 60px;
   height: 60px;
+  border-radius: 200px;
 }
 
 /*.interest_3 {

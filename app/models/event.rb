@@ -47,8 +47,9 @@ class Event < ActiveRecord::Base
   end
 
   def open_spots
-    open = max_participants - joined_users.count
+    open = max_participants - ( joined_users.count || 0 )
     open = 0 if open < 0
+    return open
   end
 
   # def recommendations
