@@ -190,11 +190,14 @@ textarea {
   myLatLng = {lat: <%= @event.latitude %>, lng: <%= @event.longitude %>};
   <% end %>
 
+  // Store the center location of the map; initially, either the event's location or the user's location
+  var mapCenter = myLatLng;
+
   function initMap() {
 
     var map = new google.maps.Map(document.getElementById('event-details-map'), {
       zoom: 13,
-      center: myLatLng
+      center: mapCenter
     });
 
     // only set marker if the event has a longitude
@@ -202,9 +205,14 @@ textarea {
     setMarkers(map);
     <% end %>
 
+    // Store current center of map prior to resize (Event fires when map is idle after panning or zooming)
+    google.maps.event.addListener(map,'idle',function(event) {
+      mapCenter = map.getCenter();
+    });
+
     // Recenter the map on window resize
     google.maps.event.addDomListener(window, 'resize', function() {
-      map.setCenter(myLatLng);
+      map.setCenter(mapCenter);
     });
   };
 
