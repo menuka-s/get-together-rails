@@ -93,7 +93,33 @@
     });
     for (var i = 0; i < events.length; i++) {
       var event = events[i]
-      var contentString = "<a class=google-map-link href=/events/" + event.id + ">" + event.name.capitalizeFirstLetter() + "</a>";
+      var eventDate = new Date(event.date);
+      var todaysDate = new Date();
+      var month = eventDate.getMonth() + 1;
+      var day = eventDate.getDate();
+      var year = eventDate.getFullYear();
+      var militaryHours = eventDate.getHours();
+      var minutes = eventDate.getMinutes();
+
+      function notMilitary(hoursToChange) {
+        if (hoursToChange > 12) {
+          return hoursToChange - 12;
+        }
+      };
+
+      function morningAfternoon(hours) {
+        if (hours > 12) {
+          return "PM";
+        }
+        else {
+          return "AM";
+        }
+      };
+
+      var fixedHours = notMilitary(militaryHours);
+      var amPM = morningAfternoon(militaryHours);
+
+      var contentString = "<p><a class=google-map-link href=/events/" + event.id + ">" + event.name.capitalizeFirstLetter() + "</a></p>" + event.address.replace(", United States", " ") + "<br>" + month +"-"+ day +"-"+ year +", " + fixedHours +":"+ minutes + amPM;
       var pinColor;
       var eventDate = new Date(event.date);
       var todaysDate = new Date();
