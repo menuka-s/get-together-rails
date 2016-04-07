@@ -31,19 +31,22 @@
   <% if @event.max_participants == 0 %>
     <h4><span id="spots">Unlimited Spots Available</span></h4>
   <% else %>
-    <h4><span id="spots"><%=@event.max_participants - @event.joined_users.count %></span> Spot(s) Left</h4>
+    <h4><%= pluralize @event.open_spots, 'Spot' %> Left</h4>
   <% end %>
     <h4 id="see-attendees">See Who is Attending</h4>
-    <% @attendees.each do |attendee| %>
-    <% if mutual_interests(attendee).count < 5 %>
-      <div class="interest_1">
-    <% else %>
-      <div class="interest_2">
-    <% end %>
-      <a href="/users/<%= attendee.id %>"><img src=<%= attendee.image_url %> alt="Attendee Pic" ></a>
-      <div>
-    <% end %>
-</div>
+    <div id="attendee_pics">
+      <% @attendees.each do |attendee| %>
+        <% if mutual_interests(attendee).count < 5 %>
+          <% pic_class="interest_1" %>
+        <% else %>
+          <% pic_class="interest_2" %>
+        <% end %>
+            <a href="/users/<%= attendee.id %>">
+              <img class="<%= pic_class%>" src=<%= attendee.image_url %> alt="Attendee Pic" >
+            </a>
+          </div>
+      <% end %>
+    </div>
 
   <div class="event-buttons">
     <% if current_user %>
@@ -78,14 +81,24 @@ textarea {
   left: 0;
 }
 
+#attendee_pics {
+  border: 1px solid blue;
+  width: 80%;
+  display: block;
+}
+
 .interest_1 {
-  width: 10px;
-  height: 10px;
+  display: inline-block;
+  float: left;
+  width: 30px;
+  height: 30px;
 }
 
 .interest_2 {
-  width: 100px;
-  height: 100px;
+  display: inline-block;
+  float: left;
+  width: 60px;
+  height: 60px;
 }
 
 /*.interest_3 {
