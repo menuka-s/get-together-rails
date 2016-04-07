@@ -1,13 +1,13 @@
 <style>
-#eventshowtop {}
-#topleft {
+  #eventshowtop {}
+  #topleft {
 /*  display: inline-block;
-  float: left;*/
+float: left;*/
 }
 
 #topright {
 /*  display: inline-block;
-  float: right;*/
+float: right;*/
 }
 
 #attendee_pics {
@@ -23,105 +23,11 @@
 #left { 
   width: 49%; 
   float: left;
-  border: 1px solid blue;
 }
 #right {
   width: 49%; 
   float: right;
-  border: 1px solid red;
-
 }
-
-
-</style>
-
-<div id = "event-id" style = "display:none;">
-  <%=@event.id%>
-</div>
-
-
-<div id="eventshowtop">
-  <div class="event-container">
-
-<div id="left">
-  <div class = "event-name">
-    <h2><%= @event.name.upcase %></h2>
-    <h4><%= @event.activity.name %></h4>
-  </div>
-
-  <div class="event-details">
-    <div class = "event-creator">
-      <span style="font-weight: bold;">Created by:</span>
-      <br>
-      <a href="/users/<%= @event.creator.id %>/public">
-        <div id = "tiny-image">
-          <img src = <%=@event.creator.image_url%>>
-        </div>
-        <div class = "creator-name">
-          <%= @event.creator.name %>
-        </div>
-      </a>
-    </div>
-
-    <h4>When:</h4>
-    <p><%= @event.date.localtime.strftime("%A, %b %d, %Y at %I:%M %p") %></p>
-
-    <h4>Description:</h4>
-    <p><%= @event.description %></p>
-
-    <h4>Location:</h4>
-    <p>
-    <% if @event.longitude.nil? %>
-      Please contact the event organizer for more information
-      <% else %>
-        <%= @event.address %>
-      <% end %>
-    </p>
-    <% if @event.max_participants == 0 %>
-      <h4><span id="spots">Unlimited Spots Available</span></h4>
-    <% else %>
-      <h4><%= pluralize @event.open_spots, 'Spot' %> Left</h4>
-    <% end %>
-  </div>
-</div>
-
-
-<div id="right">
-
-  <div class="event-buttons">
-    <% if current_user %>
-      <% if @event.creator.id == current_user.id %>
-       <button style="font-family: verdana;" class="real-button " id="edit-button"><%= link_to "EDIT EVENT", edit_event_path(@event) %></button>
-       <button  style="font-family: verdana;" class="real-button " id="delete-button"><%= link_to "DELETE EVENT", event_path(@event), method: :delete %></button>
-      <% elsif @event.open? == false %>
-        <h4 id="eventstatus">This Event is Full.</h4>
-      <% elsif !current_user.joined_events.include?(@event) %>
-        <button class="real-button" id="join-event" event="<%= @event.id %>">Join this Event!</button>
-      <% else %>
-        <button class="real-button" id="join-event" event="<%= @event.id %>">Un-Join this Event</button>
-      <% end %>
-    <% end %>
-  </div>
-
-
-    <div id="event-details-map"></div>
-
-</div>
-</div>
-</div>
-
-
-  <div class = "border-line" style="clear: both;"></div>
-
-  <h4 style="font-family: verdana;">EVENT COMMUNICATION </h4>
-  <div class="event-comments">
-
-      <%= render partial: 'comment/showallevent' %>
-
-  </div>
-
-
-<style>
 textarea {
   height: 100px;
   width: 500px;
@@ -151,39 +57,127 @@ textarea {
   border-radius: 200px;
 }
 
-/*.interest_3 {
 
-}
-
-.interest_4 {
-
-}*/
 
 </style>
 
-    <div class="new-comment">
-      <%= form_for [ @event, @comment ] do |f| %>
-        <ul class="error-messages">
+<div id = "event-id" style = "display:none;">
+  <%=@event.id%>
+</div>
+
+
+    <div id="left">
+      <div class = "event-name">
+        <h2><%= @event.name.upcase %></h2>
+        <h4><%= @event.activity.name %></h4>
+      </div>
+
+      <div class="event-details">
+        <div class = "event-creator">
+          <span style="font-weight: bold;">Created by:</span>
+          <br>
+          <a href="/users/<%= @event.creator.id %>/public">
+            <div id = "tiny-image">
+              <img src = <%=@event.creator.image_url%>>
+            </div>
+            <div class = "creator-name">
+              <%= @event.creator.name %>
+            </div>
+          </a>
+        </div>
+
+        <h4>When:</h4>
+        <p><%= @event.date.localtime.strftime("%A, %b %d, %Y at %I:%M %p") %></p>
+
+        <h4>Description:</h4>
+        <p><%= @event.description %></p>
+
+        <h4>Location:</h4>
+        <p>
+          <% if @event.longitude.nil? %>
+          Please contact the event organizer for more information
+          <% else %>
+          <%= @event.address %>
+          <% end %>
+        </p>
+        <% if @event.max_participants == 0 %>
+        <h4><span id="spots">Unlimited Spots Available</span></h4>
+        <% else %>
+        <h4><%= pluralize @event.open_spots, 'Spot' %> Left</h4>
+        <% end %>
+
+        <h4 id="see-attendees">Attendees</h4>
+        <% @attendees.each do |attendee| %>
+        <a href="/users/<%= attendee.id %>">
+          <div class="profile-circle" style="display: inline-block;">
+            <img src=<%= attendee.image_url %> alt="Attendee Pic" >
+          </div>
+        </a>
+        <% end %>
+      </div>
+        <br><br>
+      <div class = "border-line" style="clear: both;"></div>
+      <h4 style="font-family: verdana; position:relative; left: 50px;">EVENT COMMUNICATION </h4>
+      <div class="event-comments">
+        <%= render partial: 'comment/showallevent' %>
+      </div>
+
+
+
+
+      <div class="new-comment">
+        <%= form_for [ @event, @comment ] do |f| %>
+          <ul class="error-messages">
           <% @event.errors.full_messages.each do |error| %>
             <li><%= error %></li>
           <% end %>
-        </ul>
+          </ul>
+          <%= f.text_area :content, :placeholder =>"Comment here..." %>
+          <br><br>
+          <div class = "button" id = "comment-button">Leave Comment</div>
+        <% end %>
+      </div>
+
+      <br><br><br>
+      <br><br><br>
+      <br><br><br>
+    </div>
 
 
-        <%= f.text_area :content, :placeholder =>"Comment here..." %>
-        <br><br>
-      <div class = "button" id = "comment-button">Leave Comment</div>
-      <% end %>
+    <div id="right">
+
+      <div class="event-buttons">
+        <% if current_user %>
+          <% if @event.creator.id == current_user.id %>
+            <button style="font-family: verdana;" class="real-button " id="edit-button"><%= link_to "EDIT EVENT", edit_event_path(@event) %></button>
+            <button  style="font-family: verdana;" class="real-button " id="delete-button"><%= link_to "DELETE EVENT", event_path(@event), method: :delete %></button>
+            <% elsif @event.open? == false %>
+            <h4 id="eventstatus">This Event is Full.</h4>
+            <% elsif !current_user.joined_events.include?(@event) %>
+            <button class="real-button" id="join-event" event="<%= @event.id %>">Join this Event!</button>
+            <% else %>
+            <button class="real-button" id="join-event" event="<%= @event.id %>">Un-Join this Event</button>
+          <% end %>
+        <% end %>
+      </div>
+
+
+      <div id="event-details-map"></div>
+      <br><br>
+      <h3>Interests of Attendees</h3>
+      <%= render partial: 'events/intd3.html' %>
     </div>
   </div>
-</div></div>
-  <br><br>
 </div>
-<div id = "page-footer"></div>
 
-<br>
 
-<%= render partial: 'events/intd3.html' %>
+<div id="bottom">
+
+
+
+</div>
+
+
 
 
 <script>
@@ -191,9 +185,9 @@ textarea {
   // JS for producing google map with marker
   var myLatLng;
   <% if @event.longitude.nil? %>
-    myLatLng = {lat: <%= @current_location[0] %>, lng: <%=  @current_location[1] %> }
+  myLatLng = {lat: <%= @current_location[0] %>, lng: <%=  @current_location[1] %> }
   <% else %>
-    myLatLng = {lat: <%= @event.latitude %>, lng: <%= @event.longitude %>};
+  myLatLng = {lat: <%= @event.latitude %>, lng: <%= @event.longitude %>};
   <% end %>
 
   function initMap() {
@@ -205,7 +199,7 @@ textarea {
 
     // only set marker if the event has a longitude
     <% if !@event.longitude.nil? %>
-      setMarkers(map);
+    setMarkers(map);
     <% end %>
 
     // Recenter the map on window resize
@@ -296,15 +290,15 @@ textarea {
   channel.bind('new_comment', function(data) {
     console.log("New comment notification");
     $.ajax({url: "/events/" + <%= @event.id.to_s %> + "/comments_ajax",
-            method: 'get',
-            data: {}
-      }).done(function(newList) {
-        $('.event-comments').empty().append(newList);
-      });
+      method: 'get',
+      data: {}
+    }).done(function(newList) {
+      $('.event-comments').empty().append(newList);
+    });
   });
 </script>
 
 
 <script async defer
-  src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDAvBDiolWNKT2Nn0wteaKxxKPQbk8ocjI&callback=initMap">
+src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDAvBDiolWNKT2Nn0wteaKxxKPQbk8ocjI&callback=initMap">
 </script>
