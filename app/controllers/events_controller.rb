@@ -61,6 +61,7 @@ class EventsController < ApplicationController
       @event = current_user.created_events.new(new_event_params)
 
       if @event.save
+        UsersEvent.create(user: current_user, event: @event)
         @event.push_notification
         flash[:notice] = "Your event was successfully created"
         redirect_to @event
@@ -151,13 +152,13 @@ class EventsController < ApplicationController
     a.each { |act| act_freq[act] += 1 }
     i = 0
     data = "name,id,foo,total_amount,group,color\n"
-    act_freq.each do |k,v| 
+    act_freq.each do |k,v|
 
       # color = "#215852"
       # color = "#00695C" if v > 1
       # color = "#028E7F" if v > 5
       red = ((v-1) * 15).to_s(16).rjust(2).gsub(' ','0')
-      if v > 24 
+      if v > 24
         red = "FF"
       end
       green = (105 + (v-1) * 10).to_s(16).rjust(2)
@@ -168,7 +169,7 @@ class EventsController < ApplicationController
       data << "#{k},#{Activity.find_by_name(k).id},0,#{v},#{group},#{color}\n"
     end
     render plain: data
-  end 
+  end
 
   private
   def event_params
