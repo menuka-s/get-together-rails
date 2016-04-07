@@ -199,10 +199,10 @@ class BubbleChart
       .attr("id", "svg_vis")
 
     that = this
-
+    console.log("YYZZXX")
     @circles = @vis.selectAll("circle")
       .data(@nodes, (d) -> d.id)
-
+    console.log("YYZZXX-2")
     @circles.enter().append("circle")
       .attr("r", 0)
       .attr("fill", (d) -> d.color)
@@ -225,7 +225,7 @@ class BubbleChart
       .style("color", "#FFFFFF")
       .attr("text-anchor", "middle")
       .text (d) -> d.name
-
+    console.log("YYZZXX")
     # Fancy transition to make bubbles appear, ending with the
     # correct radius
     @circles.transition().duration(2000).attr("r", (d) -> d.radius )
@@ -295,7 +295,7 @@ $ ->
     chart.display_group_all()
 
   console.log("Got here1")
-  d3.csv "http://gogettogether.herokuapp.com/events/1/graph_data", render_vis
+  d3.csv "http://gogettogether.herokuapp.com/events/<%= @event.id %>/graph_data", render_vis
   console.log("Got here2")
   </script>
 
