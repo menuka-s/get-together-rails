@@ -18,7 +18,7 @@
         <%= comment.content %>
       </div>
       <div class = "comment-time">
-        <%= time_ago_in_words(comment.created_at - 60*60*2)  %> ago
+        <%= time_ago_in_words(comment.created_at)  %> ago
       </div>
     </div>
   <% else %>
@@ -40,7 +40,7 @@
         <%= comment.content %>
       </div>
       <div class = "comment-time">
-        <%= time_ago_in_words(comment.created_at - 60*60*2)  %> ago
+        <%= time_ago_in_words(comment.created_at)  %> ago
       </div>
     </div>
   <% end %>
