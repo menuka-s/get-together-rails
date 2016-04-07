@@ -18,10 +18,8 @@ class Event < ActiveRecord::Base
   validate :event_must_be_within_seven_days
   validate :activity_exists
 
-  # create two fields in the form and bring them in as virtual attributes, combine and format in a method here then set to the date
-
   def event_date
-    self.date.to_date
+    # self.date.to_date
   end
 
   def event_date=(event_date)
@@ -30,13 +28,11 @@ class Event < ActiveRecord::Base
   end
 
   def event_time
-    date.to_time
+    # self.date.to_time
   end
 
   def event_time=(event_time)
-    self.date = DateTime.new(@d.year, @d.month, @d.day, event_time.hour, event_time.min, event_date.sec )
-    # @t = DateTime.new(original.year, original.month, original.day, event_time.hour, event_time.min, event_date.sec)
-    # 4 is the hour, 5 is the minutes
+    self.date = Time.new(@d.year, @d.month, @d.day, event_time[4], event_time[5], 00 )
   end
 
   # New event form requires this method to assign

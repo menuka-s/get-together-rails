@@ -54,6 +54,7 @@ class EventsController < ApplicationController
 
     if @activity # if the activity already exists
       new_event_params.delete("all_category_ids")
+      p new_event_params
       @event = current_user.created_events.new(new_event_params)
 
       if @event.save
