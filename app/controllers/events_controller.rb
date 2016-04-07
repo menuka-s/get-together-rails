@@ -57,6 +57,7 @@ class EventsController < ApplicationController
 
     if @activity # if the activity already exists
       new_event_params.delete("all_category_ids")
+      p new_event_params
       @event = current_user.created_events.new(new_event_params)
 
       if @event.save
@@ -93,6 +94,7 @@ class EventsController < ApplicationController
 
         new_event_params.delete("all_category_ids")
         @event = current_user.created_events.new(new_event_params)
+        @event.save
 
         if !@activity.errors.messages.include?(:name)
           @new_activity_flag = "flag" # create a flag variable to determine whether the categories checkboxes will be shown upon page load
@@ -163,7 +165,7 @@ class EventsController < ApplicationController
 
   private
   def event_params
-    params.require(:event).permit(:name, :description, :date, :location_name, :address, :activity_name, :max_participants, all_category_ids: [])
+    params.require(:event).permit(:name, :description, :date, :location_name, :address, :activity_name, :event_date, :event_time, :max_participants, all_category_ids: [])
   end
 
   def index_locals
