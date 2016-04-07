@@ -18,6 +18,23 @@ class Event < ActiveRecord::Base
   validate :event_must_be_within_seven_days
   validate :activity_exists
 
+  def event_date
+    self.date.strftime("%m/%d/%Y") if !self.date.nil?
+  end
+
+  def event_date=(event_date)
+    split_date = event_date.split('/')
+    @d = Date.new(split_date[2].to_i, split_date[0].to_i, split_date[1].to_i)
+  end
+
+  def event_time
+    self.date if !self.date.nil?
+  end
+
+  def event_time=(event_time)
+    self.date = Time.new(@d.year, @d.month, @d.day, event_time[4], event_time[5], 00 )
+  end
+
   # New event form requires this method to assign
   def all_category_ids
   end
@@ -47,8 +64,9 @@ class Event < ActiveRecord::Base
   end
 
   def open_spots
-    open = max_participants - joined_users.count
+    open = max_participants - ( joined_users.count || 0 )
     open = 0 if open < 0
+    return open
   end
 
   # def recommendations

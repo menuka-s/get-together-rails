@@ -57,6 +57,7 @@ class EventsController < ApplicationController
 
     if @activity # if the activity already exists
       new_event_params.delete("all_category_ids")
+      p new_event_params
       @event = current_user.created_events.new(new_event_params)
 
       if @event.save
@@ -93,6 +94,7 @@ class EventsController < ApplicationController
 
         new_event_params.delete("all_category_ids")
         @event = current_user.created_events.new(new_event_params)
+        @event.save
 
         if !@activity.errors.messages.include?(:name)
           @new_activity_flag = "flag" # create a flag variable to determine whether the categories checkboxes will be shown upon page load
@@ -150,12 +152,19 @@ class EventsController < ApplicationController
     i = 0
     data = "name,id,foo,total_amount,group,color\n"
     act_freq.each do |k,v| 
-      color = "#215852"
-      color = "#00695C" if v > 7
-      color = "#028E7F" if v > 8
+
+      # color = "#215852"
+      # color = "#00695C" if v > 1
+      # color = "#028E7F" if v > 5
+      red = ((v-1) * 15).to_s(16).rjust(2).gsub(' ','0')
+      if v > 24 
+        red = "FF"
+      end
+      green = (105 + (v-1) * 10).to_s(16).rjust(2)
+      color = "#" + red + green + "5C"
       group = "low"
-      group = "medium" if v > 7
-      group = "high" if v > 8
+      group = "medium" if v > 1
+      group = "high" if v > 5
       data << "#{k},#{Activity.find_by_name(k).id},0,#{v},#{group},#{color}\n"
     end
     render plain: data
@@ -163,7 +172,7 @@ class EventsController < ApplicationController
 
   private
   def event_params
-    params.require(:event).permit(:name, :description, :date, :location_name, :address, :activity_name, :max_participants, all_category_ids: [])
+    params.require(:event).permit(:name, :description, :date, :location_name, :address, :activity_name, :event_date, :event_time, :max_participants, all_category_ids: [])
   end
 
   def index_locals

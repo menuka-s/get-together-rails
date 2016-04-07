@@ -1,8 +1,11 @@
 source 'https://rubygems.org'
 #ruby '2.0.0'
 
-
-
+# Add some styling for the date/time
+# gem 'twitter-bootstrap-rails', '~> 3.2', '>= 3.2.2'
+# gem 'bootstrap3-datetimepicker-rails', '~> 4.17', '>= 4.17.37'
+# gem 'momentjs-rails', '~> 2.11'
+gem 'jquery-ui-rails'
 
 # Add geocoding functionality
 gem 'geocoder'

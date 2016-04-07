@@ -55,11 +55,11 @@
 
 
 
-      // $(document).on("click", function(){
-      //   if($("#suggestions-container").css("display")!="none"){
-      //     $("#suggestions-container").slideToggle("slow");
-      //   }
-      // });
+      $(document).on("click", function(){
+        if($("#suggestions-container").css("display")!="none"){
+          $("#suggestions-container").hide();
+        }
+      });
 
 
     $("#activity-container").on("click", "#activity-cancel", function(){

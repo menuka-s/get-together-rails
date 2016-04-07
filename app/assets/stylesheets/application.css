@@ -12,39 +12,24 @@
  *
  *= require_tree .
  *= require_self
+ *= require jquery-ui/datepicker
  */
 *{
 
   font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
 }
- body {
+
+body {
   margin: 0;
   padding: 0;
- }
-
-.new-event-form{
-  padding-left: 10px;
-
-}
-.new-event-container{
-  margin: 0 auto;
-}
-
-.new-event-header{
-  text-align: center;
-}
-
-#event-form{
-  padding: 10px;
-  border: 1px solid gray;
-  width: 40%;
-  min-width: 420px;
-  margin: 0 auto;
 }
 
 #event-details-map{
-  margin: 0 auto;
-  width: 90%;
+  /*margin: 0 auto;*/
+  display: block;
+/*  float: right;
+*/  width: 95%;
+  height: 60vh;
 }
 
 .event-container{
@@ -65,10 +50,11 @@
 .event-name{
   margin-left: 5%;
   text-align: left;
+  color: #00695c;
 }
 
 .event-creator{
-  text-align: center;
+  text-align: left;
   font-weight: 200;
 
 }
@@ -97,10 +83,6 @@
   text-align: left;
 }
 
-.created-by{
-  text-align: center;
-  font-weight: 200;
-}
 #tiny-image{
   height: 100%;
 display: inline-block;
@@ -259,6 +241,12 @@ vertical-align: middle;
   max-height: 75px;
   max-width: 75px;
 }
+.profile-circle img{
+  padding: 10px;
+  border-radius: 200px;
+  max-height: 45px;
+  max-width: 45px;
+}
 .opacity {
   width: 100%;
   height: 72em;
@@ -289,7 +277,6 @@ vertical-align: middle;
 }
 .logo-header {
   width: 100%;
-
   padding: 10px;
   position: absolute;
   top: 0;
@@ -297,26 +284,26 @@ vertical-align: middle;
   text-align: center;
 }
 .logo-header img{
+  height: 90px;
   margin: 0 auto;
-  width: 300px;
+  width: auto;
+  position: relative;
 }
 .logo-header a{
   cursor: pointer;
 }
 
 #header {
-
   width: 100%;
   position: relative;
-  font-size: 40px;
+  font-size: 36px;
   text-align: center;
   background-color: #00695C;
   color: white;
-  height: 150px;
+  height: 100px;
 }
 
 #page-footer {
-
   width: 100%;
   font-size: 18px;
   text-align: center;
@@ -441,7 +428,6 @@ background: transparent;
 #suggestions-container{
   cursor: pointer;
   max-height: 100px;
-  margin-left: 5%;
   position:absolute;
   display: none;
   background-color: white;
