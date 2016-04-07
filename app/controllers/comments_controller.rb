@@ -6,9 +6,12 @@ class CommentsController < ApplicationController
   def create
     if request.xhr?
       @event = Event.find(params[:event_id])
-      @comment = Comment.new(content: params[:content], event_id: params[:event_id], user: current_user)
+      @comment = Comment.new(content: params[:content], event_id: params[:event_id], commenter: current_user)
       @comment.save
       comment_time = distance_of_time_in_words_to_now(@comment.created_at)
+      p @comment.created_at
+      p @comment.created_at
+      p comment_time
       # render json: {content: @comment.content, userimage: current_user.image_url,username:current_user.name, timeago: comment_time}
         render :"comment/_new", :layout => false, :locals => {facebook_id: current_user.facebook_id, content: @comment.content, userimage: current_user.image_url,username:current_user.name, timeago: comment_time, event: @event, comment: @comment}
     else

@@ -25,8 +25,11 @@ body {
 }
 
 #event-details-map{
-  margin: 0 auto;
-  width: 90%;
+  /*margin: 0 auto;*/
+  display: block;
+/*  float: right;
+*/  width: 95%;
+  height: 60vh;
 }
 
 .event-container{
@@ -47,10 +50,11 @@ body {
 .event-name{
   margin-left: 5%;
   text-align: left;
+  text-shadow: 1px 1px #00695c;
 }
 
 .event-creator{
-  text-align: center;
+  text-align: left;
   font-weight: 200;
 
 }
@@ -78,11 +82,7 @@ body {
   margin-left: 5%;
   text-align: left;
 }
-
-.created-by{
-  text-align: center;
-  font-weight: 200;
-}
+  
 #tiny-image{
   height: 100%;
 display: inline-block;
@@ -124,14 +124,22 @@ vertical-align: middle;
 }
 
 .comment-item{
-  padding-top: 20px;
-  margin-bottom: 20px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  padding: 10px;
+  background-color: #EDF9F7;
+  border-radius: 10px;
+}
+.other-comment-item{
+  margin-top: 10px;
+  margin-bottom: 10px;
+  padding: 10px;
 }
 .comment-user-info a{
   text-decoration: none;
 }
 .comment-content{
-  margin: 15px;
+  margin: 10px;
   margin-left: 40px;
 }
 .comment-user-image{
@@ -150,22 +158,28 @@ vertical-align: middle;
   width: 30px;
   border-radius: 40px;
 }
-.new-comment{
-  margin-left: 5%;
-  text-align: left;
-}
-#comment_content{
-  display: inline-block;
-  vertical-align: middle;
-  margin-right: 5px;
-}
-
 .comment-time{
+    margin: 0px;
+  padding: 0px;
   font-size: 15px;
   font-style: italic;
   color: gray;
   text-align: right;
 }
+
+
+.new-comment{
+  margin-left: 5%;
+  text-align: left;
+}
+#comment_content{
+  margin: 0px;
+  padding: 0px;
+  vertical-align: middle;
+  margin-right: 5px;
+}
+
+
 
 .real-button{
   border: none;
@@ -227,6 +241,12 @@ vertical-align: middle;
   max-height: 75px;
   max-width: 75px;
 }
+.profile-circle img{
+  padding: 10px;
+  border-radius: 200px;
+  max-height: 45px;
+  max-width: 45px;
+}
 .opacity {
   width: 100%;
   height: 72em;
@@ -257,7 +277,6 @@ vertical-align: middle;
 }
 .logo-header {
   width: 100%;
-
   padding: 10px;
   position: absolute;
   top: 0;
@@ -265,26 +284,26 @@ vertical-align: middle;
   text-align: center;
 }
 .logo-header img{
+  height: 90px;
   margin: 0 auto;
-  width: 300px;
+  width: 270px;
+  position: relative;
 }
 .logo-header a{
   cursor: pointer;
 }
 
 #header {
-
   width: 100%;
   position: relative;
-  font-size: 40px;
+  font-size: 36px;
   text-align: center;
   background-color: #00695C;
   color: white;
-  height: 150px;
+  height: 100px;
 }
 
 #page-footer {
-
   width: 100%;
   font-size: 18px;
   text-align: center;

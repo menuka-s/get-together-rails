@@ -1,26 +1,47 @@
 <% @event.comments.each do |comment| %>
-<div class="comment-item">
-
-  <div class="comment-user-info">
-    <a href="/users/public/<%= comment.user.id %>">
-      <div class = "comment-user-image">
-        <img src ="<%= comment.user.image_url %>">
+  <% if comment.commenter == current_user %>
+    <div class="comment-item">
+      <div class="comment-user-info">
+        <a href="/users/<%= comment.commenter.id %>/public">
+          <div class = "comment-user-image">
+            <img src ="<%= comment.commenter.image_url %>">
+          </div>
+          <div class = "comment-name"><%= comment.commenter.name %></div>
+        </a>
+        <% if comment.commenter.id == current_user.id %>
+          <div class= "delete-button">
+            <%= link_to "x", event_comment_path( @event.id, comment.id  ), method: :delete %>
+          </div>
+        <% end %>
       </div>
-      <div class = "comment-name"><%= comment.user.name %></div>
-    </a>
-    <% if comment.user.id == current_user.id %>
-      <div class= "delete-button">
-        <%= link_to "x", event_comment_path( @event.id, comment.id  ), method: :delete %>
+      <div class="comment-content">
+        <%= comment.content %>
       </div>
-    <% end %>
-  </div>
-  <div class="comment-content">
-    <%= comment.content %>
-  </div>
-  <div class = "comment-time">
-    <%= time_ago_in_words(comment.created_at - 60*60*2)  %> ago
-  </div>
-</div>
-
-
+      <div class = "comment-time">
+        <%= time_ago_in_words(comment.created_at)  %> ago
+      </div>
+    </div>
+  <% else %>
+    <div class="other-comment-item">
+      <div class="comment-user-info">
+        <a href="/users/<%= comment.commenter.id %>/public">
+          <div class = "comment-user-image">
+            <img src ="<%= comment.commenter.image_url %>">
+          </div>
+          <div class = "comment-name"><%= comment.commenter.name %></div>
+        </a>
+        <% if comment.commenter.id == current_user.id %>
+          <div class= "delete-button">
+            <%= link_to "x", event_comment_path( @event.id, comment.id  ), method: :delete %>
+          </div>
+        <% end %>
+      </div>
+      <div class="comment-content">
+        <%= comment.content %>
+      </div>
+      <div class = "comment-time">
+        <%= time_ago_in_words(comment.created_at)  %> ago
+      </div>
+    </div>
   <% end %>
+<% end %>

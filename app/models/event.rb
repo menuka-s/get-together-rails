@@ -60,10 +60,26 @@ class Event < ActiveRecord::Base
     if self.max_participants == 0
       self.max_participants = 9999999999
     end
-    self.joined_users.to_a.length < self.max_participants ? true : false
+    self.joined_users.length < self.max_participants ? true : false
   end
 
+  def open_spots
+    open = max_participants - ( joined_users.count || 0 )
+    open = 0 if open < 0
+    return open
+  end
 
+  # def recommendations
+  #   amount_in_common = 0
+  #   current_user_interests = Activity.all - user.disliked_activities
+  #   creator_interests = Activity.all - self.creator.disliked_activities
+  #   self.joined_users.each do |event_participant|
+  #     event_participant_interests = Activity.all - event_participant.disliked_activities
+  #     amount_in_common += (current_user_interests & event_participant_interests).length
+  #   end
+  #   amount_in_common += (current_user_interests & creator_interests).length*1.3
+  #   amount_in_common / (self.joined_users.count + 1)
+  # end
 
   def push_notification
     pusher_client = Pusher::Client.new(
