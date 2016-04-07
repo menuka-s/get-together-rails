@@ -1,0 +1,2180 @@
+/* line 6, /Users/apprentice/Desktop/gettogether/get-together-rails/app/assets/stylesheets/comment.scss */
+.delete-button a {
+  color: gray;
+  text-decoration: none;
+}
+
+/* line 11, /Users/apprentice/Desktop/gettogether/get-together-rails/app/assets/stylesheets/comment.scss */
+.delete-button {
+  border: 1px solid gray;
+  border-radius: 50%;
+  height: 20px;
+  width: 20px;
+  text-align: center;
+  display: inline-block;
+  position: relative;
+  top: 20px;
+}
+
+/* line 23, /Users/apprentice/Desktop/gettogether/get-together-rails/app/assets/stylesheets/comment.scss */
+.comment-name {
+  display: inline-block;
+  width: 90%;
+}
+/* line 6, /Users/apprentice/Desktop/gettogether/get-together-rails/app/assets/stylesheets/events.scss */
+#event_address {
+  width: 400px;
+  display: block;
+}
+
+/* line 11, /Users/apprentice/Desktop/gettogether/get-together-rails/app/assets/stylesheets/events.scss */
+.new-event {
+  /*width:100%;*/
+  padding: 5px 10px;
+  border: none;
+  border-radius: 3px;
+  background-color: #00695C;
+  margin: 25px 10px;
+  text-align: center;
+  display: inline-block;
+  float: right;
+}
+
+/* line 23, /Users/apprentice/Desktop/gettogether/get-together-rails/app/assets/stylesheets/events.scss */
+.new-event:hover {
+  background-color: #73B5AC;
+}
+
+/* line 27, /Users/apprentice/Desktop/gettogether/get-together-rails/app/assets/stylesheets/events.scss */
+.new-event a {
+  font-size: 18px;
+  color: white;
+  text-decoration: none;
+}
+
+/* line 33, /Users/apprentice/Desktop/gettogether/get-together-rails/app/assets/stylesheets/events.scss */
+#event-details-map {
+  height: 300px;
+  width: 500px;
+}
+
+/* line 38, /Users/apprentice/Desktop/gettogether/get-together-rails/app/assets/stylesheets/events.scss */
+.events-header-container {
+  width: 70%;
+  margin: 15px auto;
+  max-width: 700px;
+}
+
+/* line 44, /Users/apprentice/Desktop/gettogether/get-together-rails/app/assets/stylesheets/events.scss */
+#all-events-map {
+  height: 400px;
+  width: 70%;
+  margin: auto;
+  max-width: 700px;
+}
+
+/* line 51, /Users/apprentice/Desktop/gettogether/get-together-rails/app/assets/stylesheets/events.scss */
+.google-map-link {
+  color: #0645AD;
+}
+
+/* line 55, /Users/apprentice/Desktop/gettogether/get-together-rails/app/assets/stylesheets/events.scss */
+.news-feed-container {
+  /*max-width:950px;*/
+  width: 80%;
+  margin: 0 auto;
+  box-sizing: border-box;
+}
+
+/* line 62, /Users/apprentice/Desktop/gettogether/get-together-rails/app/assets/stylesheets/events.scss */
+.news-feed-container * {
+  box-sizing: border-box;
+}
+
+/* line 66, /Users/apprentice/Desktop/gettogether/get-together-rails/app/assets/stylesheets/events.scss */
+.news-feed-sorting {
+  margin: 10px auto;
+  max-width: 700px;
+}
+
+/* line 71, /Users/apprentice/Desktop/gettogether/get-together-rails/app/assets/stylesheets/events.scss */
+.news-feed-sorting-switch-text {
+  font-size: 12px;
+  color: gray;
+  position: relative;
+  left: 0;
+}
+
+/* line 78, /Users/apprentice/Desktop/gettogether/get-together-rails/app/assets/stylesheets/events.scss */
+.sort-by, .sort-click {
+  display: inline-block;
+}
+
+/* line 82, /Users/apprentice/Desktop/gettogether/get-together-rails/app/assets/stylesheets/events.scss */
+.sort-by {
+  width: 75%;
+  margin: 5px;
+}
+
+/* line 88, /Users/apprentice/Desktop/gettogether/get-together-rails/app/assets/stylesheets/events.scss */
+.current-sort {
+  font-size: 12px;
+  color: #00695C;
+  font-weight: 600;
+}
+
+/* line 94, /Users/apprentice/Desktop/gettogether/get-together-rails/app/assets/stylesheets/events.scss */
+.news-feed-sorting-button {
+  padding: 5px 10px;
+  border: none;
+  border-radius: 3px;
+  color: white;
+  background-color: #00695C;
+  font-size: 14px;
+}
+
+/* line 103, /Users/apprentice/Desktop/gettogether/get-together-rails/app/assets/stylesheets/events.scss */
+.news-feed-sorting-button:hover {
+  background-color: #73B5AC;
+  cursor: pointer;
+}
+
+/* line 108, /Users/apprentice/Desktop/gettogether/get-together-rails/app/assets/stylesheets/events.scss */
+.news-feed {
+  clear: both;
+}
+
+/* line 112, /Users/apprentice/Desktop/gettogether/get-together-rails/app/assets/stylesheets/events.scss */
+.appealing-event {
+  width: 100%;
+  padding: 10px;
+  border-bottom: 1px #e0e0e0 solid;
+}
+
+/* line 118, /Users/apprentice/Desktop/gettogether/get-together-rails/app/assets/stylesheets/events.scss */
+.appealing-event:hover {
+  background-color: #B9E2DE;
+}
+
+/* line 122, /Users/apprentice/Desktop/gettogether/get-together-rails/app/assets/stylesheets/events.scss */
+.appealing-event-left {
+  display: inline-block;
+}
+
+/* line 126, /Users/apprentice/Desktop/gettogether/get-together-rails/app/assets/stylesheets/events.scss */
+.appealing-event-right {
+  float: right;
+}
+
+/* line 130, /Users/apprentice/Desktop/gettogether/get-together-rails/app/assets/stylesheets/events.scss */
+.appealing-event-name {
+  font-size: 15px;
+  margin-bottom: 5px;
+  margin-top: 0px;
+  color: #111517;
+}
+
+/* line 137, /Users/apprentice/Desktop/gettogether/get-together-rails/app/assets/stylesheets/events.scss */
+.happening-today {
+  font-size: 12px;
+  color: green;
+}
+
+/* line 142, /Users/apprentice/Desktop/gettogether/get-together-rails/app/assets/stylesheets/events.scss */
+.created-today {
+  font-size: 12px;
+  color: blue;
+}
+
+/* line 147, /Users/apprentice/Desktop/gettogether/get-together-rails/app/assets/stylesheets/events.scss */
+.appealing-event-time {
+  font-size: 12px;
+  color: black;
+  margin-top: 0px;
+  margin-bottom: 2px;
+}
+
+/* line 154, /Users/apprentice/Desktop/gettogether/get-together-rails/app/assets/stylesheets/events.scss */
+.appealing-event-address {
+  font-size: 12px;
+  color: gray;
+  margin-top: 0px;
+  margin-bottom: 2px;
+}
+
+/* line 161, /Users/apprentice/Desktop/gettogether/get-together-rails/app/assets/stylesheets/events.scss */
+.appealing-event-distance {
+  font-size: 12px;
+  color: gray;
+  margin-top: 0px;
+  display: inline-block;
+}
+
+/* line 168, /Users/apprentice/Desktop/gettogether/get-together-rails/app/assets/stylesheets/events.scss */
+.feed-header {
+  margin-top: 20px;
+  margin: 10px;
+  display: inline-block;
+}
+
+/* line 174, /Users/apprentice/Desktop/gettogether/get-together-rails/app/assets/stylesheets/events.scss */
+.no-events-message {
+  margin-top: 50px;
+  font-size: 16px;
+  text-align: center;
+  color: gray;
+  font-style: italic;
+}
+
+/* line 182, /Users/apprentice/Desktop/gettogether/get-together-rails/app/assets/stylesheets/events.scss */
+#today-events-container {
+  width: 100%;
+}
+
+/* line 186, /Users/apprentice/Desktop/gettogether/get-together-rails/app/assets/stylesheets/events.scss */
+.today-header {
+  width: 100%;
+}
+
+/* FLIPPING START *********************/
+/* line 192, /Users/apprentice/Desktop/gettogether/get-together-rails/app/assets/stylesheets/events.scss */
+.flip {
+  -webkit-perspective: 800;
+  max-width: 700px;
+  width: 100%;
+  height: auto;
+  position: relative;
+  margin: auto;
+}
+
+/* line 201, /Users/apprentice/Desktop/gettogether/get-together-rails/app/assets/stylesheets/events.scss */
+.flip .card.flipped {
+  -webkit-transform: rotatey(-180deg);
+}
+
+/* line 205, /Users/apprentice/Desktop/gettogether/get-together-rails/app/assets/stylesheets/events.scss */
+.flip .card {
+  width: 100%;
+  height: 100%;
+  -webkit-transform-style: preserve-3d;
+  -webkit-transition: 0.5s;
+}
+
+/* line 212, /Users/apprentice/Desktop/gettogether/get-together-rails/app/assets/stylesheets/events.scss */
+.flip .card .face {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  -webkit-backface-visibility: hidden;
+  z-index: 5;
+}
+
+/* line 220, /Users/apprentice/Desktop/gettogether/get-together-rails/app/assets/stylesheets/events.scss */
+.flip .card .front {
+  position: absolute;
+  border: 1px #00695C solid;
+  z-index: 4;
+  height: initial;
+}
+
+/* line 227, /Users/apprentice/Desktop/gettogether/get-together-rails/app/assets/stylesheets/events.scss */
+.flip .card .back {
+  -webkit-transform: rotatey(-180deg);
+  border: 1px #E0A02C solid;
+  height: initial;
+  /*note: this height:initial is needed to make the border the appropriate height */
+}
+
+/* New Event Page *******************/
+/* line 236, /Users/apprentice/Desktop/gettogether/get-together-rails/app/assets/stylesheets/events.scss */
+.new-event-form {
+  padding-left: 10px;
+}
+
+/* line 240, /Users/apprentice/Desktop/gettogether/get-together-rails/app/assets/stylesheets/events.scss */
+.new-event-container {
+  margin: 0 auto;
+}
+
+/* line 244, /Users/apprentice/Desktop/gettogether/get-together-rails/app/assets/stylesheets/events.scss */
+.new-event-header {
+  text-align: center;
+  font-weight: normal;
+}
+
+/* line 249, /Users/apprentice/Desktop/gettogether/get-together-rails/app/assets/stylesheets/events.scss */
+#event-form {
+  padding: 10px;
+  width: 40%;
+  min-width: 420px;
+  margin: 0 auto;
+}
+
+/* line 260, /Users/apprentice/Desktop/gettogether/get-together-rails/app/assets/stylesheets/events.scss */
+#event-form input {
+  width: 100%;
+}
+
+/* line 264, /Users/apprentice/Desktop/gettogether/get-together-rails/app/assets/stylesheets/events.scss */
+#event-form textarea {
+  width: 100%;
+  height: 80px;
+}
+
+/* line 269, /Users/apprentice/Desktop/gettogether/get-together-rails/app/assets/stylesheets/events.scss */
+#new-activity-category-container input[type=checkbox] {
+  opacity: 1;
+  margin-top: 2px;
+}
+
+/* line 274, /Users/apprentice/Desktop/gettogether/get-together-rails/app/assets/stylesheets/events.scss */
+#new-activity-category-container .collection-check-box label {
+  padding-left: 15px;
+}
+
+/* line 278, /Users/apprentice/Desktop/gettogether/get-together-rails/app/assets/stylesheets/events.scss */
+.hidden {
+  display: none;
+}
+/*! normalize.css v4.0.0 | MIT License | github.com/necolas/normalize.css */
+
+/**
+ * 1. Change the default font family in all browsers (opinionated).
+ * 2. Prevent adjustments of font size after orientation changes in IE and iOS.
+ */
+
+
+html {
+  /*font-family: sans-serif;*/ /* 1 */
+  /*-ms-text-size-adjust: 100%; *//* 2 */
+  /*-webkit-text-size-adjust: 100%;*/ /* 2 */
+}
+
+/**
+ * Remove the margin in all browsers (opinionated).
+ */
+
+body {
+  margin: 0;
+}
+
+/* HTML5 display definitions
+   ========================================================================== */
+
+/**
+ * Add the correct display in IE 9-.
+ * 1. Add the correct display in Edge, IE, and Firefox.
+ * 2. Add the correct display in IE.
+ */
+
+article,
+aside,
+details, /* 1 */
+figcaption,
+figure,
+footer,
+header,
+main, /* 2 */
+menu,
+nav,
+section,
+summary { /* 1 */
+  display: block;
+}
+
+/**
+ * Add the correct display in IE 9-.
+ */
+
+audio,
+canvas,
+progress,
+video {
+  display: inline-block;
+}
+
+/**
+ * Add the correct display in iOS 4-7.
+ */
+
+audio:not([controls]) {
+  display: none;
+  height: 0;
+}
+
+/**
+ * Add the correct vertical alignment in Chrome, Firefox, and Opera.
+ */
+
+progress {
+  vertical-align: baseline;
+}
+
+/**
+ * Add the correct display in IE 10-.
+ * 1. Add the correct display in IE.
+ */
+
+template, /* 1 */
+[hidden] {
+  display: none;
+}
+
+/* Links
+   ========================================================================== */
+
+/**
+ * Remove the gray background on active links in IE 10.
+ */
+
+a {
+  background-color: transparent;
+}
+
+/**
+ * Remove the outline on focused links when they are also active or hovered
+ * in all browsers (opinionated).
+ */
+
+a:active,
+a:hover {
+  outline-width: 0;
+}
+
+/* Text-level semantics
+   ========================================================================== */
+
+/**
+ * 1. Remove the bottom border in Firefox 39-.
+ * 2. Add the correct text decoration in Chrome, Edge, IE, Opera, and Safari.
+ */
+
+abbr[title] {
+  border-bottom: none; /* 1 */
+  text-decoration: underline; /* 2 */
+  text-decoration: underline dotted; /* 2 */
+}
+
+/**
+ * Prevent the duplicate application of `bolder` by the next rule in Safari 6.
+ */
+
+b,
+strong {
+  font-weight: inherit;
+}
+
+/**
+ * Add the correct font weight in Chrome, Edge, and Safari.
+ */
+
+b,
+strong {
+  font-weight: bolder;
+}
+
+/**
+ * Add the correct font style in Android 4.3-.
+ */
+
+dfn {
+  font-style: italic;
+}
+
+/**
+ * Correct the font size and margin on `h1` elements within `section` and
+ * `article` contexts in Chrome, Firefox, and Safari.
+ */
+
+h1 {
+  font-size: 2em;
+  margin: 0.67em 0;
+}
+
+/**
+ * Add the correct background and color in IE 9-.
+ */
+
+mark {
+  background-color: #ff0;
+  color: #000;
+}
+
+/**
+ * Add the correct font size in all browsers.
+ */
+
+small {
+  font-size: 80%;
+}
+
+/**
+ * Prevent `sub` and `sup` elements from affecting the line height in
+ * all browsers.
+ */
+
+sub,
+sup {
+  font-size: 75%;
+  line-height: 0;
+  position: relative;
+  vertical-align: baseline;
+}
+
+sub {
+  bottom: -0.25em;
+}
+
+sup {
+  top: -0.5em;
+}
+
+/* Embedded content
+   ========================================================================== */
+
+/**
+ * Remove the border on images inside links in IE 10-.
+ */
+
+img {
+  border-style: none;
+}
+
+/**
+ * Hide the overflow in IE.
+ */
+
+svg:not(:root) {
+  overflow: hidden;
+}
+
+/* Grouping content
+   ========================================================================== */
+
+/**
+ * 1. Correct the inheritance and scaling of font size in all browsers.
+ * 2. Correct the odd `em` font sizing in all browsers.
+ */
+
+code,
+kbd,
+pre,
+samp {
+  font-family: monospace, monospace; /* 1 */
+  font-size: 1em; /* 2 */
+}
+
+/**
+ * Add the correct margin in IE 8.
+ */
+
+figure {
+  margin: 1em 40px;
+}
+
+/**
+ * 1. Add the correct box sizing in Firefox.
+ * 2. Show the overflow in Edge and IE.
+ */
+
+hr {
+  box-sizing: content-box; /* 1 */
+  height: 0; /* 1 */
+  overflow: visible; /* 2 */
+}
+
+/* Forms
+   ========================================================================== */
+
+/**
+ * Change font properties to `inherit` in all browsers (opinionated).
+ */
+
+button,
+input,
+select,
+textarea {
+  font: inherit;
+}
+
+/**
+ * Restore the font weight unset by the previous rule.
+ */
+
+optgroup {
+  font-weight: bold;
+}
+
+/**
+ * Show the overflow in IE.
+ * 1. Show the overflow in Edge.
+ * 2. Show the overflow in Edge, Firefox, and IE.
+ */
+
+button,
+input, /* 1 */
+select { /* 2 */
+  overflow: visible;
+}
+
+/**
+ * Remove the margin in Safari.
+ * 1. Remove the margin in Firefox and Safari.
+ */
+
+button,
+input,
+select,
+textarea { /* 1 */
+  margin: 0;
+}
+
+/**
+ * Remove the inheritence of text transform in Edge, Firefox, and IE.
+ * 1. Remove the inheritence of text transform in Firefox.
+ */
+
+button,
+select { /* 1 */
+  text-transform: none;
+}
+
+/**
+ * Change the cursor in all browsers (opinionated).
+ */
+
+button,
+[type="button"],
+[type="reset"],
+[type="submit"] {
+  cursor: pointer;
+}
+
+/**
+ * Restore the default cursor to disabled elements unset by the previous rule.
+ */
+
+[disabled] {
+  cursor: default;
+}
+
+/**
+ * 1. Prevent a WebKit bug where (2) destroys native `audio` and `video`
+ *    controls in Android 4.
+ * 2. Correct the inability to style clickable types in iOS.
+ */
+
+button,
+html [type="button"], /* 1 */
+[type="reset"],
+[type="submit"] {
+  -webkit-appearance: button; /* 2 */
+}
+
+/**
+ * Remove the inner border and padding in Firefox.
+ */
+
+button::-moz-focus-inner,
+input::-moz-focus-inner {
+  border: 0;
+  padding: 0;
+}
+
+/**
+ * Restore the focus styles unset by the previous rule.
+ */
+
+button:-moz-focusring,
+input:-moz-focusring {
+  outline: 1px dotted ButtonText;
+}
+
+/**
+ * Change the border, margin, and padding in all browsers (opinionated).
+ */
+
+fieldset {
+  border: 1px solid #c0c0c0;
+  margin: 0 2px;
+  padding: 0.35em 0.625em 0.75em;
+}
+
+/**
+ * 1. Correct the text wrapping in Edge and IE.
+ * 2. Correct the color inheritance from `fieldset` elements in IE.
+ * 3. Remove the padding so developers are not caught out when they zero out
+ *    `fieldset` elements in all browsers.
+ */
+
+legend {
+  box-sizing: border-box; /* 1 */
+  color: inherit; /* 2 */
+  display: table; /* 1 */
+  max-width: 100%; /* 1 */
+  padding: 0; /* 3 */
+  white-space: normal; /* 1 */
+}
+
+/**
+ * Remove the default vertical scrollbar in IE.
+ */
+
+textarea {
+  overflow: auto;
+}
+
+/**
+ * 1. Add the correct box sizing in IE 10-.
+ * 2. Remove the padding in IE 10-.
+ */
+
+[type="checkbox"],
+[type="radio"] {
+  box-sizing: border-box; /* 1 */
+  padding: 0; /* 2 */
+}
+
+/**
+ * Correct the cursor style of increment and decrement buttons in Chrome.
+ */
+
+[type="number"]::-webkit-inner-spin-button,
+[type="number"]::-webkit-outer-spin-button {
+  height: auto;
+}
+
+/**
+ * Correct the odd appearance of search inputs in Chrome and Safari.
+ */
+
+[type="search"] {
+  -webkit-appearance: textfield;
+}
+
+/**
+ * Remove the inner padding and cancel buttons in Chrome on OS X and
+ * Safari on OS X.
+ */
+
+[type="search"]::-webkit-search-cancel-button,
+[type="search"]::-webkit-search-decoration {
+  -webkit-appearance: none;
+}
+.welcome-header{
+  height: 4em;
+  width: 100%;
+  color: white;
+  background-color: black;
+  text-align: center;
+}
+
+.welcome-pre-header {
+  font-size: 35px;
+  font-family: Arial;
+}
+
+.welcome-header h1{
+  font-size: 45px;
+  font-family: Arial;
+}
+/* line 8, /Users/apprentice/Desktop/gettogether/get-together-rails/app/assets/stylesheets/users.scss */
+.my_dashboard {
+  width: 70%;
+  margin: auto;
+}
+
+/* line 14, /Users/apprentice/Desktop/gettogether/get-together-rails/app/assets/stylesheets/users.scss */
+.my_pic {
+  height: 70px;
+  width: 70px;
+}
+
+/* line 20, /Users/apprentice/Desktop/gettogether/get-together-rails/app/assets/stylesheets/users.scss */
+.dashboard-box {
+  display: block;
+  margin: 0 auto;
+  margin-top: 10px;
+  border: 4px solid #00695C;
+  border-radius: 10px;
+  max-height: 300px;
+  width: 60%;
+  overflow: scroll;
+  padding: 10px;
+}
+
+/* line 32, /Users/apprentice/Desktop/gettogether/get-together-rails/app/assets/stylesheets/users.scss */
+.user-event-name, .today-event-name {
+  font-weight: 600;
+}
+
+/* line 36, /Users/apprentice/Desktop/gettogether/get-together-rails/app/assets/stylesheets/users.scss */
+.dashboard-box a {
+  text-decoration: none;
+  color: #00695C;
+}
+
+/* line 41, /Users/apprentice/Desktop/gettogether/get-together-rails/app/assets/stylesheets/users.scss */
+.my-created-events ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+/* line 47, /Users/apprentice/Desktop/gettogether/get-together-rails/app/assets/stylesheets/users.scss */
+.dashboard-box h4 {
+  text-align: center;
+}
+
+/* line 52, /Users/apprentice/Desktop/gettogether/get-together-rails/app/assets/stylesheets/users.scss */
+.dashboard-box recent-comments {
+  overflow: scroll;
+}
+
+/* line 56, /Users/apprentice/Desktop/gettogether/get-together-rails/app/assets/stylesheets/users.scss */
+.my_info {
+  height: 80px;
+}
+
+/* line 60, /Users/apprentice/Desktop/gettogether/get-together-rails/app/assets/stylesheets/users.scss */
+.my-upcoming-events {
+  background-color: white;
+  display: block;
+  transition: max-height 1s;
+}
+
+/* line 66, /Users/apprentice/Desktop/gettogether/get-together-rails/app/assets/stylesheets/users.scss */
+.my-upcoming-events:hover {
+  max-height: 600px;
+  transition: max-height 1s;
+}
+
+/* line 71, /Users/apprentice/Desktop/gettogether/get-together-rails/app/assets/stylesheets/users.scss */
+.my-created-events {
+  background-color: white;
+  display: block;
+  max-height: 150px;
+  transition: max-height 1s;
+}
+
+/* line 77, /Users/apprentice/Desktop/gettogether/get-together-rails/app/assets/stylesheets/users.scss */
+.my-created-events:hover {
+  max-height: 400px;
+  transition: max-height 1s;
+}
+
+/* line 82, /Users/apprentice/Desktop/gettogether/get-together-rails/app/assets/stylesheets/users.scss */
+.my-past-events {
+  background-color: white;
+  display: block;
+}
+
+/* line 88, /Users/apprentice/Desktop/gettogether/get-together-rails/app/assets/stylesheets/users.scss */
+.recent-comments {
+  background-color: white;
+  display: block;
+}
+
+/* line 94, /Users/apprentice/Desktop/gettogether/get-together-rails/app/assets/stylesheets/users.scss */
+#user-buttons {
+  margin-top: 20px;
+  text-align: center;
+}
+
+/* line 100, /Users/apprentice/Desktop/gettogether/get-together-rails/app/assets/stylesheets/users.scss */
+a {
+  text-decoration: none;
+}
+
+/* line 104, /Users/apprentice/Desktop/gettogether/get-together-rails/app/assets/stylesheets/users.scss */
+.new-event-form a, .update-profile a {
+  text-decoration: none;
+  color: white;
+}
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or any plugin's vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any styles
+ * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
+ * file per style scope.
+ *
+
+
+
+ */
+
+*{
+
+  font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+}
+
+#event-details-map{
+  /*margin: 0 auto;*/
+  display: block;
+/*  float: right;
+*/  width: 95%;
+  height: 60vh;
+}
+
+.event-container{
+  margin: 0 auto;
+  width: 90%;
+  border-radius: 20px;
+  padding: 15px;
+  /*background-color: #B8CFCE;*/
+}
+.border-line{
+  margin: 0 auto;
+  margin-top: 30px;
+  margin-bottom: 30px;
+  border-bottom: 1px solid #273835;
+  width: 75%;
+}
+
+.event-name{
+  margin-left: 5%;
+  text-align: left;
+  color: #00695c;
+}
+
+.event-creator{
+  text-align: left;
+  font-weight: 200;
+
+}
+
+.event-creator a{
+  padding: 5px;
+  display:inline-block;
+  text-decoration: none;
+  color: #00695c;
+}
+.event-creator img{
+  vertical-align: middle;
+  border-radius: 100px;
+  max-height: 40px;
+  max-width: 40px;;
+}
+
+.today-header{
+  font-weight: 200;
+  font-size: 40px;
+}
+
+.event-details{
+  font-weight: 200;
+  margin-left: 5%;
+  text-align: left;
+}
+
+#tiny-image{
+  height: 100%;
+display: inline-block;
+
+vertical-align: middle;
+}
+.creator-name{
+  height: 100%;
+  display: inline-block;
+  margin: 0 auto;
+  vertical-align: middle;
+}
+
+.feed-header{
+  color: #005348;
+  font-size: 50px;
+  margin-bottom: 10px;
+}
+
+.event-name h4{
+  font-weight: 200;
+}
+
+.event-name h2{
+  margin: 0;
+  text-align: left;
+  font-weight: 200;
+  font-size: 30px;
+}
+
+.event-comments{
+  font-weight: 200;
+  margin-left: 5%;
+}
+
+.event-buttons{
+  text-align: center;
+  margin: 20px;
+}
+
+.comment-item{
+  margin-top: 10px;
+  margin-bottom: 10px;
+  padding: 10px;
+  background-color: #EDF9F7;
+  border-radius: 10px;
+}
+.other-comment-item{
+  margin-top: 10px;
+  margin-bottom: 10px;
+  padding: 10px;
+}
+.comment-user-info a{
+  text-decoration: none;
+}
+.comment-content{
+  margin: 10px;
+  margin-left: 40px;
+}
+.comment-user-image{
+display: inline-block;
+vertical-align: middle;
+
+}
+.comment-name{
+  display: inline-block;
+  vertical-align: middle;
+  color: #00695C;
+
+}
+.comment-user-image img{
+  height: 30px;
+  width: 30px;
+  border-radius: 40px;
+}
+.comment-time{
+    margin: 0px;
+  padding: 0px;
+  font-size: 15px;
+  font-style: italic;
+  color: gray;
+  text-align: right;
+}
+
+
+.new-comment{
+  margin-left: 5%;
+  text-align: left;
+}
+#comment_content{
+  margin: 0px;
+  padding: 0px;
+  vertical-align: middle;
+  margin-right: 5px;
+}
+
+
+
+.real-button{
+  border: none;
+  text-decoration: none;
+  display: inline-block;
+  text-align: center;
+  height: 30px;
+  background-color: #00695C;
+  border-radius: 5px;
+  font-weight: 200;
+  padding-left: 10px;
+  padding-right: 10px;
+  color: white;
+  vertical-align: center;
+  cursor: pointer;
+  vertical-align: middle;
+}
+
+.real-button a{
+  border: none;
+  background-color: none;
+  text-decoration: none;
+  color: white;
+  vertical-align: middle;
+}
+
+.button{
+  text-decoration: none;
+  display: inline-block;
+  text-align: center;
+  padding-top: 10px;
+  height: 30px;
+  background-color: #00695C;
+  border-radius: 5px;
+  font-weight: 200;
+  padding-left: 10px;
+  padding-right: 10px;
+  color: white;
+  vertical-align: center;
+  cursor: pointer;
+  vertical-align: middle;
+}
+ .new-body {
+  position: absolute;
+  top: 0px;
+  background: url("http://chicagopolicyreview.org/wp-content/uploads/2015/09/Chicago-Architecture.jpg");
+  width: 100%;
+  overflow: hidden;
+  height: 100%;
+  margin: 0 auto;
+  padding: 0;
+}
+
+
+
+#profile-circle img{
+  padding: 10px;
+  border-radius: 200px;
+  max-height: 75px;
+  max-width: 75px;
+}
+.profile-circle img{
+  padding: 10px;
+  border-radius: 200px;
+  max-height: 45px;
+  max-width: 45px;
+}
+.opacity {
+  width: 100%;
+  height: 72em;
+  background-color: black;
+  opacity: 0.5;
+}
+
+#footer{
+  padding: 20px;
+
+}
+
+.login-container {
+  color: white;
+  text-align: center;
+  font-size: 20px;
+  margin: 20px auto;
+  position: absolute;
+  top: 25%;
+  left: 25%;
+  width: 50%;
+  padding: 0px 20px 20px 20px;
+}
+
+.main-header img{
+  margin: 0 auto;
+  width: 600px;
+}
+.logo-header {
+  width: 100%;
+  padding: 10px;
+  position: absolute;
+  top: 0;
+  z-index: 3;
+  text-align: center;
+}
+.logo-header img{
+  height: 90px;
+  margin: 0 auto;
+  width: auto;
+  position: relative;
+}
+.logo-header a{
+  cursor: pointer;
+}
+
+#header {
+  width: 100%;
+  position: relative;
+  font-size: 36px;
+  text-align: center;
+  background-color: #00695C;
+  color: white;
+  height: 100px;
+}
+
+#page-footer {
+  width: 100%;
+  font-size: 18px;
+  text-align: center;
+  background-color: white;
+  color: white;
+  height: 150px;
+  margin-top: 20px;
+}
+
+.error-messages {
+  color: red;
+  list-style-type: none;
+  font-size: 14px;
+}
+#category-interest-buttons{
+width: 80%;
+display:block;
+margin: auto;
+margin-top: 20px;
+}
+.category-interest-buttons{
+  width: 100%;
+
+}
+.category-box{
+  position: relative;
+  padding: 0px;
+  color: white;
+  background-color: black;
+  border: 2px solid gray;
+  overflow: hidden;
+  border-radius: 15px;
+}
+
+.category_interest_button{
+  padding: 0px;
+  color:white;
+  background-color: Transparent;
+  border:none;
+  display:inline-block;
+  width:100%;
+  height: 50px;
+  font-size: 30px;
+  overflow: hidden;
+}
+.activity-toggle{
+  text-decoration: none;
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  padding: 0px;
+  font-size: 30px;
+  font-weight: 200;
+  color:white;
+  background-color: Transparent;
+  border: none;
+  width:10%;
+  height: 50px;
+  text-align: center;
+  overflow: hidden;
+}
+#defer-interests{
+  text-align: center;
+  font-style: italic;
+  font-size: 20px;
+}
+#interests-welcome{
+  color: #2b2b2b;
+  margin-top: 15px;
+font-style: italic;
+font-weight: 300;
+color: black;
+font-size: 50px;
+text-align: center;
+}
+#save-interests{
+  text-align: center;
+}
+#event-radius-preference-container{
+  display: inline-block;
+  text-align: center;
+}
+.edit_user{
+  display: inline-block;
+}
+
+.edit_user select{
+background: transparent;
+}
+#interests-header{
+  color: #424242;
+  padding-top: 10px;
+  text-align: center;
+}
+.activity-interest-box{
+}
+
+.activity-interest-button{
+  border: 1px solid gray;
+  display: inline-block;
+  margin: 5px;
+  border-radius: 10px;
+}
+
+#activity-container{
+  position:relative;
+}
+#activity-cancel{
+  cursor: pointer;
+  display: none;
+}
+.activity-suggestion{
+  width: 100%;
+  height: 20px;
+  border: 1px solid gray;
+  margin: 0 auto;
+}
+#activity-display{
+  margin-top: 15px;
+  margin-bottom: 15px;
+}
+#suggestions-container{
+  cursor: pointer;
+  max-height: 100px;
+  position:absolute;
+  display: none;
+  background-color: white;
+  /*bottom: 0;*/
+  overflow-y: scroll;
+  width: 15em;
+  border: 1px black solid;
+}
+
+#today-events-container{
+  max-width: 575px;
+  margin: 0 auto;
+  margin-top: 20px;
+  max-width: 700px;
+  width:100%;
+  padding: 10px;
+  max-height: 200px;
+  overflow-y: scroll;
+  border: 1px solid #9BC2CF;
+}
+
+
+.delete-button a {
+  color: gray;
+  text-decoration: none;
+}
+
+.delete-button {
+  border: 1px solid gray;
+  border-radius: 50%;
+  height: 20px;
+  width: 20px;
+  text-align: center;
+  display: inline-block;
+  position: relative;
+  top: 20px;
+
+}
+
+.comment-name {
+  display: inline-block;
+  width: 90%;
+}
+
+#today-events-container a{
+  text-decoration: none;
+  color: #9BC2CF;
+}
+
+.today-event-item{
+  border-top: 1px solid gray;
+  padding: 10px;
+}
+
+.today-event-address{
+  color: gray;
+  font-size: 12px;
+  padding-top: 10px;
+}
+
+.today-event-time{
+  color: gray;
+  font-size: 12px;
+  font-style: italic;
+  text-align: right;
+}
+
+#user_settings {
+  border: 1px dotted gray;
+}
+
+.user-profile{
+}
+.user-name{
+  padding: 10px;
+  text-align: center;
+  font-size: 40px;
+  font-weight: 400;
+}
+.user-event-item{
+  padding: 5px;
+}
+
+.my_info{
+  text-align: center;
+  margin: 15px;
+}
+
+.public_info{
+  text-align: center;
+  margin: 30px;
+}
+
+#public_img{
+height: 100px;
+width: 100px;
+
+}
+
+#public_photo{
+
+}
+
+#public_username{
+  padding: 15px;
+}
+
+.my_dashboard{
+/*  border: 1px solid black;*/
+  margin: 0 auto;
+  padding: 10px;
+}
+#public_activities{
+/*  border: 1px solid black;*/
+  margin: 0 auto;
+  padding: 10px;
+}
+
+#public-bio{
+  margin: 0 auto;
+  padding-top: 10px;
+  text-align: center;
+  width: 70%;
+}
+
+#span-info{
+  font-style: italic;
+  color: gray;
+}
+#bio-textarea{
+  margin: auto 0;
+}
+#user-bio{
+  text-align: center;
+  width: 50%;
+  margin: 0 auto;
+  padding: 10px;
+  cursor: pointer;
+}
+#user-bio-content{
+  width: 90%;
+  margin: 0 auto;
+}
+
+#user-bio-header{
+  font-style: italic;
+  font-size: 10px;
+  color: gray;
+  padding-bottom: 10px;
+}
+
+/*!
+ * jQuery UI CSS Framework 1.11.4
+ * http://jqueryui.com
+ *
+ * Copyright jQuery Foundation and other contributors
+ * Released under the MIT license.
+ * http://jquery.org/license
+ *
+ * http://api.jqueryui.com/category/theming/
+ *
+ * To view and modify this theme, visit http://jqueryui.com/themeroller/
+ */
+
+/*
+
+
+
+
+
+
+
+
+
+
+
+
+
+ */
+
+
+
+/* Component containers
+----------------------------------*/
+
+.ui-widget {
+	font-family: Verdana,Arial,sans-serif/*{ffDefault}*/;
+	font-size: 1.1em/*{fsDefault}*/;
+}
+.ui-widget .ui-widget {
+	font-size: 1em;
+}
+.ui-widget input,
+.ui-widget select,
+.ui-widget textarea,
+.ui-widget button {
+	font-family: Verdana,Arial,sans-serif/*{ffDefault}*/;
+	font-size: 1em;
+}
+.ui-widget-content {
+	border: 1px solid #aaaaaa/*{borderColorContent}*/;
+	background: #ffffff/*{bgColorContent}*/ url(/assets/jquery-ui/ui-bg_flat_75_ffffff_40x100-39ab7ccd9f4e82579da78a9241265df288d8eb65dbbd7cf48aed2d0129887df5.png)/*{bgImgUrlContent}*/ 50%/*{bgContentXPos}*/ 50%/*{bgContentYPos}*/ repeat-x/*{bgContentRepeat}*/;
+	color: #222222/*{fcContent}*/;
+}
+.ui-widget-content a {
+	color: #222222/*{fcContent}*/;
+}
+.ui-widget-header {
+	border: 1px solid #aaaaaa/*{borderColorHeader}*/;
+	background: #cccccc/*{bgColorHeader}*/ url(/assets/jquery-ui/ui-bg_highlight-soft_75_cccccc_1x100-54270656df079c4da5182629a080fc633b6f84b87985eb016d25a560e2c38d4a.png)/*{bgImgUrlHeader}*/ 50%/*{bgHeaderXPos}*/ 50%/*{bgHeaderYPos}*/ repeat-x/*{bgHeaderRepeat}*/;
+	color: #222222/*{fcHeader}*/;
+	font-weight: bold;
+}
+.ui-widget-header a {
+	color: #222222/*{fcHeader}*/;
+}
+
+/* Interaction states
+----------------------------------*/
+.ui-state-default,
+.ui-widget-content .ui-state-default,
+.ui-widget-header .ui-state-default {
+	border: 1px solid #d3d3d3/*{borderColorDefault}*/;
+	background: #e6e6e6/*{bgColorDefault}*/ url(/assets/jquery-ui/ui-bg_glass_75_e6e6e6_1x400-ddf5dd4e0ef2b185e8bb0af7b6e90ebe74a84384cb4700658e76e754c8bfe550.png)/*{bgImgUrlDefault}*/ 50%/*{bgDefaultXPos}*/ 50%/*{bgDefaultYPos}*/ repeat-x/*{bgDefaultRepeat}*/;
+	font-weight: normal/*{fwDefault}*/;
+	color: #555555/*{fcDefault}*/;
+}
+.ui-state-default a,
+.ui-state-default a:link,
+.ui-state-default a:visited {
+	color: #555555/*{fcDefault}*/;
+	text-decoration: none;
+}
+.ui-state-hover,
+.ui-widget-content .ui-state-hover,
+.ui-widget-header .ui-state-hover,
+.ui-state-focus,
+.ui-widget-content .ui-state-focus,
+.ui-widget-header .ui-state-focus {
+	border: 1px solid #999999/*{borderColorHover}*/;
+	background: #dadada/*{bgColorHover}*/ url(/assets/jquery-ui/ui-bg_glass_75_dadada_1x400-c108f5cbf2dd9ec07a26530695ddd95e1664597ce6c056ae44c162cc2e28cec4.png)/*{bgImgUrlHover}*/ 50%/*{bgHoverXPos}*/ 50%/*{bgHoverYPos}*/ repeat-x/*{bgHoverRepeat}*/;
+	font-weight: normal/*{fwDefault}*/;
+	color: #212121/*{fcHover}*/;
+}
+.ui-state-hover a,
+.ui-state-hover a:hover,
+.ui-state-hover a:link,
+.ui-state-hover a:visited,
+.ui-state-focus a,
+.ui-state-focus a:hover,
+.ui-state-focus a:link,
+.ui-state-focus a:visited {
+	color: #212121/*{fcHover}*/;
+	text-decoration: none;
+}
+.ui-state-active,
+.ui-widget-content .ui-state-active,
+.ui-widget-header .ui-state-active {
+	border: 1px solid #aaaaaa/*{borderColorActive}*/;
+	background: #ffffff/*{bgColorActive}*/ url(/assets/jquery-ui/ui-bg_glass_65_ffffff_1x400-f0e6cd91b837d5c5644d026e5ffeccd907953317cd5c0f689901733afda260b2.png)/*{bgImgUrlActive}*/ 50%/*{bgActiveXPos}*/ 50%/*{bgActiveYPos}*/ repeat-x/*{bgActiveRepeat}*/;
+	font-weight: normal/*{fwDefault}*/;
+	color: #212121/*{fcActive}*/;
+}
+.ui-state-active a,
+.ui-state-active a:link,
+.ui-state-active a:visited {
+	color: #212121/*{fcActive}*/;
+	text-decoration: none;
+}
+
+/* Interaction Cues
+----------------------------------*/
+.ui-state-highlight,
+.ui-widget-content .ui-state-highlight,
+.ui-widget-header .ui-state-highlight {
+	border: 1px solid #fcefa1/*{borderColorHighlight}*/;
+	background: #fbf9ee/*{bgColorHighlight}*/ url(/assets/jquery-ui/ui-bg_glass_55_fbf9ee_1x400-691597e8a40a891ea94d3589976ecfc33e6145c49422443b00ac2b5a0022964c.png)/*{bgImgUrlHighlight}*/ 50%/*{bgHighlightXPos}*/ 50%/*{bgHighlightYPos}*/ repeat-x/*{bgHighlightRepeat}*/;
+	color: #363636/*{fcHighlight}*/;
+}
+.ui-state-highlight a,
+.ui-widget-content .ui-state-highlight a,
+.ui-widget-header .ui-state-highlight a {
+	color: #363636/*{fcHighlight}*/;
+}
+.ui-state-error,
+.ui-widget-content .ui-state-error,
+.ui-widget-header .ui-state-error {
+	border: 1px solid #cd0a0a/*{borderColorError}*/;
+	background: #fef1ec/*{bgColorError}*/ url(/assets/jquery-ui/ui-bg_glass_95_fef1ec_1x400-f6f1c1bedf1a0f37cfef81d12f5f012869d1ee7c984775a569827a1784d34f5c.png)/*{bgImgUrlError}*/ 50%/*{bgErrorXPos}*/ 50%/*{bgErrorYPos}*/ repeat-x/*{bgErrorRepeat}*/;
+	color: #cd0a0a/*{fcError}*/;
+}
+.ui-state-error a,
+.ui-widget-content .ui-state-error a,
+.ui-widget-header .ui-state-error a {
+	color: #cd0a0a/*{fcError}*/;
+}
+.ui-state-error-text,
+.ui-widget-content .ui-state-error-text,
+.ui-widget-header .ui-state-error-text {
+	color: #cd0a0a/*{fcError}*/;
+}
+.ui-priority-primary,
+.ui-widget-content .ui-priority-primary,
+.ui-widget-header .ui-priority-primary {
+	font-weight: bold;
+}
+.ui-priority-secondary,
+.ui-widget-content .ui-priority-secondary,
+.ui-widget-header .ui-priority-secondary {
+	opacity: .7;
+	filter:Alpha(Opacity=70); /* support: IE8 */
+	font-weight: normal;
+}
+.ui-state-disabled,
+.ui-widget-content .ui-state-disabled,
+.ui-widget-header .ui-state-disabled {
+	opacity: .35;
+	filter:Alpha(Opacity=35); /* support: IE8 */
+	background-image: none;
+}
+.ui-state-disabled .ui-icon {
+	filter:Alpha(Opacity=35); /* support: IE8 - See #6059 */
+}
+
+/* Icons
+----------------------------------*/
+
+/* states and images */
+.ui-icon {
+	width: 16px;
+	height: 16px;
+}
+.ui-icon,
+.ui-widget-content .ui-icon {
+	background-image: url(/assets/jquery-ui/ui-icons_222222_256x240-57adb0d65f4e91dacfee975d9574422bee7486c8a182d60133728c672f2cdbbc.png)/*{iconsContent}*/;
+}
+.ui-widget-header .ui-icon {
+	background-image: url(/assets/jquery-ui/ui-icons_222222_256x240-57adb0d65f4e91dacfee975d9574422bee7486c8a182d60133728c672f2cdbbc.png)/*{iconsHeader}*/;
+}
+.ui-state-default .ui-icon {
+	background-image: url(/assets/jquery-ui/ui-icons_888888_256x240-ea2e29625de3463465e93b002b065f5833e05b97f7a052b1c141e754d62e1a8b.png)/*{iconsDefault}*/;
+}
+.ui-state-hover .ui-icon,
+.ui-state-focus .ui-icon {
+	background-image: url(/assets/jquery-ui/ui-icons_454545_256x240-07460e843c3e59aaadbb34231e699e856a2980753c7a47b66447da5d9f93fb7f.png)/*{iconsHover}*/;
+}
+.ui-state-active .ui-icon {
+	background-image: url(/assets/jquery-ui/ui-icons_454545_256x240-07460e843c3e59aaadbb34231e699e856a2980753c7a47b66447da5d9f93fb7f.png)/*{iconsActive}*/;
+}
+.ui-state-highlight .ui-icon {
+	background-image: url(/assets/jquery-ui/ui-icons_2e83ff_256x240-20f8c6667afc48aa433ee9eb6d8a0584bdbd6b4a4a9091ff1e6b3adb31e63bd9.png)/*{iconsHighlight}*/;
+}
+.ui-state-error .ui-icon,
+.ui-state-error-text .ui-icon {
+	background-image: url(/assets/jquery-ui/ui-icons_cd0a0a_256x240-1e32c6dbf5d3fd342f27a78aa881550d6412aa207f48468724a6a15402b6041b.png)/*{iconsError}*/;
+}
+
+/* positioning */
+.ui-icon-blank { background-position: 16px 16px; }
+.ui-icon-carat-1-n { background-position: 0 0; }
+.ui-icon-carat-1-ne { background-position: -16px 0; }
+.ui-icon-carat-1-e { background-position: -32px 0; }
+.ui-icon-carat-1-se { background-position: -48px 0; }
+.ui-icon-carat-1-s { background-position: -64px 0; }
+.ui-icon-carat-1-sw { background-position: -80px 0; }
+.ui-icon-carat-1-w { background-position: -96px 0; }
+.ui-icon-carat-1-nw { background-position: -112px 0; }
+.ui-icon-carat-2-n-s { background-position: -128px 0; }
+.ui-icon-carat-2-e-w { background-position: -144px 0; }
+.ui-icon-triangle-1-n { background-position: 0 -16px; }
+.ui-icon-triangle-1-ne { background-position: -16px -16px; }
+.ui-icon-triangle-1-e { background-position: -32px -16px; }
+.ui-icon-triangle-1-se { background-position: -48px -16px; }
+.ui-icon-triangle-1-s { background-position: -64px -16px; }
+.ui-icon-triangle-1-sw { background-position: -80px -16px; }
+.ui-icon-triangle-1-w { background-position: -96px -16px; }
+.ui-icon-triangle-1-nw { background-position: -112px -16px; }
+.ui-icon-triangle-2-n-s { background-position: -128px -16px; }
+.ui-icon-triangle-2-e-w { background-position: -144px -16px; }
+.ui-icon-arrow-1-n { background-position: 0 -32px; }
+.ui-icon-arrow-1-ne { background-position: -16px -32px; }
+.ui-icon-arrow-1-e { background-position: -32px -32px; }
+.ui-icon-arrow-1-se { background-position: -48px -32px; }
+.ui-icon-arrow-1-s { background-position: -64px -32px; }
+.ui-icon-arrow-1-sw { background-position: -80px -32px; }
+.ui-icon-arrow-1-w { background-position: -96px -32px; }
+.ui-icon-arrow-1-nw { background-position: -112px -32px; }
+.ui-icon-arrow-2-n-s { background-position: -128px -32px; }
+.ui-icon-arrow-2-ne-sw { background-position: -144px -32px; }
+.ui-icon-arrow-2-e-w { background-position: -160px -32px; }
+.ui-icon-arrow-2-se-nw { background-position: -176px -32px; }
+.ui-icon-arrowstop-1-n { background-position: -192px -32px; }
+.ui-icon-arrowstop-1-e { background-position: -208px -32px; }
+.ui-icon-arrowstop-1-s { background-position: -224px -32px; }
+.ui-icon-arrowstop-1-w { background-position: -240px -32px; }
+.ui-icon-arrowthick-1-n { background-position: 0 -48px; }
+.ui-icon-arrowthick-1-ne { background-position: -16px -48px; }
+.ui-icon-arrowthick-1-e { background-position: -32px -48px; }
+.ui-icon-arrowthick-1-se { background-position: -48px -48px; }
+.ui-icon-arrowthick-1-s { background-position: -64px -48px; }
+.ui-icon-arrowthick-1-sw { background-position: -80px -48px; }
+.ui-icon-arrowthick-1-w { background-position: -96px -48px; }
+.ui-icon-arrowthick-1-nw { background-position: -112px -48px; }
+.ui-icon-arrowthick-2-n-s { background-position: -128px -48px; }
+.ui-icon-arrowthick-2-ne-sw { background-position: -144px -48px; }
+.ui-icon-arrowthick-2-e-w { background-position: -160px -48px; }
+.ui-icon-arrowthick-2-se-nw { background-position: -176px -48px; }
+.ui-icon-arrowthickstop-1-n { background-position: -192px -48px; }
+.ui-icon-arrowthickstop-1-e { background-position: -208px -48px; }
+.ui-icon-arrowthickstop-1-s { background-position: -224px -48px; }
+.ui-icon-arrowthickstop-1-w { background-position: -240px -48px; }
+.ui-icon-arrowreturnthick-1-w { background-position: 0 -64px; }
+.ui-icon-arrowreturnthick-1-n { background-position: -16px -64px; }
+.ui-icon-arrowreturnthick-1-e { background-position: -32px -64px; }
+.ui-icon-arrowreturnthick-1-s { background-position: -48px -64px; }
+.ui-icon-arrowreturn-1-w { background-position: -64px -64px; }
+.ui-icon-arrowreturn-1-n { background-position: -80px -64px; }
+.ui-icon-arrowreturn-1-e { background-position: -96px -64px; }
+.ui-icon-arrowreturn-1-s { background-position: -112px -64px; }
+.ui-icon-arrowrefresh-1-w { background-position: -128px -64px; }
+.ui-icon-arrowrefresh-1-n { background-position: -144px -64px; }
+.ui-icon-arrowrefresh-1-e { background-position: -160px -64px; }
+.ui-icon-arrowrefresh-1-s { background-position: -176px -64px; }
+.ui-icon-arrow-4 { background-position: 0 -80px; }
+.ui-icon-arrow-4-diag { background-position: -16px -80px; }
+.ui-icon-extlink { background-position: -32px -80px; }
+.ui-icon-newwin { background-position: -48px -80px; }
+.ui-icon-refresh { background-position: -64px -80px; }
+.ui-icon-shuffle { background-position: -80px -80px; }
+.ui-icon-transfer-e-w { background-position: -96px -80px; }
+.ui-icon-transferthick-e-w { background-position: -112px -80px; }
+.ui-icon-folder-collapsed { background-position: 0 -96px; }
+.ui-icon-folder-open { background-position: -16px -96px; }
+.ui-icon-document { background-position: -32px -96px; }
+.ui-icon-document-b { background-position: -48px -96px; }
+.ui-icon-note { background-position: -64px -96px; }
+.ui-icon-mail-closed { background-position: -80px -96px; }
+.ui-icon-mail-open { background-position: -96px -96px; }
+.ui-icon-suitcase { background-position: -112px -96px; }
+.ui-icon-comment { background-position: -128px -96px; }
+.ui-icon-person { background-position: -144px -96px; }
+.ui-icon-print { background-position: -160px -96px; }
+.ui-icon-trash { background-position: -176px -96px; }
+.ui-icon-locked { background-position: -192px -96px; }
+.ui-icon-unlocked { background-position: -208px -96px; }
+.ui-icon-bookmark { background-position: -224px -96px; }
+.ui-icon-tag { background-position: -240px -96px; }
+.ui-icon-home { background-position: 0 -112px; }
+.ui-icon-flag { background-position: -16px -112px; }
+.ui-icon-calendar { background-position: -32px -112px; }
+.ui-icon-cart { background-position: -48px -112px; }
+.ui-icon-pencil { background-position: -64px -112px; }
+.ui-icon-clock { background-position: -80px -112px; }
+.ui-icon-disk { background-position: -96px -112px; }
+.ui-icon-calculator { background-position: -112px -112px; }
+.ui-icon-zoomin { background-position: -128px -112px; }
+.ui-icon-zoomout { background-position: -144px -112px; }
+.ui-icon-search { background-position: -160px -112px; }
+.ui-icon-wrench { background-position: -176px -112px; }
+.ui-icon-gear { background-position: -192px -112px; }
+.ui-icon-heart { background-position: -208px -112px; }
+.ui-icon-star { background-position: -224px -112px; }
+.ui-icon-link { background-position: -240px -112px; }
+.ui-icon-cancel { background-position: 0 -128px; }
+.ui-icon-plus { background-position: -16px -128px; }
+.ui-icon-plusthick { background-position: -32px -128px; }
+.ui-icon-minus { background-position: -48px -128px; }
+.ui-icon-minusthick { background-position: -64px -128px; }
+.ui-icon-close { background-position: -80px -128px; }
+.ui-icon-closethick { background-position: -96px -128px; }
+.ui-icon-key { background-position: -112px -128px; }
+.ui-icon-lightbulb { background-position: -128px -128px; }
+.ui-icon-scissors { background-position: -144px -128px; }
+.ui-icon-clipboard { background-position: -160px -128px; }
+.ui-icon-copy { background-position: -176px -128px; }
+.ui-icon-contact { background-position: -192px -128px; }
+.ui-icon-image { background-position: -208px -128px; }
+.ui-icon-video { background-position: -224px -128px; }
+.ui-icon-script { background-position: -240px -128px; }
+.ui-icon-alert { background-position: 0 -144px; }
+.ui-icon-info { background-position: -16px -144px; }
+.ui-icon-notice { background-position: -32px -144px; }
+.ui-icon-help { background-position: -48px -144px; }
+.ui-icon-check { background-position: -64px -144px; }
+.ui-icon-bullet { background-position: -80px -144px; }
+.ui-icon-radio-on { background-position: -96px -144px; }
+.ui-icon-radio-off { background-position: -112px -144px; }
+.ui-icon-pin-w { background-position: -128px -144px; }
+.ui-icon-pin-s { background-position: -144px -144px; }
+.ui-icon-play { background-position: 0 -160px; }
+.ui-icon-pause { background-position: -16px -160px; }
+.ui-icon-seek-next { background-position: -32px -160px; }
+.ui-icon-seek-prev { background-position: -48px -160px; }
+.ui-icon-seek-end { background-position: -64px -160px; }
+.ui-icon-seek-start { background-position: -80px -160px; }
+/* ui-icon-seek-first is deprecated, use ui-icon-seek-start instead */
+.ui-icon-seek-first { background-position: -80px -160px; }
+.ui-icon-stop { background-position: -96px -160px; }
+.ui-icon-eject { background-position: -112px -160px; }
+.ui-icon-volume-off { background-position: -128px -160px; }
+.ui-icon-volume-on { background-position: -144px -160px; }
+.ui-icon-power { background-position: 0 -176px; }
+.ui-icon-signal-diag { background-position: -16px -176px; }
+.ui-icon-signal { background-position: -32px -176px; }
+.ui-icon-battery-0 { background-position: -48px -176px; }
+.ui-icon-battery-1 { background-position: -64px -176px; }
+.ui-icon-battery-2 { background-position: -80px -176px; }
+.ui-icon-battery-3 { background-position: -96px -176px; }
+.ui-icon-circle-plus { background-position: 0 -192px; }
+.ui-icon-circle-minus { background-position: -16px -192px; }
+.ui-icon-circle-close { background-position: -32px -192px; }
+.ui-icon-circle-triangle-e { background-position: -48px -192px; }
+.ui-icon-circle-triangle-s { background-position: -64px -192px; }
+.ui-icon-circle-triangle-w { background-position: -80px -192px; }
+.ui-icon-circle-triangle-n { background-position: -96px -192px; }
+.ui-icon-circle-arrow-e { background-position: -112px -192px; }
+.ui-icon-circle-arrow-s { background-position: -128px -192px; }
+.ui-icon-circle-arrow-w { background-position: -144px -192px; }
+.ui-icon-circle-arrow-n { background-position: -160px -192px; }
+.ui-icon-circle-zoomin { background-position: -176px -192px; }
+.ui-icon-circle-zoomout { background-position: -192px -192px; }
+.ui-icon-circle-check { background-position: -208px -192px; }
+.ui-icon-circlesmall-plus { background-position: 0 -208px; }
+.ui-icon-circlesmall-minus { background-position: -16px -208px; }
+.ui-icon-circlesmall-close { background-position: -32px -208px; }
+.ui-icon-squaresmall-plus { background-position: -48px -208px; }
+.ui-icon-squaresmall-minus { background-position: -64px -208px; }
+.ui-icon-squaresmall-close { background-position: -80px -208px; }
+.ui-icon-grip-dotted-vertical { background-position: 0 -224px; }
+.ui-icon-grip-dotted-horizontal { background-position: -16px -224px; }
+.ui-icon-grip-solid-vertical { background-position: -32px -224px; }
+.ui-icon-grip-solid-horizontal { background-position: -48px -224px; }
+.ui-icon-gripsmall-diagonal-se { background-position: -64px -224px; }
+.ui-icon-grip-diagonal-se { background-position: -80px -224px; }
+
+
+/* Misc visuals
+----------------------------------*/
+
+/* Corner radius */
+.ui-corner-all,
+.ui-corner-top,
+.ui-corner-left,
+.ui-corner-tl {
+	border-top-left-radius: 4px/*{cornerRadius}*/;
+}
+.ui-corner-all,
+.ui-corner-top,
+.ui-corner-right,
+.ui-corner-tr {
+	border-top-right-radius: 4px/*{cornerRadius}*/;
+}
+.ui-corner-all,
+.ui-corner-bottom,
+.ui-corner-left,
+.ui-corner-bl {
+	border-bottom-left-radius: 4px/*{cornerRadius}*/;
+}
+.ui-corner-all,
+.ui-corner-bottom,
+.ui-corner-right,
+.ui-corner-br {
+	border-bottom-right-radius: 4px/*{cornerRadius}*/;
+}
+
+/* Overlays */
+.ui-widget-overlay {
+	background: #aaaaaa/*{bgColorOverlay}*/ url(/assets/jquery-ui/ui-bg_flat_0_aaaaaa_40x100-9a8492a580bf85d3e98ae8861fbd45567e5a1f83eeafcf9574da0399d5f602ab.png)/*{bgImgUrlOverlay}*/ 50%/*{bgOverlayXPos}*/ 50%/*{bgOverlayYPos}*/ repeat-x/*{bgOverlayRepeat}*/;
+	opacity: .3/*{opacityOverlay}*/;
+	filter: Alpha(Opacity=30)/*{opacityFilterOverlay}*/; /* support: IE8 */
+}
+.ui-widget-shadow {
+	margin: -8px/*{offsetTopShadow}*/ 0 0 -8px/*{offsetLeftShadow}*/;
+	padding: 8px/*{thicknessShadow}*/;
+	background: #aaaaaa/*{bgColorShadow}*/ url(/assets/jquery-ui/ui-bg_flat_0_aaaaaa_40x100-9a8492a580bf85d3e98ae8861fbd45567e5a1f83eeafcf9574da0399d5f602ab.png)/*{bgImgUrlShadow}*/ 50%/*{bgShadowXPos}*/ 50%/*{bgShadowYPos}*/ repeat-x/*{bgShadowRepeat}*/;
+	opacity: .3/*{opacityShadow}*/;
+	filter: Alpha(Opacity=30)/*{opacityFilterShadow}*/; /* support: IE8 */
+	border-radius: 8px/*{cornerRadiusShadow}*/;
+}
+/*!
+ * jQuery UI CSS Framework 1.11.4
+ * http://jqueryui.com
+ *
+ * Copyright jQuery Foundation and other contributors
+ * Released under the MIT license.
+ * http://jquery.org/license
+ *
+ * http://api.jqueryui.com/category/theming/
+ */
+/*
+
+ */
+
+/* Layout helpers
+----------------------------------*/
+
+.ui-helper-hidden {
+	display: none;
+}
+.ui-helper-hidden-accessible {
+	border: 0;
+	clip: rect(0 0 0 0);
+	height: 1px;
+	margin: -1px;
+	overflow: hidden;
+	padding: 0;
+	position: absolute;
+	width: 1px;
+}
+.ui-helper-reset {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	outline: 0;
+	line-height: 1.3;
+	text-decoration: none;
+	font-size: 100%;
+	list-style: none;
+}
+.ui-helper-clearfix:before,
+.ui-helper-clearfix:after {
+	content: "";
+	display: table;
+	border-collapse: collapse;
+}
+.ui-helper-clearfix:after {
+	clear: both;
+}
+.ui-helper-clearfix {
+	min-height: 0; /* support: IE7 */
+}
+.ui-helper-zfix {
+	width: 100%;
+	height: 100%;
+	top: 0;
+	left: 0;
+	position: absolute;
+	opacity: 0;
+	filter:Alpha(Opacity=0); /* support: IE8 */
+}
+
+.ui-front {
+	z-index: 100;
+}
+
+
+/* Interaction Cues
+----------------------------------*/
+.ui-state-disabled {
+	cursor: default !important;
+}
+
+
+/* Icons
+----------------------------------*/
+
+/* states and images */
+.ui-icon {
+	display: block;
+	text-indent: -99999px;
+	overflow: hidden;
+	background-repeat: no-repeat;
+}
+
+
+/* Misc visuals
+----------------------------------*/
+
+/* Overlays */
+.ui-widget-overlay {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+}
+/*!
+ * jQuery UI Datepicker 1.11.4
+ * http://jqueryui.com
+ *
+ * Copyright jQuery Foundation and other contributors
+ * Released under the MIT license.
+ * http://jquery.org/license
+ *
+ * http://api.jqueryui.com/datepicker/#theming
+ */
+/*
+
+
+ */
+
+.ui-datepicker {
+	width: 17em;
+	padding: .2em .2em 0;
+	display: none;
+}
+.ui-datepicker .ui-datepicker-header {
+	position: relative;
+	padding: .2em 0;
+}
+.ui-datepicker .ui-datepicker-prev,
+.ui-datepicker .ui-datepicker-next {
+	position: absolute;
+	top: 2px;
+	width: 1.8em;
+	height: 1.8em;
+}
+.ui-datepicker .ui-datepicker-prev-hover,
+.ui-datepicker .ui-datepicker-next-hover {
+	top: 1px;
+}
+.ui-datepicker .ui-datepicker-prev {
+	left: 2px;
+}
+.ui-datepicker .ui-datepicker-next {
+	right: 2px;
+}
+.ui-datepicker .ui-datepicker-prev-hover {
+	left: 1px;
+}
+.ui-datepicker .ui-datepicker-next-hover {
+	right: 1px;
+}
+.ui-datepicker .ui-datepicker-prev span,
+.ui-datepicker .ui-datepicker-next span {
+	display: block;
+	position: absolute;
+	left: 50%;
+	margin-left: -8px;
+	top: 50%;
+	margin-top: -8px;
+}
+.ui-datepicker .ui-datepicker-title {
+	margin: 0 2.3em;
+	line-height: 1.8em;
+	text-align: center;
+}
+.ui-datepicker .ui-datepicker-title select {
+	font-size: 1em;
+	margin: 1px 0;
+}
+.ui-datepicker select.ui-datepicker-month,
+.ui-datepicker select.ui-datepicker-year {
+	width: 45%;
+}
+.ui-datepicker table {
+	width: 100%;
+	font-size: .9em;
+	border-collapse: collapse;
+	margin: 0 0 .4em;
+}
+.ui-datepicker th {
+	padding: .7em .3em;
+	text-align: center;
+	font-weight: bold;
+	border: 0;
+}
+.ui-datepicker td {
+	border: 0;
+	padding: 1px;
+}
+.ui-datepicker td span,
+.ui-datepicker td a {
+	display: block;
+	padding: .2em;
+	text-align: right;
+	text-decoration: none;
+}
+.ui-datepicker .ui-datepicker-buttonpane {
+	background-image: none;
+	margin: .7em 0 0 0;
+	padding: 0 .2em;
+	border-left: 0;
+	border-right: 0;
+	border-bottom: 0;
+}
+.ui-datepicker .ui-datepicker-buttonpane button {
+	float: right;
+	margin: .5em .2em .4em;
+	cursor: pointer;
+	padding: .2em .6em .3em .6em;
+	width: auto;
+	overflow: visible;
+}
+.ui-datepicker .ui-datepicker-buttonpane button.ui-datepicker-current {
+	float: left;
+}
+
+/* with multiple calendars */
+.ui-datepicker.ui-datepicker-multi {
+	width: auto;
+}
+.ui-datepicker-multi .ui-datepicker-group {
+	float: left;
+}
+.ui-datepicker-multi .ui-datepicker-group table {
+	width: 95%;
+	margin: 0 auto .4em;
+}
+.ui-datepicker-multi-2 .ui-datepicker-group {
+	width: 50%;
+}
+.ui-datepicker-multi-3 .ui-datepicker-group {
+	width: 33.3%;
+}
+.ui-datepicker-multi-4 .ui-datepicker-group {
+	width: 25%;
+}
+.ui-datepicker-multi .ui-datepicker-group-last .ui-datepicker-header,
+.ui-datepicker-multi .ui-datepicker-group-middle .ui-datepicker-header {
+	border-left-width: 0;
+}
+.ui-datepicker-multi .ui-datepicker-buttonpane {
+	clear: left;
+}
+.ui-datepicker-row-break {
+	clear: both;
+	width: 100%;
+	font-size: 0;
+}
+
+/* RTL support */
+.ui-datepicker-rtl {
+	direction: rtl;
+}
+.ui-datepicker-rtl .ui-datepicker-prev {
+	right: 2px;
+	left: auto;
+}
+.ui-datepicker-rtl .ui-datepicker-next {
+	left: 2px;
+	right: auto;
+}
+.ui-datepicker-rtl .ui-datepicker-prev:hover {
+	right: 1px;
+	left: auto;
+}
+.ui-datepicker-rtl .ui-datepicker-next:hover {
+	left: 1px;
+	right: auto;
+}
+.ui-datepicker-rtl .ui-datepicker-buttonpane {
+	clear: right;
+}
+.ui-datepicker-rtl .ui-datepicker-buttonpane button {
+	float: left;
+}
+.ui-datepicker-rtl .ui-datepicker-buttonpane button.ui-datepicker-current,
+.ui-datepicker-rtl .ui-datepicker-group {
+	float: right;
+}
+.ui-datepicker-rtl .ui-datepicker-group-last .ui-datepicker-header,
+.ui-datepicker-rtl .ui-datepicker-group-middle .ui-datepicker-header {
+	border-right-width: 0;
+	border-left-width: 1px;
+}

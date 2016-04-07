@@ -1,5 +1,4 @@
-
-
+<script>console.log("this is the first line");</script>
 <meta charset="utf-8">
 <style>
 
@@ -44,7 +43,7 @@
 
   </div>
 
-  <script>window.jQuery || document.write('<script src="js/libs/jquery-1.6.2.min.js"><\/script>')</script>
+  <script>window.jQuery || document.write('<script src="js/libs/jquery-1.6.2.min.js"><\/script>');</script>
 
   <script>
     function addCommas(nStr)
@@ -62,6 +61,7 @@
 
   </script>
   <script>
+    console.log("In tooltip");
     function CustomTooltip(tooltipId, width){
   var tooltipId = tooltipId;
   $("body").append("<div class='tooltip' id='"+tooltipId+"'></div>");
@@ -171,6 +171,7 @@ class BubbleChart
   # bubble in the vis, then add each node
   # to @nodes to be used later
   create_nodes: () =>
+    console.log("Creating nodes")
     @data.forEach (d) =>
       node = {
         id: d.id
@@ -185,6 +186,7 @@ class BubbleChart
       }
       @nodes.push node
 
+    console.log("Got here")
     @nodes.sort (a,b) -> b.value - a.value
 
 
@@ -197,21 +199,21 @@ class BubbleChart
       .attr("id", "svg_vis")
 
     that = this
-
-
+    console.log("YYZZXX")
     @circles = @vis.selectAll("circle")
       .data(@nodes, (d) -> d.id)
-
+    console.log("YYZZXX-2")
     @circles.enter().append("circle")
       .attr("r", 0)
-#     .attr("fill", (d) => @fill_color(d.group))
-     .attr("fill", (d) -> d.color)
+      .attr("fill", (d) -> d.color)
       .attr("stroke-width", 2)
       .attr("stroke", (d) => d3.rgb(@fill_color(d.group)).darker())
       .attr("id", (d) -> "bubble_#{d.id}")
       .on("mouseover", (d,i) -> that.show_details(d,i,this))
       .on("mouseout", (d,i) -> that.hide_details(d,i,this))
 
+
+    console.log("XXYYZZ")
 
     @text = @vis.selectAll("text")
       .data(@nodes, (d) -> d.id)
@@ -223,7 +225,7 @@ class BubbleChart
       .style("color", "#FFFFFF")
       .attr("text-anchor", "middle")
       .text (d) -> d.name
-
+    console.log("YYZZXX")
     # Fancy transition to make bubbles appear, ending with the
     # correct radius
     @circles.transition().duration(2000).attr("r", (d) -> d.radius )
@@ -236,6 +238,7 @@ class BubbleChart
   # Starts up the force layout with
   # the default values
   start: () =>
+    console.log("Got here start")
     @force = d3.layout.force()
       .nodes(@nodes)
       .size([@width, @height])
@@ -243,6 +246,7 @@ class BubbleChart
   # Sets up force layout to display
   # all nodes in one circle.
   display_group_all: () =>
+    console.log("Got here display_group_all")
     @force.gravity(@layout_gravity)
       .charge(this.charge)
       .friction(0.9)
@@ -290,9 +294,9 @@ $ ->
   root.display_all = () =>
     chart.display_group_all()
 
-
-  d3.csv "http://gogettogether.herokuapp.com/events/1/graph_data", render_vis
-
+  console.log("Got here1")
+  d3.csv "http://gogettogether.herokuapp.com/events/<%= @event.id %>/graph_data", render_vis
+  console.log("Got here2")
   </script>
 
 
