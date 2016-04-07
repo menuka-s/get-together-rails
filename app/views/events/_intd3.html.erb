@@ -2,6 +2,11 @@
 
 <meta charset="utf-8">
 <style>
+
+.circle {
+  box-shadow: 5px 5px 5px #888888;
+}
+
 .tooltip {
         position: absolute;
         top: 100px;
@@ -20,7 +25,7 @@
         z-index: 10;
 }
 
-.tooltip .title {
+2.tooltip .title {
         font-size: 13px;
 }
 
@@ -201,6 +206,7 @@ class BubbleChart
       .attr("stroke-width", 2)
       .attr("stroke", (d) => d3.rgb(@fill_color(d.group)).darker())
       .attr("id", (d) -> "bubble_#{d.id}")
+      .attr("class", "circle")
 #      .attr("cx", (d) -> d.x)
 #      .attr("cy", (d) -> d.y)
       .on("mouseover", (d,i) -> that.show_details(d,i,this))
@@ -212,8 +218,8 @@ class BubbleChart
 
     @text.enter().append("text")
       .attr("r", 0)
+      .attr("class", "circle")
       .attr("fill", "#FFFFFF")
-
       .style("font-size", "10px")
       .style("font-weight", "bold")
       .style("color", "#FFFFFF")
