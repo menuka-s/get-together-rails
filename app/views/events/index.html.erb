@@ -69,17 +69,24 @@
   }
   // Create second map variable for ajaxing a pin
   var pmap;
+  // Store the center location of the map
+  var mapCenter = {lat: currentLocation[0], lng: currentLocation[1]}
   // JS for producing google map with marker
   function initMap() {
     var map = new google.maps.Map(document.getElementById('all-events-map'), {
       zoom: 14,
-      center: {lat: currentLocation[0], lng: currentLocation[1]}
+      center: mapCenter
     });
     pmap = map;
     setMarkers(map);
+
+    // Event fires when map is idle after panning or zooming
+    google.maps.event.addListener(map,'idle',function(event) {
+      mapCenter = map.getCenter();
+    });
     // Recenter the map on window resize
     google.maps.event.addDomListener(window, 'resize', function() {
-      map.setCenter({lat: currentLocation[0], lng: currentLocation[1]});
+      map.setCenter(mapCenter);
     });
   };
   function setMarkers(map) {
