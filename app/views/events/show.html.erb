@@ -244,7 +244,9 @@ textarea {
       infowindow.open(map, marker);
     });
 
-    var contentString = "<%= @event.address %>"
+    // <p class="content">
+
+    var contentString = "<p><%= @event.name.capitalize %></p><p><%= @event.address.gsub(", United States", "" ) %></p>"
 
     var infowindow = new google.maps.InfoWindow({
       content: contentString,
