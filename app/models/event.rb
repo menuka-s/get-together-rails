@@ -19,7 +19,7 @@ class Event < ActiveRecord::Base
   validate :activity_exists
 
   def event_date
-    # self.date.to_date
+    self.date.strftime("%m/%d/%Y") if !self.date.nil?
   end
 
   def event_date=(event_date)
@@ -28,7 +28,7 @@ class Event < ActiveRecord::Base
   end
 
   def event_time
-    # self.date.to_time
+    self.date if !self.date.nil?
   end
 
   def event_time=(event_time)
