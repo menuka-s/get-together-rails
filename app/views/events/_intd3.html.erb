@@ -159,8 +159,9 @@ class BubbleChart
 
     # use the max total_amount in the data as the max in the scale's domain
     max_amount = d3.max(@data, (d) -> parseInt(d.total_amount))
-    max_amount = 15
-    @radius_scale = d3.scale.pow().exponent(0.3).domain([0, max_amount]).range([2, 45]) 
+#    max_amount = 15
+#    @radius_scale = d3.scale.pow().exponent(0.3).domain([0, max_amount]).range([2, 45]) 
+    @radius_scale = d3.scale.pow().exponent(0.3).domain([0, max_amount]).range() 
     
     this.create_nodes()
     this.create_vis()
@@ -173,10 +174,11 @@ class BubbleChart
     @data.forEach (d) =>
       node = {
         id: d.id
-        radius: @radius_scale(parseInt(d.total_amount))
+#        radius: @radius_scale(parseInt(d.total_amount))
+        radius: 20 + ( 20 * (d.total_amount / d3.max(@data, (d) -> parseInt(d.total_amount))) )
         value: d.total_amount
         name: d.name
-        org: 0
+        color: d.color
         group: d.group
         x: Math.random() * 900
         y: Math.random() * 800
@@ -202,13 +204,11 @@ class BubbleChart
 
     @circles.enter().append("circle")
       .attr("r", 0)
-      .attr("fill", (d) => @fill_color(d.group))
+#     .attr("fill", (d) => @fill_color(d.group))
+     .attr("fill", (d) -> d.color)
       .attr("stroke-width", 2)
       .attr("stroke", (d) => d3.rgb(@fill_color(d.group)).darker())
       .attr("id", (d) -> "bubble_#{d.id}")
-      .attr("class", "circle")
-#      .attr("cx", (d) -> d.x)
-#      .attr("cy", (d) -> d.y)
       .on("mouseover", (d,i) -> that.show_details(d,i,this))
       .on("mouseout", (d,i) -> that.hide_details(d,i,this))
 
@@ -217,19 +217,12 @@ class BubbleChart
       .data(@nodes, (d) -> d.id)
 
     @text.enter().append("text")
-      .attr("r", 0)
-      .attr("class", "circle")
       .attr("fill", "#FFFFFF")
       .style("font-size", "10px")
       .style("font-weight", "bold")
       .style("color", "#FFFFFF")
-      .style("width", "5px")
- #     .attr("x", (d) -> d.x)
- #     .attr("y", (d) -> d.y)
       .attr("text-anchor", "middle")
       .text (d) -> d.name
-
-
 
     # Fancy transition to make bubbles appear, ending with the
     # correct radius
@@ -298,7 +291,7 @@ $ ->
     chart.display_group_all()
 
 
-  d3.csv "http://localhost:3000/events/1/graph_data", render_vis
+  d3.csv "http://gogettogether.herokuapp.com/events/1/graph_data", render_vis
 
   </script>
 
