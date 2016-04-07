@@ -42,11 +42,9 @@ module UsersHelper
   def top_activities
     recommended_activities = []
     recommended_activities = Event.all.map{|event| event if event.creator != current_user}.compact
-    # recommended_activities = recommended_activities.compact
     recommended_activities = recommended_activities.map{ |event| event if event.date > Time.now}
     recommended_activities = recommended_activities.compact
     recommended_activities.sort! { |a,b| recommendations(a) <=> recommendations(b) }
-    p recommended_activities
     if recommended_activities.length >= 3
       return recommended_activities[0..2]
     else
@@ -54,5 +52,16 @@ module UsersHelper
     end
 
   end
+
+  # def user_matcher
+  #   user_hash = {}
+  #   User.all.map do |user|
+  #     user_activities = Activity.all - current_user.disliked_activities
+  #     user_arr =  user_activities.map { |activity| activity.name }
+  #     user_hash[user.id] = user_arr
+  #   end
+  #   user_hash
+  # end
+
 
 end
