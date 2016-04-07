@@ -95,11 +95,14 @@
       var event = events[i]
       var eventDate = new Date(event.date);
       var todaysDate = new Date();
-      var month = eventDate.getMonth() + 1;
+      var month = eventDate.getMonth();
       var day = eventDate.getDate();
       var year = eventDate.getFullYear();
       var militaryHours = eventDate.getHours();
       var minutes = eventDate.getMinutes();
+      var weekDay = eventDate.getDay();
+      var allMonths = ["Jan.", "Feb.", "March", "April", "May", "June", "July", "Aug.", "Sept.", "Oct.", "Nov.", "Dec."];
+      var allWeekDays = ["Mon.", "Tues.", "Weds.", "Thurs.", "Fri.", "Sat.", "Sun."]
 
       function notMilitary(hoursToChange) {
         if (hoursToChange > 12) {
@@ -119,10 +122,8 @@
       var fixedHours = notMilitary(militaryHours);
       var amPM = morningAfternoon(militaryHours);
 
-      var contentString = "<p><a class=google-map-link href=/events/" + event.id + ">" + event.name.capitalizeFirstLetter() + "</a></p>" + event.address.replace(", United States", " ") + "<br>" + month +"-"+ day +"-"+ year +", " + fixedHours +":"+ minutes + amPM;
+      var contentString = "<p><a class=google-map-link href=/events/" + event.id + ">" + event.name.capitalizeFirstLetter() + "</a></p>" + event.address.replace(", United States", " ") + "<br>" + allWeekDays[weekDay] + ", " + allMonths[month] +" "+ day +", " + fixedHours +":"+ minutes + amPM;
       var pinColor;
-      var eventDate = new Date(event.date);
-      var todaysDate = new Date();
       if(eventDate.setHours(0,0,0,0) == todaysDate.setHours(0,0,0,0)) {
         pinColor = "FF0000";
       } else {
