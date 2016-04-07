@@ -109,14 +109,17 @@
       var day = eventDate.getDate();
       var year = eventDate.getFullYear();
       var militaryHours = eventDate.getHours();
-      var minutes = eventDate.getMinutes();
+      var minutes = ('0'+eventDate.getMinutes()).slice(-2);
       var weekDay = eventDate.getDay();
       var allMonths = ["Jan.", "Feb.", "March", "April", "May", "June", "July", "Aug.", "Sept.", "Oct.", "Nov.", "Dec."];
-      var allWeekDays = ["Mon.", "Tues.", "Weds.", "Thurs.", "Fri.", "Sat.", "Sun."]
+      var allWeekDays = ["Mon.", "Tues.", "Weds.", "Thurs.", "Fri.", "Sat.", "Sun."];
 
       function notMilitary(hoursToChange) {
         if (hoursToChange > 12) {
           return hoursToChange - 12;
+        }
+        else {
+          return hoursToChange;
         }
       };
 
@@ -128,6 +131,7 @@
           return "AM";
         }
       };
+
 
       var fixedHours = notMilitary(militaryHours);
       var amPM = morningAfternoon(militaryHours);
