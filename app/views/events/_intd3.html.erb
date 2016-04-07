@@ -1,4 +1,4 @@
-<script>console.log("this is the first line")</script>
+<script>console.log("this is the first line");</script>
 <meta charset="utf-8">
 <style>
 
@@ -43,7 +43,7 @@
 
   </div>
 
-  <script>window.jQuery || document.write('<script src="js/libs/jquery-1.6.2.min.js"><\/script>')</script>
+  <script>window.jQuery || document.write('<script src="js/libs/jquery-1.6.2.min.js"></script>');</script>
 
   <script>
     function addCommas(nStr)
@@ -61,7 +61,7 @@
 
   </script>
   <script>
-    console.log("In tooltip")
+    console.log("In tooltip");
     function CustomTooltip(tooltipId, width){
   var tooltipId = tooltipId;
   $("body").append("<div class='tooltip' id='"+tooltipId+"'></div>");
@@ -171,9 +171,9 @@ class BubbleChart
   # bubble in the vis, then add each node
   # to @nodes to be used later
   create_nodes: () =>
+    console.log("Creating nodes")
     @data.forEach (d) =>
       node = {
-        console.log("XYZ")
         id: d.id
 #        radius: @radius_scale(parseInt(d.total_amount))
         radius: 20 + ( 20 * (d.total_amount / d3.max(@data, (d) -> parseInt(d.total_amount))) )
@@ -186,7 +186,7 @@ class BubbleChart
       }
       @nodes.push node
 
-    console.log("Got here"))
+    console.log("Got here")
     @nodes.sort (a,b) -> b.value - a.value
 
 
@@ -293,9 +293,9 @@ $ ->
   root.display_all = () =>
     chart.display_group_all()
 
-console.log("Got here1")
+  console.log("Got here1")
   d3.csv "http://gogettogether.herokuapp.com/events/1/graph_data", render_vis
-console.log("Got here2")
+  console.log("Got here2")
   </script>
 
 
