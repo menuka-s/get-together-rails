@@ -49,7 +49,7 @@
       <p>
         <div class="field">
           <%= f.label "Date:" %><br>
-            <%= f.text_field :event_date, :class => "datepicker" %>
+            <%= f.text_field :event_date, :class => "datepicker", :value => @event.event_date || Time.now.strftime("%m/%d/%Y") %>
            <%= f.label "Time:" %>
            <%= f.time_select :event_time, :ampm => true, :minute_step => 15 %>
         </div>
