@@ -238,7 +238,7 @@ class BubbleChart
   # Starts up the force layout with
   # the default values
   start: () =>
-    console.log("Got here")
+    console.log("Got here start")
     @force = d3.layout.force()
       .nodes(@nodes)
       .size([@width, @height])
@@ -246,6 +246,7 @@ class BubbleChart
   # Sets up force layout to display
   # all nodes in one circle.
   display_group_all: () =>
+    console.log("Got here display_group_all")
     @force.gravity(@layout_gravity)
       .charge(this.charge)
       .friction(0.9)
