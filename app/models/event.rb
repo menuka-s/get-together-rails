@@ -11,12 +11,12 @@ class Event < ActiveRecord::Base
   belongs_to :activity
 
   geocoded_by :address
-  #after_validation :geocode
+  after_validation :geocode
 
-  #validates_presence_of :name, :description, :date, :activity_id, :address
-  #validate :event_cannot_be_in_past
-  #validate :event_must_be_within_seven_days
-  #validate :activity_exists
+  validates_presence_of :name, :description, :date, :activity_id, :address
+  validate :event_cannot_be_in_past
+  validate :event_must_be_within_seven_days
+  validate :activity_exists
 
   def event_date
     self.date.strftime("%m/%d/%Y") if !self.date.nil?
